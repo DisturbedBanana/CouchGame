@@ -6,19 +6,25 @@ using UnityEditor.Rendering;
 
 public class GameManager : MonoBehaviour
 {
-    [Button("TestButton")]
-    private void TestButton()
-    {
-        Debug.Log("ouais");
-    }
+    [Header("References")]
+    public static GameManager instance;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
