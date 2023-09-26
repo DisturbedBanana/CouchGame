@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _flameDuration: 1
   _flameGrowthSizeMultiplier: 10
-  _snowMovementDuration: 6
+  _snowMovementDuration: 2.5
   _snowMovementOffset: 2.5
   _doesSnowComeBackUp: 0
 --- !u!135 &496188327

@@ -1,0 +1,34 @@
+{
+    "name": "Test mapping",
+    "maps": [
+        {
+            "name": "New action map",
+            "id": "c69b89dc-afb3-4ea4-b369-de4e1486301a",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Value",
+                    "id": "beff3b46-462f-42e6-8326-aa1db5b954b8",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "af0d5d7a-e3e2-4db4-9b84-ebfe3f111121",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
