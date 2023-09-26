@@ -12,6 +12,7 @@ TagManager:
   - AudioManager
   - MusicSource
   - SfxSource
+  - LevelManager
   layers:
   - Default
   - TransparentFX
