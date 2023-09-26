@@ -8,6 +8,10 @@ TagManager:
   - BlueCube
   - Cauldron
   - Snow
+  - GameManager
+  - AudioManager
+  - MusicSource
+  - SfxSource
   layers:
   - Default
   - TransparentFX
