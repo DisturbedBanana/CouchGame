@@ -31,7 +31,7 @@ public class ExpandingFlame : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Snow"))
         {
-            _snowHitTargetPosition = other.transform.position + new Vector3 (0, _snowMovementOffset, 0);
+            _snowHitTargetPosition = other.transform.position + new Vector3 (0, -_snowMovementOffset, 0);
             other.GetComponent<BoxCollider>().isTrigger = true;
             StartCoroutine(LerpSnowPosition(_snowHitTargetPosition, _snowMovementDuration, other.gameObject));
             Debug.Log("Snow hit!");
