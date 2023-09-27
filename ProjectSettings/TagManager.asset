@@ -14,6 +14,7 @@ TagManager:
   - SfxSource
   - LevelManager
   - TransitionCanvas
+  - Wood
   layers:
   - Default
   - TransparentFX

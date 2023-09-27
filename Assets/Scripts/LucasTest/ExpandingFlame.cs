@@ -8,8 +8,8 @@ public class ExpandingFlame : MonoBehaviour
     float _shrinkTimer = 0;
 
     [Header("Flame")]
-    [SerializeField] float _flameDuration = 1f;
-    [SerializeField] float _flameGrowthSizeMultiplier = 10f;
+    [SerializeField] float _shrinkTickDelay = 1f;
+    [SerializeField] float _flameGrowthFromWood = 2f;
 
     [Header("Snow Movement")]
     [SerializeField] float _snowMovementDuration = 1f;
@@ -29,7 +29,7 @@ public class ExpandingFlame : MonoBehaviour
             StartCoroutine(LerpFlameScale(5, 1));
 
         _shrinkTimer += Time.deltaTime;
-        if (_shrinkTimer >= _flameDuration)
+        if (_shrinkTimer >= _shrinkTickDelay)
         {
             _shrinkTimer = 0;
             transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 5);
@@ -41,7 +41,7 @@ public class ExpandingFlame : MonoBehaviour
     {
         Vector3 targetPosition;
 
-        if (_alreadyDownSnowList.Contains(objectToMove))
+        if (_alreadyDownSnowList.Contains(objectToMove) && _doesSnowComeBackUp)
         {
             targetPosition = objectToMove.transform.position + new Vector3(0, _snowMovementOffset, 0);
             _alreadyDownSnowList.Remove(objectToMove);
@@ -90,7 +90,7 @@ public class ExpandingFlame : MonoBehaviour
             PlayerMovementLucas player = other.gameObject.GetComponent<PlayerMovementLucas>();
             if (player.HasWood)
             {
-                transform.localScale += new Vector3(1, 1, 1);
+                transform.localScale += new Vector3(_flameGrowthFromWood, _flameGrowthFromWood, _flameGrowthFromWood);
                 player.HasWood = false;
             }
         }
@@ -98,15 +98,16 @@ public class ExpandingFlame : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Snow"))
+        if (_doesSnowComeBackUp)
         {
-            StartCoroutine(LerpSnowPosition(_snowMovementDuration, other.gameObject));
+            if (other.gameObject.CompareTag("Snow"))
+                StartCoroutine(LerpSnowPosition(_snowMovementDuration, other.gameObject));
         }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, transform.localScale.y/2);
+        Gizmos.DrawSphere(transform.position, transform.localScale.y/2);
     }
 }
