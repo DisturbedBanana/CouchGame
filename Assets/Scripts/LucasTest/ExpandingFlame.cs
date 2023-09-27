@@ -45,13 +45,12 @@ public class ExpandingFlame : MonoBehaviour
         {
             targetPosition = objectToMove.transform.position + new Vector3(0, _snowMovementOffset, 0);
             _alreadyDownSnowList.Remove(objectToMove);
-            Debug.Log("Snow is coming back up!");
+            Debug.Log("removed" + objectToMove.name + " from list");
         }
         else
         {
             targetPosition = objectToMove.transform.position + new Vector3(0, -_snowMovementOffset, 0);
             _alreadyDownSnowList.Add(objectToMove);
-            Debug.Log("Snow is going down!");
         }
 
         float time = 0;
@@ -101,13 +100,18 @@ public class ExpandingFlame : MonoBehaviour
         if (_doesSnowComeBackUp)
         {
             if (other.gameObject.CompareTag("Snow"))
-                StartCoroutine(LerpSnowPosition(_snowMovementDuration, other.gameObject));
+            {
+                if (_alreadyDownSnowList.Contains(other.gameObject))
+                {
+                    StartCoroutine(LerpSnowPosition(_snowMovementDuration, other.gameObject));
+                }
+            }
         }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, transform.localScale.y/2);
+        Gizmos.DrawWireSphere(transform.position, transform.localScale.y/2);
     }
 }
