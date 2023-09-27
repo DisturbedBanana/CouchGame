@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    
-
     public void QuitGame()
     {
         Debug.Log("Game quit");
