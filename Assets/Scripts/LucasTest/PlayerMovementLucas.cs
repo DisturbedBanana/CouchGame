@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class playermovement : MonoBehaviour
+public class PlayerMovementLucas : MonoBehaviour
 {
-    bool hasRed = false;
-    bool hasBlue = false;
-    [SerializeField] bool isInCauldron = false;
+    bool _hasWood = false;
 
-    void Start()
+    public bool HasWood 
     {
-        
+        get { return _hasWood; }
+        set { _hasWood = value; }
     }
 
     void Update()
@@ -39,27 +38,10 @@ public class playermovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("RedCube"))
+        if (other.gameObject.CompareTag("Wood"))
         {
-            hasRed = true;
+            _hasWood = true;
             Destroy(other.gameObject);
-        }
-        else if (other.gameObject.CompareTag("BlueCube"))
-        {
-            hasBlue = true;
-            Destroy(other.gameObject);
-        }
-        else if (other.gameObject.CompareTag("Cauldron"))
-        {
-            isInCauldron = true;
-        }   
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Cauldron"))
-        {
-            isInCauldron = false;
-        }
+        }  
     }
 }
