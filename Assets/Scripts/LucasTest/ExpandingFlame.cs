@@ -99,11 +99,12 @@ public class ExpandingFlame : MonoBehaviour
     {
         if (_doesSnowComeBackUp)
         {
-            if (other.gameObject.CompareTag("Snow"))
+            if (_alreadyDownSnowList.Contains(other.gameObject))
             {
-                if (_alreadyDownSnowList.Contains(other.gameObject))
+                if (other.gameObject.CompareTag("Snow"))
                 {
                     StartCoroutine(LerpSnowPosition(_snowMovementDuration, other.gameObject));
+
                 }
             }
         }

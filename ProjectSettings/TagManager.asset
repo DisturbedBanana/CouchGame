@@ -12,6 +12,7 @@ TagManager:
   - LevelManager
   - TransitionCanvas
   - Wood
+  - CraftingTable
   layers:
   - Default
   - TransparentFX
