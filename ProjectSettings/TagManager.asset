@@ -4,9 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - RedCube
-  - BlueCube
-  - Cauldron
   - Snow
   - GameManager
   - AudioManager
@@ -15,6 +12,7 @@ TagManager:
   - LevelManager
   - TransitionCanvas
   - Wood
+  - CraftingTable
   layers:
   - Default
   - TransparentFX
