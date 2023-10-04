@@ -2,98 +2,57 @@ using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMovTest : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private PlayerInputs _playerInput;
-    [SerializeField] private InputAction _moveInputAction;
-    [SerializeField] private Rigidbody _rigidbody;
+    [Header("Refenrences")]
+    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private PlayerInputs _playerInputs;
 
     [Space]
     [Header("Variables")]
-    [SerializeField] private float _movementSpeed = 1f;
-    [SerializeField] private float _jumpForce = 5f;
-    [SerializeField] private float _speedCap = 5f;
-    [SerializeField] private Vector3 _forceDir = Vector3.zero;
-    [SerializeField] private Camera _playerCamera;
+    [SerializeField] private float _playerSpeed = 10f;
+    [SerializeField] private Vector2 _moveVector; 
 
     private void Awake()
     {
-        _rigidbody = this.GetComponent<Rigidbody>();
-        _playerInput = new PlayerInputs();
+        _rb = this.GetComponent<Rigidbody>();
+        _playerInputs = new PlayerInputs();
+
+        _playerInputs.Controller.Movement.performed += ctx => _moveVector = ctx.ReadValue<Vector2>();
+        _playerInputs.Controller.Movement.canceled += ctx => _moveVector = Vector2.zero;
     }
 
     private void OnEnable()
     {
-        _playerInput.Controller.Jump.started += DoJump;
-        _moveInputAction = _playerInput.Controller.Movement;
-        _playerInput.Controller.Enable();
+        _playerInputs.Controller.Enable();
     }
 
     private void OnDisable()
     {
-        _playerInput.Controller.Jump.started -= DoJump;
-        _playerInput.Controller.Disable();
+        _playerInputs.Controller.Disable();
     }
 
-    private void FixedUpdate()
+    public void OnJump(InputAction.CallbackContext context)
     {
-        _forceDir += _moveInputAction.ReadValue<Vector2>().x * GetCameraRight(_playerCamera) * _movementSpeed;
-        _forceDir += _moveInputAction.ReadValue<Vector2>().y * GetCameraForward(_playerCamera) * _movementSpeed;
-
-        _rigidbody.AddForce(_forceDir, ForceMode.Impulse);
-        _forceDir = Vector3.zero;
-
-        if (_rigidbody.velocity.y < 0f)
+        if (context.performed)
         {
-            _rigidbody.velocity += Vector3.down * Physics.gravity.y * Time.deltaTime;
-        }
-
-        Vector3 horizontalVelocity = _rigidbody.velocity;
-        horizontalVelocity.y = 0f;
-
-        if (horizontalVelocity.sqrMagnitude > _speedCap * _speedCap)
-        {
-            _rigidbody.velocity = horizontalVelocity.normalized * _speedCap + Vector3.up * _rigidbody.velocity.y;
+            Jump();
         }
     }
 
-    private Vector3 GetCameraForward(Camera playerCamera)
+    private void Jump()
     {
-        Vector3 forward = playerCamera.transform.forward;
-        forward.y = 0;
-        return forward.normalized;
+        _rb.velocity = new Vector2(_rb.velocity.x, 0);
+        _rb.velocity += Vector3.up * 5f;
     }
 
-    private Vector3 GetCameraRight(Camera playerCamera)
+    private void Update()
     {
-        Vector3 right = playerCamera.transform.right;
-        right.y = 0;
-        return right.normalized;
-    }
-
-    private void DoJump(InputAction.CallbackContext context)
-    {
-        if (isGrounded())
-        {
-            _forceDir += Vector3.up * _jumpForce;
-        }
-    }
-
-    private bool isGrounded()
-    {
-        Ray ray = new Ray(this.transform.position + Vector3.up * 0.25f, Vector3.down);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, 0.3f))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        Vector3 move = new Vector3(_moveVector.x, 0f, _moveVector.y) * Time.deltaTime * 5f;
+        transform.Translate(move, Space.World);
     }
 }
