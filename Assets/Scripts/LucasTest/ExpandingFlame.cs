@@ -40,12 +40,14 @@ public class ExpandingFlame : MonoBehaviour
     IEnumerator LerpSnowPosition(float duration, GameObject objectToMove)
     {
         Vector3 targetPosition;
+        BoxCollider collider = objectToMove.GetComponent<BoxCollider>();
 
         if (_alreadyDownSnowList.Contains(objectToMove) && _doesSnowComeBackUp)
         {
             targetPosition = objectToMove.transform.position + new Vector3(0, _snowMovementOffset, 0);
             _alreadyDownSnowList.Remove(objectToMove);
-            Debug.Log("removed" + objectToMove.name + " from list");
+            objectToMove.GetComponent<BoxCollider>().enabled = false;
+            StartCoroutine(ReEnableCollider(collider));
         }
         else
         {
@@ -108,6 +110,12 @@ public class ExpandingFlame : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator ReEnableCollider(BoxCollider collider)
+    {
+        yield return new WaitForSeconds(3f);
+        collider.enabled = true;
     }
 
     private void OnDrawGizmos()
