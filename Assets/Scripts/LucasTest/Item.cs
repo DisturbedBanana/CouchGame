@@ -9,7 +9,8 @@ public struct ItemInformation
     public int amount;
 }
 
-public class Item
+[System.Serializable]
+public class Item : MonoBehaviour
 {
     public ItemInformation itemInformation;
     public GameObject itemDisplay;

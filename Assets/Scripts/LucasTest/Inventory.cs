@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] float _offset;
 
     List<Item> _itemList = new List<Item>();
+
+    public GameObject ItemPrefab{ get { return _itemPrefab; } }
 
     public List<Item> ItemList
     {
@@ -56,6 +59,21 @@ public class Inventory : MonoBehaviour
                 item.itemDisplay.transform.position = _firstItemPosition.position + new Vector3(_offset * (_itemList.Count - 1) , 0);
             }
             item.itemDisplay.transform.SetParent(canvas.transform);
+        }
+    }
+
+    private void UpdateItemPositions()
+    {
+        for (int i = 0; i < _itemList.Count; i++)
+        {
+            if (_itemList.Count == 1)
+            {
+                _itemList[i].itemDisplay.transform.position = _firstItemPosition.position;
+            }
+            else
+            {
+                _itemList[i].itemDisplay.transform.position = _firstItemPosition.position + new Vector3(_offset * (_itemList.Count - 1), 0);
+            }
         }
     }
 }
