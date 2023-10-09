@@ -2,6 +2,7 @@ using Microsoft.Win32.SafeHandles;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,11 +12,16 @@ public class PlayerMovTest : MonoBehaviour
     [Header("Refenrences")]
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private PlayerInputs _playerInputs;
+    [SerializeField] private GameObject _cam;
 
     [Space]
     [Header("Variables")]
     [SerializeField] private float _playerSpeed = 10f;
-    [SerializeField] private Vector2 _moveVector; 
+    [SerializeField] private Vector2 _moveVector;
+    [SerializeField] private float _globalOffset = -45f;
+    [SerializeField] private Vector3 _move;
+    [SerializeField] private float _turnSpeed = 360f;
+    
 
     private void Awake()
     {
@@ -24,6 +30,11 @@ public class PlayerMovTest : MonoBehaviour
 
         _playerInputs.Controller.Movement.performed += ctx => _moveVector = ctx.ReadValue<Vector2>();
         _playerInputs.Controller.Movement.canceled += ctx => _moveVector = Vector2.zero;
+
+        Quaternion _camRotationOffset = Quaternion.Euler(new Vector3(10f, _globalOffset, 0f));
+
+        _cam.transform.position = new Vector3(10f, 4f, -10f);
+        _cam.transform.rotation = _camRotationOffset;
     }
 
     private void OnEnable()
@@ -50,9 +61,32 @@ public class PlayerMovTest : MonoBehaviour
         _rb.velocity += Vector3.up * 5f;
     }
 
+    private void Move()
+    {
+        _move = new Vector3(_moveVector.x, 0f, _moveVector.y) * Time.deltaTime * 5f;
+
+        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0f, _globalOffset, 0f));
+
+        var skewedInput = matrix.MultiplyPoint3x4(_move);
+        
+        transform.Translate(skewedInput, Space.World);
+    }
+
+    private void Look()
+    {
+        if (_move != Vector3.zero)
+        {
+            var relative = (transform.position + _move) - transform.position;
+            var rotation = Quaternion.LookRotation(relative, Vector3.up);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, _turnSpeed * Time.deltaTime);
+        }
+
+    }
+
     private void Update()
     {
-        Vector3 move = new Vector3(_moveVector.x, 0f, _moveVector.y) * Time.deltaTime * 5f;
-        transform.Translate(move, Space.World);
+        Move();
+        Look();
     }
 }
