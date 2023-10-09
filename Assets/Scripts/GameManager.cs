@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     public static GameManager instance;
 
+    [Space]
+    [Header("Variables")]
+    [SerializeField] private bool _isGamePaused = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -20,13 +24,20 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
-    {
-        
-    }
 
-    void Update()
+    public void PauseGame()
     {
-        
+        _isGamePaused = !_isGamePaused;
+
+        if (_isGamePaused)
+        {
+            Time.timeScale = 0f;
+            Debug.Log("Game paused");
+        }
+        else if (!_isGamePaused)
+        {
+            Time.timeScale = 1f;
+            Debug.Log("Game unpaused");
+        }
     }
 }
