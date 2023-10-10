@@ -26,3 +26,7 @@ MonoBehaviour:
     - Bas_LIFE
     - Sup_LIFE
     IDItemResult: Hyp_LIFE
+  - IDItemIngredient:
+    - Bas_LIFE
+    - Sup_LIFE
+    IDItemResult: Sup_LIFE

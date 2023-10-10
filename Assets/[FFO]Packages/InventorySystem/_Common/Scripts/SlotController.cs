@@ -70,11 +70,11 @@ namespace FFO.Inventory
             switch (DataItem.category)
             {
                 case CATEGORIES.COIN:
-                    StorageController.Instance.PlayerInventaire.scoreController.SetPoints(DataItem.value);
+                    //StorageController.Instance.PlayerInventaire.scoreController.SetPoints(DataItem.value);
                     break;
 
                 case CATEGORIES.LIFE:
-                    StorageController.Instance.PlayerInventaire.lifeController.SetLives(DataItem.value);
+                    //StorageController.Instance.PlayerInventaire.lifeController.SetLives(DataItem.value);
                     break;
             }
 

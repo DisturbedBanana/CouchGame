@@ -893,6 +893,7 @@ GameObject:
   - component: {fileID: 1260601579}
   - component: {fileID: 1260601578}
   - component: {fileID: 1260601577}
+  - component: {fileID: 1260601583}
   m_Layer: 0
   m_Name: Craftingtable
   m_TagString: CraftingTable
@@ -1039,6 +1040,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1260601583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260601576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fe92c5b5690db14392be2b085a2c2d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CoinDatabase>k__BackingField: {fileID: 0}
+  <LifeDatabase>k__BackingField: {fileID: 0}
+  <RecipeDatabase>k__BackingField: {fileID: 11400000, guid: 2b77bfa9a260cab43b6d754f0da8e32f,
+    type: 2}
 --- !u!1 &1271584526
 GameObject:
   m_ObjectHideFlags: 0

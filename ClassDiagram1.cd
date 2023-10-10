@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FFO.Inventory.DatabaseManager">
+    <Position X="14.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAQAAQAAAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\[FFO]Packages\InventorySystem\_Common\Scripts\DatabaseManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FFO.Inventory.SlotController" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgQAAACAAAEABgAEAIIAgAIAgAAAAIAAAgQAAEAI=</HashCode>
+      <FileName>Assets\[FFO]Packages\InventorySystem\_Common\Scripts\SlotController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FFO.Inventory.Craft.CraftController">
+    <Position X="8.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAAAAICAAAIAAAAAAMAAAAAAIAAAAQAIAAAAAAAA=</HashCode>
+      <FileName>Assets\[FFO]Packages\InventorySystem\Craft\Scripts\Controller\CraftController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FFO.Inventory.Craft.RecipeData">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAgAAAAAAAAAAAAQAAAAAAgAAAAAEAAAA=</HashCode>
+      <FileName>Assets\[FFO]Packages\InventorySystem\Craft\Scripts\Data\RecipeData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FFO.Inventory.Craft.RecipeDatabase">
+    <Position X="12.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\[FFO]Packages\InventorySystem\Craft\Scripts\Data\RecipeDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FFO.Inventory.Storage.StorageController">
+    <Position X="6" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAgACAICAAAAAAAAAAMAAAgAAABAAAQAIQAAAAAAA=</HashCode>
+      <FileName>Assets\[FFO]Packages\InventorySystem\Storage\Scripts\Controller\StorageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FFO.Inventory.Storage.ItemDatabase">
+    <Position X="1.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAACAAACAAAAAAA=</HashCode>
+      <FileName>Assets\[FFO]Packages\InventorySystem\Storage\Scripts\Data\ItemDatabase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="ItemInformation" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEgACAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\LucasTest\Item.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
