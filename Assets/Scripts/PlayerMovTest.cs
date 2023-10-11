@@ -20,6 +20,7 @@ public class PlayerMovTest : MonoBehaviour
     [SerializeField] private Vector2 _moveVector;
     [SerializeField] private float _globalOffset = -45f;
     [SerializeField] private Vector3 _move;
+    [SerializeField] private Vector2 _movementVector;
     [SerializeField] private float _turnSpeed = 360f;
 
 
@@ -65,25 +66,21 @@ public class PlayerMovTest : MonoBehaviour
 
     private void Move()
     {
-        _move = new Vector3(_moveVector.x, 0f, _moveVector.y) * Time.deltaTime * 5f;
+        if (_movementVector != Vector2.zero)
+        {
+            _move = new Vector3(_movementVector.x, 0f, _movementVector.y) * Time.deltaTime * 5f;
 
-        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0f, _globalOffset, 0f));
+            var matrix = Matrix4x4.Rotate(Quaternion.Euler(0f, _globalOffset, 0f));
 
-        var skewedInput = matrix.MultiplyPoint3x4(_move);
+            var skewedInput = matrix.MultiplyPoint3x4(_move);
 
-        transform.Translate(skewedInput, Space.World);
+            transform.Translate(skewedInput, Space.World);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Vector2 movementVector = context.ReadValue<Vector2>();
-        _move = new Vector3(movementVector.x, 0f, movementVector.y) * Time.deltaTime * 5f;
-
-        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0f, _globalOffset, 0f));
-
-        var skewedInput = matrix.MultiplyPoint3x4(_move);
-
-        transform.Translate(skewedInput, Space.World);
+        _movementVector = context.ReadValue<Vector2>();
     }
 
     private void Look()
@@ -101,6 +98,6 @@ public class PlayerMovTest : MonoBehaviour
     private void Update()
     {
         Look();
-        //Move();
+        Move();
     }
 }

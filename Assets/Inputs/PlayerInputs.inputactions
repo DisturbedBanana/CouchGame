@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Join",
+                    "name": "PickUp",
                     "type": "Button",
                     "id": "a857cf32-2ade-447c-9708-89bd1a886311",
                     "expectedControlType": "Button",
@@ -58,7 +58,7 @@
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -158,7 +158,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Join",
+                    "action": "PickUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -64,7 +64,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Join"",
+                    ""name"": ""PickUp"",
                     ""type"": ""Button"",
                     ""id"": ""a857cf32-2ade-447c-9708-89bd1a886311"",
                     ""expectedControlType"": ""Button"",
@@ -80,7 +80,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -180,7 +180,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Join"",
+                    ""action"": ""PickUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -207,7 +207,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Controller_Attack = m_Controller.FindAction("Attack", throwIfNotFound: true);
         m_Controller_Jump = m_Controller.FindAction("Jump", throwIfNotFound: true);
         m_Controller_Pause = m_Controller.FindAction("Pause", throwIfNotFound: true);
-        m_Controller_Join = m_Controller.FindAction("Join", throwIfNotFound: true);
+        m_Controller_PickUp = m_Controller.FindAction("PickUp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,7 +273,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_Attack;
     private readonly InputAction m_Controller_Jump;
     private readonly InputAction m_Controller_Pause;
-    private readonly InputAction m_Controller_Join;
+    private readonly InputAction m_Controller_PickUp;
     public struct ControllerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -282,7 +282,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Controller_Attack;
         public InputAction @Jump => m_Wrapper.m_Controller_Jump;
         public InputAction @Pause => m_Wrapper.m_Controller_Pause;
-        public InputAction @Join => m_Wrapper.m_Controller_Join;
+        public InputAction @PickUp => m_Wrapper.m_Controller_PickUp;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -304,9 +304,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @Join.started += instance.OnJoin;
-            @Join.performed += instance.OnJoin;
-            @Join.canceled += instance.OnJoin;
+            @PickUp.started += instance.OnPickUp;
+            @PickUp.performed += instance.OnPickUp;
+            @PickUp.canceled += instance.OnPickUp;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -323,9 +323,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @Join.started -= instance.OnJoin;
-            @Join.performed -= instance.OnJoin;
-            @Join.canceled -= instance.OnJoin;
+            @PickUp.started -= instance.OnPickUp;
+            @PickUp.performed -= instance.OnPickUp;
+            @PickUp.canceled -= instance.OnPickUp;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -358,6 +358,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnJoin(InputAction.CallbackContext context);
+        void OnPickUp(InputAction.CallbackContext context);
     }
 }
