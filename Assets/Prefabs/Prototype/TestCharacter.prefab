@@ -572,11 +572,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
   _cam: {fileID: 0}
-  _playerSpeed: 10
-  _moveVector: {x: 0, y: 0}
+  _playerSpeed: 5
   _globalOffset: -45
-  _move: {x: 0, y: 0, z: 0}
   _turnSpeed: 360
+  _move: {x: 0, y: 0, z: 0}
+  _movementVector: {x: 0, y: 0}
+  _moveVector: {x: 0, y: 0}
 --- !u!136 &4302260261991819125
 CapsuleCollider:
   m_ObjectHideFlags: 0

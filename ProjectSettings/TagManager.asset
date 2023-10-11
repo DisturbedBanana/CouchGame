@@ -13,6 +13,7 @@ TagManager:
   - TransitionCanvas
   - Wood
   - CraftingTable
+  - Spawnpoint
   layers:
   - Default
   - TransparentFX

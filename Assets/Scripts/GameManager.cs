@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
 using UnityEditor.Rendering;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class GameManager : MonoBehaviour
     [Space]
     [Header("Variables")]
     [SerializeField] private bool _isGamePaused = false;
+
+    [SerializeField] private GameObject[] _spawnPoints;
+    [SerializeField] private List<PlayerInput> _playersList = new List<PlayerInput>();
 
     private void Awake()
     {
@@ -23,6 +27,25 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        _spawnPoints = GameObject.FindGameObjectsWithTag("Spawnpoint");
+    }
+
+    private void Start()
+    {
+        PlayerInputManager.instance.JoinPlayer(0, -1, null);
+    }
+
+
+    public void SpawnPlayer()
+    {
+
+    }
+
+    public void OnPlayerJoined(PlayerInput playerInput)
+    {
+        _playersList.Add(playerInput);
+
     }
 
     public void PauseGame()
