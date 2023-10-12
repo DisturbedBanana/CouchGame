@@ -64,10 +64,10 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Look"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""1a1b4e5a-204d-4b5d-a687-f1c7dc5fc25e"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""PickUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""a857cf32-2ade-447c-9708-89bd1a886311"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -80,7 +80,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -175,19 +175,31 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""509346b6-346d-4d17-b4bd-b3fcf394c561"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""id"": ""4d1cb7eb-5e93-46d1-8798-ce61b7b190ac"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Look"",
+                    ""action"": ""PickUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Controller"",
+            ""bindingGroup"": ""Controller"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Controller
         m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
@@ -195,7 +207,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Controller_Attack = m_Controller.FindAction("Attack", throwIfNotFound: true);
         m_Controller_Jump = m_Controller.FindAction("Jump", throwIfNotFound: true);
         m_Controller_Pause = m_Controller.FindAction("Pause", throwIfNotFound: true);
-        m_Controller_Look = m_Controller.FindAction("Look", throwIfNotFound: true);
+        m_Controller_PickUp = m_Controller.FindAction("PickUp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -261,7 +273,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_Attack;
     private readonly InputAction m_Controller_Jump;
     private readonly InputAction m_Controller_Pause;
-    private readonly InputAction m_Controller_Look;
+    private readonly InputAction m_Controller_PickUp;
     public struct ControllerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -270,7 +282,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Controller_Attack;
         public InputAction @Jump => m_Wrapper.m_Controller_Jump;
         public InputAction @Pause => m_Wrapper.m_Controller_Pause;
-        public InputAction @Look => m_Wrapper.m_Controller_Look;
+        public InputAction @PickUp => m_Wrapper.m_Controller_PickUp;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -292,9 +304,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @Look.started += instance.OnLook;
-            @Look.performed += instance.OnLook;
-            @Look.canceled += instance.OnLook;
+            @PickUp.started += instance.OnPickUp;
+            @PickUp.performed += instance.OnPickUp;
+            @PickUp.canceled += instance.OnPickUp;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -311,9 +323,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @Look.started -= instance.OnLook;
-            @Look.performed -= instance.OnLook;
-            @Look.canceled -= instance.OnLook;
+            @PickUp.started -= instance.OnPickUp;
+            @PickUp.performed -= instance.OnPickUp;
+            @PickUp.canceled -= instance.OnPickUp;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -331,12 +343,21 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         }
     }
     public ControllerActions @Controller => new ControllerActions(this);
+    private int m_ControllerSchemeIndex = -1;
+    public InputControlScheme ControllerScheme
+    {
+        get
+        {
+            if (m_ControllerSchemeIndex == -1) m_ControllerSchemeIndex = asset.FindControlSchemeIndex("Controller");
+            return asset.controlSchemes[m_ControllerSchemeIndex];
+        }
+    }
     public interface IControllerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
+        void OnPickUp(InputAction.CallbackContext context);
     }
 }

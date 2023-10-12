@@ -20,16 +20,19 @@ public class PlayerMovTest : MonoBehaviour
     [SerializeField] private Vector2 _moveVector;
     [SerializeField] private float _globalOffset = -45f;
     [SerializeField] private Vector3 _move;
+    [SerializeField] private Vector2 _movementVector;
     [SerializeField] private float _turnSpeed = 360f;
-    
+
+
 
     private void Awake()
     {
         _rb = this.GetComponent<Rigidbody>();
         _playerInputs = new PlayerInputs();
+        _cam = GameObject.FindGameObjectWithTag("MainCamera");
 
-        _playerInputs.Controller.Movement.performed += ctx => _moveVector = ctx.ReadValue<Vector2>();
-        _playerInputs.Controller.Movement.canceled += ctx => _moveVector = Vector2.zero;
+        //_playerInputs.Controller.Movement.performed += ctx => _moveVector = ctx.ReadValue<Vector2>();
+        //_playerInputs.Controller.Movement.canceled += ctx => _moveVector = Vector2.zero;
 
         Quaternion _camRotationOffset = Quaternion.Euler(new Vector3(10f, _globalOffset, 0f));
 
@@ -63,13 +66,21 @@ public class PlayerMovTest : MonoBehaviour
 
     private void Move()
     {
-        _move = new Vector3(_moveVector.x, 0f, _moveVector.y) * Time.deltaTime * 5f;
+        if (_movementVector != Vector2.zero)
+        {
+            _move = new Vector3(_movementVector.x, 0f, _movementVector.y) * Time.deltaTime * 5f;
 
-        var matrix = Matrix4x4.Rotate(Quaternion.Euler(0f, _globalOffset, 0f));
+            var matrix = Matrix4x4.Rotate(Quaternion.Euler(0f, _globalOffset, 0f));
 
-        var skewedInput = matrix.MultiplyPoint3x4(_move);
-        
-        transform.Translate(skewedInput, Space.World);
+            var skewedInput = matrix.MultiplyPoint3x4(_move);
+
+            transform.Translate(skewedInput, Space.World);
+        }
+    }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        _movementVector = context.ReadValue<Vector2>();
     }
 
     private void Look()
@@ -86,7 +97,7 @@ public class PlayerMovTest : MonoBehaviour
 
     private void Update()
     {
-        Move();
         Look();
+        Move();
     }
 }

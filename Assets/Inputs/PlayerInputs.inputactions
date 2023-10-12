@@ -42,10 +42,10 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Look",
-                    "type": "PassThrough",
-                    "id": "1a1b4e5a-204d-4b5d-a687-f1c7dc5fc25e",
-                    "expectedControlType": "Vector2",
+                    "name": "PickUp",
+                    "type": "Button",
+                    "id": "a857cf32-2ade-447c-9708-89bd1a886311",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -58,7 +58,7 @@
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -153,17 +153,29 @@
                 },
                 {
                     "name": "",
-                    "id": "509346b6-346d-4d17-b4bd-b3fcf394c561",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "4d1cb7eb-5e93-46d1-8798-ce61b7b190ac",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Look",
+                    "action": "PickUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Controller",
+            "bindingGroup": "Controller",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }
