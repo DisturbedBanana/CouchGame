@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -19,6 +18,12 @@ public class Inventory : MonoBehaviour
         get { return _itemList; }
     }
 
+    private void Awake()
+    {
+        _firstItemPosition = GameObject.FindGameObjectWithTag("TestInventory").transform;
+        canvas = GameObject.FindGameObjectWithTag("TestCanvas");
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
@@ -31,7 +36,7 @@ public class Inventory : MonoBehaviour
             Additem("blue", Color.blue);
     }
 
-    private void Additem(string name, Color color)
+    public void Additem(string name, Color color)
     {
         bool itemFound = false;
 

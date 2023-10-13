@@ -1,96 +1,121 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PickUp : MonoBehaviour
 {
-    [SerializeField] private bool _canPickUp;
+    [SerializeField] private List<GameObject> _objectsInRange = new List<GameObject>();
+    [SerializeField] private bool _canPickUp = true;
+    [SerializeField] private bool _isPickingUp = false;
     [SerializeField] private float _pickUpCooldown;
+    [SerializeField] private Vector3 _closestDistance = new Vector3(1000,1000,1000);
+    [SerializeField] private GameObject _closestItemInRange;
+
+    [SerializeField] private GameObject _player;
+
     private float _pickUpCooldownTimer;
     [SerializeField] private float _pickUpTime;
-    private float _pickUpTimer;
-    [SerializeField][Range(1, 5)] private float _range;
+    [SerializeField] private float _pickUpTimer;
 
     private GameObject _obj;
 
     private void Start()
     {
         _pickUpCooldownTimer = _pickUpCooldown;
+        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward * _range, Color.red);
+        //_closestItemInRange = FindNearestItem();
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, _range))
+        FindNearestItem();
+        GlowNearestObject();
+    }
+
+    private void PickUpItem(GameObject item)
+    {
+        GetComponent<Inventory>().Additem("red", Color.red);
+        Destroy(item);
+    }
+
+    private void FindNearestItem()
+    {
+        if (_objectsInRange.Count == 0)
         {
-            GameObject hitObj = hit.collider.gameObject;
-
-            if (hitObj.CompareTag("RedCube"))
-            {
-                if (_obj != null)
-                    UnhighlightObject(_obj);
-                _obj = hitObj;
-                HighlightObject(_obj);
-            }
-
-            if (Input.GetKeyDown(KeyCode.E) && _canPickUp)
-            {
-                //Debug.Log("start press");
-                _pickUpTimer = 0f;
-            }
-
-            if (Input.GetKey(KeyCode.E) && _canPickUp)
-            {
-                _pickUpTimer += Time.deltaTime;
-
-                if (_pickUpTimer >= _pickUpTime)
-                {
-                    //Debug.Log("end timer");
-                    PickUpObject(hitObj);
-                }
-            }
-
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                //Debug.Log("released");
-                _pickUpTimer = 0f;
-            }
-
-            if (!_canPickUp)
-                UnhighlightObject(_obj);
+            _closestItemInRange = null;
         }
         else
         {
-            if (_obj != null)
-                UnhighlightObject(_obj);
-            _obj = null;
-        }
-
-        // Cooldown Pick Up
-        if (!_canPickUp)
-        {
-            //Debug.Log("start cd");
-            _pickUpCooldownTimer -= Time.deltaTime;
-
-            if (_pickUpCooldownTimer <= 0)
+            for (int i = 0; i < _objectsInRange.Count; i++)
             {
-                _canPickUp = true;
-                _pickUpCooldownTimer = _pickUpCooldown;
-                //Debug.Log("end cd");
+                if (_closestItemInRange == null)
+                {
+                    _closestItemInRange = _objectsInRange[i];
+                }
+
+                if (Vector3.Distance(_player.transform.position, _closestItemInRange.transform.position) > Vector3.Distance(_player.transform.position, _objectsInRange[i].transform.position))
+                {
+                    _closestItemInRange = _objectsInRange[i];
+                }
             }
         }
     }
 
-    private void HighlightObject(GameObject gameObject)
+    private void GlowNearestObject()
     {
-        gameObject.GetComponent<Outline>().enabled = true;
+        if (_closestItemInRange != null)
+        {
+            _closestItemInRange.gameObject.GetComponent<Outline>().enabled = true;
+            Debug.Log(_closestItemInRange);
+        }
+
+        foreach (GameObject item in _objectsInRange)
+        {
+            if (item != _closestItemInRange)
+            {
+                _closestItemInRange.gameObject.GetComponent<Outline>().enabled = false;
+            }
+        }
     }
-    
-    private void UnhighlightObject(GameObject gameObject)
+
+    private void OnTriggerEnter(Collider other)
     {
-        gameObject.GetComponent<Outline>().enabled = false;
+        if (other.CompareTag("Item"))
+        {
+            Debug.Log("Lucas");
+            _objectsInRange.Add(other.gameObject);
+        }   
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Item"))
+
+        {
+            Debug.Log("Pas Lucas");
+            if (_objectsInRange.Contains(other.gameObject))
+            {
+                _objectsInRange.Remove(other.gameObject);
+                _closestItemInRange = null;
+            }
+        }
+    }
+
+    public void OnPickUp(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _isPickingUp = true;
+            _objectsInRange.Remove(_closestItemInRange);
+            PickUpItem(_closestItemInRange);
+        }
+        else
+        {
+            _isPickingUp = false;
+        }
     }
 
     private void PickUpObject(GameObject gameObject)

@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerInputManager.instance.JoinPlayer(0, -1, null);
+        //PlayerInputManager.instance.JoinPlayer(0, -1, null);
     }
 
 
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void OnPlayerJoined(PlayerInput playerInput)
     {
-        _playersList.Add(playerInput);
+        //_playersList.Add(playerInput);
 
     }
 

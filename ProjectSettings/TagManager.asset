@@ -11,9 +11,11 @@ TagManager:
   - SfxSource
   - LevelManager
   - TransitionCanvas
-  - Wood
   - CraftingTable
   - Spawnpoint
+  - Item
+  - TestInventory
+  - TestCanvas
   layers:
   - Default
   - TransparentFX
