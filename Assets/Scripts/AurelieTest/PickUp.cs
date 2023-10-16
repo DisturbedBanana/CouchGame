@@ -19,8 +19,6 @@ public class PickUp : MonoBehaviour
     [SerializeField] private float _pickUpTime;
     [SerializeField] private float _pickUpTimer;
 
-    private GameObject _obj;
-
     private void Start()
     {
         _pickUpCooldownTimer = _pickUpCooldown;
@@ -29,8 +27,6 @@ public class PickUp : MonoBehaviour
 
     private void Update()
     {
-        //_closestItemInRange = FindNearestItem();
-
         FindNearestItem();
         GlowNearestObject();
     }
@@ -66,17 +62,21 @@ public class PickUp : MonoBehaviour
 
     private void GlowNearestObject()
     {
-        if (_closestItemInRange != null)
-        {
-            _closestItemInRange.gameObject.GetComponent<Outline>().enabled = true;
-            Debug.Log(_closestItemInRange);
-        }
+        //if (_closestItemInRange != null)
+        //{
+        //    _closestItemInRange.gameObject.GetComponent<Outline>().enabled = true;
+        //    Debug.Log(_closestItemInRange);
+        //}
 
         foreach (GameObject item in _objectsInRange)
         {
             if (item != _closestItemInRange)
             {
-                _closestItemInRange.gameObject.GetComponent<Outline>().enabled = false;
+                item.gameObject.GetComponent<Outline>().enabled = false;
+            }
+            else
+            {
+                item.gameObject.GetComponent<Outline>().enabled = true;
             }
         }
     }
@@ -98,6 +98,11 @@ public class PickUp : MonoBehaviour
             Debug.Log("Pas Lucas");
             if (_objectsInRange.Contains(other.gameObject))
             {
+                foreach (GameObject item in _objectsInRange)
+                {
+                item.gameObject.GetComponent<Outline>().enabled = false;
+                }
+
                 _objectsInRange.Remove(other.gameObject);
                 _closestItemInRange = null;
             }
