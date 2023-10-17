@@ -16,6 +16,8 @@ TagManager:
   - Item
   - TestInventory
   - TestCanvas
+  - MainMenuCanvas
+  - OptionsMenuCanvas
   layers:
   - Default
   - TransparentFX
