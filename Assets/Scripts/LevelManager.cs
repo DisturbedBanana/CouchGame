@@ -18,7 +18,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator CLoadLevel(string sceneToLoad)
     {
-        Debug.Log("Loaded level: " + sceneToLoad);
+        //Debug.Log("Loaded level: " + sceneToLoad);
         animator?.SetTrigger("Start");
         yield return new WaitForSeconds(0.4f);
         SceneManager.LoadScene(sceneToLoad);

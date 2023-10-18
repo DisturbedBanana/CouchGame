@@ -18,6 +18,7 @@ TagManager:
   - TestCanvas
   - MainMenuCanvas
   - OptionsMenuCanvas
+  - PlayerSelectionCanvas
   layers:
   - Default
   - TransparentFX

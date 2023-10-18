@@ -18,18 +18,19 @@ public class SoundSwitcher : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             currentLevelState = "menu";
-            Debug.Log("Current scene is a menu");
+            //Debug.Log("Current scene is a menu");
         }
         else if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             currentLevelState = "level";
-            Debug.Log("Current scene is a level");
+            //Debug.Log("Current scene is a level");
         }
         /*else if (SceneManager.GetActiveScene().buildIndex >= 14)
         {
             currentLevelState = "cutscene";
             Debug.Log("Current scene is a cinematic");
         }
+
         */
 
         if (AudioManager.instance.oldLevelStateStorage != currentLevelState)

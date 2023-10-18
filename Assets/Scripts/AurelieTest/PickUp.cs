@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class PickUp : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _objectsInRange = new List<GameObject>();
-    [SerializeField] private bool _canPickUp = true;
     [SerializeField] private bool _isPickingUp = false;
     [SerializeField] private float _pickUpCooldown;
     [SerializeField] private Vector3 _closestDistance = new Vector3(1000,1000,1000);
@@ -15,13 +14,8 @@ public class PickUp : MonoBehaviour
 
     [SerializeField] private GameObject _player;
 
-    private float _pickUpCooldownTimer;
-    [SerializeField] private float _pickUpTime;
-    [SerializeField] private float _pickUpTimer;
-
     private void Start()
     {
-        _pickUpCooldownTimer = _pickUpCooldown;
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -85,7 +79,6 @@ public class PickUp : MonoBehaviour
     {
         if (other.CompareTag("Item"))
         {
-            Debug.Log("Lucas");
             _objectsInRange.Add(other.gameObject);
         }   
     }
@@ -95,7 +88,6 @@ public class PickUp : MonoBehaviour
         if (other.CompareTag("Item"))
 
         {
-            Debug.Log("Pas Lucas");
             if (_objectsInRange.Contains(other.gameObject))
             {
                 foreach (GameObject item in _objectsInRange)
@@ -121,13 +113,5 @@ public class PickUp : MonoBehaviour
         {
             _isPickingUp = false;
         }
-    }
-
-    private void PickUpObject(GameObject gameObject)
-    {
-        // add item inventaire
-        _canPickUp = false;
-        _pickUpTimer = 0f;
-        //Debug.Log("picked up");
     }
 }

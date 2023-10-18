@@ -146,7 +146,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -157,7 +157,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -168,7 +168,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -179,8 +179,36 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""PickUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MainMenuUI"",
+            ""id"": ""cb5a8df0-a67e-423b-9fe8-3f282f779999"",
+            ""actions"": [
+                {
+                    ""name"": ""GoBack"",
+                    ""type"": ""Button"",
+                    ""id"": ""193ad603-6482-4245-b3e5-477471f557cb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""a6e95ab7-b5ba-4cce-95d5-7dbf0dab1f65"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""GoBack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -208,6 +236,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Controller_Jump = m_Controller.FindAction("Jump", throwIfNotFound: true);
         m_Controller_Pause = m_Controller.FindAction("Pause", throwIfNotFound: true);
         m_Controller_PickUp = m_Controller.FindAction("PickUp", throwIfNotFound: true);
+        // MainMenuUI
+        m_MainMenuUI = asset.FindActionMap("MainMenuUI", throwIfNotFound: true);
+        m_MainMenuUI_GoBack = m_MainMenuUI.FindAction("GoBack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -343,6 +374,52 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         }
     }
     public ControllerActions @Controller => new ControllerActions(this);
+
+    // MainMenuUI
+    private readonly InputActionMap m_MainMenuUI;
+    private List<IMainMenuUIActions> m_MainMenuUIActionsCallbackInterfaces = new List<IMainMenuUIActions>();
+    private readonly InputAction m_MainMenuUI_GoBack;
+    public struct MainMenuUIActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public MainMenuUIActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @GoBack => m_Wrapper.m_MainMenuUI_GoBack;
+        public InputActionMap Get() { return m_Wrapper.m_MainMenuUI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MainMenuUIActions set) { return set.Get(); }
+        public void AddCallbacks(IMainMenuUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MainMenuUIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MainMenuUIActionsCallbackInterfaces.Add(instance);
+            @GoBack.started += instance.OnGoBack;
+            @GoBack.performed += instance.OnGoBack;
+            @GoBack.canceled += instance.OnGoBack;
+        }
+
+        private void UnregisterCallbacks(IMainMenuUIActions instance)
+        {
+            @GoBack.started -= instance.OnGoBack;
+            @GoBack.performed -= instance.OnGoBack;
+            @GoBack.canceled -= instance.OnGoBack;
+        }
+
+        public void RemoveCallbacks(IMainMenuUIActions instance)
+        {
+            if (m_Wrapper.m_MainMenuUIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMainMenuUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MainMenuUIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MainMenuUIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MainMenuUIActions @MainMenuUI => new MainMenuUIActions(this);
     private int m_ControllerSchemeIndex = -1;
     public InputControlScheme ControllerScheme
     {
@@ -359,5 +436,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
+    }
+    public interface IMainMenuUIActions
+    {
+        void OnGoBack(InputAction.CallbackContext context);
     }
 }
