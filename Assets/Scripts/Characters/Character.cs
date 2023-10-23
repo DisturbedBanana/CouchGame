@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    private void Awake()
+    {
+        GetComponent<PlayerMovTest>().PlayerSpeed = MoveSpeed;
+    }
+
     private string _name;
     private int _life;
     private int _heat;

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hunter : Character
+public class Shaman : Character
 {
-    public Hunter()
+    public Shaman()
     {
         Name = "Hunter";
         Life = 100;

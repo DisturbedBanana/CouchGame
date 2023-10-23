@@ -547,14 +547,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2448148737590558290}
   - component: {fileID: 8680371444122152743}
-  - component: {fileID: 4544132282659929167}
+  - component: {fileID: 7347483045018956741}
   - component: {fileID: 2421303034848125165}
   - component: {fileID: 8697625120523149277}
   - component: {fileID: 7112212603967293149}
   - component: {fileID: 4302260261991819125}
   - component: {fileID: 629484588285619969}
   m_Layer: 0
-  m_Name: Hunter
+  m_Name: Scout
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_DefaultActionMap: Controller
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4544132282659929167
+--- !u!114 &7347483045018956741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4663063969169959452}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94dd3664c7fc7174688d6aaad02fbc8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 85d20fde24a579b46817a4a1dae42b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!33 &2421303034848125165
@@ -708,7 +708,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 971eeff4b28995d468a6ddcd79d0641e, type: 2}
+  - {fileID: 2100000, guid: b7f4b2ef03d88c74c9dcb4ce95b8cb6f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

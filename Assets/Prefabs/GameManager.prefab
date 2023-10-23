@@ -46,8 +46,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isGamePaused: 0
-  _spawnPoints: []
-  _playersList: []
+  _lumberjack: {fileID: 4663063969169959452, guid: 9f31166e318c21642a98f24fa35174b9,
+    type: 3}
+  _shaman: {fileID: 4663063969169959452, guid: 6a30d1c7188843341b601425aa747136, type: 3}
+  _engineer: {fileID: 4663063969169959452, guid: 55160e0518f3d4d4d97b36be93b78b6a,
+    type: 3}
+  _scout: {fileID: 4663063969169959452, guid: 1e9bbf13ed60d854584202a273151e84, type: 3}
+  _spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _playersList:
+  - {fileID: 8680371444122152743, guid: 9f31166e318c21642a98f24fa35174b9, type: 3}
+  - {fileID: 8680371444122152743, guid: 6a30d1c7188843341b601425aa747136, type: 3}
+  - {fileID: 8680371444122152743, guid: 55160e0518f3d4d4d97b36be93b78b6a, type: 3}
+  - {fileID: 8680371444122152743, guid: 1e9bbf13ed60d854584202a273151e84, type: 3}
 --- !u!114 &4951222276084207321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +77,7 @@ MonoBehaviour:
   m_NotificationBehavior: 2
   m_MaxPlayerCount: 4
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 2
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []

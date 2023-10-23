@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -21,13 +22,32 @@ public class PickUp : MonoBehaviour
 
     private void Update()
     {
+
+        if (_closestItemInRange == null)
+        {
+            _objectsInRange.Remove(_closestItemInRange);
+        }
+
         FindNearestItem();
         GlowNearestObject();
     }
 
     private void PickUpItem(GameObject item)
     {
-        GetComponent<Inventory>().Additem("red", Color.red);
+        //GetComponent<Inventory>().Additem("red", Color.red);
+
+        foreach (GameObject player in GameManager.instance._playerGameObjectList)
+        {
+            Debug.Log(player);
+            Debug.Log("fais le tour");
+            Debug.Log(item);
+            if (player.GetComponentInChildren<PickUp>()._objectsInRange.Contains(item))
+            {
+                Debug.Log("l'item est dans la list et a été supprimé");
+                player.GetComponentInChildren<PickUp>()._objectsInRange.Remove(item);
+            }
+        }
+
         Destroy(item);
     }
 
@@ -92,7 +112,7 @@ public class PickUp : MonoBehaviour
             {
                 foreach (GameObject item in _objectsInRange)
                 {
-                item.gameObject.GetComponent<Outline>().enabled = false;
+                    item.gameObject.GetComponent<Outline>().enabled = false;
                 }
 
                 _objectsInRange.Remove(other.gameObject);

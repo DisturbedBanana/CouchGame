@@ -23,6 +23,8 @@ public class PlayerMovTest : MonoBehaviour
     [SerializeField] private Vector2 _movementVector;
     [SerializeField] private Vector2 _moveVector;
 
+    public float PlayerSpeed { get { return _playerSpeed; } set { _playerSpeed = value; } }
+
     private void Awake()
     {
         _rb = this.GetComponent<Rigidbody>();

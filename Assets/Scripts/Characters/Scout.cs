@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Explorer : Character
+public class Scout : Character
 {
-    public Explorer()
+    public Scout()
     {
         Name = "Explorer";
         Life = 100;
