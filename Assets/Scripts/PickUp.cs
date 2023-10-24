@@ -30,20 +30,27 @@ public class PickUp : MonoBehaviour
 
         FindNearestItem();
         GlowNearestObject();
+
+        foreach (GameObject player in GameManager.instance._playerGameObjectList)
+        {
+            for (int i = 0; i < _objectsInRange.Count; i++)
+            {
+                if (_objectsInRange[i] == null)
+                {
+                    _objectsInRange.Remove(_objectsInRange[i]);
+                }
+            }
+        }
     }
 
     private void PickUpItem(GameObject item)
     {
-        //GetComponent<Inventory>().Additem("red", Color.red);
+        GetComponent<Inventory>().Additem("red", Color.red);
 
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
         {
-            Debug.Log(player);
-            Debug.Log("fais le tour");
-            Debug.Log(item);
             if (player.GetComponentInChildren<PickUp>()._objectsInRange.Contains(item))
             {
-                Debug.Log("l'item est dans la list et a été supprimé");
                 player.GetComponentInChildren<PickUp>()._objectsInRange.Remove(item);
             }
         }
