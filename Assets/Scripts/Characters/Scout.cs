@@ -6,6 +6,7 @@ public class Scout : Character
 {
     public Scout()
     {
+        PlayerId = 2;
         Name = "Explorer";
         Life = 100;
         Heat = 100;

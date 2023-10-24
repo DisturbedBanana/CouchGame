@@ -6,6 +6,7 @@ public class Engineer : Character
 {
     public Engineer()
     {
+        PlayerId = 4;
         Name = "Engineer";
         Life = 100;
         Heat = 100;

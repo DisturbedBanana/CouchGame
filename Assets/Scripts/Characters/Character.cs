@@ -6,9 +6,10 @@ public class Character : MonoBehaviour
 {
     private void Awake()
     {
-        GetComponent<PlayerMovTest>().PlayerSpeed = MoveSpeed;
+        GetComponentInChildren<PlayerMovTest>().PlayerSpeed = MoveSpeed;
     }
 
+    private int _playerId;
     private string _name;
     private int _life;
     private int _heat;
@@ -19,6 +20,8 @@ public class Character : MonoBehaviour
     private bool _hasBackpack;
     private bool _hasTool;
 
+
+    public int PlayerId { get { return _playerId; } set { _playerId = value; } }
     public string Name { get { return _name; } set { _name = value; } }
     public int Life { get { return _life; } set { _life = value; } }
 

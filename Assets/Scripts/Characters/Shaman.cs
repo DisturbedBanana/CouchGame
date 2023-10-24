@@ -6,6 +6,7 @@ public class Shaman : Character
 {
     public Shaman()
     {
+        PlayerId = 3;
         Name = "Hunter";
         Life = 100;
         Heat = 100;
