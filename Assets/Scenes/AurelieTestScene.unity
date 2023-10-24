@@ -296,10 +296,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58044cdd0de8b914d9d0a9d198d28371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _up: 273
-  _down: 274
-  _left: 276
-  _right: 275
+  _up: 105
+  _down: 107
+  _left: 106
+  _right: 108
 --- !u!65 &174793578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -590,6 +590,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &469082291
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ScreenTexture2
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 923
+  m_Height: 519
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 4
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &713427977
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,7 +656,7 @@ Transform:
   m_GameObject: {fileID: 713427977}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 11.731527, y: 30.492756, z: -23.594692}
+  m_LocalPosition: {x: 12.501379, y: 34.641014, z: -26.385494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -709,7 +747,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 38.15087
+  field of view: 35.958942
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -717,7 +755,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1758584593}
+  m_TargetTexture: {fileID: 469082291}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -755,7 +793,7 @@ Transform:
   m_GameObject: {fileID: 1424528127}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: -12.009584, y: 30.492752, z: -11.693565}
+  m_LocalPosition: {x: -12.797153, y: 34.641014, z: -13.697731}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -846,7 +884,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 38.15087
+  field of view: 35.958942
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -854,7 +892,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1770238974}
+  m_TargetTexture: {fileID: 1809257160}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -1193,7 +1231,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 38.15087
+  field of view: 35.958942
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1201,7 +1239,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1576660949}
+  m_TargetTexture: {fileID: 1850462554}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -1220,7 +1258,7 @@ Transform:
   m_GameObject: {fileID: 1545834341}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: 10.005793, y: 30.492752, z: -11.443954}
+  m_LocalPosition: {x: 10.663204, y: 34.641014, z: -13.432133}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1270,44 +1308,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!84 &1576660949
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: ScreenTexture0
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 612
-  m_Height: 344
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 4
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &1673273472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1322,6 @@ GameObject:
   - component: {fileID: 1673273473}
   - component: {fileID: 1673273478}
   - component: {fileID: 1673273477}
-  - component: {fileID: 1673273479}
   m_Layer: 0
   m_Name: Split Screen
   m_TagString: Untagged
@@ -1396,7 +1395,7 @@ MonoBehaviour:
     Target: {fileID: 2063797741}
   - Camera: {fileID: 1952836393}
     Target: {fileID: 174793576}
-  Distance: 35.21
+  Distance: 40
   BoundsRadius: 1.25
   Translating:
     Blend: 0.2
@@ -1443,7 +1442,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 38.15087
+  field of view: 35.958942
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1483,7 +1482,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1673273472}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d0242e7d47a3c3438cb9dae75249109, type: 3}
   m_Name: 
@@ -1506,29 +1505,13 @@ MonoBehaviour:
   CircleMaterial: {fileID: 2100000, guid: 5f0f431aa0f234d4eae5c5ba5e44ff96, type: 2}
   Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   Width: 1
---- !u!114 &1673273479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1673273472}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1649d8643fcb12a489b8efbbdf0bfade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mode: 0
-  MaxOffset: 1
-  Trauma: 0
-  Duration: 1
---- !u!84 &1758584593
+--- !u!84 &1809257160
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ScreenTexture2
+  m_Name: ScreenTexture1
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -1536,8 +1519,8 @@ RenderTexture:
   m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
   serializedVersion: 5
-  m_Width: 612
-  m_Height: 344
+  m_Width: 923
+  m_Height: 519
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthStencilFormat: 94
@@ -1560,13 +1543,13 @@ RenderTexture:
   m_Dimension: 2
   m_VolumeDepth: 1
   m_ShadowSamplingMode: 2
---- !u!84 &1770238974
+--- !u!84 &1850462554
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ScreenTexture1
+  m_Name: ScreenTexture0
   m_ImageContentsHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
@@ -1574,8 +1557,8 @@ RenderTexture:
   m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
   serializedVersion: 5
-  m_Width: 612
-  m_Height: 344
+  m_Width: 923
+  m_Height: 519
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthStencilFormat: 94
@@ -1626,7 +1609,7 @@ Transform:
   m_GameObject: {fileID: 1952836389}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
-  m_LocalPosition: {x: -9.628568, y: 30.492756, z: -23.681211}
+  m_LocalPosition: {x: -10.26186, y: 34.641014, z: -26.477638}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1717,7 +1700,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 38.15087
+  field of view: 35.958942
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1725,7 +1708,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 1998867805}
+  m_TargetTexture: {fileID: 2038326957}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -1735,7 +1718,7 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!84 &1998867805
+--- !u!84 &2038326957
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1749,8 +1732,8 @@ RenderTexture:
   m_DownscaleFallback: 0
   m_IsAlphaChannelOptional: 0
   serializedVersion: 5
-  m_Width: 612
-  m_Height: 344
+  m_Width: 923
+  m_Height: 519
   m_AntiAliasing: 1
   m_MipCount: -1
   m_DepthStencilFormat: 94
@@ -1822,10 +1805,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58044cdd0de8b914d9d0a9d198d28371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _up: 273
-  _down: 274
-  _left: 276
-  _right: 275
+  _up: 264
+  _down: 261
+  _left: 260
+  _right: 262
 --- !u!65 &2063797743
 BoxCollider:
   m_ObjectHideFlags: 0
