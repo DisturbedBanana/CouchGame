@@ -29,12 +29,12 @@ public class PlayerMovTest : MonoBehaviour
     {
         _rb = this.GetComponent<Rigidbody>();
         _playerInputs = new PlayerInputs();
-        _cam = GameObject.FindGameObjectWithTag("MainCamera");
+        //_cam = GameObject.FindGameObjectWithTag("MainCamera");
 
-        Quaternion _camRotationOffset = Quaternion.Euler(new Vector3(10f, _globalOffset, 0f));
+        //Quaternion _camRotationOffset = Quaternion.Euler(new Vector3(10f, _globalOffset, 0f));
 
-        _cam.transform.position = new Vector3(10f, 4f, -10f);
-        _cam.transform.rotation = _camRotationOffset;
+        //_cam.transform.position = new Vector3(10f, 4f, -10f);
+        //_cam.transform.rotation = _camRotationOffset;
     }
 
     private void OnEnable()

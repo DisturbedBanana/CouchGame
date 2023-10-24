@@ -35,17 +35,16 @@ public class GameManager : MonoBehaviour
 
         _playerGameObjectList.Add(_lumberjack);
         _playerGameObjectList.Add(_shaman);
-        //_playerGameObjectList.Add(_engineer);
-        //_playerGameObjectList.Add(_scout);
+        _playerGameObjectList.Add(_engineer);
+        _playerGameObjectList.Add(_scout);
     }
 
     private void Start()
     {
-        //PlayerInputManager.instance.JoinPlayer(0, -1, null);
-        Instantiate(_lumberjack, _spawnPoints[0].transform.position, Quaternion.identity);
+        //Instantiate(_lumberjack, _spawnPoints[0].transform.position, Quaternion.identity);
         //Instantiate(_scout, _spawnPoints[1].transform.position, Quaternion.identity);
         //Instantiate(_engineer, _spawnPoints[2].transform.position, Quaternion.identity);
-        Instantiate(_shaman, _spawnPoints[3].transform.position, Quaternion.identity);
+        //Instantiate(_shaman, _spawnPoints[3].transform.position, Quaternion.identity);
     }
 
 
