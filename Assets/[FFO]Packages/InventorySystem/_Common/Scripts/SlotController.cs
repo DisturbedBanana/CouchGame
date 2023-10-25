@@ -1,3 +1,4 @@
+using System;
 using FFO.Inventory.Craft;
 using FFO.Inventory.Storage;
 using UnityEngine;
@@ -7,12 +8,13 @@ using static FFO.Inventory.Storage.ItemData;
 
 namespace FFO.Inventory
 {
+    [Serializable]
     public class SlotController : MonoBehaviour , ISelectHandler , IDeselectHandler
     {
         public bool Selected { get; private set; }
 
         [Header("COMMON :")]
-        [SerializeField] private Image imgItem;
+        [SerializeField] public Image imgItem;
         [SerializeField] private Text txtLabel;
 
         [Header("STORAGE :")]

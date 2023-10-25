@@ -13,4 +13,12 @@ MonoBehaviour:
   m_Name: ItemDataBase
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 0}
-  itemDatas: []
+  itemDatas:
+  - label: 
+    <ID>k__BackingField: 
+    sprite: {fileID: 0}
+    mesh: {fileID: 0}
+    category: 0
+    color: {r: 0, g: 0, b: 0, a: 0}
+    value: 0
+    quantityMax: 0
