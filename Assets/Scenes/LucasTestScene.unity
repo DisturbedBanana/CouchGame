@@ -282,7 +282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &496188326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,8 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe92c5b5690db14392be2b085a2c2d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CoinDatabase>k__BackingField: {fileID: 0}
-  <LifeDatabase>k__BackingField: {fileID: 0}
+  <ItemDatabase>k__BackingField: {fileID: 0}
   <RecipeDatabase>k__BackingField: {fileID: 11400000, guid: 2b77bfa9a260cab43b6d754f0da8e32f,
     type: 2}
 --- !u!1 &1271584526
@@ -1204,7 +1203,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1295034875
 Transform:
   m_ObjectHideFlags: 0

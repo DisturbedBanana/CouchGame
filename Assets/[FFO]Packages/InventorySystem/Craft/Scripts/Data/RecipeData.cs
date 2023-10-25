@@ -30,9 +30,10 @@ namespace FFO.Inventory.Craft
 
         public ItemData GetItemData(string idItem)
         {
-            foreach (var database in DatabaseManager.Instance.GetAllItemDatabase())
-                if (database.itemDatas.Exists(x => x.ID == idItem))
-                    return database.itemDatas.Find(x => x.ID == idItem);
+            if (DatabaseManager.Instance.ItemDatabase.itemDatas.Exists(x => x.ID == idItem))
+            {
+                return DatabaseManager.Instance.ItemDatabase.itemDatas.Find(x => x.ID == idItem);
+            }
 
             return default;
         }

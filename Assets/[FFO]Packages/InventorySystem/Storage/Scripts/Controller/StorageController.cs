@@ -50,6 +50,27 @@ namespace FFO.Inventory.Storage
         //    transform.GetChild(0).gameObject.SetActive(value);
         //}
 
+        public void OnCycleItems()
+        {
+            if (Slots.Count >= 2)
+            {
+                for (int i = 0; i < Slots.Count-1; i++)
+                {
+                    if (i != 0)
+                    {
+                        Slots[i - 1] = Slots[i];
+                    }
+                    else
+                    {
+                        Slots[^1] = Slots[i];
+                    }
+                }
+                
+                RefreshUI();
+            }
+            
+        }
+
         public void OnUse()
         {
             CurrentSlotSelected?.OnUse();

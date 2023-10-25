@@ -7,7 +7,7 @@ using static FFO.Inventory.Storage.ItemData;
 
 namespace FFO.Inventory
 {
-    public class SlotController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class SlotController : MonoBehaviour , ISelectHandler , IDeselectHandler
     {
         public bool Selected { get; private set; }
 
@@ -25,6 +25,9 @@ namespace FFO.Inventory
         public RecipeData DataRecipe { get; set; }
         
         private int _quantity = 0;
+        private ISelectHandler _selectHandlerImplementation;
+        private IDeselectHandler _deselectHandlerImplementation;
+
         public int Quantity 
         { 
             get => _quantity;
@@ -69,13 +72,17 @@ namespace FFO.Inventory
         {
             switch (DataItem.category)
             {
-                case CATEGORIES.COIN:
-                    //StorageController.Instance.PlayerInventaire.scoreController.SetPoints(DataItem.value);
+                case CATEGORIES.ITEM :
                     break;
-
-                case CATEGORIES.LIFE:
-                    //StorageController.Instance.PlayerInventaire.lifeController.SetLives(DataItem.value);
+                case CATEGORIES.TOOL : 
                     break;
+                // case CATEGORIES.COIN:
+                //     StorageController.Instance.PlayerInventaire.scoreController.SetPoints(DataItem.value);
+                //     break;
+                //
+                // case CATEGORIES.LIFE:
+                //     StorageController.Instance.PlayerInventaire.lifeController.SetLives(DataItem.value);
+                //     break;
             }
 
             OnRemove();
@@ -139,7 +146,7 @@ namespace FFO.Inventory
             }
         }
 
-        public void OnPointerEnter(PointerEventData eventData)
+        public void OnSelect(BaseEventData eventData)
         {
             if (DataItem != default)
                 StorageController.Instance.RefreshUI(DataItem);
@@ -148,7 +155,7 @@ namespace FFO.Inventory
                 CraftController.Instance.RefreshUI(DataRecipe);
         }
 
-        public void OnPointerExit(PointerEventData eventData)
+        public void OnDeselect(BaseEventData eventData)
         {
             if (DataItem != default)
                 StorageController.Instance.RefreshUI();
