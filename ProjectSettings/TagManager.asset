@@ -19,6 +19,8 @@ TagManager:
   - MainMenuCanvas
   - OptionsMenuCanvas
   - PlayerSelectionCanvas
+  - PlayerHitbox
+  - PlayerRange
   layers:
   - Default
   - TransparentFX

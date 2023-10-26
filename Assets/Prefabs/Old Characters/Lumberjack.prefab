@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 3387488637942970432}
   - component: {fileID: 7059401256271399539}
   - component: {fileID: 1573081026687396816}
-  - component: {fileID: 1570910385766049107}
   m_Layer: 0
-  m_Name: Cylinder
-  m_TagString: Untagged
+  m_Name: LumberjackRange
+  m_TagString: PlayerRange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,23 +125,6 @@ MonoBehaviour:
   _closestDistance: {x: 1000, y: 1000, z: 1000}
   _closestItemInRange: {fileID: 0}
   _player: {fileID: 0}
---- !u!114 &1570910385766049107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406996875254450164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f81a4e636c12c488b42d965fcd5222, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _firstItemPosition: {fileID: 0}
-  _itemPrefab: {fileID: 4757392971865350602, guid: 5568497914eb3d8499e1cdce9b245f56,
-    type: 3}
-  canvas: {fileID: 0}
-  _offset: 30
 --- !u!1 &1420714683775766556
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +136,7 @@ GameObject:
   - component: {fileID: 6104655265164077915}
   - component: {fileID: 319366481032744126}
   m_Layer: 0
-  m_Name: PlayerLookAtPoint
+  m_Name: LumberjackLookAtPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -549,7 +531,7 @@ GameObject:
   - component: {fileID: 6398365344874402277}
   - component: {fileID: 5508480950603740934}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: LumberjackCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

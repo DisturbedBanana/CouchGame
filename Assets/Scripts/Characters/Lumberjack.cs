@@ -9,13 +9,13 @@ public class Lumberjack : Character
     {
         PlayerId = 1;
         Name = "Lumberjack";
-        Life = 100;
-        Heat = 100;
+        Heat = 100f;
         MoveSpeed = 5f;
         InvSlots = 3;
         HasBoots = false;
         HasCoat = false;
         HasBackpack = false;
         HasTool = true;
+        IsInSnow = false;
     }
 }
