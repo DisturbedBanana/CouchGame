@@ -202,7 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fab2bb56cd7d8a4daec39eaa554c23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shrinkTickDelay: 1
+  _shrinkSpeed: 30
+  _growthSpeed: 1
   _flameGrowthFromWood: 10
   _snowMovementDuration: 2.5
   _snowMovementOffset: 2.5

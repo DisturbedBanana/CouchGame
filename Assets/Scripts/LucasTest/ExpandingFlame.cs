@@ -8,7 +8,8 @@ public class ExpandingFlame : MonoBehaviour
     float _shrinkTimer = 0;
 
     [Header("Flame")]
-    [SerializeField] float _shrinkTickDelay = 1f;
+    [SerializeField] float _shrinkSpeed;
+    [SerializeField] float _growthSpeed;
     [SerializeField] float _flameGrowthFromWood = 2f;
 
     [Header("Snow Movement")]
@@ -23,17 +24,13 @@ public class ExpandingFlame : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
-            StartCoroutine(LerpFlameScale(5, 10));
+            StartCoroutine(LerpFlameScale(_growthSpeed, 5));
 
         if (Input.GetKeyDown(KeyCode.R))
-            StartCoroutine(LerpFlameScale(5, 1));
+            StartCoroutine(LerpFlameScale(_growthSpeed, -5));
 
         _shrinkTimer += Time.deltaTime;
-        if (_shrinkTimer >= _shrinkTickDelay)
-        {
-            _shrinkTimer = 0;
-            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 5);
-        }
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime / _shrinkSpeed);
     }
 
     //used to make "Snow" tagged objects go under and above when needed. Values can be tweaked via editor
@@ -67,13 +64,15 @@ public class ExpandingFlame : MonoBehaviour
     }
 
     //used for debugging purposes
-    IEnumerator LerpFlameScale(float duration, float targetSize, bool isScalingDown = false)
+    IEnumerator LerpFlameScale(float duration, float addSize, bool isScalingDown = false)
     {
         float time = 0;
-        float startSize = transform.localScale.x;
+        float startSizeX = transform.localScale.x;
+        float startSizeY = transform.localScale.y;
+        float startSizeZ = transform.localScale.z;
         while (time < duration)
         {
-            transform.localScale = new Vector3(Mathf.Lerp(startSize, targetSize, time / duration), Mathf.Lerp(startSize, targetSize, time / duration), Mathf.Lerp(startSize, targetSize, time / duration));
+            transform.localScale = new Vector3(Mathf.Lerp(startSizeX, startSizeX + addSize, time / duration), Mathf.Lerp(startSizeX, startSizeY + addSize, time / duration), Mathf.Lerp(startSizeX, startSizeZ + addSize, time / duration));
             time += Time.deltaTime;
             yield return null;
         }
