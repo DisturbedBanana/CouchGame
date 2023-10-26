@@ -15,17 +15,21 @@ public class PickUp : MonoBehaviour
     [SerializeField] private Vector3 _closestDistance = new Vector3(1000,1000,1000);
     [SerializeField] private GameObject _closestItemInRange;
 
-    [SerializeField] private GameObject _player;
+    //[SerializeField] private GameObject _player;
     private PlayerInventory _playerInventory;
 
     private void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
-        _playerInventory = _player.GetComponent<PlayerInventory>();
+        _playerInventory = this.GetComponent<PlayerInventory>();
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log(_closestItemInRange);
+            PickUpItem(_closestItemInRange);
+        }
 
         if (_closestItemInRange == null)
         {
@@ -79,7 +83,7 @@ public class PickUp : MonoBehaviour
                     _closestItemInRange = _objectsInRange[i];
                 }
 
-                if (Vector3.Distance(_player.transform.position, _closestItemInRange.transform.position) > Vector3.Distance(_player.transform.position, _objectsInRange[i].transform.position))
+                if (Vector3.Distance(transform.position, _closestItemInRange.transform.position) > Vector3.Distance(transform.position, _objectsInRange[i].transform.position))
                 {
                     _closestItemInRange = _objectsInRange[i];
                 }

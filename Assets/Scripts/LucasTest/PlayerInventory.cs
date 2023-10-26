@@ -8,11 +8,11 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private List<ItemData> itemList;
     private ItemDatabase itemDatabase;
-    StorageController storageController;
+    [SerializeField] private StorageController storageController;
 
     private void Start()
     {
-        storageController = GetComponent<StorageController>();
+        itemDatabase = DatabaseManager.Instance.ItemDatabase;
     }
 
     public List<ItemData> ItemList { get => itemList;}

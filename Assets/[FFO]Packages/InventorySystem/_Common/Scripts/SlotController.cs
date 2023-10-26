@@ -50,8 +50,8 @@ namespace FFO.Inventory
         {
             //Quantity++; <- stacking
 
-            if (Quantity > 1)
-                return;
+            // if (Quantity > 1)
+            //     return;
 
             DataItem = item;
             imgItem.sprite = item.sprite;
