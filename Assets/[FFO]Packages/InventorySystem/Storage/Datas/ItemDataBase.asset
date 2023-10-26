@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 0}
   itemDatas:
-  - label: 
-    <ID>k__BackingField: 
-    sprite: {fileID: 0}
+  - label: Wood
+    <ID>k__BackingField: Woo_NONE
+    sprite: {fileID: 21300000, guid: b818139a7c8af5546a02588f4b6c3b5a, type: 3}
     mesh: {fileID: 0}
     category: 0
-    color: {r: 0, g: 0, b: 0, a: 0}
+    color: {r: 1, g: 1, b: 1, a: 1}
     value: 0
     quantityMax: 0
