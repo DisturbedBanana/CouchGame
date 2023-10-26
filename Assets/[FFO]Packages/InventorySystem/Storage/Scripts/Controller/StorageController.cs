@@ -129,9 +129,9 @@ namespace FFO.Inventory.Storage
             CurrentSlotSelected?.OnUse();
         }
 
-        public void OnDrop(SlotController slot)
+        public void OnDrop(SlotController slot = null)
         {
-            for (int i = 1; i < Slots.Count; i++)
+            for (int i = 0; i < Slots.Count; i++)
             {
                 if (Slots[i].DataItem != null)
                 {

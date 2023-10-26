@@ -78,6 +78,11 @@ public class ExpandingFlame : MonoBehaviour
         }
     }
 
+    public void StartLerpFlameScale()
+    {
+        StartCoroutine(LerpFlameScale(_growthSpeed, 5));
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Snow"))

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3387488637942970432}
   - component: {fileID: 7059401256271399539}
   - component: {fileID: 1573081026687396816}
+  - component: {fileID: 1413512224660761797}
+  - component: {fileID: 6745203638575775733}
   m_Layer: 0
   m_Name: LumberjackRange
   m_TagString: PlayerRange
@@ -124,7 +126,32 @@ MonoBehaviour:
   _pickUpCooldown: 1
   _closestDistance: {x: 1000, y: 1000, z: 1000}
   _closestItemInRange: {fileID: 0}
-  _player: {fileID: 0}
+--- !u!114 &1413512224660761797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406996875254450164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 093fc706fe4864840b1e356d0001a14e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6745203638575775733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406996875254450164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea22b26da86bd14dbe540c2f1e53049, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemList: []
+  storageController: {fileID: 0}
 --- !u!1 &1420714683775766556
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +690,7 @@ GameObject:
   - component: {fileID: 7112212603967293149}
   - component: {fileID: 4302260261991819125}
   - component: {fileID: 629484588285619969}
+  - component: {fileID: 804274786878186643}
   m_Layer: 0
   m_Name: Lumberjack
   m_TagString: Player
@@ -731,7 +759,19 @@ MonoBehaviour:
     m_ActionId: 93505179-ea6e-48dd-a8f6-5855f21a2afc
     m_ActionName: Controller/Movement[/DualSenseGamepadHID/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1413512224660761797}
+        m_TargetAssemblyTypeName: ToolInteraction, Assembly-CSharp
+        m_MethodName: OnTool
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e1326a6c-9bad-4a78-810f-b29952059ce6
     m_ActionName: Controller/Attack[/DualSenseGamepadHID/rightTrigger]
   - m_PersistentCalls:
@@ -911,6 +951,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 88
   m_CollisionDetection: 1
+--- !u!95 &804274786878186643
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663063969169959452}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b7bbf834afe9f554899b599db0994d3a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4832192132535948909
 GameObject:
   m_ObjectHideFlags: 3

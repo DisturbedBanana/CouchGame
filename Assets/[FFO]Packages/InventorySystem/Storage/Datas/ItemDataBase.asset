@@ -22,3 +22,19 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     value: 0
     quantityMax: 0
+  - label: Metal
+    <ID>k__BackingField: Woo_NONE
+    sprite: {fileID: 21300000, guid: 0a40de6f95b80174f914c08e3a2aa844, type: 3}
+    mesh: {fileID: 0}
+    category: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    value: 0
+    quantityMax: 0
+  - label: Booze
+    <ID>k__BackingField: Woo_NONE
+    sprite: {fileID: 21300000, guid: f864ab3b08506e74ab3ccd9e4d36ef98, type: 3}
+    mesh: {fileID: 0}
+    category: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    value: 0
+    quantityMax: 0
