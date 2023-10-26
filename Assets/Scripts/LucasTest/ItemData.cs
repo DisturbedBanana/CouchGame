@@ -4,7 +4,7 @@ using UnityEngine;
 namespace FFO.Inventory.Storage
 {
     [Serializable]
-    public class ItemData
+    public class ItemData 
     {
         public enum CATEGORIES
         {

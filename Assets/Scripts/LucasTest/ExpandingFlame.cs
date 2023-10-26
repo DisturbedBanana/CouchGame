@@ -88,15 +88,7 @@ public class ExpandingFlame : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Player"))
         {
-            Inventory inv = other.GetComponentInChildren<Inventory>();
-            foreach (var item in inv.ItemList)
-            {
-                if (item.itemInformation.name == "red" && item.itemInformation.amount > 0)
-                {
-                    item.itemInformation.amount--;
-                    transform.localScale += new Vector3(_flameGrowthFromWood, _flameGrowthFromWood, _flameGrowthFromWood);
-                }
-            }
+            
         }
     }
 

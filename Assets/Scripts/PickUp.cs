@@ -1,7 +1,9 @@
+using FFO.Inventory.Storage;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,10 +16,12 @@ public class PickUp : MonoBehaviour
     [SerializeField] private GameObject _closestItemInRange;
 
     [SerializeField] private GameObject _player;
+    private PlayerInventory _playerInventory;
 
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        _playerInventory = _player.GetComponent<PlayerInventory>();
     }
 
     private void Update()
@@ -45,7 +49,9 @@ public class PickUp : MonoBehaviour
 
     private void PickUpItem(GameObject item)
     {
-        GetComponent<Inventory>().Additem("red", Color.red);
+        //ADD ITEM TO INVENTORY VIA REFERENCE TO PLAYER HERE
+        Debug.Log(item);
+        _playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().itemData.ID);
 
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
         {
@@ -134,6 +140,7 @@ public class PickUp : MonoBehaviour
         {
             _isPickingUp = true;
             _objectsInRange.Remove(_closestItemInRange);
+            Debug.Log(_closestItemInRange);
             PickUpItem(_closestItemInRange);
         }
         else

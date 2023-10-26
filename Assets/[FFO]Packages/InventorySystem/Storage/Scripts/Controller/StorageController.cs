@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,7 @@ namespace FFO.Inventory.Storage
         [SerializeField] private float offset = 1.8f;
 
         private RectTransform myRectTransform;
+        private int nbOfItems = 0;
         
         
 
@@ -41,43 +43,41 @@ namespace FFO.Inventory.Storage
                 SlotController newSlot = Instantiate(prefabSlot, parentSlot.transform).GetComponent<SlotController>();
                 Slots.Add(newSlot);
             }
-
-            //RefreshUI();
         }
 
         private void Update()
         {
-            // if (Input.GetKeyDown(KeyCode.I))
-            // {
-            //     AddItem(item);
-            // }
-            // if (Input.GetKeyDown(KeyCode.O))
-            // {
-            //     AddItem(item2);
-            // }
-            // if (Input.GetKeyDown(KeyCode.P))
-            // {
-            //     AddItem(item3);
-            // }
-            // if (Input.GetKeyDown(KeyCode.K))
-            // {
-            //     AddItem(item4);
-            // }
-            // if (Input.GetKeyDown(KeyCode.L))
-            // {
-            //     AddItem(item5);
-            // }
-            //
-            // if (Input.GetKeyDown(KeyCode.B))
-            // {
-            //     OnCycleItems();
-            //     Debug.Log(Slots[0].DataItem.label);
-            // }
-            //
-            // if (Input.GetKeyDown(KeyCode.N))
-            // {
-            //     OnDrop(Slots[0]);
-            // }
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                AddItem(item);
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                AddItem(item2);
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                AddItem(item3);
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                AddItem(item4);
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                AddItem(item5);
+            }
+
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                OnCycleItems();
+                Debug.Log(Slots[0].DataItem.label);
+            }
+
+            if (Input.GetKeyDown(KeyCode.N))
+            {
+                OnDrop(Slots[0]);
+            }
 
             if (followPlayer)
             {
@@ -87,24 +87,37 @@ namespace FFO.Inventory.Storage
 
         public void AddItem(ItemData item)
         {
-            if (Slots.Exists(x => x.DataItem == item))
-                Slots.Find(x => x.DataItem == item).OnAdd(item);
+            if (nbOfItems < 5)
+            {
+                for (int i = 0; i < Slots.Count; i++)
+                {
+                    if (Slots[i].DataItem == default || Slots[i].DataItem == null)
+                    {
+                        Slots[i].OnAdd(item);
+                        nbOfItems++;
+                        return;
+                    }
+                }
+
+            }
             else
-                Slots.Find(x => x.DataItem == default).OnAdd(item);
+            {
+                Debug.Log("Inventory is full");
+            }
         }
 
         public void OnCycleItems()
         {
             if (Slots.Count >= 2)
             {
-                var lastItem = Slots[Slots.Count - 1]; // Save the last item
+                var lastItem = Slots[Slots.Count - 1]; 
 
                 for (int i = Slots.Count - 1; i > 0; i--)
                 {
-                    Slots[i] = Slots[i - 1]; // Move items to the right
+                    Slots[i] = Slots[i - 1];
                 }
 
-                Slots[0] = lastItem; // Place the last item at the front
+                Slots[0] = lastItem;
 
                 RefreshUI();
             }
@@ -118,9 +131,15 @@ namespace FFO.Inventory.Storage
 
         public void OnDrop(SlotController slot)
         {
-            Slots.Remove(slot);
-            slot.OnRemove();
-            //CurrentSlotSelected?.OnRemove();
+            for (int i = 1; i < Slots.Count; i++)
+            {
+                if (Slots[i].DataItem != null)
+                {
+                    Slots[i].OnRemove();
+                    nbOfItems--;
+                    return;
+                }
+            }
         }
 
         public void RefreshUI(ItemData data = null)
