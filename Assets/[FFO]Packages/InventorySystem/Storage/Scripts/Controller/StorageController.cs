@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,23 +7,34 @@ namespace FFO.Inventory.Storage
 {
     public class StorageController : MonoBehaviour
     {
+        public ItemData item;
+        public ItemData item2;
+        public ItemData item3;
+        public ItemData item4;
+        public ItemData item5;
         public static StorageController Instance { get; private set; }
         public static bool IsOpenning { get; private set; }
         public SlotController CurrentSlotSelected { get; set; }
 
         [SerializeField] private GameObject parentSlot;
         [SerializeField] private GameObject prefabSlot;
-        [SerializeField] private Text txtInfo;
 
         [SerializeField] private int nbSlot;
+        [SerializeField] private bool followPlayer = false;
+        [SerializeField] private Camera cam;
+        [SerializeField] private GameObject player;
+        [SerializeField] private float offset = 1.8f;
 
-        public List<SlotController> Slots { get; private set; }
+        private RectTransform myRectTransform;
+        
+        
 
-        //replace with our player
-        //public PlayerController PlayerInventaire { get; private set; }
+        [SerializeField] public List<SlotController> Slots { get; private set; }
 
         public void Start()
         {
+            myRectTransform = GetComponent<RectTransform>();
+            
             Slots = new();
             for (int i = 0; i < nbSlot; i++)
             {
@@ -30,9 +42,48 @@ namespace FFO.Inventory.Storage
                 Slots.Add(newSlot);
             }
 
-            RefreshUI();
+            //RefreshUI();
         }
 
+        private void Update()
+        {
+            // if (Input.GetKeyDown(KeyCode.I))
+            // {
+            //     AddItem(item);
+            // }
+            // if (Input.GetKeyDown(KeyCode.O))
+            // {
+            //     AddItem(item2);
+            // }
+            // if (Input.GetKeyDown(KeyCode.P))
+            // {
+            //     AddItem(item3);
+            // }
+            // if (Input.GetKeyDown(KeyCode.K))
+            // {
+            //     AddItem(item4);
+            // }
+            // if (Input.GetKeyDown(KeyCode.L))
+            // {
+            //     AddItem(item5);
+            // }
+            //
+            // if (Input.GetKeyDown(KeyCode.B))
+            // {
+            //     OnCycleItems();
+            //     Debug.Log(Slots[0].DataItem.label);
+            // }
+            //
+            // if (Input.GetKeyDown(KeyCode.N))
+            // {
+            //     OnDrop(Slots[0]);
+            // }
+
+            if (followPlayer)
+            {
+                myRectTransform.position = cam.WorldToScreenPoint(player.transform.position + new Vector3(offset,0,0));
+            }
+        }
 
         public void AddItem(ItemData item)
         {
@@ -42,32 +93,42 @@ namespace FFO.Inventory.Storage
                 Slots.Find(x => x.DataItem == default).OnAdd(item);
         }
 
-        //public void OnSetOpen(bool value)
-        //{
-        //    Instance = value ? this : null;
-        //    IsOpenning = GameManager.IsPause = value;
-        //    PlayerInventaire = value ? PlayerController.Instance : null;
-        //    transform.GetChild(0).gameObject.SetActive(value);
-        //}
+        public void OnCycleItems()
+        {
+            if (Slots.Count >= 2)
+            {
+                var lastItem = Slots[Slots.Count - 1]; // Save the last item
+
+                for (int i = Slots.Count - 1; i > 0; i--)
+                {
+                    Slots[i] = Slots[i - 1]; // Move items to the right
+                }
+
+                Slots[0] = lastItem; // Place the last item at the front
+
+                RefreshUI();
+            }
+        }
+
 
         public void OnUse()
         {
             CurrentSlotSelected?.OnUse();
         }
 
-        public void OnDrop()
+        public void OnDrop(SlotController slot)
         {
-            CurrentSlotSelected?.OnRemove();
+            Slots.Remove(slot);
+            slot.OnRemove();
+            //CurrentSlotSelected?.OnRemove();
         }
 
         public void RefreshUI(ItemData data = null)
         {
-            if (data == null)
-                txtInfo.text = "";
-            else
-                txtInfo.text = data.Caption;
-
-            //txtInfo.text = CurrentSlotSelected ? CurrentSlotSelected.ItemData.caption : "";
+            foreach (SlotController item in Slots)
+            {
+                item.imgItem.sprite = item.DataItem.sprite;
+            }
         }
     }
 }
