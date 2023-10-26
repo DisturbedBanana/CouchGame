@@ -17,7 +17,7 @@ namespace FFO.Inventory
             if (Instance == null)
                 Instance = this;
 
-
+            ItemDatabase.Init();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace FFO.Inventory
         [Header("CRAFT :")]
         [SerializeField] private GameObject parentIngredient;
 
-        public ItemData DataItem { get; private set; }
+        public ItemData DataItem { get;  set; }
         public RecipeData DataRecipe { get; set; }
         
         private int _quantity = 0;
@@ -48,7 +48,7 @@ namespace FFO.Inventory
 
         public void OnAdd(ItemData item)
         {
-            Quantity++;
+            //Quantity++; <- stacking
 
             if (Quantity > 1)
                 return;
@@ -60,12 +60,12 @@ namespace FFO.Inventory
 
         public void OnRemove()
         {
-            Quantity--;
+            //Quantity--;
 
-            if (Quantity > 0)
-                return;
+            //if (Quantity > 0)
+            //    return;
 
-            DataItem = default;
+            DataItem = null;
             imgItem.sprite = null;
             imgItem.color = Color.clear;
         }
@@ -78,13 +78,6 @@ namespace FFO.Inventory
                     break;
                 case CATEGORIES.TOOL : 
                     break;
-                // case CATEGORIES.COIN:
-                //     StorageController.Instance.PlayerInventaire.scoreController.SetPoints(DataItem.value);
-                //     break;
-                //
-                // case CATEGORIES.LIFE:
-                //     StorageController.Instance.PlayerInventaire.lifeController.SetLives(DataItem.value);
-                //     break;
             }
 
             OnRemove();

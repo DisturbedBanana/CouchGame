@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace FFO.Inventory.Storage
 {
@@ -10,11 +11,27 @@ namespace FFO.Inventory.Storage
         public Sprite defaultSprite;
         public List<ItemData> itemDatas = new();
 
+        Object[] itemsInScene;
+
         public void Init()
         {
+            itemsInScene = FindObjectsOfType(typeof(WorldItem));
+
             foreach (ItemData item in itemDatas)
             {
                 item.InitID();
+            }
+
+            foreach (WorldItem item in itemsInScene)
+            {
+                foreach (ItemData itemData in itemDatas)
+                {
+                    if (item.itemType == itemData.label)
+                    {
+                        item.itemData = itemData;
+                        break;
+                    }
+                }
             }
         }
     }
