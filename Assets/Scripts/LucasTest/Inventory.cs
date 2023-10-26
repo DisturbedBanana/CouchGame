@@ -20,20 +20,20 @@ public class Inventory : MonoBehaviour
 
     private void Awake()
     {
-        _firstItemPosition = GameObject.FindGameObjectWithTag("TestInventory").transform;
+//        _firstItemPosition = GameObject.FindGameObjectWithTag("TestInventory").transform;
         canvas = GameObject.FindGameObjectWithTag("TestCanvas");
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-            Additem("red", Color.red);
-
-        if (Input.GetKeyDown(KeyCode.O))
-            Additem("green", Color.green);
-
-        if (Input.GetKeyDown(KeyCode.P))
-            Additem("blue", Color.blue);
+        // if (Input.GetKeyDown(KeyCode.I))
+        //     Additem("red", Color.red);
+        //
+        // if (Input.GetKeyDown(KeyCode.O))
+        //     Additem("green", Color.green);
+        //
+        // if (Input.GetKeyDown(KeyCode.P))
+        //     Additem("blue", Color.blue);
     }
 
     public void Additem(string name, Color color)
