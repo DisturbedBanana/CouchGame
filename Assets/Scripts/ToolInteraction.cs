@@ -20,7 +20,6 @@ public class ToolInteraction : MonoBehaviour
     {
         if (other.CompareTag("Tree"))
         {
-            Debug.Log("tree detected");
             _isInRange = true;
             _treeInRange = other.gameObject;
         }
@@ -37,11 +36,9 @@ public class ToolInteraction : MonoBehaviour
 
     public void OnTool(InputAction.CallbackContext context)
     {
-        Debug.Log("attack");
         if (_isInRange)
         {
             _isInRange = false;
-            Debug.Log("is in range");
             Destroy(_treeInRange.gameObject);
             _playerInv.AddItemToInventory("Woo_NONE");
         }

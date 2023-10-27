@@ -13,8 +13,6 @@ public class WoodZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Le feu prends du bois");
-
             _playerInv = other.GetComponentInChildren<PlayerInventory>();
 
             foreach (SlotController data in _playerInv.storageController.Slots)
