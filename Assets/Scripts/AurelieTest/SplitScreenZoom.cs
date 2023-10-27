@@ -19,7 +19,7 @@ public class SplitScreenZoom : MonoBehaviour
 
     private void Update()
     {
-        _maxDistance = MaxDistanceBetweenPlayers(_players);
+        _maxDistance = MaxDistanceBetweenPlayers();
 
         float zoomFactor = 1f - Mathf.Clamp01(_maxDistance / _distanceZoom);
         float targetSize = Mathf.Lerp(_maxCamSize, _minCamSize, zoomFactor);
@@ -27,7 +27,7 @@ public class SplitScreenZoom : MonoBehaviour
         _cam.orthographicSize = Mathf.Lerp(_cam.orthographicSize, targetSize, Time.deltaTime * _zoomSpeed);
     }
 
-    private float MaxDistanceBetweenPlayers(Transform[] players)
+    private float MaxDistanceBetweenPlayers()
     {
         float maxDistance = 0;
 
