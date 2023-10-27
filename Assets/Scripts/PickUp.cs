@@ -142,8 +142,11 @@ public class PickUp : MonoBehaviour
         if (context.performed)
         {
             _isPickingUp = true;
-            _objectsInRange.Remove(_closestItemInRange);
-            PickUpItem(_closestItemInRange);
+            if (_closestItemInRange != null)
+            {
+                _objectsInRange.Remove(_closestItemInRange);
+                PickUpItem(_closestItemInRange);
+            }
         }
         else
         {
