@@ -8,7 +8,10 @@ public class ToolInteraction : MonoBehaviour
 {
     PlayerInventory _playerInv;
     bool _isInRange = false;
-    GameObject _treeInRange;
+    private GameObject _closestBreakableObj;
+    private List<GameObject> _breakableObjects = new List<GameObject>();
+    [SerializeField] GameObject _treeInRange;
+    Animator _anim;
 
 
     private void Awake()
@@ -20,8 +23,11 @@ public class ToolInteraction : MonoBehaviour
     {
         if (other.CompareTag("Tree"))
         {
+            Debug.Log(other);
             _isInRange = true;
+            _treeInRange = null;
             _treeInRange = other.gameObject;
+            _anim = other.GetComponent<Animator>();
         }
     }
 
@@ -31,6 +37,7 @@ public class ToolInteraction : MonoBehaviour
         {
             _isInRange = false;
             _treeInRange = null;
+            _anim = null;
         }
     }
 
@@ -39,8 +46,15 @@ public class ToolInteraction : MonoBehaviour
         if (_isInRange)
         {
             _isInRange = false;
-            Destroy(_treeInRange.gameObject);
+            StartCoroutine(CuttingAnim());
             _playerInv.AddItemToInventory("Woo_NONE");
         }
+    }
+
+    IEnumerator CuttingAnim()
+    {
+        _anim.SetBool("isCut", true);
+        yield return new WaitForSecondsRealtime(3f);
+        Destroy(_treeInRange.gameObject);
     }
 }
