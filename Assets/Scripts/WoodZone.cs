@@ -19,10 +19,13 @@ public class WoodZone : MonoBehaviour
 
             foreach (SlotController data in _playerInv.storageController.Slots)
             {
-                if (data.DataItem.ID == "Woo_NONE")
+                if (data.DataItem != null)
                 {
-                    _playerInv.storageController.OnDrop();
-                    _flame.StartLerpFlameScale();
+                    if (data.DataItem.ID == "Woo_NONE")
+                    {
+                        _playerInv.storageController.OnDrop();
+                        _flame.StartLerpFlameScale();
+                    }
                 }
             }
         }
