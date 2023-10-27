@@ -1,6 +1,7 @@
 using FFO.Inventory.Storage;
 using System.Collections;
 using System.Collections.Generic;
+using FFO.Inventory;
 using UnityEngine;
 
 public class WoodZone : MonoBehaviour
@@ -16,19 +17,14 @@ public class WoodZone : MonoBehaviour
 
             _playerInv = other.GetComponentInChildren<PlayerInventory>();
 
-            _playerInv.storageController.OnDrop();
-
-            _flame.StartLerpFlameScale();
-
-            /*Inventory inv = other.GetComponentInChildren<Inventory>();
-            foreach (var item in inv.ItemList)
+            foreach (SlotController data in _playerInv.storageController.Slots)
             {
-                if (item.itemInformation.name == "red" && item.itemInformation.amount > 0)
+                if (data.DataItem.ID == "Woo_NONE")
                 {
-                    item.itemInformation.amount--;
-                    transform.localScale += new Vector3(_flameGrowthFromWood, _flameGrowthFromWood, _flameGrowthFromWood);
+                    _playerInv.storageController.OnDrop();
+                    _flame.StartLerpFlameScale();
                 }
-            }*/
+            }
         }
     }
 }
