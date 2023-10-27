@@ -534,6 +534,7 @@ GameObject:
   - component: {fileID: 7112212603967293149}
   - component: {fileID: 4302260261991819125}
   - component: {fileID: 629484588285619969}
+  - component: {fileID: 4743412428014760218}
   m_Layer: 0
   m_Name: Engineer
   m_TagString: Player
@@ -732,6 +733,8 @@ MonoBehaviour:
   _move: {x: 0, y: 0, z: 0}
   _movementVector: {x: 0, y: 0}
   _moveVector: {x: 0, y: 0}
+  _playerVelocity: {x: 0, y: 0, z: 0}
+  _currentPlayerSpeed: 0
 --- !u!136 &4302260261991819125
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -782,6 +785,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 88
   m_CollisionDetection: 1
+--- !u!95 &4743412428014760218
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663063969169959452}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4832192132535948909
 GameObject:
   m_ObjectHideFlags: 3
