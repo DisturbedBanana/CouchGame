@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class ToolInteraction : MonoBehaviour
 {
     PlayerInventory _playerInv;
-    private List<GameObject> _breakableObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> _breakableObjects = new List<GameObject>();
     Animator _anim;
 
 
@@ -46,7 +46,7 @@ public class ToolInteraction : MonoBehaviour
         _anim.SetBool("isCut", true);
         yield return new WaitForSecondsRealtime(3f);
         GameObject objToDestroy = _breakableObjects[0];
-        Destroy(objToDestroy);
         _breakableObjects.Remove(_breakableObjects[0]);
+        Destroy(objToDestroy);
     }
 }
