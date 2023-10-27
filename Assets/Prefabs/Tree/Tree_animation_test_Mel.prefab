@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 9052507415484025343}
   - component: {fileID: -3215974505969457707}
   m_Layer: 0
-  m_Name: Tree_animation_test_Mel (1)
+  m_Name: Tree_animation_test_Mel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 8568985754262541125}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.046934, y: 0, z: 7.3243628}
+  m_LocalPosition: {x: -20.078135, y: 0, z: 0.32683372}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -215,7 +215,7 @@ Animator:
   m_GameObject: {fileID: 8568985754262541125}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 36fe8b0affeae7b40b03710d76d26feb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
