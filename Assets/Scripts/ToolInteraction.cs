@@ -1,16 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ToolInteraction : MonoBehaviour
 {
     PlayerInventory _playerInv;
-    bool _isInRange = false;
-    private GameObject _closestBreakableObj;
     private List<GameObject> _breakableObjects = new List<GameObject>();
-    [SerializeField] GameObject _treeInRange;
     Animator _anim;
 
 
@@ -23,11 +19,7 @@ public class ToolInteraction : MonoBehaviour
     {
         if (other.CompareTag("Tree"))
         {
-            Debug.Log(other);
-            _isInRange = true;
-            _treeInRange = null;
-            _treeInRange = other.gameObject;
-            _anim = other.GetComponent<Animator>();
+            _breakableObjects.Add(other.gameObject);
         }
     }
 
@@ -35,19 +27,17 @@ public class ToolInteraction : MonoBehaviour
     {
         if (other.CompareTag("Tree"))
         {
-            _isInRange = false;
-            _treeInRange = null;
-            _anim = null;
+            _breakableObjects.Remove(other.gameObject);
         }
     }
 
     public void OnTool(InputAction.CallbackContext context)
     {
-        if (_isInRange)
+        if (_breakableObjects.Count != 0)
         {
-            _isInRange = false;
+            _anim = _breakableObjects[0].GetComponent<Animator>();
             StartCoroutine(CuttingAnim());
-            _playerInv.AddItemToInventory("Woo_NONE");
+            _playerInv.AddItemToInventory(_breakableObjects[0].GetComponent<WorldItem>().itemData.ID);
         }
     }
 
@@ -55,6 +45,8 @@ public class ToolInteraction : MonoBehaviour
     {
         _anim.SetBool("isCut", true);
         yield return new WaitForSecondsRealtime(3f);
-        Destroy(_treeInRange.gameObject);
+        GameObject objToDestroy = _breakableObjects[0];
+        Destroy(objToDestroy);
+        _breakableObjects.Remove(_breakableObjects[0]);
     }
 }

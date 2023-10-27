@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: -3215974505969457707}
   - component: {fileID: 529027095709980555}
   - component: {fileID: 5825492215972603150}
+  - component: {fileID: 4999269274931417198}
   m_Layer: 0
   m_Name: Tree_animation_test_Mel
   m_TagString: Untagged
@@ -276,3 +277,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 6.5732865, z: 1}
   m_Center: {x: -0.04, y: 2.7866433, z: -0.6}
+--- !u!114 &4999269274931417198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8568985754262541125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a74ca41ad4996c4d9c74636cbe003f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemType: Wood
+  itemData:
+    label: New label
+    <ID>k__BackingField: 
+    sprite: {fileID: 0}
+    mesh: {fileID: 0}
+    category: 0
+    color: {r: 1, g: 1, b: 1, a: 1}
+    value: 1
+    quantityMax: 99
