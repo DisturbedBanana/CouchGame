@@ -241,5 +241,5 @@ MonoBehaviour:
   m_StartAxis: 1
   m_CellSize: {x: 85, y: 85}
   m_Spacing: {x: 10, y: 10}
-  m_Constraint: 0
+  m_Constraint: 1
   m_ConstraintCount: 1

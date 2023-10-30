@@ -23,6 +23,7 @@ public class PlayerInventory : MonoBehaviour
         {
             if (item.ID == itemName)
             {
+                itemList.Add(item);
                 storageController.AddItem(item);
             }
             else

@@ -8,9 +8,15 @@ public class WoodZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+<<<<<<< Updated upstream
             Debug.Log("Le feu prends du bois");
             /*Inventory inv = other.GetComponentInChildren<Inventory>();
             foreach (var item in inv.ItemList)
+=======
+            _playerInv = other.GetComponentInChildren<PlayerInventory>();
+
+            foreach (SlotController data in _playerInv.storageController.SlotsList)
+>>>>>>> Stashed changes
             {
                 if (item.itemInformation.name == "red" && item.itemInformation.amount > 0)
                 {

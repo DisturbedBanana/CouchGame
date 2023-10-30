@@ -1,9 +1,4 @@
-using FFO.Inventory.Storage;
-using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,8 +6,6 @@ public class PickUp : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _objectsInRange = new List<GameObject>();
     [SerializeField] private bool _isPickingUp = false;
-    [SerializeField] private float _pickUpCooldown;
-    [SerializeField] private Vector3 _closestDistance = new Vector3(1000,1000,1000);
     [SerializeField] private GameObject _closestItemInRange;
 
     //[SerializeField] private GameObject _player;
@@ -27,8 +20,10 @@ public class PickUp : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Debug.Log(_closestItemInRange);
-            PickUpItem(_closestItemInRange);
+            if (_closestItemInRange != null)
+            {
+                PickUpItem(_closestItemInRange);
+            }
         }
 
         if (_closestItemInRange == null)

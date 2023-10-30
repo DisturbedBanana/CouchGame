@@ -13,7 +13,10 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         transitionCanvas = GameObject.FindGameObjectWithTag("TransitionCanvas");
-        animator = transitionCanvas.GetComponent<Animator>();
+        if (transitionCanvas != null)
+        {
+            animator = transitionCanvas.GetComponent<Animator>();
+        }
     }
 
     IEnumerator CLoadLevel(string sceneToLoad)

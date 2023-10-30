@@ -96,5 +96,13 @@ public class PlayerMovTest : MonoBehaviour
     {
         Look();
         Move();
+<<<<<<< Updated upstream
+=======
+
+        if (_movementVector == Vector2.zero)
+        {
+            //_anim.SetFloat("animMovSpeed", 0);
+        }
+>>>>>>> Stashed changes
     }
 }
