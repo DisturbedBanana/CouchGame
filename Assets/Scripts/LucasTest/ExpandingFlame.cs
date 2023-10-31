@@ -19,7 +19,7 @@ public class ExpandingFlame : MonoBehaviour
     [Header("Other")]
     [SerializeField] bool _doesSnowComeBackUp = false;
 
-    
+    public float ShrinkSpeed { get { return _shrinkSpeed; } set { _shrinkSpeed = value; } }
 
     private void Update()
     {

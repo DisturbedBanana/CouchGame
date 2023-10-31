@@ -9,4 +9,14 @@ public class EventBlizzard : Event
         Id = 1;
         Name = "Blizzard";
     }
+
+    private void Start()
+    {
+        FindObjectOfType<ExpandingFlame>().ShrinkSpeed /= 2;
+    }
+
+    public override void EventEnd()
+    {
+        
+    }
 }
