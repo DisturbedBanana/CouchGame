@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.PlayerLoop;
 
 public class ToolInteraction : MonoBehaviour
 {
     PlayerInventory _playerInv;
-    private List<GameObject> _breakableObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> _breakableObjects = new List<GameObject>();
     Animator _anim;
 
 
@@ -24,19 +23,6 @@ public class ToolInteraction : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            if (_breakableObjects.Count != 0)
-            {
-                _anim = _breakableObjects[0].GetComponent<Animator>();
-                StartCoroutine(CuttingAnim());
-                _playerInv.AddItemToInventory(_breakableObjects[0].GetComponent<WorldItem>().itemData.ID);
-            }
-        }
-    }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Tree"))
@@ -47,8 +33,10 @@ public class ToolInteraction : MonoBehaviour
 
     public void OnTool(InputAction.CallbackContext context)
     {
+        Debug.Log("veut taper");
         if (_breakableObjects.Count != 0)
         {
+            Debug.Log("est en train de taper");
             _anim = _breakableObjects[0].GetComponent<Animator>();
             StartCoroutine(CuttingAnim());
             _playerInv.AddItemToInventory(_breakableObjects[0].GetComponent<WorldItem>().itemData.ID);
@@ -60,7 +48,7 @@ public class ToolInteraction : MonoBehaviour
         _anim.SetBool("isCut", true);
         yield return new WaitForSecondsRealtime(3f);
         GameObject objToDestroy = _breakableObjects[0];
-        Destroy(objToDestroy);
         _breakableObjects.Remove(_breakableObjects[0]);
+        Destroy(objToDestroy);
     }
 }

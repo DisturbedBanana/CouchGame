@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
 
 public class PlayerMovTest : MonoBehaviour
@@ -22,6 +23,10 @@ public class PlayerMovTest : MonoBehaviour
     [SerializeField] private Vector3 _move;
     [SerializeField] private Vector2 _movementVector;
     [SerializeField] private Vector2 _moveVector;
+    [SerializeField] private Vector3 _playerVelocity;
+    [SerializeField] private float _currentPlayerSpeed;
+
+    private Animator _anim;
 
     public float PlayerSpeed { get { return _playerSpeed; } set { _playerSpeed = value; } }
 
@@ -29,6 +34,8 @@ public class PlayerMovTest : MonoBehaviour
     {
         _rb = this.GetComponent<Rigidbody>();
         _playerInputs = new PlayerInputs();
+        _anim = GetComponent<Animator>();
+
         //_cam = GameObject.FindGameObjectWithTag("MainCamera");
 
         //Quaternion _camRotationOffset = Quaternion.Euler(new Vector3(10f, _globalOffset, 0f));
@@ -77,6 +84,8 @@ public class PlayerMovTest : MonoBehaviour
             var skewedInput = matrix.MultiplyPoint3x4(_move);
 
             transform.Translate(skewedInput, Space.World);
+
+            _anim.SetFloat("animMovSpeed", _move.magnitude * 100f);
         }
     }
 
@@ -84,10 +93,14 @@ public class PlayerMovTest : MonoBehaviour
     {
         if (_move != Vector3.zero)
         {
+            //Vector3 test = new Vector3(22.5f, 0, 0);
+
             var relative = (transform.position + _move) - transform.position;
             var rotation = Quaternion.LookRotation(relative, Vector3.up);
 
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, _turnSpeed * Time.deltaTime);
+            var offsetRotation = rotation * Quaternion.AngleAxis(-_globalOffset, Vector3.down);
+
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, offsetRotation, _turnSpeed * Time.deltaTime);
         }
 
     }
@@ -96,13 +109,10 @@ public class PlayerMovTest : MonoBehaviour
     {
         Look();
         Move();
-<<<<<<< Updated upstream
-=======
 
         if (_movementVector == Vector2.zero)
         {
-            //_anim.SetFloat("animMovSpeed", 0);
+            _anim.SetFloat("animMovSpeed", 0);
         }
->>>>>>> Stashed changes
     }
 }

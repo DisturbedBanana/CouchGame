@@ -49,7 +49,6 @@ public class PickUp : MonoBehaviour
     private void PickUpItem(GameObject item)
     {
         //ADD ITEM TO INVENTORY VIA REFERENCE TO PLAYER HERE
-        Debug.Log(item);
         _playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().itemData.ID);
 
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
@@ -138,9 +137,11 @@ public class PickUp : MonoBehaviour
         if (context.performed)
         {
             _isPickingUp = true;
-            _objectsInRange.Remove(_closestItemInRange);
-            Debug.Log(_closestItemInRange);
-            PickUpItem(_closestItemInRange);
+            if (_closestItemInRange != null)
+            {
+                _objectsInRange.Remove(_closestItemInRange);
+                PickUpItem(_closestItemInRange);
+            }
         }
         else
         {

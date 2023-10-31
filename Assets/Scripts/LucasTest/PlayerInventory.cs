@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
 {
     [SerializeField] private List<ItemData> itemList;
     private ItemDatabase itemDatabase;
-    [SerializeField] private StorageController storageController;
+    [SerializeField] public StorageController storageController;
 
     private void Start()
     {
@@ -26,10 +26,10 @@ public class PlayerInventory : MonoBehaviour
                 itemList.Add(item);
                 storageController.AddItem(item);
             }
-            else
+            /*else
             {
                 Debug.Log(item.ID + " not found");
-            }
+            }*/
         }
     }
 }
