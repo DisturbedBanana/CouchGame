@@ -33,8 +33,10 @@ public class ToolInteraction : MonoBehaviour
 
     public void OnTool(InputAction.CallbackContext context)
     {
+        Debug.Log("veut taper");
         if (_breakableObjects.Count != 0)
         {
+            Debug.Log("est en train de taper");
             _anim = _breakableObjects[0].GetComponent<Animator>();
             StartCoroutine(CuttingAnim());
             _playerInv.AddItemToInventory(_breakableObjects[0].GetComponent<WorldItem>().itemData.ID);
