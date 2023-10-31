@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _engineer;
     [SerializeField] private GameObject _scout;
     [SerializeField] private List<GameObject> _spawnPoints = new List<GameObject>();
+    [SerializeField] private List<PlayerInput> _playersList = new List<PlayerInput>();
     public List<GameObject> _playerGameObjectList = new List<GameObject>();
 
     private void Awake()

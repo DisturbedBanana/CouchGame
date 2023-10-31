@@ -21,7 +21,6 @@ TagManager:
   - PlayerSelectionCanvas
   - PlayerHitbox
   - PlayerRange
-  - Tree
   layers:
   - Default
   - TransparentFX

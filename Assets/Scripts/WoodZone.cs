@@ -1,31 +1,29 @@
-using FFO.Inventory.Storage;
 using System.Collections;
 using System.Collections.Generic;
-using FFO.Inventory;
 using UnityEngine;
 
 public class WoodZone : MonoBehaviour
 {
-    PlayerInventory _playerInv;
-    [SerializeField] private ExpandingFlame _flame;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+<<<<<<< Updated upstream
+            Debug.Log("Le feu prends du bois");
+            /*Inventory inv = other.GetComponentInChildren<Inventory>();
+            foreach (var item in inv.ItemList)
+=======
             _playerInv = other.GetComponentInChildren<PlayerInventory>();
 
-            foreach (SlotController data in _playerInv.storageController.Slots)
+            foreach (SlotController data in _playerInv.storageController.SlotsList)
+>>>>>>> Stashed changes
             {
-                if (data.DataItem != null)
+                if (item.itemInformation.name == "red" && item.itemInformation.amount > 0)
                 {
-                    if (data.DataItem.ID == "Woo_NONE")
-                    {
-                        _playerInv.storageController.OnDrop();
-                        _flame.StartLerpFlameScale();
-                    }
+                    item.itemInformation.amount--;
+                    transform.localScale += new Vector3(_flameGrowthFromWood, _flameGrowthFromWood, _flameGrowthFromWood);
                 }
-            }
+            }*/
         }
     }
 }
