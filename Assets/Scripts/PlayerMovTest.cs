@@ -14,6 +14,7 @@ public class PlayerMovTest : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private PlayerInputs _playerInputs;
     [SerializeField] private GameObject _cam;
+    [SerializeField] private Animator _anim;
 
     [Space]
     [Header("Variables")]
@@ -26,9 +27,14 @@ public class PlayerMovTest : MonoBehaviour
     [SerializeField] private Vector3 _playerVelocity;
     [SerializeField] private float _currentPlayerSpeed;
 
-    private Animator _anim;
+    [Space]
+    [Header("Booleans")]
+    [SerializeField] private bool _canMove = true;
+    [SerializeField] private bool _canLook = true;
 
     public float PlayerSpeed { get { return _playerSpeed; } set { _playerSpeed = value; } }
+    public bool CanMove { get { return _canMove; } set { _canMove = value; } }
+    public bool CanLook { get { return _canLook; } set { _canLook = value; } }
 
     private void Awake()
     {
@@ -101,8 +107,6 @@ public class PlayerMovTest : MonoBehaviour
     {
         if (_move != Vector3.zero)
         {
-            //Vector3 test = new Vector3(22.5f, 0, 0);
-
             var relative = (transform.position + _move) - transform.position;
             var rotation = Quaternion.LookRotation(relative, Vector3.up);
 
@@ -115,8 +119,11 @@ public class PlayerMovTest : MonoBehaviour
 
     private void Update()
     {
-        Look();
-        Move();
+        if (_canMove && _canLook)
+        {
+            Look();
+            Move();
+        }
 
         if (_movementVector == Vector2.zero)
         {
