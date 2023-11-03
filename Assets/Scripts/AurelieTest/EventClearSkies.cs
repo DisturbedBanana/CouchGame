@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventBlizzard : Event
+public class EventClearSkies : Event
 {
-    public EventBlizzard()
+    public EventClearSkies()
     {
-        Id = 1;
-        Name = "Blizzard";
+        Id = 2;
+        Name = "Clear Skies";
     }
 
     private float _shrinkSpeedBase;
@@ -15,8 +15,9 @@ public class EventBlizzard : Event
     private void Start()
     {
         _shrinkSpeedBase = FindObjectOfType<ExpandingFlame>().ShrinkSpeed;
-        FindObjectOfType<ExpandingFlame>().ShrinkSpeed /= 2;
-        // + visibilité réduite dans la cold zone
+        FindObjectOfType<ExpandingFlame>().ShrinkSpeed *= 2;
+        // + résistance au froid +20%
+        // + visibility improved in cold zone
     }
 
     public override void EventEnd()
