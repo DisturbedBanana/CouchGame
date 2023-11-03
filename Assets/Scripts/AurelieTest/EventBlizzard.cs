@@ -10,13 +10,16 @@ public class EventBlizzard : Event
         Name = "Blizzard";
     }
 
+    private float _shrinkSpeedBase;
+
     private void Start()
     {
+        _shrinkSpeedBase = FindObjectOfType<ExpandingFlame>().ShrinkSpeed;
         FindObjectOfType<ExpandingFlame>().ShrinkSpeed /= 2;
     }
 
     public override void EventEnd()
     {
-        
+        FindObjectOfType<ExpandingFlame>().ShrinkSpeed = 50;
     }
 }
