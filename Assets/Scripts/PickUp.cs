@@ -103,10 +103,12 @@ public class PickUp : MonoBehaviour
             if (item != _closestItemInRange)
             {
                 item.gameObject.GetComponent<Outline>().enabled = false;
+                item.gameObject.GetComponentInChildren<Animator>().SetBool("isClosest", false);
             }
             else
             {
                 item.gameObject.GetComponent<Outline>().enabled = true;
+                item.gameObject.GetComponentInChildren<Animator>().SetBool("isClosest", true);
             }
         }
     }
@@ -131,6 +133,7 @@ public class PickUp : MonoBehaviour
                     item.gameObject.GetComponent<Outline>().enabled = false;
                 }
 
+                other.GetComponentInChildren<Animator>().SetBool("isClosest", false);
                 _objectsInRange.Remove(other.gameObject);
                 _closestItemInRange = null;
             }

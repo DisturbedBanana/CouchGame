@@ -85,6 +85,14 @@ public class PlayerMovTest : MonoBehaviour
 
             transform.Translate(skewedInput, Space.World);
 
+            if (GetComponent<Character>().IsInSnow)
+            {
+                _anim.SetBool("isInSnow", true);
+            }
+            else
+            {
+                _anim.SetBool("isInSnow", false);
+            }
             _anim.SetFloat("animMovSpeed", _move.magnitude * 100f);
         }
     }
