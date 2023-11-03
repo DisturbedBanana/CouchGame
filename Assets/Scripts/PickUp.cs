@@ -1,26 +1,42 @@
 using FFO.Inventory.Storage;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PickUp : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _objectsInRange = new List<GameObject>();
-    [SerializeField] private bool _isPickingUp = false;
-    [SerializeField] private float _pickUpCooldown;
-    [SerializeField] private Vector3 _closestDistance = new Vector3(1000,1000,1000);
+    [Header("Refenrences")]
     [SerializeField] private GameObject _closestItemInRange;
-
-    //[SerializeField] private GameObject _player;
+    [SerializeField] private Animator _anim;
     private PlayerInventory _playerInventory;
+    private PlayerMovTest _playerMovement;
+
+    [Space]
+    [Header("Variables")]
+    [SerializeField] private Vector3 _closestDistance = new Vector3(1000,1000,1000);
+    [SerializeField] private float _pickUpCooldown;
+    [SerializeField] private Transform _playerTransform;
+
+    [Space]
+    [Header("Lists")]
+    [SerializeField] private List<GameObject> _objectsInRange = new List<GameObject>();
+
+    [Space]
+    [Header("Booleans")]
+    [SerializeField] private bool _isPickingUp = false;
 
     private void Start()
     {
         _playerInventory = this.GetComponent<PlayerInventory>();
+        _anim = this.GetComponentInParent<Animator>();
+        _playerTransform = transform.root.GetComponent<Transform>();
+        _playerMovement = this.GetComponentInParent<PlayerMovTest>();
     }
 
     private void Update()
@@ -51,20 +67,29 @@ public class PickUp : MonoBehaviour
         }
     }
 
-    private void PickUpItem(GameObject item)
+    private IEnumerator PickUpItem(GameObject item)
     {
         //ADD ITEM TO INVENTORY VIA REFERENCE TO PLAYER HERE
         _playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().itemData.ID);
+        _playerMovement.CanMove = false;
+
+        _playerTransform.LookAt(item.transform.position);
+        //_playerTransform.LookAt(new Vector3(item.transform.position.x, item.transform.position.y, item.transform.position.z));
 
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
         {
             if (player.GetComponentInChildren<PickUp>()._objectsInRange.Contains(item))
             {
+                
                 player.GetComponentInChildren<PickUp>()._objectsInRange.Remove(item);
             }
         }
 
+        Debug.Log("Start Wait");
+        yield return new WaitForSecondsRealtime(0.6f);
+        Debug.Log("Finished. Destroyed item");
         Destroy(item);
+        _playerMovement.CanMove = true;
     }
 
     private void FindNearestItem()
@@ -118,7 +143,7 @@ public class PickUp : MonoBehaviour
         if (other.CompareTag("Item"))
         {
             _objectsInRange.Add(other.gameObject);
-        }   
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -147,8 +172,9 @@ public class PickUp : MonoBehaviour
             _isPickingUp = true;
             if (_closestItemInRange != null)
             {
+                _anim.SetTrigger("isPickingUp");
                 _objectsInRange.Remove(_closestItemInRange);
-                PickUpItem(_closestItemInRange);
+                StartCoroutine(PickUpItem(_closestItemInRange));
             }
         }
         else
