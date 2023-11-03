@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class ToolInteraction : MonoBehaviour
 {
     PlayerInventory _playerInv;
-    private List<GameObject> _breakableObjects = new List<GameObject>();
+    [SerializeField] private List<GameObject> _breakableObjectsInRange = new List<GameObject>();
     Animator _anim;
 
 
@@ -19,7 +19,7 @@ public class ToolInteraction : MonoBehaviour
     {
         if (other.CompareTag("Tree"))
         {
-            _breakableObjects.Add(other.gameObject);
+            _breakableObjectsInRange.Add(other.gameObject);
         }
     }
 
@@ -27,17 +27,19 @@ public class ToolInteraction : MonoBehaviour
     {
         if (other.CompareTag("Tree"))
         {
-            _breakableObjects.Remove(other.gameObject);
+            _breakableObjectsInRange.Remove(other.gameObject);
         }
     }
 
     public void OnTool(InputAction.CallbackContext context)
     {
-        if (_breakableObjects.Count != 0)
+        Debug.Log("veut taper");
+        if (_breakableObjectsInRange.Count != 0)
         {
-            _anim = _breakableObjects[0].GetComponent<Animator>();
+            Debug.Log("est en train de taper");
+            _anim = _breakableObjectsInRange[0].GetComponent<Animator>();
             StartCoroutine(CuttingAnim());
-            _playerInv.AddItemToInventory(_breakableObjects[0].GetComponent<WorldItem>().itemData.ID);
+            _playerInv.AddItemToInventory(_breakableObjectsInRange[0].GetComponent<WorldItem>().itemData.ID);
         }
     }
 
@@ -45,8 +47,8 @@ public class ToolInteraction : MonoBehaviour
     {
         _anim.SetBool("isCut", true);
         yield return new WaitForSecondsRealtime(3f);
-        GameObject objToDestroy = _breakableObjects[0];
+        GameObject objToDestroy = _breakableObjectsInRange[0];
+        _breakableObjectsInRange.Remove(_breakableObjectsInRange[0]);
         Destroy(objToDestroy);
-        _breakableObjects.Remove(_breakableObjects[0]);
     }
 }
