@@ -73,7 +73,7 @@ public class PickUp : MonoBehaviour
         _playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().itemData.ID);
         _playerMovement.CanMove = false;
 
-        _playerTransform.LookAt(item.transform.position);
+        _playerTransform.LookAt(new Vector3(transform.position.x, transform.position.y, item.transform.position.z));
         //_playerTransform.LookAt(new Vector3(item.transform.position.x, item.transform.position.y, item.transform.position.z));
 
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
