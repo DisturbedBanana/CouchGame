@@ -218,7 +218,6 @@ GameObject:
   - component: {fileID: 2457905974097534386}
   - component: {fileID: 491216208963013558}
   - component: {fileID: 6384946707121646815}
-  - component: {fileID: 874735556599152467}
   - component: {fileID: 3205176952602127856}
   - component: {fileID: 8635185088252787416}
   m_Layer: 0
@@ -315,25 +314,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &874735556599152467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787277774425776726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 815a9b623f7a7224ca482bd918ec4df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _closestItemInRange: {fileID: 0}
-  _anim: {fileID: 0}
-  _closestDistance: {x: 1000, y: 1000, z: 1000}
-  _pickUpCooldown: 1
-  _playerTransform: {fileID: 0}
-  _objectsInRange: []
-  _isPickingUp: 0
 --- !u!114 &3205176952602127856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,7 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList: []
-  storageController: {fileID: 0}
+  storageController: {fileID: 7091724996136454443}
 --- !u!1 &1141094325679249510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1257,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6180435900259490444}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7091724996136454443 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
+    type: 3}
+  m_PrefabInstance: {fileID: 6180435900259490444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1985de823e521304b92b01a76371d459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6853049812304948096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1399,6 +1391,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8102838097159011294}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9a9f5efd3ea83874ba0cb100525873a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6915996824656722697}
   m_SourcePrefab: {fileID: 100100000, guid: 9a9f5efd3ea83874ba0cb100525873a3, type: 3}
 --- !u!1 &6042570312492734161 stripped
 GameObject:
@@ -1498,7 +1494,7 @@ MonoBehaviour:
     m_ActionName: Controller/Pause[/DualSenseGamepadHID/start,/DualShock4GamepadHID/start]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 874735556599152467}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PickUp, Assembly-CSharp
         m_MethodName: OnPickUp
         m_Mode: 0
@@ -1617,6 +1613,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6915996824656722697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042570312492734161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815a9b623f7a7224ca482bd918ec4df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _closestItemInRange: {fileID: 0}
+  _anim: {fileID: 0}
+  _playerInventory: {fileID: 0}
+  _closestDistance: {x: 1000, y: 1000, z: 1000}
+  _pickUpCooldown: 0
+  _playerTransform: {fileID: 0}
+  _objectsInRange: []
+  _isPickingUp: 0
 --- !u!4 &6381694146389937259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9a9f5efd3ea83874ba0cb100525873a3,

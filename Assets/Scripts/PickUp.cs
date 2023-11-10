@@ -1,4 +1,5 @@
 using FFO.Inventory.Storage;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -14,7 +15,7 @@ public class PickUp : MonoBehaviour
     [Header("Refenrences")]
     [SerializeField] private GameObject _closestItemInRange;
     [SerializeField] private Animator _anim;
-    private PlayerInventory _playerInventory;
+    [SerializeField] private PlayerInventory _playerInventory;
     private PlayerMovTest _playerMovement;
 
     [Space]
@@ -22,6 +23,8 @@ public class PickUp : MonoBehaviour
     [SerializeField] private Vector3 _closestDistance = new Vector3(1000,1000,1000);
     [SerializeField] private float _pickUpCooldown;
     [SerializeField] private Transform _playerTransform;
+    private Transform itemTarget;
+    private float _rotateToTargetSpeed = 2f;
 
     [Space]
     [Header("Lists")]
@@ -33,7 +36,7 @@ public class PickUp : MonoBehaviour
 
     private void Start()
     {
-        _playerInventory = this.GetComponent<PlayerInventory>();
+        _playerInventory = this.GetComponentInChildren<PlayerInventory>();
         _anim = this.GetComponentInParent<Animator>();
         _playerTransform = transform.root.GetComponent<Transform>();
         _playerMovement = this.GetComponentInParent<PlayerMovTest>();
@@ -67,13 +70,33 @@ public class PickUp : MonoBehaviour
         }
     }
 
+    private IEnumerator RotateToTarget(Transform target, float speed)
+    {
+        Quaternion rotation = Quaternion.LookRotation(target.position - transform.position);
+
+        rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+
+        float time = 0f;
+        while (time < 1f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, time);
+
+            time += Time.deltaTime * speed;
+            yield return null;
+        }
+    }
+
     private IEnumerator PickUpItem(GameObject item)
     {
         //ADD ITEM TO INVENTORY VIA REFERENCE TO PLAYER HERE
         _playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().itemData.ID);
         _playerMovement.CanMove = false;
 
-        _playerTransform.LookAt(new Vector3(transform.position.x, transform.position.y, item.transform.position.z));
+        //_playerTransform.LookAt(item.transform);
+
+        itemTarget = item.transform;
+        StartCoroutine(RotateToTarget(itemTarget, _rotateToTargetSpeed));
+
         //_playerTransform.LookAt(new Vector3(item.transform.position.x, item.transform.position.y, item.transform.position.z));
 
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
@@ -85,9 +108,7 @@ public class PickUp : MonoBehaviour
             }
         }
 
-        Debug.Log("Start Wait");
         yield return new WaitForSecondsRealtime(0.6f);
-        Debug.Log("Finished. Destroyed item");
         Destroy(item);
         _playerMovement.CanMove = true;
     }
