@@ -28,30 +28,58 @@ public class EventManager : MonoBehaviour
 
     private IEnumerator SpawnEvent()
     {
-        
-
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(_minInterval, _maxInterval));
+            yield return new WaitForSeconds(RandomInterval());
 
             if (_currentEvent == null)
             {
-                _currentEvent = _events[Random.Range(0, _events.Length)];
-                _duration = Random.Range(_minDuration, _maxDuration);
-                Debug.Log($"Starting {_currentEvent.GetComponent<Event>().Name} in 10 seconds.");
+                PrestartEvent();
                 yield return new WaitForSeconds(10f);
-                Debug.Log($"{_currentEvent.GetComponent<Event>().Name} started. Duration: {_duration}");
-                _currentEvent = Instantiate(_currentEvent, transform.position, Quaternion.identity);
+                StartEvent();
             }
 
             yield return new WaitForSeconds(_duration);
 
             if (_currentEvent != null)
-            {
-                _currentEvent.GetComponent<Event>().EventEnd();
-                Destroy(_currentEvent);
-                _currentEvent = null;
-            }
+                EndEvent();
         }
+    }
+
+    private float RandomInterval()
+    {
+        return Random.Range(_minInterval, _maxInterval);
+    }
+
+    private GameObject RandomEvent()
+    {
+        return _events[Random.Range(0, _events.Length)];
+    }
+    
+    private float RandomDuration()
+    {
+        return Random.Range(_minDuration, _maxDuration);
+    }
+
+    private void PrestartEvent()
+    {
+        _currentEvent = RandomEvent();
+        _duration = RandomDuration();
+        string eventName = _currentEvent.GetComponent<Event>().Name;
+        Debug.Log($"{eventName} starting in 10s");
+    }
+
+    private void StartEvent()
+    {
+        string eventName = _currentEvent.GetComponent<Event>().Name;
+        Debug.Log($"{eventName} started. Duration: {_duration}");
+        _currentEvent = Instantiate(_currentEvent, transform.position, Quaternion.identity);
+    }
+
+    private void EndEvent()
+    {
+        _currentEvent.GetComponent<Event>().EventEnd();
+        Destroy(_currentEvent);
+        _currentEvent = null;
     }
 }
