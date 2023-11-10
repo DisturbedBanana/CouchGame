@@ -2185,7 +2185,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0
+  m_Volume: 0.472
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -5463,7 +5463,12 @@ PrefabInstance:
     - target: {fileID: 1741519562252099856, guid: 87c35c0fa5d54ed4797c3a740c34e87c,
         type: 3}
       propertyPath: m_Name
-      value: PS__Fire_Parent
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1746182355266080291, guid: 87c35c0fa5d54ed4797c3a740c34e87c,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8846207129117219670, guid: 87c35c0fa5d54ed4797c3a740c34e87c,
         type: 3}
@@ -7216,5 +7221,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 727433258}
   - {fileID: 1049840243}
-  - {fileID: 940422455}
   - {fileID: 892416749}
+  - {fileID: 940422455}

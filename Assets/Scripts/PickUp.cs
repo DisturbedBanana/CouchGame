@@ -188,7 +188,7 @@ public class PickUp : MonoBehaviour
 
     public void OnPickUp(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !GameManager._gamePaused)
         {
             _isPickingUp = true;
             if (_closestItemInRange != null)
