@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4828823569423721651}
   - component: {fileID: 5556812485273254597}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: FlameZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
