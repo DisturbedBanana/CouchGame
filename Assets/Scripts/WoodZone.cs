@@ -1,6 +1,7 @@
 using FFO.Inventory.Storage;
 using System.Collections;
 using System.Collections.Generic;
+using FFO.Inventory;
 using UnityEngine;
 
 public class WoodZone : MonoBehaviour
@@ -12,23 +13,19 @@ public class WoodZone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Le feu prends du bois");
-
             _playerInv = other.GetComponentInChildren<PlayerInventory>();
 
-            _playerInv.storageController.OnDrop();
-
-            _flame.StartLerpFlameScale();
-
-            /*Inventory inv = other.GetComponentInChildren<Inventory>();
-            foreach (var item in inv.ItemList)
+            foreach (SlotController data in _playerInv.storageController.Slots)
             {
-                if (item.itemInformation.name == "red" && item.itemInformation.amount > 0)
+                if (data.DataItem != null)
                 {
-                    item.itemInformation.amount--;
-                    transform.localScale += new Vector3(_flameGrowthFromWood, _flameGrowthFromWood, _flameGrowthFromWood);
+                    if (data.DataItem.ID == "Woo_NONE")
+                    {
+                        _playerInv.storageController.OnDrop();
+                        _flame.StartLerpFlameScale();
+                    }
                 }
-            }*/
+            }
         }
     }
 }
