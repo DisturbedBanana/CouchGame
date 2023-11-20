@@ -16,6 +16,15 @@ public class EventManagerEditor : Editor
 
         EditorGUILayout.LabelField("Debug Tool");
 
+        if (GUILayout.Button("Spawn Random Event"))
+            eventManager.DebugSpawnRandomEvent();
+
+        if (GUILayout.Button("Spawn Blizzard Event"))
+            eventManager.DebugSpawnBlizzardEvent();
+        
+        if (GUILayout.Button("Spawn Clear Sky Event"))
+            eventManager.DebugSpawnClearSkyEvent();
+
         if (GUILayout.Button("Stop Current Event"))
             eventManager.DebugStopEvent();
     }
