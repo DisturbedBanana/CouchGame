@@ -82,4 +82,15 @@ public class EventManager : MonoBehaviour
         Destroy(_currentEvent);
         _currentEvent = null;
     }
+
+    public void DebugStopEvent()
+    {
+        if (_currentEvent == null)
+        {
+            Debug.Log("There's no event currently in progress.");
+            return;
+        }
+        
+        EndEvent();
+    }
 }
