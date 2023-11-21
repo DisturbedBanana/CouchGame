@@ -326,7 +326,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093fc706fe4864840b1e356d0001a14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _breakableObjectsInRange: []
+  _treesObjectsInRange: []
+  _closestTreeInRange: {fileID: 0}
+  _playerTransform: {fileID: 6381694146389937259}
+  _time: 0
 --- !u!114 &8635185088252787416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1471,7 +1474,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3205176952602127856}
         m_TargetAssemblyTypeName: ToolInteraction, Assembly-CSharp
-        m_MethodName: OnTool
+        m_MethodName: OnAxe
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
