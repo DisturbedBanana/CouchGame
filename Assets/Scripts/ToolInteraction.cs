@@ -16,12 +16,16 @@ public class ToolInteraction : MonoBehaviour
     private bool _rotationFinished = true;
     [SerializeField] private float _time = 0f;
 
+    [SerializeField] private Character _playerClass;
+
 
     private void Awake()
     {
         _playerInv = GetComponent<PlayerInventory>();
         _playerAnim = GetComponentInParent<Animator>();
         _playerMovement = GetComponentInParent<PlayerMovTest>();
+
+        _playerClass = GetComponentInParent<Character>();
     }
 
     private void Update()
@@ -68,6 +72,12 @@ public class ToolInteraction : MonoBehaviour
 
     public void OnAxe(InputAction.CallbackContext context)
     {
+        if (_playerClass.IsInSnow && _playerClass.PlayerId != 1)
+        {
+            Debug.Log("Player isn't the lumberjack, so can't cut trees in snow");
+            return;
+        }
+
         if (_treesObjectsInRange.Count != 0 && _canUseAxe && !GameManager._gamePaused)
         {
             _playerMovement.CanMove = false;

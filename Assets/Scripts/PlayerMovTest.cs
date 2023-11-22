@@ -1,4 +1,5 @@
 using Microsoft.Win32.SafeHandles;
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,9 +11,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovTest : MonoBehaviour
 {
+    public static PlayerMovTest instance;
+
     [Header("Refenrences")]
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private PlayerInputs _playerInputs;
+    [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private GameObject _cam;
     [SerializeField] private Animator _anim;
 
@@ -39,6 +43,7 @@ public class PlayerMovTest : MonoBehaviour
     {
         _rb = this.GetComponent<Rigidbody>();
         _playerInputs = new PlayerInputs();
+        _playerInput = GetComponent<PlayerInput>();
         _anim = GetComponent<Animator>();
 
         //_cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -57,6 +62,11 @@ public class PlayerMovTest : MonoBehaviour
     private void OnDisable()
     {
         _playerInputs.Controller.Disable();
+    }
+
+    public void SwitchActionMap(string actionMap)
+    {
+        _playerInput.SwitchCurrentActionMap(actionMap);
     }
 
     public void OnMove(InputAction.CallbackContext context)
