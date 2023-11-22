@@ -1,6 +1,7 @@
 using System;
 using FFO.Inventory.Craft;
 using FFO.Inventory.Storage;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ using static FFO.Inventory.Storage.ItemData;
 namespace FFO.Inventory
 {
     [Serializable]
-    public class SlotController : MonoBehaviour , ISelectHandler , IDeselectHandler
+    public class SlotController : MonoBehaviour, ISelectHandler
     {
         public bool Selected { get; private set; }
 
@@ -25,26 +26,27 @@ namespace FFO.Inventory
 
         public ItemData DataItem { get;  set; }
         public RecipeData DataRecipe { get; set; }
+        public Image _selectImage;
         
         private int _quantity = 0;
-        private ISelectHandler _selectHandlerImplementation;
-        private IDeselectHandler _deselectHandlerImplementation;
+        private StorageController _storageController;
+        
 
         public int Quantity 
         { 
             get => _quantity;
-            private set { _quantity = value; RefreshUI(); }
+            private set { _quantity = value; }
+        }
+
+        private void Start()
+        {
+            GetComponentInParent<StorageController>();
         }
 
         //public void SetSelect(bool value)
         //{
         //    Selected = value;
         //}
-
-        private void Start()
-        {
-            RefreshUI();
-        }
 
         public void OnAdd(ItemData item)
         {
@@ -55,7 +57,6 @@ namespace FFO.Inventory
 
             DataItem = item;
             imgItem.sprite = item.sprite;
-            imgItem.color = item.color;
         }
 
         public void OnRemove()
@@ -83,80 +84,10 @@ namespace FFO.Inventory
             OnRemove();
         }
 
-        public void OnSelected()
-        {
-            if (DataItem != default)
-            {
-                EventSystem.current.SetSelectedGameObject(transform.GetChild(transform.childCount - 1).gameObject);
-                StorageController.Instance.CurrentSlotSelected = this;
-                StorageController.Instance.RefreshUI(DataItem);
-            }
-
-            if (DataRecipe != default)
-            {
-                EventSystem.current.SetSelectedGameObject(gameObject);
-                CraftController.Instance.CurrentSlotSelected = this;
-                CraftController.Instance.RefreshUI(DataRecipe);
-            }
-        }
-
-        void RefreshUI()
-        {
-            if (txtQuantity != null)
-            {
-                txtQuantity.enabled = Quantity > 0;
-                txtQuantity.text = Quantity.ToString();
-            }
-
-            if (DataRecipe != default)
-            {
-                if (DataRecipe.TryGetItemData(DataRecipe.IDItemResult, out ItemData it))
-                {
-                    if (txtLabel != null)
-                        txtLabel.text = it.label;
-
-                    if (imgItem != null)
-                    {
-                        imgItem.sprite = it.sprite;
-                        imgItem.color = it.color;
-                    }
-
-                    if (parentIngredient != null)
-                    {
-                        foreach (string idIngredient in DataRecipe.IDItemIngredient)
-                        {
-                            if (DataRecipe.TryGetItemData(idIngredient, out ItemData itIngredient))
-                            {
-                                GameObject newIngGo = new();
-                                newIngGo.transform.parent = parentIngredient.transform;
-
-                                Image newIma = newIngGo.AddComponent<Image>();
-                                newIma.sprite = itIngredient.sprite;
-                                newIma.color = itIngredient.color;
-                                newIma.preserveAspect = true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         public void OnSelect(BaseEventData eventData)
         {
-            if (DataItem != default)
-                StorageController.Instance.RefreshUI(DataItem);
-
-            if(DataRecipe != default)
-                CraftController.Instance.RefreshUI(DataRecipe);
-        }
-
-        public void OnDeselect(BaseEventData eventData)
-        {
-            if (DataItem != default)
-                StorageController.Instance.RefreshUI();
-
-            if (DataRecipe != default)
-                CraftController.Instance.RefreshUI();
+            EventSystem.current.SetSelectedGameObject(transform.GetChild(transform.childCount-1).gameObject);
+            _storageController.CurrentSlotSelected = this;
         }
     }
 }
