@@ -71,6 +71,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""367ae521-211a-4bc8-9cae-f31215f2d7d8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -183,6 +192,17 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""PickUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1da5d53f-67f8-416d-8987-d6b61b7de97c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -213,6 +233,109 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Dead"",
+            ""id"": ""a0f82322-92cf-4777-8790-49609db50ae2"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""2b1c8ea3-a2e5-42e0-acb5-726a91574dc7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""32007b05-63b9-4ed5-ac64-3c9a77cb47d9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e3cf5e83-a85b-4388-90cc-72e6c61b22e4"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""ee037795-5d50-4fed-ac42-c7c58060dcf4"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""30a9b38d-4c91-4d85-81cb-fc71ccfec5fa"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""a7d51fb9-ab99-4b33-8184-f2604a418016"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""f7bfd271-e16e-44e5-a127-228997210175"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""c27d2c95-6c27-42f6-8df0-c0cac0949b01"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5c72e1c-e35f-47d1-bc6d-39b2f9a00a6f"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -236,9 +359,14 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Controller_Jump = m_Controller.FindAction("Jump", throwIfNotFound: true);
         m_Controller_Pause = m_Controller.FindAction("Pause", throwIfNotFound: true);
         m_Controller_PickUp = m_Controller.FindAction("PickUp", throwIfNotFound: true);
+        m_Controller_Drop = m_Controller.FindAction("Drop", throwIfNotFound: true);
         // MainMenuUI
         m_MainMenuUI = asset.FindActionMap("MainMenuUI", throwIfNotFound: true);
         m_MainMenuUI_GoBack = m_MainMenuUI.FindAction("GoBack", throwIfNotFound: true);
+        // Dead
+        m_Dead = asset.FindActionMap("Dead", throwIfNotFound: true);
+        m_Dead_Pause = m_Dead.FindAction("Pause", throwIfNotFound: true);
+        m_Dead_Movement = m_Dead.FindAction("Movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -305,6 +433,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_Jump;
     private readonly InputAction m_Controller_Pause;
     private readonly InputAction m_Controller_PickUp;
+    private readonly InputAction m_Controller_Drop;
     public struct ControllerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -314,6 +443,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Controller_Jump;
         public InputAction @Pause => m_Wrapper.m_Controller_Pause;
         public InputAction @PickUp => m_Wrapper.m_Controller_PickUp;
+        public InputAction @Drop => m_Wrapper.m_Controller_Drop;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -338,6 +468,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @PickUp.started += instance.OnPickUp;
             @PickUp.performed += instance.OnPickUp;
             @PickUp.canceled += instance.OnPickUp;
+            @Drop.started += instance.OnDrop;
+            @Drop.performed += instance.OnDrop;
+            @Drop.canceled += instance.OnDrop;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -357,6 +490,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @PickUp.started -= instance.OnPickUp;
             @PickUp.performed -= instance.OnPickUp;
             @PickUp.canceled -= instance.OnPickUp;
+            @Drop.started -= instance.OnDrop;
+            @Drop.performed -= instance.OnDrop;
+            @Drop.canceled -= instance.OnDrop;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -420,6 +556,60 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         }
     }
     public MainMenuUIActions @MainMenuUI => new MainMenuUIActions(this);
+
+    // Dead
+    private readonly InputActionMap m_Dead;
+    private List<IDeadActions> m_DeadActionsCallbackInterfaces = new List<IDeadActions>();
+    private readonly InputAction m_Dead_Pause;
+    private readonly InputAction m_Dead_Movement;
+    public struct DeadActions
+    {
+        private @PlayerInputs m_Wrapper;
+        public DeadActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Dead_Pause;
+        public InputAction @Movement => m_Wrapper.m_Dead_Movement;
+        public InputActionMap Get() { return m_Wrapper.m_Dead; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DeadActions set) { return set.Get(); }
+        public void AddCallbacks(IDeadActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DeadActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DeadActionsCallbackInterfaces.Add(instance);
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
+        }
+
+        private void UnregisterCallbacks(IDeadActions instance)
+        {
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+        }
+
+        public void RemoveCallbacks(IDeadActions instance)
+        {
+            if (m_Wrapper.m_DeadActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IDeadActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DeadActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DeadActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public DeadActions @Dead => new DeadActions(this);
     private int m_ControllerSchemeIndex = -1;
     public InputControlScheme ControllerScheme
     {
@@ -436,9 +626,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
     }
     public interface IMainMenuUIActions
     {
         void OnGoBack(InputAction.CallbackContext context);
+    }
+    public interface IDeadActions
+    {
+        void OnPause(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
     }
 }

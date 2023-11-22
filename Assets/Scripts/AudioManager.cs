@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     private void TestSfxButton()
     {
         sfxAudioSource.clip = debugSfx;
-        sfxAudioSource.Play();
+        sfxAudioSource.PlayOneShot(sfxAudioSource.clip);
     }
 
     [Header("Audio Sources")]
@@ -88,8 +88,5 @@ public class AudioManager : MonoBehaviour
         musicAudioSource.Play();
     }
 
-    void Update()
-    {
-        
-    }
+
 }

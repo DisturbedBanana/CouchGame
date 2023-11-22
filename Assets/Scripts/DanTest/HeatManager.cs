@@ -16,6 +16,8 @@ public class HeatManager : MonoBehaviour
     [SerializeField] private bool _shamanIsInSnow;
     [SerializeField] private bool _engineerIsInSnow;
 
+    [SerializeField] private float _heatMultiplier;
+
     private void Update()
     {
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
@@ -47,7 +49,7 @@ public class HeatManager : MonoBehaviour
 
             if (player.GetComponent<Character>().Heat == 0)
             {
-                Debug.Log("fin");
+                Debug.Log("Est mort");
             }
         }
 
@@ -58,7 +60,7 @@ public class HeatManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerMovTest>().PlayerSpeed = 2.5f;
+            other.gameObject.GetComponent<Character>().MoveSpeed = 2.5f;
             other.gameObject.GetComponent<Character>().IsInSnow = true;
 
             switch (other.gameObject.GetComponent<Character>().PlayerId)
@@ -111,7 +113,7 @@ public class HeatManager : MonoBehaviour
                     break;
             }
 
-            other.gameObject.GetComponent<PlayerMovTest>().PlayerSpeed = 5f;
+            other.gameObject.GetComponent<Character>().MoveSpeed = 5f;
             other.gameObject.GetComponent<Character>().IsInSnow = false;
         }
     }

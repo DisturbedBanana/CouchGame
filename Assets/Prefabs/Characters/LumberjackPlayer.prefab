@@ -326,7 +326,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093fc706fe4864840b1e356d0001a14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _breakableObjectsInRange: []
+  _treesObjectsInRange: []
+  _closestTreeInRange: {fileID: 0}
+  _playerTransform: {fileID: 6381694146389937259}
+  _time: 0
 --- !u!114 &8635185088252787416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1135,12 +1138,12 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3027107917016411001}
     - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6042570312492734161}
     - target: {fileID: 6993224297040168963, guid: 08570469ae19a8d4c839678dcec6a994,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1414,6 +1417,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c13c89db639724da93aa94c609f4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerId: 1
+  _name: Lumberjack
+  _heat: 100
+  _moveSpeed: 5
+  _invSlots: 3
+  _hasBoots: 0
+  _hasCoat: 0
+  _hasBackpack: 0
+  _hasTool: 1
+  _isInSnow: 0
+  _isAlive: 1
 --- !u!114 &4212080400463390126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1460,7 +1474,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3205176952602127856}
         m_TargetAssemblyTypeName: ToolInteraction, Assembly-CSharp
-        m_MethodName: OnTool
+        m_MethodName: OnAxe
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1494,7 +1508,7 @@ MonoBehaviour:
     m_ActionName: Controller/Pause[/DualSenseGamepadHID/start,/DualShock4GamepadHID/start]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6915996824656722697}
         m_TargetAssemblyTypeName: PickUp, Assembly-CSharp
         m_MethodName: OnPickUp
         m_Mode: 0

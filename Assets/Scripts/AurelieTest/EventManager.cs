@@ -33,11 +33,7 @@ public class EventManager : MonoBehaviour
             yield return new WaitForSeconds(RandomInterval());
 
             if (_currentEvent == null)
-            {
-                PrestartEvent();
-                yield return new WaitForSeconds(10f);
-                StartEvent();
-            }
+                StartCoroutine(StartEventRoutine());
 
             yield return new WaitForSeconds(_duration);
 
@@ -61,9 +57,30 @@ public class EventManager : MonoBehaviour
         return Random.Range(_minDuration, _maxDuration);
     }
 
-    private void PrestartEvent()
+    private IEnumerator StartEventRoutine(int idEvent = 0)
     {
-        _currentEvent = RandomEvent();
+        PrestartEvent(idEvent);
+        yield return new WaitForSeconds(10f);
+        StartEvent();
+    }
+
+    private void PrestartEvent(int idEvent = 0)
+    {
+        switch (idEvent)
+        {
+            case 0:
+                _currentEvent = RandomEvent();
+                break;
+            case 1:
+                _currentEvent = _events[0];
+                break;
+            case 2:
+                _currentEvent = _events[1];
+                break;
+            default:
+                _currentEvent = RandomEvent();
+                break;
+        }
         _duration = RandomDuration();
         string eventName = _currentEvent.GetComponent<Event>().Name;
         Debug.Log($"{eventName} starting in 10s");
@@ -71,15 +88,64 @@ public class EventManager : MonoBehaviour
 
     private void StartEvent()
     {
-        string eventName = _currentEvent.GetComponent<Event>().Name;
-        Debug.Log($"{eventName} started. Duration: {_duration}");
-        _currentEvent = Instantiate(_currentEvent, transform.position, Quaternion.identity);
+        if (_currentEvent != null)
+        {
+            string eventName = _currentEvent.GetComponent<Event>().Name;
+            Debug.Log($"{eventName} started. Duration: {_duration}");
+            _currentEvent = Instantiate(_currentEvent, transform.position, Quaternion.identity);
+        }
     }
 
     private void EndEvent()
     {
+        string eventName = _currentEvent.GetComponent<Event>().Name;
+        Debug.Log($"{eventName} ended.");
         _currentEvent.GetComponent<Event>().EventEnd();
         Destroy(_currentEvent);
         _currentEvent = null;
+    }
+
+    public void DebugSpawnRandomEvent()
+    {
+        if (_currentEvent != null)
+        {
+            Debug.Log("There's already an event currently in progress");
+            return;
+        }
+
+        StartCoroutine(StartEventRoutine());
+    }
+
+    public void DebugSpawnBlizzardEvent()
+    {
+        if (_currentEvent != null)
+        {
+            Debug.Log("There's already an event currently in progress");
+            return;
+        }
+
+        StartCoroutine(StartEventRoutine(1));
+    }
+    
+    public void DebugSpawnClearSkyEvent()
+    {
+        if (_currentEvent != null)
+        {
+            Debug.Log("There's already an event currently in progress");
+            return;
+        }
+
+        StartCoroutine(StartEventRoutine(2));
+    }
+
+    public void DebugStopEvent()
+    {
+        if (_currentEvent == null)
+        {
+            Debug.Log("There's no event currently in progress.");
+            return;
+        }
+        
+        EndEvent();
     }
 }
