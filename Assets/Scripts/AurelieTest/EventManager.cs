@@ -28,30 +28,124 @@ public class EventManager : MonoBehaviour
 
     private IEnumerator SpawnEvent()
     {
-        
-
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(_minInterval, _maxInterval));
+            yield return new WaitForSeconds(RandomInterval());
 
             if (_currentEvent == null)
-            {
-                _currentEvent = _events[Random.Range(0, _events.Length)];
-                _duration = Random.Range(_minDuration, _maxDuration);
-                Debug.Log($"Starting {_currentEvent.GetComponent<Event>().Name} in 10 seconds.");
-                yield return new WaitForSeconds(10f);
-                Debug.Log($"{_currentEvent.GetComponent<Event>().Name} started. Duration: {_duration}");
-                _currentEvent = Instantiate(_currentEvent, transform.position, Quaternion.identity);
-            }
+                StartCoroutine(StartEventRoutine());
 
             yield return new WaitForSeconds(_duration);
 
             if (_currentEvent != null)
-            {
-                _currentEvent.GetComponent<Event>().EventEnd();
-                Destroy(_currentEvent);
-                _currentEvent = null;
-            }
+                EndEvent();
         }
+    }
+
+    private float RandomInterval()
+    {
+        return Random.Range(_minInterval, _maxInterval);
+    }
+
+    private GameObject RandomEvent()
+    {
+        return _events[Random.Range(0, _events.Length)];
+    }
+    
+    private float RandomDuration()
+    {
+        return Random.Range(_minDuration, _maxDuration);
+    }
+
+    private IEnumerator StartEventRoutine(int idEvent = 0)
+    {
+        PrestartEvent(idEvent);
+        yield return new WaitForSeconds(10f);
+        StartEvent();
+    }
+
+    private void PrestartEvent(int idEvent = 0)
+    {
+        switch (idEvent)
+        {
+            case 0:
+                _currentEvent = RandomEvent();
+                break;
+            case 1:
+                _currentEvent = _events[0];
+                break;
+            case 2:
+                _currentEvent = _events[1];
+                break;
+            default:
+                _currentEvent = RandomEvent();
+                break;
+        }
+        _duration = RandomDuration();
+        string eventName = _currentEvent.GetComponent<Event>().Name;
+        Debug.Log($"{eventName} starting in 10s");
+    }
+
+    private void StartEvent()
+    {
+        if (_currentEvent != null)
+        {
+            string eventName = _currentEvent.GetComponent<Event>().Name;
+            Debug.Log($"{eventName} started. Duration: {_duration}");
+            _currentEvent = Instantiate(_currentEvent, transform.position, Quaternion.identity);
+        }
+    }
+
+    private void EndEvent()
+    {
+        string eventName = _currentEvent.GetComponent<Event>().Name;
+        Debug.Log($"{eventName} ended.");
+        _currentEvent.GetComponent<Event>().EventEnd();
+        Destroy(_currentEvent);
+        _currentEvent = null;
+    }
+
+    public void DebugSpawnRandomEvent()
+    {
+        if (_currentEvent != null)
+        {
+            Debug.Log("There's already an event currently in progress");
+            return;
+        }
+
+        StartCoroutine(StartEventRoutine());
+    }
+
+    public void DebugSpawnBlizzardEvent()
+    {
+        if (_currentEvent != null)
+        {
+            Debug.Log("There's already an event currently in progress");
+            return;
+        }
+
+        StartCoroutine(StartEventRoutine(1));
+    }
+    
+    public void DebugSpawnClearSkyEvent()
+    {
+        if (_currentEvent != null)
+        {
+            Debug.Log("There's already an event currently in progress");
+            return;
+        }
+
+        StartCoroutine(StartEventRoutine(2));
+    }
+
+    public void DebugStopEvent()
+    {
+        if (_currentEvent == null)
+        {
+            Debug.Log("There's no event currently in progress.");
+            return;
+        }
+        
+        EndEvent();
     }
 }

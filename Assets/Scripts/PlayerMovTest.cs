@@ -32,7 +32,6 @@ public class PlayerMovTest : MonoBehaviour
     [SerializeField] private bool _canMove = true;
     [SerializeField] private bool _canLook = true;
 
-    public float PlayerSpeed { get { return _playerSpeed; } set { _playerSpeed = value; } }
     public bool CanMove { get { return _canMove; } set { _canMove = value; } }
     public bool CanLook { get { return _canLook; } set { _canLook = value; } }
 
@@ -83,7 +82,7 @@ public class PlayerMovTest : MonoBehaviour
     {
         if (_movementVector != Vector2.zero)
         {
-            _move = new Vector3(_movementVector.x, 0f, _movementVector.y) * Time.deltaTime * _playerSpeed;
+            _move = new Vector3(_movementVector.x, 0f, _movementVector.y) * Time.deltaTime * GetComponent<Character>().MoveSpeed;
 
             var matrix = Matrix4x4.Rotate(Quaternion.Euler(0f, _globalOffset, 0f));
 
