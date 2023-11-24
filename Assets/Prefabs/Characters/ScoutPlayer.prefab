@@ -1142,9 +1142,24 @@ PrefabInstance:
       objectReference: {fileID: 3696343759464711397}
     - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
         type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 3696343759464711397}
+    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 5686619012710954938}
+    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 5686619012710954938}
+    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
+        type: 3}
+      propertyPath: _nbInvSlot
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6993224297040168963, guid: 08570469ae19a8d4c839678dcec6a994,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2719,7 +2734,6 @@ MonoBehaviour:
   _closestItemInRange: {fileID: 0}
   _anim: {fileID: 0}
   _playerInventory: {fileID: 0}
-  _closestDistance: {x: 1000, y: 1000, z: 1000}
   _pickUpCooldown: 0
   _playerTransform: {fileID: 0}
   _objectsInRange: []
