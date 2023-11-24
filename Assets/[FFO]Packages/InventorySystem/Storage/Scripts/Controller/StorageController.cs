@@ -192,10 +192,10 @@ namespace FFO.Inventory.Storage
 
             _elapsedTime = 0f;
 
-            while (_elapsedTime < 10f)
+            while (_elapsedTime < 1f)
             {
                 _elapsedTime += Time.deltaTime;
-                _canvasGroup.alpha = Mathf.Lerp(_canvasGroup.alpha, targetAlpha, _elapsedTime / 10f);
+                _canvasGroup.alpha = Mathf.Lerp(_canvasGroup.alpha, targetAlpha, _elapsedTime / 1f);
                 yield return null;
             }
 
