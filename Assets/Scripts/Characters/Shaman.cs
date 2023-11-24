@@ -9,7 +9,7 @@ public class Shaman : Character
         PlayerId = 3;
         Name = "Shaman";
         Heat = 100f;
-        MoveSpeed = 5f;
+        MoveSpeed = 7f;
         InvSlots = 2;
         HasBoots = false;
         HasCoat = false;
