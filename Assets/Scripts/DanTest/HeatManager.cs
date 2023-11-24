@@ -12,18 +12,36 @@ public class HeatManager : MonoBehaviour
     [SerializeField] private Slider _shamanjackHeatSlider;
     [SerializeField] private Slider _engineerjackHeatSlider;
 
-    [SerializeField] private bool _lumberjackIsInSnow;
-    [SerializeField] private bool _scoutIsInSnow;
-    [SerializeField] private bool _shamanIsInSnow;
-    [SerializeField] private bool _engineerIsInSnow;
-
     [SerializeField] private float _heatMultiplier;
-    private Character _playerClass;
     private Vector3 _playerDeathPosition;
 
     [SerializeField] private List<GameObject> _tombstones = new List<GameObject>();
 
-    private void Update()
+    SkinnedMeshRenderer _playerRenderer;
+
+    public static HeatManager instance;
+
+    [Space]
+    [Header("Player Materials")]
+    public Material _lumberjackMat;
+    public Material _scoutMat;
+    public Material _shamanMat;
+    public Material _engineerMat;
+    public Material _deadMat;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void FixedUpdate()
     {
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
         {
@@ -32,20 +50,20 @@ public class HeatManager : MonoBehaviour
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
                     case 1:
-                        _lumberjackHeatSlider.value += 1f;
-                        player.gameObject.GetComponent<Character>().Heat = _lumberjackHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        _lumberjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 2:
-                        _scoutHeatSlider.value += 1f;
-                        player.gameObject.GetComponent<Character>().Heat = _scoutHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        _scoutHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 3:
-                        _shamanjackHeatSlider.value += 1f;
-                        player.gameObject.GetComponent<Character>().Heat = _shamanjackHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        _shamanjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 4:
-                        _engineerjackHeatSlider.value += 1f;
-                        player.gameObject.GetComponent<Character>().Heat = _engineerjackHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        _engineerjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     default:
                         break;
@@ -57,20 +75,20 @@ public class HeatManager : MonoBehaviour
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
                     case 1:
-                        _lumberjackHeatSlider.value -= 0.2f;
-                        player.gameObject.GetComponent<Character>().Heat = _lumberjackHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat -= 0.25f;
+                        _lumberjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 2:
-                        _scoutHeatSlider.value -= 0.2f;
-                        player.gameObject.GetComponent<Character>().Heat = _scoutHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat -= 1f;
+                        _scoutHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 3:
-                        _shamanjackHeatSlider.value -= 0.2f;
-                        player.gameObject.GetComponent<Character>().Heat = _shamanjackHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat -= 0.25f;
+                        _shamanjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 4:
-                        _engineerjackHeatSlider.value -= 0.2f;
-                        player.gameObject.GetComponent<Character>().Heat = _engineerjackHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat -= 0.25f;
+                        _engineerjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     default:
                         break;
@@ -109,32 +127,21 @@ public class HeatManager : MonoBehaviour
 
     private void PlaceTombstone(int playerId, Vector3 tombstonePosition)
     {
+        //Instantiates the player's tombstone where he died
         Instantiate(_tombstones[playerId - 1], tombstonePosition, Quaternion.AngleAxis(45f, Vector3.up));
-        PlayerMovTest.instance.SwitchActionMap("Dead");
+        Debug.Log("A tombstone was placed for the " + GameManager.instance._playerGameObjectList[playerId - 1]);
+
+        //Changes the action map to the dead one so the player can't interact anymore
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().SwitchActionMap("Dead");
+
+        //Changes the to the dead transparent material of the player
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = _deadMat;
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            switch (other.gameObject.GetComponent<Character>().PlayerId)
-            {
-                case 1:
-                    other.gameObject.GetComponent<Character>().IsInSnow = true;
-                    break;
-                case 2:
-                    other.gameObject.GetComponent<Character>().IsInSnow = true;
-                    break;
-                case 3:
-                    other.gameObject.GetComponent<Character>().IsInSnow = true;
-                    break;
-                case 4:
-                    other.gameObject.GetComponent<Character>().IsInSnow = true;
-                    break;
-                default:
-                    break;
-            }
-
             if (other.gameObject.GetComponent<Character>().PlayerId != 2)
             {
                 other.gameObject.GetComponent<Character>().MoveSpeed = 2.5f;
@@ -148,24 +155,6 @@ public class HeatManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            switch (other.gameObject.GetComponent<Character>().PlayerId)
-            {
-                case 1:
-                    _lumberjackIsInSnow = false;
-                    break;
-                case 2:
-                    _scoutIsInSnow = false;
-                    break;
-                case 3:
-                    _shamanIsInSnow = false;
-                    break;
-                case 4:
-                    _engineerIsInSnow = false;
-                    break;
-                default:
-                    break;
-            }
-
             other.gameObject.GetComponent<Character>().MoveSpeed = 5f;
             other.gameObject.GetComponent<Character>().IsInSnow = false;
         }

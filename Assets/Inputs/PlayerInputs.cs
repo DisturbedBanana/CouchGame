@@ -80,6 +80,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Revive"",
+                    ""type"": ""Button"",
+                    ""id"": ""e473b32d-93dd-4818-ac28-708806a38976"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -199,8 +208,19 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2811b7f-62c8-46ca-92dd-95b98033a9c5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Revive"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -360,6 +380,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Controller_Pause = m_Controller.FindAction("Pause", throwIfNotFound: true);
         m_Controller_PickUp = m_Controller.FindAction("PickUp", throwIfNotFound: true);
         m_Controller_Drop = m_Controller.FindAction("Drop", throwIfNotFound: true);
+        m_Controller_Revive = m_Controller.FindAction("Revive", throwIfNotFound: true);
         // MainMenuUI
         m_MainMenuUI = asset.FindActionMap("MainMenuUI", throwIfNotFound: true);
         m_MainMenuUI_GoBack = m_MainMenuUI.FindAction("GoBack", throwIfNotFound: true);
@@ -434,6 +455,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_Pause;
     private readonly InputAction m_Controller_PickUp;
     private readonly InputAction m_Controller_Drop;
+    private readonly InputAction m_Controller_Revive;
     public struct ControllerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -444,6 +466,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Controller_Pause;
         public InputAction @PickUp => m_Wrapper.m_Controller_PickUp;
         public InputAction @Drop => m_Wrapper.m_Controller_Drop;
+        public InputAction @Revive => m_Wrapper.m_Controller_Revive;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -471,6 +494,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Drop.started += instance.OnDrop;
             @Drop.performed += instance.OnDrop;
             @Drop.canceled += instance.OnDrop;
+            @Revive.started += instance.OnRevive;
+            @Revive.performed += instance.OnRevive;
+            @Revive.canceled += instance.OnRevive;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -493,6 +519,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Drop.started -= instance.OnDrop;
             @Drop.performed -= instance.OnDrop;
             @Drop.canceled -= instance.OnDrop;
+            @Revive.started -= instance.OnRevive;
+            @Revive.performed -= instance.OnRevive;
+            @Revive.canceled -= instance.OnRevive;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -627,6 +656,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
+        void OnRevive(InputAction.CallbackContext context);
     }
     public interface IMainMenuUIActions
     {

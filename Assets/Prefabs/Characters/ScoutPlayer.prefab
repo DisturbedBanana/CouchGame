@@ -2608,7 +2608,19 @@ MonoBehaviour:
     m_ActionId: 2b1c8ea3-a2e5-42e0-acb5-726a91574dc7
     m_ActionName: Dead/Pause[/DualSenseGamepadHID/start]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6902355344314661518}
+        m_TargetAssemblyTypeName: PlayerMovTest, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 32007b05-63b9-4ed5-ac64-3c9a77cb47d9
     m_ActionName: Dead/Movement[/DualSenseGamepadHID/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
@@ -2629,6 +2641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
+  _playerInput: {fileID: 0}
   _cam: {fileID: 0}
   _anim: {fileID: 0}
   _playerSpeed: 5
