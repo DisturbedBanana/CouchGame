@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Teleportable : MonoBehaviour
+public class TotemTeleportable : MonoBehaviour
 {
     [SerializeField] private Vector3 _activatedTotemPos = Vector3.zero;
     private bool _canActivateTP = false;
@@ -47,11 +47,9 @@ public class Teleportable : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-            Debug.Log("pressed v");
             if (_canActivateTP)
             {
                 _currentTotem.ActivateTotem();
-                Debug.Log("activated totem");
                 _activatedTotemPos = _currentTotem.transform.position;
             }
         }

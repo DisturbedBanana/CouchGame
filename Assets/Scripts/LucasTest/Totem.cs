@@ -9,7 +9,7 @@ public class Totem : MonoBehaviour
     //Accède au script "teleportable" dans le player
     
     private bool _isTotemActivated = false;
-    private Teleportable _playerTPComponent = null;
+    private TotemTeleportable _playerTPComponent = null;
 
     public void ActivateTotem()
     {
@@ -36,7 +36,7 @@ public class Totem : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            _playerTPComponent = other.GetComponent<Teleportable>();
+            _playerTPComponent = other.GetComponent<TotemTeleportable>();
             if (_playerTPComponent != null)
             {
                 _playerTPComponent.CanActivateTP = true;
@@ -49,7 +49,7 @@ public class Totem : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Teleportable tempTPComponent = other.GetComponent<Teleportable>();
+            TotemTeleportable tempTPComponent = other.GetComponent<TotemTeleportable>();
             if (tempTPComponent == _playerTPComponent)
             {
                 _playerTPComponent.CanActivateTP = false;
