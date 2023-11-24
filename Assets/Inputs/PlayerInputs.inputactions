@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TeleportRope",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "0d0449e9-1198-444a-94e5-ef51f16c79b1",
                     "expectedControlType": "Button",
@@ -63,24 +63,6 @@
                     "name": "Revive",
                     "type": "Button",
                     "id": "e473b32d-93dd-4818-ac28-708806a38976",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "TeleportTotem",
-                    "type": "Button",
-                    "id": "d1f1289b-bb7d-434a-8bab-b9e65857dd60",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "ActivateTotem",
-                    "type": "Button",
-                    "id": "86d83e5c-2b85-457f-b9d8-2a0bae74ae9b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -172,7 +154,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "TeleportRope",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -217,28 +199,6 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Revive",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ba5327c0-2b5f-46e4-9a9b-9b3bc2ba03af",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TeleportTotem",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "21c9ce44-90d8-4b26-a102-e64652bfd2bb",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ActivateTotem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

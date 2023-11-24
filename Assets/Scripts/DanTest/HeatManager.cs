@@ -144,7 +144,7 @@ public class HeatManager : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Character>().PlayerId != 2)
             {
-                other.gameObject.GetComponent<Character>().MoveSpeed = 4f;
+                other.gameObject.GetComponent<Character>().MoveSpeed = 2.5f;
             }
             
             other.gameObject.GetComponent<Character>().IsInSnow = true;
@@ -155,7 +155,7 @@ public class HeatManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<Character>().MoveSpeed = 7f;
+            other.gameObject.GetComponent<Character>().MoveSpeed = 5f;
             other.gameObject.GetComponent<Character>().IsInSnow = false;
         }
     }

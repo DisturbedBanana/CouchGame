@@ -132,13 +132,13 @@ MonoBehaviour:
     value: 1
     quantityMax: 99
   _parentSlot: {fileID: 7251666929604498453}
-  _prefabSlot: {fileID: 4808184337620840083, guid: a64baaede3adbde439ad3c0547ebbf47,
+  _prefabSlot: {fileID: 2007893001615575706, guid: 63fda6c1f6c1b5f41b6cb418e956274f,
     type: 3}
+  _nbSlot: 5
+  _followPlayer: 1
   _cam: {fileID: 0}
   _player: {fileID: 0}
-  _followPlayer: 1
-  _nbInvSlot: 5
-  _invOffset: 0
+  _offset: 1.8
 --- !u!225 &379359993171784340
 CanvasGroup:
   m_ObjectHideFlags: 0

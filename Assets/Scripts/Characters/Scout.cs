@@ -9,7 +9,7 @@ public class Scout : Character
         PlayerId = 2;
         Name = "Explorer";
         Heat = 100f;
-        MoveSpeed = 7f;
+        MoveSpeed = 5f;
         InvSlots = 2;
         HasBoots = false;
         HasCoat = false;

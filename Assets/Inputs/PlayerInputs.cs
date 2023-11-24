@@ -46,7 +46,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""TeleportRope"",
+                    ""name"": ""Jump"",
                     ""type"": ""Button"",
                     ""id"": ""0d0449e9-1198-444a-94e5-ef51f16c79b1"",
                     ""expectedControlType"": ""Button"",
@@ -85,24 +85,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": ""Revive"",
                     ""type"": ""Button"",
                     ""id"": ""e473b32d-93dd-4818-ac28-708806a38976"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""TeleportTotem"",
-                    ""type"": ""Button"",
-                    ""id"": ""d1f1289b-bb7d-434a-8bab-b9e65857dd60"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ActivateTotem"",
-                    ""type"": ""Button"",
-                    ""id"": ""86d83e5c-2b85-457f-b9d8-2a0bae74ae9b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -194,7 +176,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
-                    ""action"": ""TeleportRope"",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -239,28 +221,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Revive"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ba5327c0-2b5f-46e4-9a9b-9b3bc2ba03af"",
-                    ""path"": ""<Gamepad>/dpad/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""TeleportTotem"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""21c9ce44-90d8-4b26-a102-e64652bfd2bb"",
-                    ""path"": ""<Gamepad>/dpad/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ActivateTotem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -416,13 +376,11 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
         m_Controller_Movement = m_Controller.FindAction("Movement", throwIfNotFound: true);
         m_Controller_Attack = m_Controller.FindAction("Attack", throwIfNotFound: true);
-        m_Controller_TeleportRope = m_Controller.FindAction("TeleportRope", throwIfNotFound: true);
+        m_Controller_Jump = m_Controller.FindAction("Jump", throwIfNotFound: true);
         m_Controller_Pause = m_Controller.FindAction("Pause", throwIfNotFound: true);
         m_Controller_PickUp = m_Controller.FindAction("PickUp", throwIfNotFound: true);
         m_Controller_Drop = m_Controller.FindAction("Drop", throwIfNotFound: true);
         m_Controller_Revive = m_Controller.FindAction("Revive", throwIfNotFound: true);
-        m_Controller_TeleportTotem = m_Controller.FindAction("TeleportTotem", throwIfNotFound: true);
-        m_Controller_ActivateTotem = m_Controller.FindAction("ActivateTotem", throwIfNotFound: true);
         // MainMenuUI
         m_MainMenuUI = asset.FindActionMap("MainMenuUI", throwIfNotFound: true);
         m_MainMenuUI_GoBack = m_MainMenuUI.FindAction("GoBack", throwIfNotFound: true);
@@ -493,26 +451,22 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private List<IControllerActions> m_ControllerActionsCallbackInterfaces = new List<IControllerActions>();
     private readonly InputAction m_Controller_Movement;
     private readonly InputAction m_Controller_Attack;
-    private readonly InputAction m_Controller_TeleportRope;
+    private readonly InputAction m_Controller_Jump;
     private readonly InputAction m_Controller_Pause;
     private readonly InputAction m_Controller_PickUp;
     private readonly InputAction m_Controller_Drop;
     private readonly InputAction m_Controller_Revive;
-    private readonly InputAction m_Controller_TeleportTotem;
-    private readonly InputAction m_Controller_ActivateTotem;
     public struct ControllerActions
     {
         private @PlayerInputs m_Wrapper;
         public ControllerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Controller_Movement;
         public InputAction @Attack => m_Wrapper.m_Controller_Attack;
-        public InputAction @TeleportRope => m_Wrapper.m_Controller_TeleportRope;
+        public InputAction @Jump => m_Wrapper.m_Controller_Jump;
         public InputAction @Pause => m_Wrapper.m_Controller_Pause;
         public InputAction @PickUp => m_Wrapper.m_Controller_PickUp;
         public InputAction @Drop => m_Wrapper.m_Controller_Drop;
         public InputAction @Revive => m_Wrapper.m_Controller_Revive;
-        public InputAction @TeleportTotem => m_Wrapper.m_Controller_TeleportTotem;
-        public InputAction @ActivateTotem => m_Wrapper.m_Controller_ActivateTotem;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -528,9 +482,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Attack.started += instance.OnAttack;
             @Attack.performed += instance.OnAttack;
             @Attack.canceled += instance.OnAttack;
-            @TeleportRope.started += instance.OnTeleportRope;
-            @TeleportRope.performed += instance.OnTeleportRope;
-            @TeleportRope.canceled += instance.OnTeleportRope;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
@@ -543,12 +497,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Revive.started += instance.OnRevive;
             @Revive.performed += instance.OnRevive;
             @Revive.canceled += instance.OnRevive;
-            @TeleportTotem.started += instance.OnTeleportTotem;
-            @TeleportTotem.performed += instance.OnTeleportTotem;
-            @TeleportTotem.canceled += instance.OnTeleportTotem;
-            @ActivateTotem.started += instance.OnActivateTotem;
-            @ActivateTotem.performed += instance.OnActivateTotem;
-            @ActivateTotem.canceled += instance.OnActivateTotem;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -559,9 +507,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Attack.started -= instance.OnAttack;
             @Attack.performed -= instance.OnAttack;
             @Attack.canceled -= instance.OnAttack;
-            @TeleportRope.started -= instance.OnTeleportRope;
-            @TeleportRope.performed -= instance.OnTeleportRope;
-            @TeleportRope.canceled -= instance.OnTeleportRope;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
@@ -574,12 +522,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Revive.started -= instance.OnRevive;
             @Revive.performed -= instance.OnRevive;
             @Revive.canceled -= instance.OnRevive;
-            @TeleportTotem.started -= instance.OnTeleportTotem;
-            @TeleportTotem.performed -= instance.OnTeleportTotem;
-            @TeleportTotem.canceled -= instance.OnTeleportTotem;
-            @ActivateTotem.started -= instance.OnActivateTotem;
-            @ActivateTotem.performed -= instance.OnActivateTotem;
-            @ActivateTotem.canceled -= instance.OnActivateTotem;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -710,13 +652,11 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
-        void OnTeleportRope(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnRevive(InputAction.CallbackContext context);
-        void OnTeleportTotem(InputAction.CallbackContext context);
-        void OnActivateTotem(InputAction.CallbackContext context);
     }
     public interface IMainMenuUIActions
     {

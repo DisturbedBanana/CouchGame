@@ -54,21 +54,7 @@ public class TotemTeleportable : MonoBehaviour
             }
         }
     }
-
-    public void OnTeleportTotem(InputAction.CallbackContext context)
-    {
-        Teleport();
-    }
-
-    public void OnActivateTotem(InputAction.CallbackContext context)
-    {
-        if (_canActivateTP)
-        {
-            _currentTotem.ActivateTotem();
-            _activatedTotemPos = _currentTotem.transform.position;
-        }
-    }
-
+    
     // private void OnTriggerEnter(Collider other)
     // {
     //     Totem totemEntered = other.GetComponent<Totem>();
