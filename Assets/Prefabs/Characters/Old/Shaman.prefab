@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3430391275756674896}
   - component: {fileID: 3387488637942970432}
   - component: {fileID: 7059401256271399539}
-  - component: {fileID: 1573081026687396816}
   m_Layer: 0
   m_Name: ShamanRange
   m_TagString: PlayerRange
@@ -107,23 +106,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1573081026687396816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406996875254450164}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 815a9b623f7a7224ca482bd918ec4df7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _objectsInRange: []
-  _isPickingUp: 0
-  _pickUpCooldown: 1
-  _closestDistance: {x: 1000, y: 1000, z: 1000}
-  _closestItemInRange: {fileID: 0}
 --- !u!1 &1420714683775766556
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,8 +399,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2776509099724186500}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalRotation: {x: 0.27781588, y: -0.36497167, z: 0.1150751, w: 0.8811196}
+  m_LocalPosition: {x: 17.252392, y: 10.351952, z: -23.361929}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -458,8 +440,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 10
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -663,6 +645,7 @@ GameObject:
   - component: {fileID: 4302260261991819125}
   - component: {fileID: 629484588285619969}
   - component: {fileID: 3243917698253310536}
+  - component: {fileID: 461754749020987346}
   m_Layer: 0
   m_Name: Shaman
   m_TagString: Player
@@ -756,7 +739,7 @@ MonoBehaviour:
     m_ActionName: Controller/Pause[/DualSenseGamepadHID/start]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1573081026687396816}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PickUp, Assembly-CSharp
         m_MethodName: OnPickUp
         m_Mode: 0
@@ -774,6 +757,34 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 193ad603-6482-4245-b3e5-477471f557cb
     m_ActionName: MainMenuUI/GoBack[/DualSenseGamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 367ae521-211a-4bc8-9cae-f31215f2d7d8
+    m_ActionName: Controller/Drop[/XInputControllerWindows/buttonWest,/DualSenseGamepadHID/buttonWest]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1406996875254450164}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e473b32d-93dd-4818-ac28-708806a38976
+    m_ActionName: Controller/Revive[/XInputControllerWindows/buttonEast,/DualSenseGamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b1c8ea3-a2e5-42e0-acb5-726a91574dc7
+    m_ActionName: Dead/Pause[/XInputControllerWindows/start,/DualSenseGamepadHID/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 32007b05-63b9-4ed5-ac64-3c9a77cb47d9
+    m_ActionName: Dead/Movement[/XInputControllerWindows/leftStick,/DualSenseGamepadHID/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controller
@@ -791,6 +802,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94dd3664c7fc7174688d6aaad02fbc8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerId: 3
+  _name: Hunter
+  _heat: 100
+  _moveSpeed: 5
+  _invSlots: 2
+  _hasBoots: 0
+  _hasCoat: 0
+  _hasBackpack: 0
+  _hasTool: 1
+  _isInSnow: 0
+  _isAlive: 1
 --- !u!33 &2421303034848125165
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -854,7 +876,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 0}
+  _playerInput: {fileID: 0}
   _cam: {fileID: 0}
+  _anim: {fileID: 0}
   _playerSpeed: 5
   _globalOffset: -45
   _turnSpeed: 360
@@ -863,6 +887,8 @@ MonoBehaviour:
   _moveVector: {x: 0, y: 0}
   _playerVelocity: {x: 0, y: 0, z: 0}
   _currentPlayerSpeed: 0
+  _canMove: 1
+  _canLook: 1
 --- !u!136 &4302260261991819125
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -934,6 +960,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &461754749020987346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663063969169959452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815a9b623f7a7224ca482bd918ec4df7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _closestItemInRange: {fileID: 0}
+  _anim: {fileID: 0}
+  _playerInventory: {fileID: 0}
+  _closestDistance: {x: 1000, y: 1000, z: 1000}
+  _pickUpCooldown: 0
+  _playerTransform: {fileID: 0}
+  _objectsInRange: []
+  _isPickingUp: 0
 --- !u!1 &4832192132535948909
 GameObject:
   m_ObjectHideFlags: 3
