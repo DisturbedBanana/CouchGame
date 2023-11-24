@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour
         }
 
         _playerGameObjectList.Add(_lumberjack);
+        _playerGameObjectList.Add(_scout);
         _playerGameObjectList.Add(_shaman);
         _playerGameObjectList.Add(_engineer);
-        _playerGameObjectList.Add(_scout);
     }
 
     private void Start()

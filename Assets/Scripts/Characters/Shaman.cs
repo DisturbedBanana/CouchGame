@@ -7,7 +7,7 @@ public class Shaman : Character
     public Shaman()
     {
         PlayerId = 3;
-        Name = "Hunter";
+        Name = "Shaman";
         Heat = 100f;
         MoveSpeed = 5f;
         InvSlots = 2;
