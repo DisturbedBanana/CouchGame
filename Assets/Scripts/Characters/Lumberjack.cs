@@ -10,7 +10,7 @@ public class Lumberjack : Character
         PlayerId = 1;
         Name = "Lumberjack";
         Heat = 100f;
-        MoveSpeed = 5f;
+        MoveSpeed = 7f;
         InvSlots = 3;
         HasBoots = false;
         HasCoat = false;

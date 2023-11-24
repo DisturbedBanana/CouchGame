@@ -148,6 +148,7 @@ namespace FFO.Inventory.Storage
                         _nbOfItems++;
                         Slots[i].DataItem.color = Color.clear;
                         OpenInventory();
+                        Debug.Log("added item");
                         return;
                     }
                 }
