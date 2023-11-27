@@ -54,6 +54,6 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SnowScale: 30
-    - _VertexOffset: 0.015
+    - _VertexOffset: 0
     m_Colors: []
   m_BuildTextureStacks: []
