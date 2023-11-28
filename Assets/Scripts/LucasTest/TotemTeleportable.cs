@@ -38,45 +38,45 @@ public class TotemTeleportable : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void OnTotemTeleport(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Teleport();
-        }
+        Debug.Log("pardern chie fort");
+        Teleport();
+    }
 
-        if (Input.GetKeyDown(KeyCode.V))
+    public void OnTotemActivate(InputAction.CallbackContext context)
+    {
+        Debug.Log("pardern chie");
+
+        if (_canActivateTP)
         {
-            if (_canActivateTP)
-            {
-                _currentTotem.ActivateTotem();
-                _activatedTotemPos = _currentTotem.transform.position;
-            }
+            _currentTotem.ActivateTotem();
+            _activatedTotemPos = _currentTotem.transform.position;
         }
     }
-    
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     Totem totemEntered = other.GetComponent<Totem>();
-    //
-    //     if (totemEntered == _currentTotem)
-    //     {
-    //         _canActivateTP = false;
-    //     }
-    //     else if (totemEntered != null)
-    //     {
-    //         _currentTotem = totemEntered;
-    //         _canActivateTP = true;
-    //     }
-    // }
-    //
-    // private void OnTriggerExit(Collider other)
-    // {
-    //     Totem totemExited = other.GetComponent<Totem>();
-    //
-    //     if (totemExited != null)
-    //     {
-    //         _canActivateTP = false;
-    //     }
-    // }
 }
+
+        // private void OnTriggerEnter(Collider other)
+        // {
+        //     Totem totemEntered = other.GetComponent<Totem>();
+        //
+        //     if (totemEntered == _currentTotem)
+        //     {
+        //         _canActivateTP = false;
+        //     }
+        //     else if (totemEntered != null)
+        //     {
+        //         _currentTotem = totemEntered;
+        //         _canActivateTP = true;
+        //     }
+        // }
+        //
+        // private void OnTriggerExit(Collider other)
+        // {
+        //     Totem totemExited = other.GetComponent<Totem>();
+        //
+        //     if (totemExited != null)
+        //     {
+        //         _canActivateTP = false;
+        //     }
+        // }

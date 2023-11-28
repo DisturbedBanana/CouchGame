@@ -45,7 +45,7 @@ public class HeatManager : MonoBehaviour
     {
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
         {
-            if (!player.GetComponent<Character>().IsInSnow && player.GetComponent<Character>().Heat != 100)
+            if (!player.GetComponent<Character>().IsInSnow && player.GetComponent<Character>().Heat <= 100.0f)
             {
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
