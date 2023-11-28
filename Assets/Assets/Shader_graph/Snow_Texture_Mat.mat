@@ -50,16 +50,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BuildupNoiseSize: 50
+    - _BuildupNoiseSize: 58.31
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
     - _DrawOrder: 0
     - _Float: 0
+    - _GrassDentity: 100
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SnowAmount: 0.704
-    - _SnowArea: 1
+    - _Smoothness: 0.4
+    - _SnowAmount: 1
+    - _SnowArea: 0.5
     - _SnowBlendDistance: 0.05
     - _SnowDensity: 2.09
     - _SnowDirection: 0.5
