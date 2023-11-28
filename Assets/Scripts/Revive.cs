@@ -108,6 +108,7 @@ public class Revive : MonoBehaviour
         GameManager.instance._playerGameObjectList[playerIdTarget - 1].GetComponent<Character>().IsAlive = true;
         GameManager.instance._playerGameObjectList[playerIdTarget - 1].GetComponent<Transform>().transform.position = new Vector3(2f, 1f, 2f);
         GameManager.instance._playerGameObjectList[playerIdTarget - 1].GetComponent<Character>().Heat = 100f;
+        GameManager.instance._playerGameObjectList[playerIdTarget - 1].GetComponent<Character>().MoveSpeed = 7f;
 
         Destroy(tombstone);
         _playerMovement.CanMove = true;

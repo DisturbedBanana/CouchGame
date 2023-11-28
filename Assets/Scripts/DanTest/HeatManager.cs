@@ -1,8 +1,10 @@
 using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
 public class HeatManager : MonoBehaviour
@@ -28,6 +30,8 @@ public class HeatManager : MonoBehaviour
     public Material _shamanMat;
     public Material _engineerMat;
     public Material _deadMat;
+
+    [SerializeField] private Material[] _lumberjackDeadMats;
 
     private void Awake()
     {
@@ -135,7 +139,13 @@ public class HeatManager : MonoBehaviour
         GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().SwitchActionMap("Dead");
 
         //Changes the to the dead transparent material of the player
-        GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = _deadMat;
+        //GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = _deadMat;
+
+        Debug.Log(GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials.Count());
+
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials = _lumberjackDeadMats;
+
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<Character>().MoveSpeed = 1f;
     }
 
     private void OnTriggerExit(Collider other)
