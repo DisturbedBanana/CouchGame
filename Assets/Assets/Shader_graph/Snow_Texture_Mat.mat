@@ -58,11 +58,12 @@ Material:
     - _Float: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SnowAmount: 0.709
-    - _SnowArea: 0.5
-    - _SnowBlendDistance: 0.325
+    - _SnowAmount: 0.704
+    - _SnowArea: 1
+    - _SnowBlendDistance: 0.05
+    - _SnowDensity: 2.09
     - _SnowDirection: 0.5
-    - _SnowHeight: 1.9
+    - _SnowHeight: 1
     - _SnowScale: 136.6
     m_Colors:
     - _SnowDirection: {r: 0, g: 1, b: 0, a: 0}
