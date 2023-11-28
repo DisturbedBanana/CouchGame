@@ -53,11 +53,11 @@ Material:
     - _DrawOrder: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _SnowAmount: 0.67
+    - _SnowAmount: 0.709
     - _SnowArea: 0.5
-    - _SnowBlendDistance: 0.124
+    - _SnowBlendDistance: 0.325
     - _SnowDirection: 0.5
-    - _SnowHeight: 0
+    - _SnowHeight: 1.9
     - _SnowScale: 136.6
     m_Colors:
     - _SnowDirection: {r: 0, g: 1, b: 0, a: 0}
