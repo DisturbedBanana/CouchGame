@@ -52,6 +52,7 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Smoothness: 1
     - _WaveAmount: 200
     - _WaveHeight: 0.9
     - _WaveTime: 0
