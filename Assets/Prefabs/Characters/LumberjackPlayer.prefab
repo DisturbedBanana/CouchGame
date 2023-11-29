@@ -1160,6 +1160,11 @@ PrefabInstance:
       propertyPath: _nbInvSlot
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
+        type: 3}
+      propertyPath: _playerInventory
+      value: 
+      objectReference: {fileID: 8635185088252787416}
     - target: {fileID: 6993224297040168963, guid: 08570469ae19a8d4c839678dcec6a994,
         type: 3}
       propertyPath: m_Pivot.x

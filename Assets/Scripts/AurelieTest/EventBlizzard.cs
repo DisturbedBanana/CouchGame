@@ -16,7 +16,7 @@ public class EventBlizzard : Event
     {
         _shrinkSpeedBase = FindObjectOfType<ExpandingFlame>().ShrinkSpeed;
         FindObjectOfType<ExpandingFlame>().ShrinkSpeed /= 2;
-        // + visibilité réduite dans la cold zone
+        // + visibilitÃ© rÃ©duite dans la cold zone
     }
 
     public override void EventEnd()

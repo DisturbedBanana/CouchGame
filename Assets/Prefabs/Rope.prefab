@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8378867876682588011}
   - component: {fileID: 8090305953841695472}
   - component: {fileID: 6865623187291597037}
-  - component: {fileID: 892520006811100289}
+  - component: {fileID: 6274740413209060686}
   m_Layer: 0
   m_Name: Down
   m_TagString: Untagged
@@ -139,7 +139,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &892520006811100289
+--- !u!114 &6274740413209060686
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -148,10 +148,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7613858500935574543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9e6827e1ba800543835d856c106c1a7, type: 3}
+  m_Script: {fileID: 11500000, guid: b632f5fc64f08df499f4b55832cfda9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bottomRope: {fileID: 5443735536397674488}
+  _targetRope: {fileID: 6205787563286244069}
 --- !u!1 &8631137116153252906
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,4 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e6827e1ba800543835d856c106c1a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bottomRope: {fileID: 6593058809761409030}
+  _targetRope: {fileID: 0}
+  _itemNeededID: 
+  _itemNeededAmount: 0

@@ -21,6 +21,7 @@ namespace FFO.Inventory.Storage
         [SerializeField] private GameObject _prefabSlot;
         [SerializeField] private Camera _cam;
         [SerializeField] private GameObject _player;
+        [SerializeField] private PlayerInventory _playerInventory;
         [SerializeField] private bool _followPlayer = false;
         
         [Header("GD PEUT TOUCHER")]

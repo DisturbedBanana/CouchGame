@@ -11,7 +11,7 @@ public class RopeTeleportable : MonoBehaviour
     //Corde posable par Ingenieur idéalement sinon par tout le monde si sur le rocher du haut
     
     private bool _canActivateRope = false;
-    private RopeUp _currentRope = null;
+    private Rope _currentRope = null;
 
     public bool CanActivateRope
     {
@@ -19,7 +19,7 @@ public class RopeTeleportable : MonoBehaviour
         set { _canActivateRope = value; }
     }
 
-    public RopeUp CurrentRope
+    public Rope CurrentRope
     {
         get { return _currentRope; }
         set { _currentRope = value; }
@@ -32,6 +32,7 @@ public class RopeTeleportable : MonoBehaviour
             if (_currentRope != null)
             {
                 _currentRope.ActivateRope();
+                Debug.Log("activating");
             }
         }
     }
