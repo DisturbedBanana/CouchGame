@@ -9,10 +9,10 @@ public class GameManager : MonoBehaviour
 {
     [Header("References")]
     public static GameManager instance;
+    public static bool _gamePaused = false;
 
     [Space]
     [Header("Variables")]
-    [SerializeField] private bool _isGamePaused = false;
 
     [SerializeField] private GameObject _lumberjack;
     [SerializeField] private GameObject _shaman;
@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour
         }
 
         _playerGameObjectList.Add(_lumberjack);
+        _playerGameObjectList.Add(_scout);
         _playerGameObjectList.Add(_shaman);
         _playerGameObjectList.Add(_engineer);
-        _playerGameObjectList.Add(_scout);
     }
 
     private void Start()
@@ -60,14 +60,14 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
-        _isGamePaused = !_isGamePaused;
+        _gamePaused = !_gamePaused;
 
-        if (_isGamePaused)
+        if (_gamePaused)
         {
             Time.timeScale = 0f;
             Debug.Log("Game paused");
         }
-        else if (!_isGamePaused)
+        else if (!_gamePaused)
         {
             Time.timeScale = 1f;
             Debug.Log("Game unpaused");

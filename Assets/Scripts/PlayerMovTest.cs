@@ -1,4 +1,5 @@
 using Microsoft.Win32.SafeHandles;
+using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,15 +11,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovTest : MonoBehaviour
 {
+    public static PlayerMovTest instance;
+
     [Header("Refenrences")]
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private PlayerInputs _playerInputs;
+    [SerializeField] private PlayerInput _playerInput;
     [SerializeField] private GameObject _cam;
     [SerializeField] private Animator _anim;
 
     [Space]
     [Header("Variables")]
-    [SerializeField] private float _playerSpeed = 5f;
+    [SerializeField] private float _playerSpeed = 7f;
     [SerializeField] private float _globalOffset = -45f;
     [SerializeField] private float _turnSpeed = 360f;
     [SerializeField] private Vector3 _move;
@@ -32,7 +36,6 @@ public class PlayerMovTest : MonoBehaviour
     [SerializeField] private bool _canMove = true;
     [SerializeField] private bool _canLook = true;
 
-    public float PlayerSpeed { get { return _playerSpeed; } set { _playerSpeed = value; } }
     public bool CanMove { get { return _canMove; } set { _canMove = value; } }
     public bool CanLook { get { return _canLook; } set { _canLook = value; } }
 
@@ -40,6 +43,7 @@ public class PlayerMovTest : MonoBehaviour
     {
         _rb = this.GetComponent<Rigidbody>();
         _playerInputs = new PlayerInputs();
+        _playerInput = GetComponent<PlayerInput>();
         _anim = GetComponent<Animator>();
 
         //_cam = GameObject.FindGameObjectWithTag("MainCamera");
@@ -58,6 +62,11 @@ public class PlayerMovTest : MonoBehaviour
     private void OnDisable()
     {
         _playerInputs.Controller.Disable();
+    }
+
+    public void SwitchActionMap(string actionMap)
+    {
+        _playerInput.SwitchCurrentActionMap(actionMap);
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -83,7 +92,7 @@ public class PlayerMovTest : MonoBehaviour
     {
         if (_movementVector != Vector2.zero)
         {
-            _move = new Vector3(_movementVector.x, 0f, _movementVector.y) * Time.deltaTime * _playerSpeed;
+            _move = new Vector3(_movementVector.x, 0f, _movementVector.y) * Time.deltaTime * GetComponent<Character>().MoveSpeed;
 
             var matrix = Matrix4x4.Rotate(Quaternion.Euler(0f, _globalOffset, 0f));
 
