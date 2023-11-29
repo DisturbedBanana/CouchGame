@@ -101,7 +101,6 @@ public class HeatManager : MonoBehaviour
 
             if (player.GetComponent<Character>().Heat == 0 && player.GetComponent<Character>().IsAlive)
             {
-                Debug.Log("A player is dead");
                 _playerDeathPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
@@ -140,8 +139,6 @@ public class HeatManager : MonoBehaviour
 
         //Changes the to the dead transparent material of the player
         //GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = _deadMat;
-
-        Debug.Log(GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials.Count());
 
         GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials = _lumberjackDeadMats;
 
