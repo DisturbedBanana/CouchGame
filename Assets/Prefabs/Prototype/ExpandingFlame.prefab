@@ -112,6 +112,9 @@ MonoBehaviour:
   _shamanMat: {fileID: 0}
   _engineerMat: {fileID: 0}
   _deadMat: {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
+  _lumberjackDeadMats:
+  - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
+  - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
 --- !u!135 &2353555491149913391
 SphereCollider:
   m_ObjectHideFlags: 0

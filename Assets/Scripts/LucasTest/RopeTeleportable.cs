@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Vector3 = System.Numerics.Vector3;
+using UnityEngine.InputSystem;
 
 public class RopeTeleportable : MonoBehaviour
 {
@@ -25,14 +25,11 @@ public class RopeTeleportable : MonoBehaviour
         set { _currentRope = value; }
     }
 
-    private void Update()
+    public void OnRopeActivate(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (_currentRope != null)
         {
-            if (_currentRope != null)
-            {
-                _currentRope.ActivateRope();
-            }
+            _currentRope.ActivateRope();
         }
     }
 }
