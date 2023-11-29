@@ -126,10 +126,10 @@ public class ToolInteraction : MonoBehaviour
     IEnumerator CuttingAnim()
     {
         GameObject objToDestroy = _treesObjectsInRange[0];
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(2f);
 
         _treeAnim.SetTrigger("isCut");
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(2.5f);
 
         _playerMovement.CanMove = true;
         _canUseAxe = true;
