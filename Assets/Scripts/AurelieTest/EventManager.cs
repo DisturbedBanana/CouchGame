@@ -35,6 +35,7 @@ public class EventManager : MonoBehaviour
             if (_currentEvent == null)
                 StartCoroutine(StartEventRoutine());
 
+            yield return new WaitForSeconds(10f);
             yield return new WaitForSeconds(_duration);
 
             if (_currentEvent != null)
