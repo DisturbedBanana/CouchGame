@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ice:
-        m_Texture: {fileID: 2800000, guid: 0ba077a761fa17a4b93e11a5a3a10f28, type: 3}
+        m_Texture: {fileID: 2800000, guid: bd183868f31c5cd46bec7c72d1528394, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _METALNESS_MAP:
@@ -143,7 +143,7 @@ Material:
     - _SPECULAR_IOR: 1.5
     - _SPECULAR_ROUGHNESS: 0
     - _SampleGI: 0
-    - _Sides: 10
+    - _Sides: 15
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -152,6 +152,8 @@ Material:
     - _Surface: 1
     - _WorkflowMode: 0
     - _ZWrite: 0
+    - _isActive: 1
+    - _isBlizzardActive: 0
     m_Colors:
     - _BASE_COLOR: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}

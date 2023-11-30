@@ -94,11 +94,15 @@ public class EventManager : MonoBehaviour
             string eventName = _currentEvent.GetComponent<Event>().Name;
             Debug.Log($"{eventName} started. Duration: {_duration}");
             _currentEvent = Instantiate(_currentEvent, transform.position, Quaternion.identity);
+            if (_currentEvent = _events[0])
+                Shader.SetGlobalFloat("isBlizzardActive", 1);
         }
     }
 
     private void EndEvent()
     {
+        if (_currentEvent = _events[0])
+            Shader.SetGlobalFloat("isBlizzardActive", 0);
         string eventName = _currentEvent.GetComponent<Event>().Name;
         Debug.Log($"{eventName} ended.");
         _currentEvent.GetComponent<Event>().EventEnd();
