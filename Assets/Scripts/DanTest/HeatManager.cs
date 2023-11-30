@@ -19,8 +19,6 @@ public class HeatManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> _tombstones = new List<GameObject>();
 
-    SkinnedMeshRenderer _playerRenderer;
-
     public static HeatManager instance;
 
     [Space]
@@ -101,26 +99,25 @@ public class HeatManager : MonoBehaviour
 
             if (player.GetComponent<Character>().Heat == 0 && player.GetComponent<Character>().IsAlive)
             {
-                Debug.Log("A player is dead");
                 _playerDeathPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
                     case 1:
                         player.GetComponent<Character>().IsAlive = false;
-                        PlaceTombstone(1, _playerDeathPosition);
+                        StartCoroutine(PlaceTombstone(1, _playerDeathPosition));
                         break;
                     case 2:
                         player.GetComponent<Character>().IsAlive = false;
-                        PlaceTombstone(2, _playerDeathPosition);
+                        StartCoroutine(PlaceTombstone(2, _playerDeathPosition));
                         break;
                     case 3:
                         player.GetComponent<Character>().IsAlive = false;
-                        PlaceTombstone(3, _playerDeathPosition);
+                        StartCoroutine(PlaceTombstone(3, _playerDeathPosition));
                         break;
                     case 4:
                         player.GetComponent<Character>().IsAlive = false;
-                        PlaceTombstone(4, _playerDeathPosition);
+                        StartCoroutine(PlaceTombstone(4, _playerDeathPosition));
                         break;
                     default:
                         break;
@@ -129,8 +126,18 @@ public class HeatManager : MonoBehaviour
         }
     }
 
-    private void PlaceTombstone(int playerId, Vector3 tombstonePosition)
+    private void DeathAnimation(int playerId)
     {
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().CanMove = false;
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<Animator>().SetTrigger("isDead");
+    }
+
+    private IEnumerator PlaceTombstone(int playerId, Vector3 tombstonePosition)
+    {
+        DeathAnimation(playerId);
+
+        yield return new WaitForSecondsRealtime(5f);
+
         //Instantiates the player's tombstone where he died
         Instantiate(_tombstones[playerId - 1], tombstonePosition, Quaternion.AngleAxis(45f, Vector3.up));
         Debug.Log("A tombstone was placed for the " + GameManager.instance._playerGameObjectList[playerId - 1]);
@@ -141,10 +148,9 @@ public class HeatManager : MonoBehaviour
         //Changes the to the dead transparent material of the player
         //GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = _deadMat;
 
-        Debug.Log(GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials.Count());
-
         GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials = _lumberjackDeadMats;
 
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().CanMove = true;
         GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<Character>().MoveSpeed = 1f;
     }
 

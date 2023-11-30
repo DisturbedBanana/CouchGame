@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_006|Sh_Walk
+  m_Name: ShamanWalk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -108,7 +108,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_006|Sh_PickUp
+  m_Name: ShamanPickUp
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -485,7 +485,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_006|Sh_Invoke
+  m_Name: ShamanInvoke
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -513,7 +513,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_006|Sh_Run
+  m_Name: ShamanRun
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -542,7 +542,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_006|Sh_Chop
+  m_Name: ShamanChop
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:

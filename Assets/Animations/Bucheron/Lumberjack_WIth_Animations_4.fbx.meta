@@ -62,7 +62,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Cutting
+      name: LumberjackChop
       takeName: Armature|Cutting
       internalID: -6692176124992187336
       firstFrame: 0
@@ -91,7 +91,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Idle
+      name: LumberjackIdle
       takeName: Armature|Idle
       internalID: -8945691123924629249
       firstFrame: 0
@@ -120,7 +120,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|PickUp
+      name: LumberjackPickUp
       takeName: Armature|PickUp
       internalID: 3515170952244877179
       firstFrame: 0
@@ -149,7 +149,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Run
+      name: LumberjackRun
       takeName: Armature|Run
       internalID: -7551964380084998518
       firstFrame: 0
@@ -178,7 +178,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Walk
+      name: LumberjackWalk
       takeName: Armature|Walk
       internalID: 8349542763059015795
       firstFrame: 0
