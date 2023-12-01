@@ -163,17 +163,18 @@ namespace FFO.Inventory.Storage
 
         public void OnDrop()
         {
-            if (!_isOpened)
+            if (_selectedSlot.DataItem != null)
             {
-                OpenInventory();
-            }
-            else
-            {
-                _elapsedTime = 0;
-                if (_selectedSlot.DataItem != null)
+                if (!_isOpened)
                 {
-                    _selectedSlot.OnRemove();
+                    OpenInventory();
                 }
+                else
+                {
+                    _elapsedTime = 0;
+                }
+
+                _selectedSlot.OnRemove();
             }
         }
 

@@ -10,7 +10,7 @@ public class ToolInteraction : MonoBehaviour
     [SerializeField] private GameObject _closestTreeInRange;
     Animator _treeAnim;
     Animator _playerAnim;
-    private bool _canUseAxe = true;
+    [SerializeField] private bool _canUseAxe = true;
     private PlayerMovTest _playerMovement;
     [SerializeField] private Transform _playerTransform;
     private bool _rotationFinished = true;
@@ -78,8 +78,11 @@ public class ToolInteraction : MonoBehaviour
             return;
         }
 
+        Debug.Log("entered chop");
+
         if (_treesObjectsInRange.Count != 0 && _canUseAxe && !GameManager._gamePaused)
         {
+            Debug.Log("chopping");
             _playerMovement.CanMove = false;
             _canUseAxe = false;
 

@@ -1414,6 +1414,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6915996824656722697}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9a9f5efd3ea83874ba0cb100525873a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1276135767990486181}
   m_SourcePrefab: {fileID: 100100000, guid: 9a9f5efd3ea83874ba0cb100525873a3, type: 3}
 --- !u!1 &6042570312492734161 stripped
 GameObject:
@@ -1570,6 +1574,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e473b32d-93dd-4818-ac28-708806a38976
     m_ActionName: Controller/Revive[/XInputControllerWindows/buttonEast,/DualSenseGamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 10274c8b-b7e8-4b9e-8c6e-89ee642ccb6d
+    m_ActionName: Controller/TotemTeleport[/DualSenseGamepadHID1/dpad/up,/DualSenseGamepadHID/dpad/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b15c06c5-fa68-4967-860e-053edbc77294
+    m_ActionName: Controller/TotemActivate[/DualSenseGamepadHID1/dpad/down,/DualSenseGamepadHID/dpad/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d2b22184-2dcb-49db-8323-f549fc64e05f
+    m_ActionName: Controller/RopeActivate[/DualSenseGamepadHID1/dpad/left,/DualSenseGamepadHID/dpad/left]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controller
@@ -1691,6 +1707,18 @@ MonoBehaviour:
   _playerTransform: {fileID: 0}
   _objectsInRange: []
   _isPickingUp: 0
+--- !u!114 &1276135767990486181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042570312492734161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517e130f4d2b1ac4d82c487fc2b2d4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6381694146389937259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9a9f5efd3ea83874ba0cb100525873a3,
