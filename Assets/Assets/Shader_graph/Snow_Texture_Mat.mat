@@ -59,10 +59,10 @@ Material:
     - _GrassDentity: 100
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.4
+    - _Smoothness: 0.526
     - _SnowAmount: 1
     - _SnowArea: 0.5
-    - _SnowBlendDistance: 0.05
+    - _SnowBlendDistance: 0.011
     - _SnowDensity: 2.09
     - _SnowDirection: 0.5
     - _SnowHeight: 1
