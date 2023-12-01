@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using Vector3 = System.Numerics.Vector3;
 
 public class RopeTeleportable : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class RopeTeleportable : MonoBehaviour
     //Corde posable par Ingenieur idéalement sinon par tout le monde si sur le rocher du haut
     
     private bool _canActivateRope = false;
-    private RopeUp _currentRope = null;
+    private Rope _currentRope = null;
 
     public bool CanActivateRope
     {
@@ -19,17 +19,21 @@ public class RopeTeleportable : MonoBehaviour
         set { _canActivateRope = value; }
     }
 
-    public RopeUp CurrentRope
+    public Rope CurrentRope
     {
         get { return _currentRope; }
         set { _currentRope = value; }
     }
 
-    public void OnRopeActivate(InputAction.CallbackContext context)
+    private void Update()
     {
-        if (_currentRope != null)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            _currentRope.ActivateRope();
+            if (_currentRope != null)
+            {
+                _currentRope.ActivateRope();
+                Debug.Log("activating");
+            }
         }
     }
 }
