@@ -9,17 +9,41 @@ using UnityEngine.UI;
 
 public class HeatManager : MonoBehaviour
 {
+    public static HeatManager instance;
+
+    [Space]
+    [Header("Heat Sliders")]
     [SerializeField] private Slider _lumberjackHeatSlider;
     [SerializeField] private Slider _scoutHeatSlider;
     [SerializeField] private Slider _shamanjackHeatSlider;
     [SerializeField] private Slider _engineerjackHeatSlider;
 
-    [SerializeField] private float _heatMultiplier;
+    [Space]
+    [Header("Tombstones variables")]
+    [SerializeField] private List<GameObject> _tombstones = new List<GameObject>();
     private Vector3 _playerDeathPosition;
 
-    [SerializeField] private List<GameObject> _tombstones = new List<GameObject>();
+    [Space]
+    [Header("Heat Decrease variables")]
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _lumberjackDecreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _scoutDecreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _shamanDecreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _engineerDecreaser;
 
-    public static HeatManager instance;
+    [Space]
+    [Header("Heat Increase variables")]
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _lumberjackIncreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _scoutIncreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _shamanIncreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _engineerIncreaser;
 
     [Space]
     [Header("Player Materials")]
@@ -52,19 +76,19 @@ public class HeatManager : MonoBehaviour
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
                     case 1:
-                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        player.gameObject.GetComponent<Character>().Heat += _lumberjackIncreaser;
                         _lumberjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 2:
-                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        player.gameObject.GetComponent<Character>().Heat += _scoutIncreaser;
                         _scoutHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 3:
-                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        player.gameObject.GetComponent<Character>().Heat += _shamanIncreaser;
                         _shamanjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 4:
-                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        player.gameObject.GetComponent<Character>().Heat += _engineerIncreaser;
                         _engineerjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     default:
@@ -77,19 +101,19 @@ public class HeatManager : MonoBehaviour
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
                     case 1:
-                        player.gameObject.GetComponent<Character>().Heat -= 0.25f;
+                        player.gameObject.GetComponent<Character>().Heat -= _lumberjackDecreaser;
                         _lumberjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 2:
-                        player.gameObject.GetComponent<Character>().Heat -= 1f;
+                        player.gameObject.GetComponent<Character>().Heat -= _scoutDecreaser;
                         _scoutHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 3:
-                        player.gameObject.GetComponent<Character>().Heat -= 0.25f;
+                        player.gameObject.GetComponent<Character>().Heat -= _shamanDecreaser;
                         _shamanjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 4:
-                        player.gameObject.GetComponent<Character>().Heat -= 0.25f;
+                        player.gameObject.GetComponent<Character>().Heat -= _engineerDecreaser;
                         _engineerjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     default:
