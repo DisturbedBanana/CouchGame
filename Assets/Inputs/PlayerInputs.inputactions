@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RopeActivate",
+                    "name": "Rope",
                     "type": "Button",
                     "id": "d2b22184-2dcb-49db-8323-f549fc64e05f",
                     "expectedControlType": "Button",
@@ -258,7 +258,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RopeActivate",
+                    "action": "Rope",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -109,7 +109,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RopeActivate"",
+                    ""name"": ""Rope"",
                     ""type"": ""Button"",
                     ""id"": ""d2b22184-2dcb-49db-8323-f549fc64e05f"",
                     ""expectedControlType"": ""Button"",
@@ -280,7 +280,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RopeActivate"",
+                    ""action"": ""Rope"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -443,7 +443,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Controller_Revive = m_Controller.FindAction("Revive", throwIfNotFound: true);
         m_Controller_TotemTeleport = m_Controller.FindAction("TotemTeleport", throwIfNotFound: true);
         m_Controller_TotemActivate = m_Controller.FindAction("TotemActivate", throwIfNotFound: true);
-        m_Controller_RopeActivate = m_Controller.FindAction("RopeActivate", throwIfNotFound: true);
+        m_Controller_Rope = m_Controller.FindAction("Rope", throwIfNotFound: true);
         // MainMenuUI
         m_MainMenuUI = asset.FindActionMap("MainMenuUI", throwIfNotFound: true);
         m_MainMenuUI_GoBack = m_MainMenuUI.FindAction("GoBack", throwIfNotFound: true);
@@ -521,7 +521,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_Revive;
     private readonly InputAction m_Controller_TotemTeleport;
     private readonly InputAction m_Controller_TotemActivate;
-    private readonly InputAction m_Controller_RopeActivate;
+    private readonly InputAction m_Controller_Rope;
     public struct ControllerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -535,7 +535,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Revive => m_Wrapper.m_Controller_Revive;
         public InputAction @TotemTeleport => m_Wrapper.m_Controller_TotemTeleport;
         public InputAction @TotemActivate => m_Wrapper.m_Controller_TotemActivate;
-        public InputAction @RopeActivate => m_Wrapper.m_Controller_RopeActivate;
+        public InputAction @Rope => m_Wrapper.m_Controller_Rope;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -572,9 +572,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @TotemActivate.started += instance.OnTotemActivate;
             @TotemActivate.performed += instance.OnTotemActivate;
             @TotemActivate.canceled += instance.OnTotemActivate;
-            @RopeActivate.started += instance.OnRopeActivate;
-            @RopeActivate.performed += instance.OnRopeActivate;
-            @RopeActivate.canceled += instance.OnRopeActivate;
+            @Rope.started += instance.OnRope;
+            @Rope.performed += instance.OnRope;
+            @Rope.canceled += instance.OnRope;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -606,9 +606,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @TotemActivate.started -= instance.OnTotemActivate;
             @TotemActivate.performed -= instance.OnTotemActivate;
             @TotemActivate.canceled -= instance.OnTotemActivate;
-            @RopeActivate.started -= instance.OnRopeActivate;
-            @RopeActivate.performed -= instance.OnRopeActivate;
-            @RopeActivate.canceled -= instance.OnRopeActivate;
+            @Rope.started -= instance.OnRope;
+            @Rope.performed -= instance.OnRope;
+            @Rope.canceled -= instance.OnRope;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -746,7 +746,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnRevive(InputAction.CallbackContext context);
         void OnTotemTeleport(InputAction.CallbackContext context);
         void OnTotemActivate(InputAction.CallbackContext context);
-        void OnRopeActivate(InputAction.CallbackContext context);
+        void OnRope(InputAction.CallbackContext context);
     }
     public interface IMainMenuUIActions
     {

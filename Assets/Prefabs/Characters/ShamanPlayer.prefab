@@ -421,6 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _treesObjectsInRange: []
   _closestTreeInRange: {fileID: 0}
+  _canUseAxe: 1
   _playerTransform: {fileID: 21636029848275648}
   _time: 0
   _playerClass: {fileID: 0}
@@ -1490,7 +1491,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5599203243995552182}
         m_TargetAssemblyTypeName: RopeTeleportable, Assembly-CSharp
-        m_MethodName: OnRopeActivate
+        m_MethodName: OnRope
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

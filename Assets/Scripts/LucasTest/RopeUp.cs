@@ -19,7 +19,7 @@ public class RopeUp : Rope
         {
             if (CurrentPlayer.GetComponentInChildren<PlayerInventory>().DoesPlayerHaveTheGoods(_itemNeededID,_itemNeededAmount))
             {
-                base.ActivateRope();
+                
                 return;
             }
             else
@@ -27,6 +27,7 @@ public class RopeUp : Rope
                 if (CurrentPlayer.GetComponent<Character>().PlayerId == 2)
                 {
                     CurrentPlayer.transform.position = TargetRope.transform.position;
+                    base.ActivateRope();
                 }
             }
             

@@ -328,6 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _treesObjectsInRange: []
   _closestTreeInRange: {fileID: 0}
+  _canUseAxe: 1
   _playerTransform: {fileID: 6381694146389937259}
   _time: 0
   _playerClass: {fileID: 0}
@@ -1588,7 +1589,19 @@ MonoBehaviour:
     m_ActionId: b15c06c5-fa68-4967-860e-053edbc77294
     m_ActionName: Controller/TotemActivate[/DualSenseGamepadHID1/dpad/down,/DualSenseGamepadHID/dpad/down]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1276135767990486181}
+        m_TargetAssemblyTypeName: RopeTeleportable, Assembly-CSharp
+        m_MethodName: OnRope
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d2b22184-2dcb-49db-8323-f549fc64e05f
     m_ActionName: Controller/RopeActivate[/DualSenseGamepadHID1/dpad/left,/DualSenseGamepadHID/dpad/left]
   m_NeverAutoSwitchControlSchemes: 0
