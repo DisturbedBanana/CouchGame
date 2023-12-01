@@ -7,7 +7,6 @@ public class EventManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] _events;
 
-    [Space]
     [Header("Event Settings")]
     [Range(1f, 600f)]
     [SerializeField] private float _minInterval;
@@ -19,7 +18,12 @@ public class EventManager : MonoBehaviour
     [SerializeField] private float _maxDuration;
 
     private GameObject _currentEvent;
+    private int _idEvent;
     private float _duration;
+
+    [Header("UI Setup")]
+    [SerializeField] private GameObject _BlizzardIcon;
+    [SerializeField] private GameObject _ClearSkyIcon;
 
     private void Start()
     {
@@ -50,7 +54,8 @@ public class EventManager : MonoBehaviour
 
     private GameObject RandomEvent()
     {
-        return _events[Random.Range(0, _events.Length)];
+        _idEvent = Random.Range(0, _events.Length);
+        return _events[_idEvent];
     }
     
     private float RandomDuration()
@@ -74,9 +79,11 @@ public class EventManager : MonoBehaviour
                 break;
             case 1:
                 _currentEvent = _events[0];
+                _idEvent = 0;
                 break;
             case 2:
                 _currentEvent = _events[1];
+                _idEvent = 1;
                 break;
             default:
                 _currentEvent = RandomEvent();
@@ -94,15 +101,25 @@ public class EventManager : MonoBehaviour
             string eventName = _currentEvent.GetComponent<Event>().Name;
             Debug.Log($"{eventName} started. Duration: {_duration}");
             _currentEvent = Instantiate(_currentEvent, transform.position, Quaternion.identity);
-            if (_currentEvent = _events[0])
+            if (_idEvent == 0)
+            {
+                _BlizzardIcon.SetActive(true);
                 Shader.SetGlobalFloat("isBlizzardActive", 1);
+            }
+            if (_idEvent == 1)
+                _ClearSkyIcon.SetActive(true);
         }
     }
 
     private void EndEvent()
     {
-        if (_currentEvent = _events[0])
+        if (_idEvent == 0)
+        {
+            _BlizzardIcon.SetActive(false);
             Shader.SetGlobalFloat("isBlizzardActive", 0);
+        }
+        if (_idEvent == 1)
+            _ClearSkyIcon.SetActive(false);
         string eventName = _currentEvent.GetComponent<Event>().Name;
         Debug.Log($"{eventName} ended.");
         _currentEvent.GetComponent<Event>().EventEnd();
