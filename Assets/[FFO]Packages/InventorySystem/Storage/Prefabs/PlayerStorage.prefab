@@ -132,7 +132,7 @@ MonoBehaviour:
     value: 1
     quantityMax: 99
   _parentSlot: {fileID: 7251666929604498453}
-  _prefabSlot: {fileID: 2007893001615575706, guid: 63fda6c1f6c1b5f41b6cb418e956274f,
+  _prefabSlot: {fileID: 4808184337620840083, guid: a64baaede3adbde439ad3c0547ebbf47,
     type: 3}
   _cam: {fileID: 0}
   _player: {fileID: 0}
@@ -147,7 +147,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7251666929604498453}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

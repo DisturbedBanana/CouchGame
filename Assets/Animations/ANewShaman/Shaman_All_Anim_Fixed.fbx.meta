@@ -62,7 +62,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.006|Sh_Death
+      name: ShamanDeath
       takeName: Armature.006|Sh_Death
       internalID: -5303960681242932974
       firstFrame: 0
