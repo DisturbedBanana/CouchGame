@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1360ec9eb5e2454fab4a3ab91124de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _blizzardMaterial: {fileID: 2100000, guid: cecd339f634088e48b8899b9aea74f34, type: 2}
