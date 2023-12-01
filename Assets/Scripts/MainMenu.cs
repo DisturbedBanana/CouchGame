@@ -30,6 +30,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private PlayerInputs _playerInputs;
     [SerializeField] private string _menuState;
 
+    [Space]
+    [Header("Time variables")]
+    [SerializeField] private float _optionsInTravellingTime;
+    [SerializeField] private float _optionsOutTravellingTime;
+    [SerializeField] private float _playerSelectInTravellingTime;
+    [SerializeField] private float _playerSelectOutTravellingTime;
+
     private Coroutine _currentCoroutine;
 
     private void Awake()
@@ -99,7 +106,7 @@ public class MainMenu : MonoBehaviour
     {
         _mainMenuCanvas.SetActive(false);
         _anim.SetTrigger("GoToOptionsMenu");
-        yield return new WaitForSecondsRealtime(1.2f);
+        yield return new WaitForSecondsRealtime(_optionsInTravellingTime);
         _menuState = "OptionsMenu";
         _optionsMenuCanvas.SetActive(true);
         _eventSys.SetSelectedGameObject(_optionsMenuFirstSelectedButton);
@@ -115,12 +122,12 @@ public class MainMenu : MonoBehaviour
         if (_menuState == "OptionsMenu")
         {
             _anim.SetTrigger("GoToMainMenuFromOptions");
-            yield return new WaitForSecondsRealtime(1.2f);
+            yield return new WaitForSecondsRealtime(_optionsOutTravellingTime);
         }
         else if (_menuState == "PlayerSelectionMenu")
         {
             _anim.SetTrigger("GoToMainMenuFromPlayerSelection");
-            yield return new WaitForSecondsRealtime(2.2f);
+            yield return new WaitForSecondsRealtime(_playerSelectOutTravellingTime);
         }
         
         _menuState = "MainMenu";
@@ -128,14 +135,13 @@ public class MainMenu : MonoBehaviour
         _mainMenuCanvas.SetActive(true);
         _eventSys.SetSelectedGameObject(_mainMenuFirstSelectedButton);
         _currentCoroutine = null;
-
     }
 
     private IEnumerator C_GoToPlayerSelection()
     {
         _mainMenuCanvas.SetActive(false);
         _anim.SetTrigger("GoToPlayerSelection");
-        yield return new WaitForSecondsRealtime(2.2f);
+        yield return new WaitForSecondsRealtime(_playerSelectInTravellingTime);
         _menuState = "PlayerSelectionMenu";
         _playerSelectionMenuCanvas.SetActive(true);
         _eventSys.SetSelectedGameObject(_playerSelectionMenuFirstSelectedButton);
