@@ -25,7 +25,15 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Base_Mat:
-        m_Texture: {fileID: 2800000, guid: 39dc6abc33480a1449451112313dd592, type: 3}
+        m_Texture: {fileID: 2800000, guid: ef3e699389df6a2408e7d6c8899facb1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_24ceaaed19f9414ba92ee6230980355e_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 1a642e13e57812c4dbafdc8f6b4e7805, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_d1b29bd7fe5c4470a105d21ebde1b5a8_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 1a642e13e57812c4dbafdc8f6b4e7805, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_dd7560d4627442a7ae2a1287bf46c406_Texture_1_Texture2D:
@@ -56,11 +64,13 @@ Material:
     - _DecalMeshViewBias: 0
     - _DrawOrder: 0
     - _Float: 0
-    - _GrassDentity: 100
+    - _GrassAmount: 0.632
+    - _GrassDentity: 500
+    - _NoiseVariation: 67.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0.526
-    - _SnowAmount: 1
+    - _Smoothness: 0
+    - _SnowAmount: 0.128
     - _SnowArea: 0.5
     - _SnowBlendDistance: 0.011
     - _SnowDensity: 2.09
