@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class ToolInteraction : MonoBehaviour
     Animator _treeAnim;
     Animator _playerAnim;
     [SerializeField] private bool _canUseAxe = true;
+    [SerializeField] private bool _canChop = true;
     private PlayerMovTest _playerMovement;
     [SerializeField] private Transform _playerTransform;
     private bool _rotationFinished = true;
@@ -80,11 +82,12 @@ public class ToolInteraction : MonoBehaviour
 
         Debug.Log("entered chop");
 
-        if (_treesObjectsInRange.Count != 0 && _canUseAxe && !GameManager._gamePaused)
+        if (_treesObjectsInRange.Count != 0 && _canUseAxe && !GameManager._gamePaused && _canChop)
         {
             Debug.Log("chopping");
             _playerMovement.CanMove = false;
             _canUseAxe = false;
+            _canChop = false;
 
             _treeAnim = _closestTreeInRange.GetComponent<Animator>();
 
@@ -141,7 +144,7 @@ public class ToolInteraction : MonoBehaviour
 
         Destroy(objToDestroy);
         _treesObjectsInRange.Remove(_closestTreeInRange);
-        
+        _canChop = true;
     }
 
     private IEnumerator RotateToTarget(Transform target, float speed)
