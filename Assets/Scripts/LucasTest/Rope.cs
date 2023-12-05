@@ -28,7 +28,7 @@ public class Rope : MonoBehaviour
     {
         if (!_isRopeActivated)
         {
-            _isRopeActivated = true;
+            
         }
         else
         {

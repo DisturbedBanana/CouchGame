@@ -29,27 +29,22 @@ public class PlayerInventory : MonoBehaviour
         }
     }
     
-    public bool DoesPlayerHaveTheGoods(string _itemNeededID, int _itemNeededAmount)
+    public bool DoesPlayerHaveEnoughItems(string _itemNeededID, int _itemNeededAmount)
     {
-        List<ItemData> itemsToRemove = new List<ItemData>();
-        int amountOfItems = 0;
-        foreach (ItemData item in ItemList)
+        foreach (SlotController slot in storageController.Slots)
         {
-            if (item.ID == _itemNeededID)
+            if (slot.DataItem.ID == _itemNeededID)
             {
-                amountOfItems++;
-                itemsToRemove.Add(item);
+                _itemNeededAmount--;
+                slot.OnRemove();
             }
 
-            if (amountOfItems >= _itemNeededAmount)
+            if (_itemNeededAmount == 0)
             {
-                for (int i = 0; i < itemsToRemove.Count; i++)
-                {
-                    //remove items here , to be implemented
-                }
                 return true;
             }
         }
+
         return false;
     }
 }

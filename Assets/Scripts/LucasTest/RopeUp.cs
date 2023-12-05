@@ -17,21 +17,15 @@ public class RopeUp : Rope
     {
         if (!IsRopeActivated)
         {
-            if (CurrentPlayer.GetComponentInChildren<PlayerInventory>().DoesPlayerHaveTheGoods(_itemNeededID,_itemNeededAmount))
+            if (CurrentPlayer.GetComponentInChildren<PlayerInventory>().DoesPlayerHaveEnoughItems(_itemNeededID,_itemNeededAmount) && CurrentPlayer.GetComponent<Character>().PlayerId == 4)
             {
-                
+                IsRopeActivated = true;
                 return;
             }
-            else
+            if (CurrentPlayer.GetComponent<Character>().PlayerId == 2)
             {
-                if (CurrentPlayer.GetComponent<Character>().PlayerId == 2)
-                {
-                    CurrentPlayer.transform.position = TargetRope.transform.position;
-                    base.ActivateRope();
-                }
+                CurrentPlayer.transform.position = TargetRope.transform.position;
             }
-            
-
         }
     }
 
