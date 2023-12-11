@@ -265,13 +265,22 @@
             ]
         },
         {
-            "name": "MainMenuUI",
+            "name": "UI",
             "id": "cb5a8df0-a67e-423b-9fe8-3f282f779999",
             "actions": [
                 {
-                    "name": "GoBack",
+                    "name": "Back",
                     "type": "Button",
                     "id": "193ad603-6482-4245-b3e5-477471f557cb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "3d577a15-2127-470c-aacf-f61eb517455c",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -286,7 +295,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "GoBack",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f9df0646-73d3-4b04-9339-ae834395ccda",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
