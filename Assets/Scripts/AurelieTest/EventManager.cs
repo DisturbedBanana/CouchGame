@@ -23,6 +23,8 @@ public class EventManager : MonoBehaviour
     [Header("UI Setup")]
     [SerializeField] private GameObject _BlizzardIcon;
     [SerializeField] private GameObject _ClearSkyIcon;
+    [SerializeField] private Animator _BlizzardAnimator;
+    [SerializeField] private Animator _ClearSkyAnimator;
 
     private void Start()
     {
@@ -91,6 +93,16 @@ public class EventManager : MonoBehaviour
         _duration = RandomDuration();
         string eventName = _currentEvent.GetComponent<Event>().Name;
         Debug.Log($"{eventName} starting in 10s");
+        if (_idEvent == 0)
+        {
+            _BlizzardIcon.SetActive(true);
+            _BlizzardAnimator.SetBool("IsBlizzardStarting", true);
+        }
+        if (_idEvent == 1)
+        {
+            _ClearSkyIcon.SetActive(true);
+            _ClearSkyAnimator.SetBool("IsClearSkyStarting", true);
+        }
     }
 
     private void StartEvent()
@@ -102,11 +114,15 @@ public class EventManager : MonoBehaviour
             _currentEvent = Instantiate(_currentEvent, transform.position, Quaternion.identity);
             if (_idEvent == 0)
             {
-                _BlizzardIcon.SetActive(true);
+                _BlizzardAnimator.SetBool("IsBlizzardStarting", false);
+                _BlizzardAnimator.SetBool("IsBlizzardActive", true);
                 Shader.SetGlobalFloat("isBlizzardActive", 1);
             }
-            if (_idEvent == 1)
-                _ClearSkyIcon.SetActive(true);
+            else if (_idEvent == 1)
+            {
+                _ClearSkyAnimator.SetBool("IsClearSkyStarting", false);
+                _ClearSkyAnimator.SetBool("IsClearSkyActive", true);
+            }
         }
     }
 
@@ -114,11 +130,15 @@ public class EventManager : MonoBehaviour
     {
         if (_idEvent == 0)
         {
+            _BlizzardAnimator.SetBool("IsBlizzardActive", false);
             _BlizzardIcon.SetActive(false);
             Shader.SetGlobalFloat("isBlizzardActive", 0);
         }
         if (_idEvent == 1)
+        {
+            _ClearSkyAnimator.SetBool("IsClearSkyActive", false);
             _ClearSkyIcon.SetActive(false);
+        }
         string eventName = _currentEvent.GetComponent<Event>().Name;
         Debug.Log($"{eventName} ended.");
         _currentEvent.GetComponent<Event>().EventEnd();
