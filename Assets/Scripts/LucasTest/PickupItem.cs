@@ -7,9 +7,11 @@ public class PickupItem : WorldItem
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PickupAble>() != null)
+        PickupAble player = other.GetComponent<PickupAble>();
+        if (player != null)
         {
-            
+            player.CanPickUp = true;
+            player.CurrentItem = this;
         }
     }
 }

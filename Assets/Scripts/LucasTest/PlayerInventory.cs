@@ -17,6 +17,8 @@ public class PlayerInventory : MonoBehaviour
 
     public List<ItemData> ItemList { get => itemList;}
 
+    
+    //Passer en type de retour bool pour savoir si on peut add un item ou non + ajouter un check du nombre d'items dans le storage controller
     public void AddItemToInventory(string itemName)
     {
         foreach (ItemData item in itemDatabase.itemDatas)

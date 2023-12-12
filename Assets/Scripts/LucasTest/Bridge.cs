@@ -15,7 +15,6 @@ public class Bridge : MonoBehaviour
 
     public void ActivateBridge()
     {
-        Debug.Log("bruh");
         _objectToActivate.SetActive(true);
     }
 
@@ -27,7 +26,6 @@ public class Bridge : MonoBehaviour
 
             if (_currentBridgeInteractable != null)
             {
-                Debug.Log("canbridge");
                 _currentBridgeInteractable.CurrentBridge = this;
                 _currentBridgeInteractable.CanActivateBridge = true;
             }

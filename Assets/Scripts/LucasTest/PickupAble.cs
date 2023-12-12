@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickupAble : MonoBehaviour
 {
+    
+    
     private bool _canPickUp = false;
     private PickupItem _currentItem;
 
@@ -16,5 +18,10 @@ public class PickupAble : MonoBehaviour
     {
         get { return _currentItem; }
         set { _currentItem = value; }
+    }
+
+    private void Add()
+    {
+        GetComponentInChildren<PlayerInventory>().AddItemToInventory(_currentItem.Data.ID);
     }
 }
