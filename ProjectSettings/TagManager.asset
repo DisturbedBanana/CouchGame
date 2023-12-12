@@ -22,6 +22,14 @@ TagManager:
   - PlayerHitbox
   - PlayerRange
   - Tree
+  - Tombstone
+  - Wood
+  - RedCube
+  - EventSystem
+  - WinCanvas
+  - LoseCanvas
+  - PauseCanvas
+  - OptionsCanvas
   layers:
   - Default
   - TransparentFX

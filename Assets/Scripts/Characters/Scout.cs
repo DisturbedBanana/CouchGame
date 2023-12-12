@@ -16,5 +16,6 @@ public class Scout : Character
         HasBackpack = false;
         HasTool = true;
         IsInSnow = false;
+        IsAlive = true;
     }
 }

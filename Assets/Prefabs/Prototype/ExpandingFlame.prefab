@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 1094380500872023603}
   - component: {fileID: 4828823569423721651}
   - component: {fileID: 5556812485273254597}
+  - component: {fileID: 1126967806822067684}
+  - component: {fileID: 2353555491149913391}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: FlameZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,6 +85,57 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1126967806822067684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660401121260979131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7bee432a52587540bba0733de72d99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lumberjackHeatSlider: {fileID: 0}
+  _scoutHeatSlider: {fileID: 0}
+  _shamanjackHeatSlider: {fileID: 0}
+  _engineerjackHeatSlider: {fileID: 0}
+  _heatMultiplier: 0
+  _tombstones:
+  - {fileID: 2737176825112390239, guid: 009b583935a2b7e4fa21bee88e61543b, type: 3}
+  - {fileID: 645841490173836830, guid: b760e4a6892a01942bfbd783dc952abe, type: 3}
+  - {fileID: 4939013798731404417, guid: 2b1b2b7b8450ec843bd45c2fc7f0ed37, type: 3}
+  - {fileID: 5479555233517896909, guid: d77aef86c03e1c740a998b6dfa1b267b, type: 3}
+  _lumberjackMat: {fileID: 0}
+  _scoutMat: {fileID: 2100000, guid: 0558214a306f5ac428a81fe74db38ac1, type: 2}
+  _shamanMat: {fileID: 0}
+  _engineerMat: {fileID: 0}
+  _deadMat: {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
+  _lumberjackDeadMats:
+  - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
+  - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
+--- !u!135 &2353555491149913391
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660401121260979131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8476758140379177382
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,8 +166,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.45, z: 0}
-  m_LocalScale: {x: 13.489, y: 13.489, z: 13.489}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 250.00002, y: 250.00002, z: 250.00002}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1094380500872023603}
   m_Father: {fileID: 0}
@@ -202,9 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fab2bb56cd7d8a4daec39eaa554c23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shrinkSpeed: 50
+  _shrinkSpeed: 20
   _growthSpeed: 1
-  _flameGrowthFromWood: 10
+  _flameGrowthFromWood: 20
   _snowMovementDuration: 2.5
   _snowMovementOffset: 2.5
   _doesSnowComeBackUp: 1

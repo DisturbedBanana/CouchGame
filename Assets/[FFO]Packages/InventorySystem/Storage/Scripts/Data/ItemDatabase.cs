@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace FFO.Inventory.Storage
 {
@@ -28,7 +27,7 @@ namespace FFO.Inventory.Storage
                 {
                     if (item.itemType == itemData.label)
                     {
-                        item.itemData = itemData;
+                        item.Data = itemData;
                         break;
                     }
                 }

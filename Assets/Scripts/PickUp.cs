@@ -12,7 +12,7 @@ using UnityEngine.UIElements;
 
 public class PickUp : MonoBehaviour
 {
-    [Header("Refenrences")]
+    [Header("References")]
     [SerializeField] private GameObject _closestItemInRange;
     [SerializeField] private Animator _anim;
     [SerializeField] private PlayerInventory _playerInventory;
@@ -20,7 +20,6 @@ public class PickUp : MonoBehaviour
 
     [Space]
     [Header("Variables")]
-    [SerializeField] private Vector3 _closestDistance = new Vector3(1000,1000,1000);
     [SerializeField] private float _pickUpCooldown;
     [SerializeField] private Transform _playerTransform;
     private Transform itemTarget;
@@ -38,7 +37,7 @@ public class PickUp : MonoBehaviour
     {
         _playerInventory = this.GetComponentInChildren<PlayerInventory>();
         _anim = this.GetComponentInParent<Animator>();
-        _playerTransform = transform.root.GetComponent<Transform>();
+        _playerTransform = GetComponent<Transform>();
         _playerMovement = this.GetComponentInParent<PlayerMovTest>();
     }
 
@@ -89,15 +88,11 @@ public class PickUp : MonoBehaviour
     private IEnumerator PickUpItem(GameObject item)
     {
         //ADD ITEM TO INVENTORY VIA REFERENCE TO PLAYER HERE
-        _playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().itemData.ID);
+        _playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().Data.ID);
         _playerMovement.CanMove = false;
-
-        //_playerTransform.LookAt(item.transform);
 
         itemTarget = item.transform;
         StartCoroutine(RotateToTarget(itemTarget, _rotateToTargetSpeed));
-
-        //_playerTransform.LookAt(new Vector3(item.transform.position.x, item.transform.position.y, item.transform.position.z));
 
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
         {
@@ -143,6 +138,11 @@ public class PickUp : MonoBehaviour
         //    _closestItemInRange.gameObject.GetComponent<Outline>().enabled = true;
         //    Debug.Log(_closestItemInRange);
         //}
+
+        if (GetComponent<Character>().IsAlive == false)
+        {
+            return;
+        }
 
         foreach (GameObject item in _objectsInRange)
         {

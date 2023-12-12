@@ -24,11 +24,27 @@ public class PlayerInventory : MonoBehaviour
             if (item.ID == itemName)
             {
                 storageController.AddItem(item);
+                ItemList.Add(item);
             }
-            /*else
-            {
-                Debug.Log(item.ID + " not found");
-            }*/
         }
+    }
+    
+    public bool DoesPlayerHaveEnoughItems(string _itemNeededID, int _itemNeededAmount)
+    {
+        foreach (SlotController slot in storageController.Slots)
+        {
+            if (slot.DataItem.ID == _itemNeededID)
+            {
+                _itemNeededAmount--;
+                slot.OnRemove();
+            }
+
+            if (_itemNeededAmount == 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

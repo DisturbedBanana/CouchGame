@@ -1,117 +1,201 @@
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
 public class HeatManager : MonoBehaviour
 {
+    public static HeatManager instance;
+
+    [Space]
+    [Header("Heat Sliders")]
     [SerializeField] private Slider _lumberjackHeatSlider;
     [SerializeField] private Slider _scoutHeatSlider;
     [SerializeField] private Slider _shamanjackHeatSlider;
     [SerializeField] private Slider _engineerjackHeatSlider;
 
-    [SerializeField] private bool _lumberjackIsInSnow;
-    [SerializeField] private bool _scoutIsInSnow;
-    [SerializeField] private bool _shamanIsInSnow;
-    [SerializeField] private bool _engineerIsInSnow;
+    [Space]
+    [Header("Tombstones variables")]
+    [SerializeField] private List<GameObject> _tombstones = new List<GameObject>();
+    private Vector3 _playerDeathPosition;
 
-    private void Update()
+    [Space]
+    [Header("Heat Decrease variables")]
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _lumberjackDecreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _scoutDecreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _shamanDecreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _engineerDecreaser;
+
+    [Space]
+    [Header("Heat Increase variables")]
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _lumberjackIncreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _scoutIncreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _shamanIncreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _engineerIncreaser;
+
+    [Space]
+    [Header("Player Materials")]
+    public Material _lumberjackMat;
+    public Material _scoutMat;
+    public Material _shamanMat;
+    public Material _engineerMat;
+    public Material _deadMat;
+
+    [SerializeField] private Material[] _lumberjackDeadMats;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void FixedUpdate()
     {
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
         {
-            if (!player.GetComponent<Character>().IsInSnow && player.GetComponent<Character>().Heat != 100)
+            if (!player.GetComponent<Character>().IsInSnow && player.GetComponent<Character>().Heat <= 100.0f && player.GetComponent<Character>().IsAlive)
             {
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
                     case 1:
-                        _lumberjackHeatSlider.value += 1f;
-                        player.gameObject.GetComponent<Character>().Heat = _lumberjackHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat += _lumberjackIncreaser;
+                        _lumberjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 2:
-                        _scoutHeatSlider.value += 1f;
-                        player.gameObject.GetComponent<Character>().Heat = _scoutHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat += _scoutIncreaser;
+                        _scoutHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 3:
-                        _shamanjackHeatSlider.value += 1f;
-                        player.gameObject.GetComponent<Character>().Heat = _shamanjackHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat += _shamanIncreaser;
+                        _shamanjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 4:
-                        _engineerjackHeatSlider.value += 1f;
-                        player.gameObject.GetComponent<Character>().Heat = _engineerjackHeatSlider.value;
+                        player.gameObject.GetComponent<Character>().Heat += _engineerIncreaser;
+                        _engineerjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     default:
                         break;
                 }
             }
 
-            if (player.GetComponent<Character>().Heat == 0)
+            if (player.GetComponent<Character>().IsInSnow && player.GetComponent<Character>().Heat != 0)
             {
-                Debug.Log("fin");
+                switch (player.gameObject.GetComponent<Character>().PlayerId)
+                {
+                    case 1:
+                        player.gameObject.GetComponent<Character>().Heat -= _lumberjackDecreaser;
+                        _lumberjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
+                        break;
+                    case 2:
+                        player.gameObject.GetComponent<Character>().Heat -= _scoutDecreaser;
+                        _scoutHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
+                        break;
+                    case 3:
+                        player.gameObject.GetComponent<Character>().Heat -= _shamanDecreaser;
+                        _shamanjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
+                        break;
+                    case 4:
+                        player.gameObject.GetComponent<Character>().Heat -= _engineerDecreaser;
+                        _engineerjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (player.GetComponent<Character>().Heat == 0 && player.GetComponent<Character>().IsAlive)
+            {
+                _playerDeathPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+
+                switch (player.gameObject.GetComponent<Character>().PlayerId)
+                {
+                    case 1:
+                        player.GetComponent<Character>().IsAlive = false;
+                        StartCoroutine(PlaceTombstone(1, _playerDeathPosition));
+                        break;
+                    case 2:
+                        player.GetComponent<Character>().IsAlive = false;
+                        StartCoroutine(PlaceTombstone(2, _playerDeathPosition));
+                        break;
+                    case 3:
+                        player.GetComponent<Character>().IsAlive = false;
+                        StartCoroutine(PlaceTombstone(3, _playerDeathPosition));
+                        break;
+                    case 4:
+                        player.GetComponent<Character>().IsAlive = false;
+                        StartCoroutine(PlaceTombstone(4, _playerDeathPosition));
+                        break;
+                    default:
+                        break;
+                }
             }
         }
-
     }
 
-
-    private void OnTriggerStay(Collider other)
+    private void DeathAnimation(int playerId)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.gameObject.GetComponent<PlayerMovTest>().PlayerSpeed = 2.5f;
-            other.gameObject.GetComponent<Character>().IsInSnow = true;
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().CanMove = false;
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<Animator>().SetTrigger("isDead");
+    }
 
-            switch (other.gameObject.GetComponent<Character>().PlayerId)
-            {
-                case 1:
-                    _lumberjackIsInSnow = true;
-                    _lumberjackHeatSlider.value -= 0.2f;
-                    other.gameObject.GetComponent<Character>().Heat = _lumberjackHeatSlider.value;
-                    break;
-                case 2:
-                    _scoutIsInSnow = true;
-                    _scoutHeatSlider.value -= 0.2f;
-                    other.gameObject.GetComponent<Character>().Heat = _scoutHeatSlider.value;
-                    break;
-                case 3:
-                    _shamanIsInSnow = true;
-                    _shamanjackHeatSlider.value -= 0.2f;
-                    other.gameObject.GetComponent<Character>().Heat = _shamanjackHeatSlider.value;
-                    break;
-                case 4:
-                    _engineerIsInSnow = true;
-                    _engineerjackHeatSlider.value -= 0.2f;
-                    other.gameObject.GetComponent<Character>().Heat = _engineerjackHeatSlider.value;
-                    break;
-                default:
-                    break;
-            }
-        }
+    private IEnumerator PlaceTombstone(int playerId, Vector3 tombstonePosition)
+    {
+        DeathAnimation(playerId);
+
+        yield return new WaitForSecondsRealtime(5f);
+
+        //Instantiates the player's tombstone where he died
+        Instantiate(_tombstones[playerId - 1], tombstonePosition, Quaternion.AngleAxis(45f, Vector3.up));
+        Debug.Log("A tombstone was placed for the " + GameManager.instance._playerGameObjectList[playerId - 1]);
+
+        //Changes the action map to the dead one so the player can't interact anymore
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().SwitchActionMap("Dead");
+
+        //Changes the to the dead transparent material of the player
+        //GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = _deadMat;
+
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials = _lumberjackDeadMats;
+
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().CanMove = true;
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<Character>().MoveSpeed = 1f;
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            switch (other.gameObject.GetComponent<Character>().PlayerId)
+            if (other.gameObject.GetComponent<Character>().PlayerId != 2)
             {
-                case 1:
-                    _lumberjackIsInSnow = false;
-                    break;
-                case 2:
-                    _scoutIsInSnow = false;
-                    break;
-                case 3:
-                    _shamanIsInSnow = false;
-                    break;
-                case 4:
-                    _engineerIsInSnow = false;
-                    break;
-                default:
-                    break;
+                other.gameObject.GetComponent<Character>().MoveSpeed = 6f;
             }
+            
+            other.gameObject.GetComponent<Character>().IsInSnow = true;
+        }
+    }
 
-            other.gameObject.GetComponent<PlayerMovTest>().PlayerSpeed = 5f;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<Character>().MoveSpeed = 8f;
             other.gameObject.GetComponent<Character>().IsInSnow = false;
         }
     }
