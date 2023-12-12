@@ -1164,6 +1164,11 @@ PrefabInstance:
       propertyPath: _nbInvSlot
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
+        type: 3}
+      propertyPath: _playerInventory
+      value: 
+      objectReference: {fileID: 8661864648988248266}
     - target: {fileID: 6993224297040168963, guid: 08570469ae19a8d4c839678dcec6a994,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1427,6 +1432,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7907211776829253425}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 88ceb093aa59ee440b0a69617f8195ce,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5690850457909795499}
   m_SourcePrefab: {fileID: 100100000, guid: 88ceb093aa59ee440b0a69617f8195ce, type: 3}
 --- !u!1 &5940674563870770482 stripped
 GameObject:
@@ -1780,6 +1789,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5690850457909795499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940674563870770482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee65d440c3da27145a51917184edc5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentBridge: {fileID: 0}
 --- !u!4 &6429544493909221256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 88ceb093aa59ee440b0a69617f8195ce,
