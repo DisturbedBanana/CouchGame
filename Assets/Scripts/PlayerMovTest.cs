@@ -22,7 +22,7 @@ public class PlayerMovTest : MonoBehaviour
 
     [Space]
     [Header("Variables")]
-    [SerializeField] private float _playerSpeed = 5f;
+    [SerializeField] private float _playerSpeed = 7f;
     [SerializeField] private float _globalOffset = -45f;
     [SerializeField] private float _turnSpeed = 360f;
     [SerializeField] private Vector3 _move;

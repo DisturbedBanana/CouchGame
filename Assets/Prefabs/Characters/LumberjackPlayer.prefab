@@ -328,6 +328,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _treesObjectsInRange: []
   _closestTreeInRange: {fileID: 0}
+  _canUseAxe: 1
+  _canChop: 1
   _playerTransform: {fileID: 6381694146389937259}
   _time: 0
   _playerClass: {fileID: 0}
@@ -1142,9 +1144,29 @@ PrefabInstance:
       objectReference: {fileID: 3027107917016411001}
     - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
         type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 3027107917016411001}
+    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 6042570312492734161}
+    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 6042570312492734161}
+    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
+        type: 3}
+      propertyPath: _nbInvSlot
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
+        type: 3}
+      propertyPath: _playerInventory
+      value: 
+      objectReference: {fileID: 8635185088252787416}
     - target: {fileID: 6993224297040168963, guid: 08570469ae19a8d4c839678dcec6a994,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1399,6 +1421,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6915996824656722697}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9a9f5efd3ea83874ba0cb100525873a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1276135767990486181}
   m_SourcePrefab: {fileID: 100100000, guid: 9a9f5efd3ea83874ba0cb100525873a3, type: 3}
 --- !u!1 &6042570312492734161 stripped
 GameObject:
@@ -1504,7 +1530,19 @@ MonoBehaviour:
     m_ActionId: 0d0449e9-1198-444a-94e5-ef51f16c79b1
     m_ActionName: Controller/Jump[/DualSenseGamepadHID/buttonSouth,/DualShock4GamepadHID/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1b1713c4-137d-4582-a43d-19b7eb258be4
     m_ActionName: Controller/Pause[/DualSenseGamepadHID/start,/DualShock4GamepadHID/start]
   - m_PersistentCalls:
@@ -1524,7 +1562,19 @@ MonoBehaviour:
     m_ActionId: a857cf32-2ade-447c-9708-89bd1a886311
     m_ActionName: Controller/PickUp[/DualSenseGamepadHID/buttonNorth,/DualShock4GamepadHID/buttonNorth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnUIBack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 193ad603-6482-4245-b3e5-477471f557cb
     m_ActionName: MainMenuUI/GoBack[/DualSenseGamepadHID/buttonEast,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
@@ -1555,6 +1605,46 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e473b32d-93dd-4818-ac28-708806a38976
     m_ActionName: Controller/Revive[/XInputControllerWindows/buttonEast,/DualSenseGamepadHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 10274c8b-b7e8-4b9e-8c6e-89ee642ccb6d
+    m_ActionName: Controller/TotemTeleport[/DualSenseGamepadHID/dpad/up,/DualSenseGamepadHID1/dpad/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b15c06c5-fa68-4967-860e-053edbc77294
+    m_ActionName: Controller/TotemActivate[/DualSenseGamepadHID/dpad/down,/DualSenseGamepadHID1/dpad/down]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1276135767990486181}
+        m_TargetAssemblyTypeName: RopeTeleportable, Assembly-CSharp
+        m_MethodName: OnRope
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d2b22184-2dcb-49db-8323-f549fc64e05f
+    m_ActionName: Controller/RopeActivate[/DualSenseGamepadHID/dpad/left,/DualSenseGamepadHID1/dpad/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3d577a15-2127-470c-aacf-f61eb517455c
+    m_ActionName: UI/Pause[/DualSenseGamepadHID/start,/DualSenseGamepadHID1/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controller
@@ -1672,11 +1762,22 @@ MonoBehaviour:
   _closestItemInRange: {fileID: 0}
   _anim: {fileID: 0}
   _playerInventory: {fileID: 0}
-  _closestDistance: {x: 1000, y: 1000, z: 1000}
   _pickUpCooldown: 0
   _playerTransform: {fileID: 0}
   _objectsInRange: []
   _isPickingUp: 0
+--- !u!114 &1276135767990486181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042570312492734161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517e130f4d2b1ac4d82c487fc2b2d4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6381694146389937259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9a9f5efd3ea83874ba0cb100525873a3,

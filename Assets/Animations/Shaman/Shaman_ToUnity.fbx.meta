@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 62c9310a5e8926a44ad8bd9dadd0e4d1
+guid: 50a53efd0dd1e2a4d93d3899081d3044
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
   - first:
       74: -6836967791577460304
-    second: Armature.006|Sh_Chop
+    second: ShamanChop
   - first:
       74: -5303960681242932974
     second: Armature.006|Sh_Death
@@ -14,19 +14,19 @@ ModelImporter:
     second: Armature.006|Sh_Idle
   - first:
       74: -2248035803354367346
-    second: Armature.006|Sh_Invoke
+    second: ShamanInvoke
   - first:
       74: 4807459409771768373
     second: Armature.006|Sh_Mining
   - first:
       74: 8114398606235633073
-    second: Armature.006|Sh_PickUp
+    second: ShamanPickUp
   - first:
       74: -1944870636351425297
-    second: Armature.006|Sh_Run
+    second: ShamanRun
   - first:
       74: 8067690876008385840
-    second: Armature.006|Sh_Walk
+    second: ShamanWalk
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -57,7 +57,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature.006|Sh_Chop
+      name: ShamanChop
       takeName: Armature.006|Sh_Chop
       internalID: -6836967791577460304
       firstFrame: 0
@@ -144,7 +144,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.006|Sh_Invoke
+      name: ShamanInvoke
       takeName: Armature.006|Sh_Invoke
       internalID: -2248035803354367346
       firstFrame: 0
@@ -202,7 +202,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.006|Sh_PickUp
+      name: ShamanPickUp
       takeName: Armature.006|Sh_PickUp
       internalID: 8114398606235633073
       firstFrame: 0
@@ -231,7 +231,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.006|Sh_Run
+      name: ShamanRun
       takeName: Armature.006|Sh_Run
       internalID: -1944870636351425297
       firstFrame: 0
@@ -260,7 +260,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature.006|Sh_Walk
+      name: ShamanWalk
       takeName: Armature.006|Sh_Walk
       internalID: 8067690876008385840
       firstFrame: 0

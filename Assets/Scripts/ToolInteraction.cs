@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,8 @@ public class ToolInteraction : MonoBehaviour
     [SerializeField] private GameObject _closestTreeInRange;
     Animator _treeAnim;
     Animator _playerAnim;
-    private bool _canUseAxe = true;
+    [SerializeField] private bool _canUseAxe = true;
+    [SerializeField] private bool _canChop = true;
     private PlayerMovTest _playerMovement;
     [SerializeField] private Transform _playerTransform;
     private bool _rotationFinished = true;
@@ -78,10 +80,14 @@ public class ToolInteraction : MonoBehaviour
             return;
         }
 
-        if (_treesObjectsInRange.Count != 0 && _canUseAxe && !GameManager._gamePaused)
+        Debug.Log("entered chop");
+
+        if (_treesObjectsInRange.Count != 0 && _canUseAxe && !GameManager._gamePaused && _canChop)
         {
+            Debug.Log("chopping");
             _playerMovement.CanMove = false;
             _canUseAxe = false;
+            _canChop = false;
 
             _treeAnim = _closestTreeInRange.GetComponent<Animator>();
 
@@ -92,7 +98,7 @@ public class ToolInteraction : MonoBehaviour
             _playerAnim.SetTrigger("cutsTree");
             StartCoroutine(CuttingAnim());
 
-            _playerInv.AddItemToInventory(_treesObjectsInRange[0].GetComponent<WorldItem>().itemData.ID);
+            _playerInv.AddItemToInventory(_treesObjectsInRange[0].GetComponent<WorldItem>().Data.ID);
         }
     }
 
@@ -126,10 +132,10 @@ public class ToolInteraction : MonoBehaviour
     IEnumerator CuttingAnim()
     {
         GameObject objToDestroy = _treesObjectsInRange[0];
-        yield return new WaitForSecondsRealtime(1.5f);
+        yield return new WaitForSecondsRealtime(2f);
 
         _treeAnim.SetTrigger("isCut");
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(2.5f);
 
         _playerMovement.CanMove = true;
         _canUseAxe = true;
@@ -138,7 +144,7 @@ public class ToolInteraction : MonoBehaviour
 
         Destroy(objToDestroy);
         _treesObjectsInRange.Remove(_closestTreeInRange);
-        
+        _canChop = true;
     }
 
     private IEnumerator RotateToTarget(Transform target, float speed)

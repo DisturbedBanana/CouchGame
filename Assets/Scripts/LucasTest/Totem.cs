@@ -47,7 +47,7 @@ public class Totem : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && other.GetComponent<Character>().PlayerId == 3)
         {
             TotemTeleportable tempTPComponent = other.GetComponent<TotemTeleportable>();
             if (tempTPComponent == _playerTPComponent)

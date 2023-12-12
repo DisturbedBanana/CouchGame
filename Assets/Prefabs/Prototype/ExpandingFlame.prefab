@@ -112,6 +112,9 @@ MonoBehaviour:
   _shamanMat: {fileID: 0}
   _engineerMat: {fileID: 0}
   _deadMat: {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
+  _lumberjackDeadMats:
+  - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
+  - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
 --- !u!135 &2353555491149913391
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -163,8 +166,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.45, z: 0}
-  m_LocalScale: {x: 13.489, y: 13.489, z: 13.489}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 250.00002, y: 250.00002, z: 250.00002}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1094380500872023603}
   m_Father: {fileID: 0}
@@ -252,9 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fab2bb56cd7d8a4daec39eaa554c23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shrinkSpeed: 50
+  _shrinkSpeed: 20
   _growthSpeed: 1
-  _flameGrowthFromWood: 10
+  _flameGrowthFromWood: 20
   _snowMovementDuration: 2.5
   _snowMovementOffset: 2.5
   _doesSnowComeBackUp: 1

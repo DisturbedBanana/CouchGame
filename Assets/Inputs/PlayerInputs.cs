@@ -89,6 +89,33 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TotemTeleport"",
+                    ""type"": ""Button"",
+                    ""id"": ""10274c8b-b7e8-4b9e-8c6e-89ee642ccb6d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TotemActivate"",
+                    ""type"": ""Button"",
+                    ""id"": ""b15c06c5-fa68-4967-860e-053edbc77294"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Rope"",
+                    ""type"": ""Button"",
+                    ""id"": ""d2b22184-2dcb-49db-8323-f549fc64e05f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -223,17 +250,59 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Revive"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7b247d40-feb0-40ef-b4b7-78636c2da970"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TotemTeleport"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f4599ab-598a-4391-93c3-16ffe1f20974"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TotemActivate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""308aab06-5a00-4f1a-a6eb-81efe36404a6"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rope"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
         {
-            ""name"": ""MainMenuUI"",
+            ""name"": ""UI"",
             ""id"": ""cb5a8df0-a67e-423b-9fe8-3f282f779999"",
             ""actions"": [
                 {
-                    ""name"": ""GoBack"",
+                    ""name"": ""Back"",
                     ""type"": ""Button"",
                     ""id"": ""193ad603-6482-4245-b3e5-477471f557cb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""3d577a15-2127-470c-aacf-f61eb517455c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -248,7 +317,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
-                    ""action"": ""GoBack"",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f9df0646-73d3-4b04-9339-ae834395ccda"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -381,9 +461,13 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Controller_PickUp = m_Controller.FindAction("PickUp", throwIfNotFound: true);
         m_Controller_Drop = m_Controller.FindAction("Drop", throwIfNotFound: true);
         m_Controller_Revive = m_Controller.FindAction("Revive", throwIfNotFound: true);
-        // MainMenuUI
-        m_MainMenuUI = asset.FindActionMap("MainMenuUI", throwIfNotFound: true);
-        m_MainMenuUI_GoBack = m_MainMenuUI.FindAction("GoBack", throwIfNotFound: true);
+        m_Controller_TotemTeleport = m_Controller.FindAction("TotemTeleport", throwIfNotFound: true);
+        m_Controller_TotemActivate = m_Controller.FindAction("TotemActivate", throwIfNotFound: true);
+        m_Controller_Rope = m_Controller.FindAction("Rope", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
+        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         // Dead
         m_Dead = asset.FindActionMap("Dead", throwIfNotFound: true);
         m_Dead_Pause = m_Dead.FindAction("Pause", throwIfNotFound: true);
@@ -456,6 +540,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_PickUp;
     private readonly InputAction m_Controller_Drop;
     private readonly InputAction m_Controller_Revive;
+    private readonly InputAction m_Controller_TotemTeleport;
+    private readonly InputAction m_Controller_TotemActivate;
+    private readonly InputAction m_Controller_Rope;
     public struct ControllerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -467,6 +554,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @PickUp => m_Wrapper.m_Controller_PickUp;
         public InputAction @Drop => m_Wrapper.m_Controller_Drop;
         public InputAction @Revive => m_Wrapper.m_Controller_Revive;
+        public InputAction @TotemTeleport => m_Wrapper.m_Controller_TotemTeleport;
+        public InputAction @TotemActivate => m_Wrapper.m_Controller_TotemActivate;
+        public InputAction @Rope => m_Wrapper.m_Controller_Rope;
         public InputActionMap Get() { return m_Wrapper.m_Controller; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -497,6 +587,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Revive.started += instance.OnRevive;
             @Revive.performed += instance.OnRevive;
             @Revive.canceled += instance.OnRevive;
+            @TotemTeleport.started += instance.OnTotemTeleport;
+            @TotemTeleport.performed += instance.OnTotemTeleport;
+            @TotemTeleport.canceled += instance.OnTotemTeleport;
+            @TotemActivate.started += instance.OnTotemActivate;
+            @TotemActivate.performed += instance.OnTotemActivate;
+            @TotemActivate.canceled += instance.OnTotemActivate;
+            @Rope.started += instance.OnRope;
+            @Rope.performed += instance.OnRope;
+            @Rope.canceled += instance.OnRope;
         }
 
         private void UnregisterCallbacks(IControllerActions instance)
@@ -522,6 +621,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Revive.started -= instance.OnRevive;
             @Revive.performed -= instance.OnRevive;
             @Revive.canceled -= instance.OnRevive;
+            @TotemTeleport.started -= instance.OnTotemTeleport;
+            @TotemTeleport.performed -= instance.OnTotemTeleport;
+            @TotemTeleport.canceled -= instance.OnTotemTeleport;
+            @TotemActivate.started -= instance.OnTotemActivate;
+            @TotemActivate.performed -= instance.OnTotemActivate;
+            @TotemActivate.canceled -= instance.OnTotemActivate;
+            @Rope.started -= instance.OnRope;
+            @Rope.performed -= instance.OnRope;
+            @Rope.canceled -= instance.OnRope;
         }
 
         public void RemoveCallbacks(IControllerActions instance)
@@ -540,51 +648,59 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     }
     public ControllerActions @Controller => new ControllerActions(this);
 
-    // MainMenuUI
-    private readonly InputActionMap m_MainMenuUI;
-    private List<IMainMenuUIActions> m_MainMenuUIActionsCallbackInterfaces = new List<IMainMenuUIActions>();
-    private readonly InputAction m_MainMenuUI_GoBack;
-    public struct MainMenuUIActions
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    private readonly InputAction m_UI_Back;
+    private readonly InputAction m_UI_Pause;
+    public struct UIActions
     {
         private @PlayerInputs m_Wrapper;
-        public MainMenuUIActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @GoBack => m_Wrapper.m_MainMenuUI_GoBack;
-        public InputActionMap Get() { return m_Wrapper.m_MainMenuUI; }
+        public UIActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Back => m_Wrapper.m_UI_Back;
+        public InputAction @Pause => m_Wrapper.m_UI_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MainMenuUIActions set) { return set.Get(); }
-        public void AddCallbacks(IMainMenuUIActions instance)
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
         {
-            if (instance == null || m_Wrapper.m_MainMenuUIActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MainMenuUIActionsCallbackInterfaces.Add(instance);
-            @GoBack.started += instance.OnGoBack;
-            @GoBack.performed += instance.OnGoBack;
-            @GoBack.canceled += instance.OnGoBack;
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
-        private void UnregisterCallbacks(IMainMenuUIActions instance)
+        private void UnregisterCallbacks(IUIActions instance)
         {
-            @GoBack.started -= instance.OnGoBack;
-            @GoBack.performed -= instance.OnGoBack;
-            @GoBack.canceled -= instance.OnGoBack;
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
-        public void RemoveCallbacks(IMainMenuUIActions instance)
+        public void RemoveCallbacks(IUIActions instance)
         {
-            if (m_Wrapper.m_MainMenuUIActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IMainMenuUIActions instance)
+        public void SetCallbacks(IUIActions instance)
         {
-            foreach (var item in m_Wrapper.m_MainMenuUIActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_MainMenuUIActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public MainMenuUIActions @MainMenuUI => new MainMenuUIActions(this);
+    public UIActions @UI => new UIActions(this);
 
     // Dead
     private readonly InputActionMap m_Dead;
@@ -657,10 +773,14 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnPickUp(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnRevive(InputAction.CallbackContext context);
+        void OnTotemTeleport(InputAction.CallbackContext context);
+        void OnTotemActivate(InputAction.CallbackContext context);
+        void OnRope(InputAction.CallbackContext context);
     }
-    public interface IMainMenuUIActions
+    public interface IUIActions
     {
-        void OnGoBack(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IDeadActions
     {

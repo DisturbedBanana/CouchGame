@@ -1,25 +1,49 @@
 using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 
 public class HeatManager : MonoBehaviour
 {
+    public static HeatManager instance;
+
+    [Space]
+    [Header("Heat Sliders")]
     [SerializeField] private Slider _lumberjackHeatSlider;
     [SerializeField] private Slider _scoutHeatSlider;
     [SerializeField] private Slider _shamanjackHeatSlider;
     [SerializeField] private Slider _engineerjackHeatSlider;
 
-    [SerializeField] private float _heatMultiplier;
+    [Space]
+    [Header("Tombstones variables")]
+    [SerializeField] private List<GameObject> _tombstones = new List<GameObject>();
     private Vector3 _playerDeathPosition;
 
-    [SerializeField] private List<GameObject> _tombstones = new List<GameObject>();
+    [Space]
+    [Header("Heat Decrease variables")]
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _lumberjackDecreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _scoutDecreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _shamanDecreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _engineerDecreaser;
 
-    SkinnedMeshRenderer _playerRenderer;
-
-    public static HeatManager instance;
+    [Space]
+    [Header("Heat Increase variables")]
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _lumberjackIncreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _scoutIncreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _shamanIncreaser;
+    [Range(0.1f, 3.0f)]
+    [SerializeField] private float _engineerIncreaser;
 
     [Space]
     [Header("Player Materials")]
@@ -28,6 +52,8 @@ public class HeatManager : MonoBehaviour
     public Material _shamanMat;
     public Material _engineerMat;
     public Material _deadMat;
+
+    [SerializeField] private Material[] _lumberjackDeadMats;
 
     private void Awake()
     {
@@ -45,24 +71,24 @@ public class HeatManager : MonoBehaviour
     {
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
         {
-            if (!player.GetComponent<Character>().IsInSnow && player.GetComponent<Character>().Heat != 100)
+            if (!player.GetComponent<Character>().IsInSnow && player.GetComponent<Character>().Heat <= 100.0f && player.GetComponent<Character>().IsAlive)
             {
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
                     case 1:
-                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        player.gameObject.GetComponent<Character>().Heat += _lumberjackIncreaser;
                         _lumberjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 2:
-                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        player.gameObject.GetComponent<Character>().Heat += _scoutIncreaser;
                         _scoutHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 3:
-                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        player.gameObject.GetComponent<Character>().Heat += _shamanIncreaser;
                         _shamanjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 4:
-                        player.gameObject.GetComponent<Character>().Heat += 1f;
+                        player.gameObject.GetComponent<Character>().Heat += _engineerIncreaser;
                         _engineerjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     default:
@@ -75,19 +101,19 @@ public class HeatManager : MonoBehaviour
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
                     case 1:
-                        player.gameObject.GetComponent<Character>().Heat -= 0.25f;
+                        player.gameObject.GetComponent<Character>().Heat -= _lumberjackDecreaser;
                         _lumberjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 2:
-                        player.gameObject.GetComponent<Character>().Heat -= 1f;
+                        player.gameObject.GetComponent<Character>().Heat -= _scoutDecreaser;
                         _scoutHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 3:
-                        player.gameObject.GetComponent<Character>().Heat -= 0.25f;
+                        player.gameObject.GetComponent<Character>().Heat -= _shamanDecreaser;
                         _shamanjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     case 4:
-                        player.gameObject.GetComponent<Character>().Heat -= 0.25f;
+                        player.gameObject.GetComponent<Character>().Heat -= _engineerDecreaser;
                         _engineerjackHeatSlider.value = player.gameObject.GetComponent<Character>().Heat;
                         break;
                     default:
@@ -97,26 +123,25 @@ public class HeatManager : MonoBehaviour
 
             if (player.GetComponent<Character>().Heat == 0 && player.GetComponent<Character>().IsAlive)
             {
-                Debug.Log("A player is dead");
                 _playerDeathPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
                     case 1:
                         player.GetComponent<Character>().IsAlive = false;
-                        PlaceTombstone(1, _playerDeathPosition);
+                        StartCoroutine(PlaceTombstone(1, _playerDeathPosition));
                         break;
                     case 2:
                         player.GetComponent<Character>().IsAlive = false;
-                        PlaceTombstone(2, _playerDeathPosition);
+                        StartCoroutine(PlaceTombstone(2, _playerDeathPosition));
                         break;
                     case 3:
                         player.GetComponent<Character>().IsAlive = false;
-                        PlaceTombstone(3, _playerDeathPosition);
+                        StartCoroutine(PlaceTombstone(3, _playerDeathPosition));
                         break;
                     case 4:
                         player.GetComponent<Character>().IsAlive = false;
-                        PlaceTombstone(4, _playerDeathPosition);
+                        StartCoroutine(PlaceTombstone(4, _playerDeathPosition));
                         break;
                     default:
                         break;
@@ -125,8 +150,18 @@ public class HeatManager : MonoBehaviour
         }
     }
 
-    private void PlaceTombstone(int playerId, Vector3 tombstonePosition)
+    private void DeathAnimation(int playerId)
     {
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().CanMove = false;
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<Animator>().SetTrigger("isDead");
+    }
+
+    private IEnumerator PlaceTombstone(int playerId, Vector3 tombstonePosition)
+    {
+        DeathAnimation(playerId);
+
+        yield return new WaitForSecondsRealtime(5f);
+
         //Instantiates the player's tombstone where he died
         Instantiate(_tombstones[playerId - 1], tombstonePosition, Quaternion.AngleAxis(45f, Vector3.up));
         Debug.Log("A tombstone was placed for the " + GameManager.instance._playerGameObjectList[playerId - 1]);
@@ -135,7 +170,12 @@ public class HeatManager : MonoBehaviour
         GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().SwitchActionMap("Dead");
 
         //Changes the to the dead transparent material of the player
-        GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = _deadMat;
+        //GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = _deadMat;
+
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials = _lumberjackDeadMats;
+
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().CanMove = true;
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<Character>().MoveSpeed = 1f;
     }
 
     private void OnTriggerExit(Collider other)
@@ -144,7 +184,7 @@ public class HeatManager : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Character>().PlayerId != 2)
             {
-                other.gameObject.GetComponent<Character>().MoveSpeed = 2.5f;
+                other.gameObject.GetComponent<Character>().MoveSpeed = 6f;
             }
             
             other.gameObject.GetComponent<Character>().IsInSnow = true;
@@ -155,7 +195,7 @@ public class HeatManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<Character>().MoveSpeed = 5f;
+            other.gameObject.GetComponent<Character>().MoveSpeed = 8f;
             other.gameObject.GetComponent<Character>().IsInSnow = false;
         }
     }
