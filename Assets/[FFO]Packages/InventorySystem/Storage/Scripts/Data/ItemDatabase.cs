@@ -27,7 +27,7 @@ namespace FFO.Inventory.Storage
                 {
                     if (item.itemType == itemData.label)
                     {
-                        item.itemData = itemData;
+                        item.Data = itemData;
                         break;
                     }
                 }

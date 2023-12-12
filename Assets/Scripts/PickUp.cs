@@ -88,7 +88,7 @@ public class PickUp : MonoBehaviour
     private IEnumerator PickUpItem(GameObject item)
     {
         //ADD ITEM TO INVENTORY VIA REFERENCE TO PLAYER HERE
-        _playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().itemData.ID);
+        _playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().Data.ID);
         _playerMovement.CanMove = false;
 
         itemTarget = item.transform;
