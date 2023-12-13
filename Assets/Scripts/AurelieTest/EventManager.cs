@@ -131,13 +131,13 @@ public class EventManager : MonoBehaviour
         if (_idEvent == 0)
         {
             _BlizzardAnimator.SetBool("IsBlizzardActive", false);
-            _BlizzardIcon.SetActive(false);
+            //_BlizzardIcon.SetActive(false);
             Shader.SetGlobalFloat("isBlizzardActive", 0);
         }
         if (_idEvent == 1)
         {
             _ClearSkyAnimator.SetBool("IsClearSkyActive", false);
-            _ClearSkyIcon.SetActive(false);
+            //_ClearSkyIcon.SetActive(false);
         }
         string eventName = _currentEvent.GetComponent<Event>().Name;
         Debug.Log($"{eventName} ended.");
@@ -188,5 +188,10 @@ public class EventManager : MonoBehaviour
         }
         
         EndEvent();
+    }
+
+    public void DeactivateIcon(GameObject icon)
+    {
+        icon.SetActive(false);
     }
 }

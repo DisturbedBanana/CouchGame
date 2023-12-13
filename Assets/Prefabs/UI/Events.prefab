@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 2153398886069919678}
   - component: {fileID: 8972598567576322019}
   - component: {fileID: 5704199188852497828}
+  - component: {fileID: 6756848985612037819}
   m_Layer: 5
   m_Name: ClearSkyIcon
   m_TagString: Untagged
@@ -200,6 +201,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6756848985612037819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4695015900523591677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f48f76803332904f9f673f3a2bb2883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8639894866428487670
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,6 +225,7 @@ GameObject:
   - component: {fileID: 4086027592709579717}
   - component: {fileID: 7765257907987590356}
   - component: {fileID: 1654498493048150170}
+  - component: {fileID: 130479655623299230}
   m_Layer: 5
   m_Name: BlizzardIcon
   m_TagString: Untagged
@@ -297,3 +311,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &130479655623299230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8639894866428487670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f48f76803332904f9f673f3a2bb2883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
