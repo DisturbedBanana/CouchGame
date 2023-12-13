@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Revive : MonoBehaviour
 {
     [Header("References")]
+    public static Revive instance;
     [SerializeField] private GameObject _closestTombstoneInRange;
     [SerializeField] private Animator _anim;
     private PlayerMovTest _playerMovement;
@@ -14,10 +15,23 @@ public class Revive : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private Transform _playerTransform;
     private Transform tombstoneTarget;
+    [SerializeField] private float _shamanReviveTime;
 
     [Space]
     [Header("Lists")]
     [SerializeField] private List<GameObject> _tombstonesInRange = new List<GameObject>();
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -81,7 +95,7 @@ public class Revive : MonoBehaviour
         switch(tombstone.GetComponent<Tombstone>().TombstoneId)
         {
             case 1:
-                GameManager.instance._playerGameObjectList[tombstone.GetComponent<Tombstone>().TombstoneId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = HeatManager.instance._lumberjackMat;
+                GameManager.instance._playerGameObjectList[tombstone.GetComponent<Tombstone>().TombstoneId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials = HeatManager.instance._lumberjackMats;
                 playerIdTarget = 1;
                 Debug.Log("Lumberjack has been revived");
                 break;
@@ -91,7 +105,7 @@ public class Revive : MonoBehaviour
                 Debug.Log("Scout has been revived");
                 break;
             case 3:
-                GameManager.instance._playerGameObjectList[tombstone.GetComponent<Tombstone>().TombstoneId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = HeatManager.instance._shamanMat;
+                
                 playerIdTarget = 3;
                 Debug.Log("Shaman has been revived");
                 break;
@@ -110,6 +124,22 @@ public class Revive : MonoBehaviour
 
         Destroy(tombstone);
         _playerMovement.CanMove = true;
+    }
+
+    public IEnumerator ReviveShaman()
+    {
+        Debug.Log("est entré dans la coroutine");
+        yield return new WaitForSecondsRealtime(_shamanReviveTime);
+        GameManager.instance._playerGameObjectList[2].GetComponentInChildren<SkinnedMeshRenderer>().materials = HeatManager.instance._shamanMats;
+
+        GameManager.instance._playerGameObjectList[2].GetComponent<PlayerMovTest>().SwitchActionMap("Controller");
+        GameManager.instance._playerGameObjectList[2].GetComponent<Character>().IsAlive = true;
+        GameManager.instance._playerGameObjectList[2].GetComponent<Transform>().transform.position = new Vector3(2f, 1f, 2f);
+        GameManager.instance._playerGameObjectList[2].GetComponent<Character>().Heat = 100f;
+        GameManager.instance._playerGameObjectList[2].GetComponent<Character>().MoveSpeed = 7f;
+
+        GameObject shamanTombstone = GameObject.FindGameObjectWithTag("ShamanTombstone");
+        Destroy(shamanTombstone);
     }
 
     private void FindNearestItem()

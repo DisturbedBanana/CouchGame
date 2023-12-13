@@ -35,7 +35,7 @@ public class PlayerInventory : MonoBehaviour
     {
         foreach (SlotController slot in storageController.Slots)
         {
-            if (slot.DataItem.ID == _itemNeededID)
+            if (slot.DataItem != null && slot.DataItem.ID == _itemNeededID)
             {
                 _itemNeededAmount--;
                 slot.OnRemove();

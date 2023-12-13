@@ -98,7 +98,8 @@ public class PlayerMovTest : MonoBehaviour
 
             var skewedInput = matrix.MultiplyPoint3x4(_move);
 
-            transform.Translate(skewedInput, Space.World);
+            _rb.MovePosition(transform.position + skewedInput);
+            //transform.Translate(skewedInput, Space.World);
 
             if (GetComponent<Character>().IsInSnow)
             {
