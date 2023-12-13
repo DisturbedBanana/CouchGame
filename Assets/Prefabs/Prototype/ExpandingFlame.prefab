@@ -101,12 +101,19 @@ MonoBehaviour:
   _scoutHeatSlider: {fileID: 0}
   _shamanjackHeatSlider: {fileID: 0}
   _engineerjackHeatSlider: {fileID: 0}
-  _heatMultiplier: 0
   _tombstones:
   - {fileID: 2737176825112390239, guid: 009b583935a2b7e4fa21bee88e61543b, type: 3}
   - {fileID: 645841490173836830, guid: b760e4a6892a01942bfbd783dc952abe, type: 3}
   - {fileID: 4939013798731404417, guid: 2b1b2b7b8450ec843bd45c2fc7f0ed37, type: 3}
   - {fileID: 5479555233517896909, guid: d77aef86c03e1c740a998b6dfa1b267b, type: 3}
+  _lumberjackDecreaser: 0.25
+  _scoutDecreaser: 0.25
+  _shamanDecreaser: 0.25
+  _engineerDecreaser: 0.25
+  _lumberjackIncreaser: 0.5
+  _scoutIncreaser: 0.5
+  _shamanIncreaser: 0.5
+  _engineerIncreaser: 0.5
   _lumberjackMat: {fileID: 0}
   _scoutMat: {fileID: 2100000, guid: 0558214a306f5ac428a81fe74db38ac1, type: 2}
   _shamanMat: {fileID: 0}
