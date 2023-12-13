@@ -63,6 +63,7 @@ public class MainMenu : MonoBehaviour
 
     public void OnUIBack(InputAction.CallbackContext context)
     {
+        Debug.Log("vyhujik");
         if (context.performed && _menuState != "MainMenu")
         {
             if (_currentCoroutine == null)

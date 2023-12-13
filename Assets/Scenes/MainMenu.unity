@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.17875892, g: 0.22383048, b: 0.30573562, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4695,12 +4695,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.644
       objectReference: {fileID: 0}
+    - target: {fileID: 7471235022143546839, guid: ed3a3c7cf3bd4ab4087913c771e0045a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8648294208822238481, guid: ed3a3c7cf3bd4ab4087913c771e0045a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9113784258487405104, guid: ed3a3c7cf3bd4ab4087913c771e0045a,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1794240208955433126, guid: ed3a3c7cf3bd4ab4087913c771e0045a, type: 3}
+    - {fileID: 3460565872363338412, guid: ed3a3c7cf3bd4ab4087913c771e0045a, type: 3}
+    - {fileID: 9113784258487405104, guid: ed3a3c7cf3bd4ab4087913c771e0045a, type: 3}
+    - {fileID: 5871584798443926181, guid: ed3a3c7cf3bd4ab4087913c771e0045a, type: 3}
+    - {fileID: 8874258584751875405, guid: ed3a3c7cf3bd4ab4087913c771e0045a, type: 3}
+    - {fileID: 5690850457909795499, guid: ed3a3c7cf3bd4ab4087913c771e0045a, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2006961631207482975, guid: ed3a3c7cf3bd4ab4087913c771e0045a, type: 3}
     m_AddedGameObjects: []
@@ -6157,7 +6173,7 @@ PrefabInstance:
     - target: {fileID: 2074426717889452057, guid: 52f32e6103f354b4a80434d8ee125420,
         type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2074426717889452057, guid: 52f32e6103f354b4a80434d8ee125420,
         type: 3}
@@ -6208,6 +6224,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ActionEvents.Array.data[12].m_ActionName
       value: Controller/RopeActivate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2074426717889452057, guid: 52f32e6103f354b4a80434d8ee125420,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4190810396120976338, guid: 52f32e6103f354b4a80434d8ee125420,
         type: 3}
@@ -6269,7 +6290,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoutPlayer
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6889463954481326732, guid: 52f32e6103f354b4a80434d8ee125420,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866659195735960019, guid: 52f32e6103f354b4a80434d8ee125420,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6804443559817460966, guid: 52f32e6103f354b4a80434d8ee125420, type: 3}
+    - {fileID: 2074426717889452057, guid: 52f32e6103f354b4a80434d8ee125420, type: 3}
+    - {fileID: 6902355344314661518, guid: 52f32e6103f354b4a80434d8ee125420, type: 3}
+    - {fileID: 2742665843370109547, guid: 52f32e6103f354b4a80434d8ee125420, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2026569859231657634, guid: 52f32e6103f354b4a80434d8ee125420, type: 3}
     m_AddedGameObjects: []
@@ -6460,7 +6495,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1049840244}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnGoBack
+        m_MethodName: OnUIBack
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6500,9 +6535,13 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 32007b05-63b9-4ed5-ac64-3c9a77cb47d9
     m_ActionName: Dead/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3d577a15-2127-470c-aacf-f61eb517455c
+    m_ActionName: UI/Pause[/DualSenseGamepadHID/start,/DualSenseGamepadHID1/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: MainMenuUI
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1049840246
@@ -7002,7 +7041,7 @@ MonoBehaviour:
   musicSourceObj: {fileID: 0}
   sfxSourceObj: {fileID: 0}
   debugMusic: {fileID: 8300000, guid: a208d0d7d61c7f542910bd7de7e46b62, type: 3}
-  debugMusic2: {fileID: 8300000, guid: 28ea75fe4636185428fe5471e58034b1, type: 3}
+  debugMusic2: {fileID: 8300000, guid: 47fe708f9b3fbbd408031fb74fe3928d, type: 3}
   debugSfx: {fileID: 8300000, guid: 51709e6d1cc925a40a7682489c25ae8c, type: 3}
 --- !u!1001 &1180529870
 PrefabInstance:
@@ -8186,12 +8225,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2393630168622100962, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785375759713441194, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4543908728983941098, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5,
         type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4543908728983941098, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5, type: 3}
+    - {fileID: 3189636547283558165, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5, type: 3}
+    - {fileID: 1618583203520147813, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5, type: 3}
+    - {fileID: 5599203243995552182, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5, type: 3}
+    - {fileID: 1956209348931432529, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5, type: 3}
+    - {fileID: 3862842009003884989, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5, type: 3}
+    - {fileID: 2856187695197125516, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3411997903136725869, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5, type: 3}
     m_AddedGameObjects: []
@@ -9886,6 +9942,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 787277774425776726, guid: a424d0d8128c5ac4f98582fba7ce78c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141094325679249510, guid: a424d0d8128c5ac4f98582fba7ce78c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013913601933223635, guid: a424d0d8128c5ac4f98582fba7ce78c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4212080400463390126, guid: a424d0d8128c5ac4f98582fba7ce78c2,
         type: 3}
       propertyPath: m_Enabled
@@ -9894,7 +9965,7 @@ PrefabInstance:
     - target: {fileID: 4212080400463390126, guid: a424d0d8128c5ac4f98582fba7ce78c2,
         type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4212080400463390126, guid: a424d0d8128c5ac4f98582fba7ce78c2,
         type: 3}
@@ -9925,6 +9996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ActionEvents.Array.data[12].m_ActionName
       value: Controller/RopeActivate
+      objectReference: {fileID: 0}
+    - target: {fileID: 4212080400463390126, guid: a424d0d8128c5ac4f98582fba7ce78c2,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6042570312492734161, guid: a424d0d8128c5ac4f98582fba7ce78c2,
         type: 3}
@@ -9981,7 +10057,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4212080400463390126, guid: a424d0d8128c5ac4f98582fba7ce78c2, type: 3}
+    - {fileID: 5419762801721356624, guid: a424d0d8128c5ac4f98582fba7ce78c2, type: 3}
+    - {fileID: 6915996824656722697, guid: a424d0d8128c5ac4f98582fba7ce78c2, type: 3}
+    - {fileID: 1276135767990486181, guid: a424d0d8128c5ac4f98582fba7ce78c2, type: 3}
+    - {fileID: 2829948711635395018, guid: a424d0d8128c5ac4f98582fba7ce78c2, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6368958113938163570, guid: a424d0d8128c5ac4f98582fba7ce78c2, type: 3}
     m_AddedGameObjects: []
@@ -11419,8 +11500,8 @@ SceneRoots:
   - {fileID: 1354391440}
   - {fileID: 337039325}
   - {fileID: 1050453734}
-  - {fileID: 1866369426}
-  - {fileID: 990710160}
   - {fileID: 205651037}
+  - {fileID: 990710160}
+  - {fileID: 1866369426}
   - {fileID: 1334083053}
   - {fileID: 738886996}
