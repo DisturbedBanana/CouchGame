@@ -26,13 +26,13 @@ public class HeatManager : MonoBehaviour
     [Space]
     [Header("Heat Decrease variables")]
     [Range(0.1f, 3.0f)]
-    [SerializeField] private float _lumberjackDecreaser;
+    public float _lumberjackDecreaser;
     [Range(0.1f, 3.0f)]
-    [SerializeField] private float _scoutDecreaser;
+    public float _scoutDecreaser;
     [Range(0.1f, 3.0f)]
-    [SerializeField] private float _shamanDecreaser;
+    public float _shamanDecreaser;
     [Range(0.1f, 3.0f)]
-    [SerializeField] private float _engineerDecreaser;
+    public float _engineerDecreaser;
 
     [Space]
     [Header("Heat Increase variables")]
