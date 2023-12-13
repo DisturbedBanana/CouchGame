@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 529027095709980555}
   - component: {fileID: 5825492215972603150}
   - component: {fileID: 4999269274931417198}
+  - component: {fileID: 317858464969497564}
   m_Layer: 0
   m_Name: Tree_animation_test_Mel
   m_TagString: Tree
@@ -273,10 +274,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 6.5732865, z: 1}
-  m_Center: {x: 0, y: 2.7866433, z: -0.6}
+  m_Size: {x: 1.4917908, y: 6.5732865, z: 1.3934298}
+  m_Center: {x: 0.049179077, y: 2.7866433, z: -0.4688573}
 --- !u!114 &4999269274931417198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,12 +291,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: Wood
-  itemData:
-    label: New label
-    <ID>k__BackingField: 
-    sprite: {fileID: 0}
-    mesh: {fileID: 0}
-    category: 0
-    color: {r: 1, g: 1, b: 1, a: 1}
-    value: 1
-    quantityMax: 99
+--- !u!65 &317858464969497564
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8568985754262541125}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0411987, y: 7.266809, z: 2.196556}
+  m_Center: {x: 0.07090759, y: 3.133405, z: -0.46630287}
