@@ -25,13 +25,13 @@ public class HeatManager : MonoBehaviour
 
     [Space]
     [Header("Heat Decrease variables")]
-    [Range(0.1f, 3.0f)]
+    [Range(0.01f, 3.0f)]
     public float _lumberjackDecreaser;
-    [Range(0.1f, 3.0f)]
+    [Range(0.01f, 3.0f)]
     public float _scoutDecreaser;
-    [Range(0.1f, 3.0f)]
+    [Range(0.01f, 3.0f)]
     public float _shamanDecreaser;
-    [Range(0.1f, 3.0f)]
+    [Range(0.01f, 3.0f)]
     public float _engineerDecreaser;
 
     [Space]
@@ -121,7 +121,7 @@ public class HeatManager : MonoBehaviour
                 }
             }
 
-            if (player.GetComponent<Character>().Heat == 0 && player.GetComponent<Character>().IsAlive)
+            if (player.GetComponent<Character>().Heat <= 0 && player.GetComponent<Character>().IsAlive)
             {
                 _playerDeathPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
