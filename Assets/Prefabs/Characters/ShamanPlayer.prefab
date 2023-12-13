@@ -1659,6 +1659,7 @@ MonoBehaviour:
   _closestTombstoneInRange: {fileID: 0}
   _anim: {fileID: 0}
   _playerTransform: {fileID: 21636029848275648}
+  _shamanReviveTime: 5
   _tombstonesInRange: []
 --- !u!114 &5599203243995552182
 MonoBehaviour:

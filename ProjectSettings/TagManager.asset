@@ -30,6 +30,7 @@ TagManager:
   - LoseCanvas
   - PauseCanvas
   - OptionsCanvas
+  - ShamanTombstone
   layers:
   - Default
   - TransparentFX
