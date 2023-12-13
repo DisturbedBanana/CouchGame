@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using NaughtyAttributes;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager instance;
+
+    [Space]
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject transitionCanvas;

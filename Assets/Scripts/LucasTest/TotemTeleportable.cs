@@ -40,14 +40,11 @@ public class TotemTeleportable : MonoBehaviour
 
     public void OnTotemTeleport(InputAction.CallbackContext context)
     {
-        Debug.Log("pardern chie fort");
         Teleport();
     }
 
     public void OnTotemActivate(InputAction.CallbackContext context)
     {
-        Debug.Log("pardern chie");
-
         if (_canActivateTP)
         {
             _currentTotem.ActivateTotem();

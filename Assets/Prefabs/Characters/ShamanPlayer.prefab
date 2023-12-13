@@ -422,6 +422,7 @@ MonoBehaviour:
   _treesObjectsInRange: []
   _closestTreeInRange: {fileID: 0}
   _canUseAxe: 1
+  _canChop: 1
   _playerTransform: {fileID: 21636029848275648}
   _time: 0
   _playerClass: {fileID: 0}
@@ -1392,7 +1393,19 @@ MonoBehaviour:
     m_ActionId: 0d0449e9-1198-444a-94e5-ef51f16c79b1
     m_ActionName: Controller/Jump[/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1b1713c4-137d-4582-a43d-19b7eb258be4
     m_ActionName: Controller/Pause[/XInputControllerWindows/start]
   - m_PersistentCalls:
@@ -1432,7 +1445,19 @@ MonoBehaviour:
     m_ActionId: e473b32d-93dd-4818-ac28-708806a38976
     m_ActionName: Controller/Revive[/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnUIBack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 193ad603-6482-4245-b3e5-477471f557cb
     m_ActionName: MainMenuUI/GoBack[/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
@@ -1503,6 +1528,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d2b22184-2dcb-49db-8323-f549fc64e05f
     m_ActionName: Controller/RopeActivate[/DualSenseGamepadHID/dpad/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3d577a15-2127-470c-aacf-f61eb517455c
+    m_ActionName: UI/Pause[/DualSenseGamepadHID/start,/DualSenseGamepadHID1/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controller
