@@ -7,7 +7,18 @@ using UnityEngine;
 public class BridgeInteractable : MonoBehaviour
 {
     private bool _canActivateBridge;
+    private Character character;
     [SerializeField] private Bridge _currentBridge = null;
+
+    private void Start() 
+    {
+        TryGetComponent<Character>(out character);
+    }
+
+    private void Update() 
+    {
+        if(Input.GetKeyDown(KeyCode.B)) TellBridgeToActivate();
+    }
 
     public bool CanActivateBridge
     {
@@ -23,6 +34,6 @@ public class BridgeInteractable : MonoBehaviour
 
     private void TellBridgeToActivate()
     {
-        _currentBridge.ActivateBridge();
+        _currentBridge.ActivateBridge(character);
     }
 }
