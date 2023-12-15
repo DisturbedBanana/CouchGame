@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EventManager : MonoBehaviour
 {
@@ -17,18 +18,36 @@ public class EventManager : MonoBehaviour
     [SerializeField] private float _maxDuration;
 
     private GameObject _currentEvent;
+    private bool _isEventActive;
     private int _idEvent;
     private float _duration;
+    private float _time;
 
     [Header("UI Setup")]
+    [SerializeField] private GameObject _timer;
+    [SerializeField] private Image _timerFill;
     [SerializeField] private GameObject _BlizzardIcon;
     [SerializeField] private GameObject _ClearSkyIcon;
+    //[SerializeField] private GameObject _NoEventIcon;
     [SerializeField] private Animator _BlizzardAnimator;
     [SerializeField] private Animator _ClearSkyAnimator;
+    //[SerializeField] private Animator _NoEventAnimator;
 
     private void Start()
     {
         StartCoroutine(SpawnEvent());
+    }
+
+    private void Update()
+    {
+        if (!_isEventActive)
+            return;
+
+        _time -= Time.deltaTime;
+        _timerFill.fillAmount = _time / _duration;
+
+        if (_time < 0)
+            _time = 0;
     }
 
     private IEnumerator SpawnEvent()
@@ -91,8 +110,10 @@ public class EventManager : MonoBehaviour
                 break;
         }
         _duration = RandomDuration();
+        _time = _duration;
         string eventName = _currentEvent.GetComponent<Event>().Name;
         Debug.Log($"{eventName} starting in 10s");
+
         if (_idEvent == 0)
         {
             _BlizzardIcon.SetActive(true);
@@ -112,6 +133,8 @@ public class EventManager : MonoBehaviour
             string eventName = _currentEvent.GetComponent<Event>().Name;
             Debug.Log($"{eventName} started. Duration: {_duration}");
             _currentEvent = Instantiate(_currentEvent, transform.position, Quaternion.identity);
+            _timer.SetActive(true);
+            _isEventActive = true;
             if (_idEvent == 0)
             {
                 _BlizzardAnimator.SetBool("IsBlizzardStarting", false);
@@ -131,16 +154,16 @@ public class EventManager : MonoBehaviour
         if (_idEvent == 0)
         {
             _BlizzardAnimator.SetBool("IsBlizzardActive", false);
-            //_BlizzardIcon.SetActive(false);
             Shader.SetGlobalFloat("isBlizzardActive", 0);
         }
         if (_idEvent == 1)
         {
             _ClearSkyAnimator.SetBool("IsClearSkyActive", false);
-            //_ClearSkyIcon.SetActive(false);
         }
         string eventName = _currentEvent.GetComponent<Event>().Name;
         Debug.Log($"{eventName} ended.");
+        _timer.SetActive(false);
+        _isEventActive = false;
         _currentEvent.GetComponent<Event>().EventEnd();
         Destroy(_currentEvent);
         _currentEvent = null;
@@ -193,5 +216,11 @@ public class EventManager : MonoBehaviour
     public void DeactivateIcon(GameObject icon)
     {
         icon.SetActive(false);
+        //_NoEventIcon.SetActive(true);
     }
+    
+    //public void ActivateIcon(GameObject icon)
+    //{
+    //    icon.SetActive(true);
+    //}
 }

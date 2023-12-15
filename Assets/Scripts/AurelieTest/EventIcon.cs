@@ -11,7 +11,7 @@ public class EventIcon : MonoBehaviour
         _eventManager = FindAnyObjectByType<EventManager>();
     }
 
-    public void DeactivateIcon()
+    public void DeactivateEventIcon()
     {
         _eventManager.DeactivateIcon(gameObject);
     }
