@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17875892, g: 0.22383048, b: 0.30573562, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4695,10 +4695,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 3.644
       objectReference: {fileID: 0}
+    - target: {fileID: 6558122326827171813, guid: ed3a3c7cf3bd4ab4087913c771e0045a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fdbf31acc301bfe4f9dcb274934184da, type: 2}
     - target: {fileID: 7471235022143546839, guid: ed3a3c7cf3bd4ab4087913c771e0045a,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845355702595964727, guid: ed3a3c7cf3bd4ab4087913c771e0045a,
+        type: 3}
+      propertyPath: _cam
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8648294208822238481, guid: ed3a3c7cf3bd4ab4087913c771e0045a,
         type: 3}
@@ -6165,6 +6175,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1648552140922142725, guid: 52f32e6103f354b4a80434d8ee125420,
+        type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2074426717889452057, guid: 52f32e6103f354b4a80434d8ee125420,
         type: 3}
       propertyPath: m_Enabled
@@ -6290,6 +6305,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoutPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 6585393368664501255, guid: 52f32e6103f354b4a80434d8ee125420,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6e89990c0261c5c4db5712c047d94eaa, type: 2}
     - target: {fileID: 6889463954481326732, guid: 52f32e6103f354b4a80434d8ee125420,
         type: 3}
       propertyPath: m_IsActive
@@ -8240,6 +8260,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7851738359540143671, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5,
+        type: 3}
+      propertyPath: _cam
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8873172270548332584, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 60916d48ec6131f4eaac519b7f376eb3, type: 2}
     m_RemovedComponents:
     - {fileID: 4543908728983941098, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5, type: 3}
     - {fileID: 3189636547283558165, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5, type: 3}
@@ -8426,11 +8456,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7635826562936255635, guid: 177373c8035477c46bf018099bfbe2d0,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 157bbb28419523848b7ebd0c959f1854, type: 2}
     - target: {fileID: -8679921383154817045, guid: 3ed0ba8d5951e7e4092083d81bf7a2fb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8486,6 +8511,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rope_rock_obj
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: 177373c8035477c46bf018099bfbe2d0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 157bbb28419523848b7ebd0c959f1854, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
