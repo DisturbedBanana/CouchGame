@@ -503,13 +503,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18179560}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46566892, y: -0.032663953, z: 0.05586102, w: 0.88259}
+  m_LocalRotation: {x: 0.23697983, y: -0.018093899, z: 0.062128816, w: 0.9693572}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 727433258}
-  m_LocalEulerAnglesHint: {x: 55.653, y: -0.572, z: 6.941}
+  m_LocalEulerAnglesHint: {x: 27.496, y: -0.364, z: 7.245}
 --- !u!114 &18179563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8267,6 +8267,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8873172270548332584, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5,
         type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 212504efdb6503941b84c5456f006737, type: 2}
+    - target: {fileID: 8873172270548332584, guid: eb8dfa96beaa7d64ab0cadf094bfc6e5,
+        type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 60916d48ec6131f4eaac519b7f376eb3, type: 2}
@@ -10032,6 +10037,11 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4653765234858565327, guid: a424d0d8128c5ac4f98582fba7ce78c2,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6042570312492734161, guid: a424d0d8128c5ac4f98582fba7ce78c2,
         type: 3}
       propertyPath: m_Name
@@ -10086,6 +10096,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7091724996136454443, guid: a424d0d8128c5ac4f98582fba7ce78c2,
+        type: 3}
+      propertyPath: _cam
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4212080400463390126, guid: a424d0d8128c5ac4f98582fba7ce78c2, type: 3}
