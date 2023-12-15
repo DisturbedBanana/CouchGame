@@ -25,13 +25,13 @@ public class HeatManager : MonoBehaviour
 
     [Space]
     [Header("Heat Decrease variables")]
-    [Range(0.1f, 3.0f)]
+    [Range(0.01f, 3.0f)]
     public float _lumberjackDecreaser;
-    [Range(0.1f, 3.0f)]
+    [Range(0.01f, 3.0f)]
     public float _scoutDecreaser;
-    [Range(0.1f, 3.0f)]
+    [Range(0.01f, 3.0f)]
     public float _shamanDecreaser;
-    [Range(0.1f, 3.0f)]
+    [Range(0.01f, 3.0f)]
     public float _engineerDecreaser;
 
     [Space]
@@ -47,13 +47,17 @@ public class HeatManager : MonoBehaviour
 
     [Space]
     [Header("Player Materials")]
-    public Material _lumberjackMat;
+    public Material[] _lumberjackMats;
     public Material _scoutMat;
-    public Material _shamanMat;
+    public Material[] _shamanMats;
     public Material _engineerMat;
-    public Material _deadMat;
 
-    [SerializeField] private Material[] _lumberjackDeadMats;
+    [SerializeField] private Material[] _oneTextureDeadMats;
+    [SerializeField] private Material[] _twoTexturesDeadMats;
+
+    [Space]
+    [Header("Player Variables")]
+    [SerializeField] private float _deathSpeed;
 
     private void Awake()
     {
@@ -96,7 +100,7 @@ public class HeatManager : MonoBehaviour
                 }
             }
 
-            if (player.GetComponent<Character>().IsInSnow && player.GetComponent<Character>().Heat != 0)
+            if (player.GetComponent<Character>().IsInSnow && player.GetComponent<Character>().Heat >= 0)
             {
                 switch (player.gameObject.GetComponent<Character>().PlayerId)
                 {
@@ -121,7 +125,7 @@ public class HeatManager : MonoBehaviour
                 }
             }
 
-            if (player.GetComponent<Character>().Heat == 0 && player.GetComponent<Character>().IsAlive)
+            if (player.GetComponent<Character>().Heat <= 0 && player.GetComponent<Character>().IsAlive)
             {
                 _playerDeathPosition = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
 
@@ -172,10 +176,23 @@ public class HeatManager : MonoBehaviour
         //Changes the to the dead transparent material of the player
         //GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().material = _deadMat;
 
-        GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials = _lumberjackDeadMats;
+        if (playerId == 1 || playerId == 3)
+        {
+            GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials = _twoTexturesDeadMats;
+        }
+        else if (playerId == 2 || playerId == 4)
+        {
+            GameManager.instance._playerGameObjectList[playerId - 1].GetComponentInChildren<SkinnedMeshRenderer>().materials = _oneTextureDeadMats;
+        }
 
         GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<PlayerMovTest>().CanMove = true;
-        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<Character>().MoveSpeed = 1f;
+        GameManager.instance._playerGameObjectList[playerId - 1].GetComponent<Character>().MoveSpeed = _deathSpeed;
+
+        if (playerId == 3)
+        {
+            Debug.Log("ouais");
+            Revive.instance.StartCoroutine(Revive.instance.ReviveShaman());
+        }
     }
 
     private void OnTriggerExit(Collider other)

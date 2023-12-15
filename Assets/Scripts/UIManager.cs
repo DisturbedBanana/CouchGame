@@ -26,7 +26,8 @@ public class UIManager : MonoBehaviour
     public GameObject _returnToMainMenuCanvas;
     public GameObject _winCanvas;
     public GameObject _loseCanvas;
-    
+    public GameObject _backgroundCanvas;
+
 
     [Space]
     [Header("Selected Items References")]
@@ -65,6 +66,7 @@ public class UIManager : MonoBehaviour
         //_returnToMainMenuCanvas.SetActive(false);
         _winCanvas.SetActive(false);
         _loseCanvas.SetActive(false);
+        _backgroundCanvas.SetActive(false);
     }
 
     public void OnUIBack(InputAction.CallbackContext context)
@@ -80,6 +82,7 @@ public class UIManager : MonoBehaviour
             else if (_menuState == "PauseMenu")
             {
                 _currentlyDisplayedMenu.SetActive(false);
+                _backgroundCanvas.SetActive(false);
                 GameManager.instance.PauseGame();
             }
         }

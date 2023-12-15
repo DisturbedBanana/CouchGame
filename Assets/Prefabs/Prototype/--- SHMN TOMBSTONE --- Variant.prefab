@@ -18,6 +18,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: --- SHMN TOMBSTONE --- Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4301098508160147570, guid: 7ae6dcf9e91a7cb488bb6e082f74c43e,
+        type: 3}
+      propertyPath: m_TagString
+      value: ShamanTombstone
+      objectReference: {fileID: 0}
     - target: {fileID: 8411977361619916629, guid: 7ae6dcf9e91a7cb488bb6e082f74c43e,
         type: 3}
       propertyPath: m_LocalPosition.x
