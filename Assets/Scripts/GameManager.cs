@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     [Space]
     [Header("Variables")]
-
     [SerializeField] private GameObject _lumberjack;
     [SerializeField] private GameObject _shaman;
     [SerializeField] private GameObject _engineer;
@@ -26,14 +25,22 @@ public class GameManager : MonoBehaviour
     public bool _canPauseGame = true;
 
     [Button("Win")]
-    private void WinDebug()
+    public void Win()
     {
+        for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+        {
+            GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("UI");
+        }
         UIManager.instance._winCanvas.SetActive(true);
     }
 
     [Button("Lose")]
-    private void LoseDebug()
+    public void Lose()
     {
+        for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+        {
+            GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("UI");
+        }
         UIManager.instance._loseCanvas.SetActive(true);
     }
 
@@ -70,6 +77,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetUIModeOff()
+    {
+        for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+        {
+            GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("Controller");
+        }
+    }
+
     public void PauseGame()
     {
         _gamePaused = !_gamePaused;
@@ -98,15 +113,5 @@ public class GameManager : MonoBehaviour
                 GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("Controller");
             }
         }
-    }
-
-    public void OnWin()
-    {
-
-    }
-
-    public void OnLose()
-    {
-
     }
 }

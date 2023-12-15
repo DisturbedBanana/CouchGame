@@ -59,6 +59,11 @@ public class HeatManager : MonoBehaviour
     [Header("Player Variables")]
     [SerializeField] private float _deathSpeed;
 
+    [Space]
+    [Header("Death variables")]
+    public int _deadPlayers = 0;
+    public bool _shamanIsDead = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -193,6 +198,9 @@ public class HeatManager : MonoBehaviour
             Debug.Log("ouais");
             Revive.instance.StartCoroutine(Revive.instance.ReviveShaman());
         }
+
+        _deadPlayers += 1;
+        _shamanIsDead = true;
     }
 
     private void OnTriggerExit(Collider other)

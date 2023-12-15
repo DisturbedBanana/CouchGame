@@ -53,6 +53,7 @@ public class ToolInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.isTrigger) return;
         if (other.CompareTag("Tree"))
         {
             _treesObjectsInRange.Add(other.gameObject);
