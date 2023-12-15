@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ExpandingFlame : MonoBehaviour
 {
+    public static ExpandingFlame Instance { get; private set; }
+
     List<GameObject> _alreadyDownSnowList = new List<GameObject>();
     float _shrinkTimer = 0;
 
@@ -20,6 +22,11 @@ public class ExpandingFlame : MonoBehaviour
     [SerializeField] bool _doesSnowComeBackUp = false;
 
     public float ShrinkSpeed { get { return _shrinkSpeed; } set { _shrinkSpeed = value; } }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Update()
     {
@@ -78,9 +85,9 @@ public class ExpandingFlame : MonoBehaviour
         }
     }
 
-    public void StartLerpFlameScale()
+    public void StartLerpFlameScale(int amount)
     {
-        StartCoroutine(LerpFlameScale(_growthSpeed, 5));
+        StartCoroutine(LerpFlameScale(_growthSpeed, amount));
     }
 
     private void OnTriggerEnter(Collider other)

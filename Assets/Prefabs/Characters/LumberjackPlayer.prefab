@@ -1425,6 +1425,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1276135767990486181}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9a9f5efd3ea83874ba0cb100525873a3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 105630205914258058}
   m_SourcePrefab: {fileID: 100100000, guid: 9a9f5efd3ea83874ba0cb100525873a3, type: 3}
 --- !u!1 &6042570312492734161 stripped
 GameObject:
@@ -1455,6 +1459,10 @@ MonoBehaviour:
   _hasTool: 1
   _isInSnow: 0
   _isAlive: 1
+  _nbWoods: 0
+  _nbCharcoals: 0
+  _nbIrons: 0
+  _isInsideWoodZone: 0
 --- !u!114 &4212080400463390126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1598,7 +1606,19 @@ MonoBehaviour:
     m_ActionId: 32007b05-63b9-4ed5-ac64-3c9a77cb47d9
     m_ActionName: Dead/Movement[/DualSenseGamepadHID/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 105630205914258058}
+        m_TargetAssemblyTypeName: DropInteraction, Assembly-CSharp
+        m_MethodName: OnDropWood
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 367ae521-211a-4bc8-9cae-f31215f2d7d8
     m_ActionName: Controller/Drop[/XInputControllerWindows/buttonWest,/DualSenseGamepadHID/buttonWest]
   - m_PersistentCalls:
@@ -1645,6 +1665,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3d577a15-2127-470c-aacf-f61eb517455c
     m_ActionName: UI/Pause[/DualSenseGamepadHID/start,/DualSenseGamepadHID1/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 105630205914258058}
+        m_TargetAssemblyTypeName: DropInteraction, Assembly-CSharp
+        m_MethodName: OnDropCharcoal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1f5c0769-aa97-45fe-b12a-6ecd63c251ad
+    m_ActionName: Controller/DropCharcoal[/XInputControllerWindows1/dpad/left,/DualSenseGamepadHID/dpad/left]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a26d1aba-7391-4a1a-b995-9a718acb2249
+    m_ActionName: Controller/DropIron[/XInputControllerWindows1/dpad/right,/DualSenseGamepadHID/dpad/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controller
@@ -1778,6 +1818,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517e130f4d2b1ac4d82c487fc2b2d4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &105630205914258058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6042570312492734161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7bbd924e031294ea8115231941a917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _woodExpansionFactor: 5
+  _charcoalExpansionFactor: 10
 --- !u!4 &6381694146389937259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9a9f5efd3ea83874ba0cb100525873a3,

@@ -99,7 +99,7 @@ public class ToolInteraction : MonoBehaviour
             _playerAnim.SetTrigger("cutsTree");
             StartCoroutine(CuttingAnim());
 
-            _playerInv.AddItemToInventory(_treesObjectsInRange[0].GetComponent<WorldItem>().Data.ID);
+            _playerClass.NbWoods++;
         }
     }
 
