@@ -124,6 +124,8 @@ public class Revive : MonoBehaviour
 
         Destroy(tombstone);
         _playerMovement.CanMove = true;
+
+        HeatManager.instance._deadPlayers -= 1;
     }
 
     public IEnumerator ReviveShaman()
@@ -140,6 +142,8 @@ public class Revive : MonoBehaviour
 
         GameObject shamanTombstone = GameObject.FindGameObjectWithTag("ShamanTombstone");
         Destroy(shamanTombstone);
+
+        HeatManager.instance._shamanIsDead = false;
     }
 
     private void FindNearestItem()

@@ -12,6 +12,7 @@ public class EventBlizzard : Event
 
     private ExpandingFlame _flame;
     private HeatManager _heatManager;
+    private EventManager _eventManager;
 
     private float _shrinkSpeedBase;
     private float _lumDecBase;
@@ -23,6 +24,7 @@ public class EventBlizzard : Event
     {
         _flame = FindAnyObjectByType<ExpandingFlame>();
         _heatManager = FindAnyObjectByType<HeatManager>();
+        _eventManager = FindAnyObjectByType<EventManager>();
     }
 
     private void Start()

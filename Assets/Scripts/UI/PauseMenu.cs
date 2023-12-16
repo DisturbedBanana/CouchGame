@@ -14,8 +14,6 @@ public class PauseMenu : Menu
 
     private void OnEnable()
     {
-        Debug.Log("pause menu activated");
-
         UIManager.instance.SetSelectedButton(UIManager.instance._pauseMenuCanvas, UIManager.instance._pauseMenuFirstSelectedButton);
     }
 }

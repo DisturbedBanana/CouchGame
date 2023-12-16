@@ -51,9 +51,27 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Drop",
+                    "name": "DropWood",
                     "type": "Button",
                     "id": "367ae521-211a-4bc8-9cae-f31215f2d7d8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DropCharcoal",
+                    "type": "Button",
+                    "id": "1f5c0769-aa97-45fe-b12a-6ecd63c251ad",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DropIron",
+                    "type": "Button",
+                    "id": "a26d1aba-7391-4a1a-b995-9a718acb2249",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -209,12 +227,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1da5d53f-67f8-416d-8987-d6b61b7de97c",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "b6e3a5b1-1d1b-41d7-83e4-abf6beb27b21",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Drop",
+                    "action": "DropWood",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -259,6 +277,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Rope",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e52d1ce5-fb77-4bd1-bcee-2b791e12bb6d",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "DropCharcoal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf6fbcd8-6319-45f8-a3b0-67eb07234975",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "DropIron",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -16,6 +16,36 @@ public class Character : MonoBehaviour
     [SerializeField] private bool _isInSnow;
     [SerializeField] private bool _isAlive;
 
+    [SerializeField] private int _nbWoods = 0;
+    [SerializeField] private int _nbCharcoals = 0;
+    [SerializeField] private int _nbIrons = 0;
+
+    [SerializeField] private bool _isInsideWoodZone = false;
+
+
+    public int NbWoods {
+       get => _nbWoods;
+       set => _nbWoods = value;
+    }
+
+    public int NbCharcoals
+    {
+        get => _nbCharcoals;
+        set => _nbCharcoals = value;
+    }
+
+    public int NbIrons
+    {
+        get => _nbIrons;
+        set => _nbIrons = value;
+    }
+
+    public bool IsInsideWoodZone
+    {
+        get => _isInsideWoodZone;
+        set => _isInsideWoodZone = value;
+    }
+
     public int PlayerId { get { return _playerId; } set { _playerId = value; } }
     public string Name { get { return _name; } set { _name = value; } }
 
@@ -34,5 +64,6 @@ public class Character : MonoBehaviour
     public bool HasTool { get { return _hasTool; } set { _hasTool = value; } }
 
     public bool IsInSnow { get { return _isInSnow; } set { _isInSnow = value; } }
+
     public bool IsAlive { get { return _isAlive; } set { _isAlive = value; } }
 }

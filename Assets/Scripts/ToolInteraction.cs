@@ -53,6 +53,7 @@ public class ToolInteraction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other.isTrigger) return;
         if (other.CompareTag("Tree"))
         {
             _treesObjectsInRange.Add(other.gameObject);
@@ -98,7 +99,7 @@ public class ToolInteraction : MonoBehaviour
             _playerAnim.SetTrigger("cutsTree");
             StartCoroutine(CuttingAnim());
 
-            _playerInv.AddItemToInventory(_treesObjectsInRange[0].GetComponent<WorldItem>().Data.ID);
+            _playerClass.NbWoods++;
         }
     }
 
