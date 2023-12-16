@@ -106,10 +106,10 @@ MonoBehaviour:
   - {fileID: 645841490173836830, guid: b760e4a6892a01942bfbd783dc952abe, type: 3}
   - {fileID: 4939013798731404417, guid: 2b1b2b7b8450ec843bd45c2fc7f0ed37, type: 3}
   - {fileID: 5479555233517896909, guid: d77aef86c03e1c740a998b6dfa1b267b, type: 3}
-  _lumberjackDecreaser: 0.25
-  _scoutDecreaser: 0.25
-  _shamanDecreaser: 0.25
-  _engineerDecreaser: 0.25
+  _lumberjackDecreaser: 0.07
+  _scoutDecreaser: 0.07
+  _shamanDecreaser: 0.07
+  _engineerDecreaser: 0.07
   _lumberjackIncreaser: 0.5
   _scoutIncreaser: 0.5
   _shamanIncreaser: 0.5
@@ -117,17 +117,19 @@ MonoBehaviour:
   _lumberjackMats:
   - {fileID: 2100000, guid: 037df111619a27345872c4f4604d77b9, type: 2}
   - {fileID: 2100000, guid: 4eb68323c3314394ebe5416fb194549b, type: 2}
-  _scoutMat: {fileID: 2100000, guid: 0558214a306f5ac428a81fe74db38ac1, type: 2}
+  _scoutMat: {fileID: 2100000, guid: 6e89990c0261c5c4db5712c047d94eaa, type: 2}
   _shamanMats:
   - {fileID: 2100000, guid: 212504efdb6503941b84c5456f006737, type: 2}
   - {fileID: 2100000, guid: 60916d48ec6131f4eaac519b7f376eb3, type: 2}
-  _engineerMat: {fileID: 0}
+  _engineerMat: {fileID: 2100000, guid: fdbf31acc301bfe4f9dcb274934184da, type: 2}
   _oneTextureDeadMats:
   - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
   _twoTexturesDeadMats:
   - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
   - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
   _deathSpeed: 3.5
+  _deadPlayers: 0
+  _shamanIsDead: 0
 --- !u!135 &2353555491149913391
 SphereCollider:
   m_ObjectHideFlags: 0

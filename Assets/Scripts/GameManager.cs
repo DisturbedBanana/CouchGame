@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
             GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("UI");
         }
         UIManager.instance._winCanvas.SetActive(true);
+        UIManager.instance._backgroundCanvas.SetActive(true);
     }
 
     [Button("Lose")]
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
             GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("UI");
         }
         UIManager.instance._loseCanvas.SetActive(true);
+        UIManager.instance._backgroundCanvas.SetActive(true);
     }
 
     private void Awake()

@@ -195,12 +195,16 @@ public class HeatManager : MonoBehaviour
 
         if (playerId == 3)
         {
-            Debug.Log("ouais");
             Revive.instance.StartCoroutine(Revive.instance.ReviveShaman());
         }
 
         _deadPlayers += 1;
         _shamanIsDead = true;
+
+        if (_deadPlayers == 4)
+        {
+            GameManager.instance.Lose();
+        }
     }
 
     private void OnTriggerExit(Collider other)

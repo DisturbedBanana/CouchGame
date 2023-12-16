@@ -39,8 +39,8 @@ public class MainMenu : MonoBehaviour
         _mainMenuCanvas = GameObject.FindGameObjectWithTag("MainMenuCanvas");
         _optionsMenuCanvas = GameObject.FindGameObjectWithTag("OptionsMenuCanvas");
         _optionsMenuCanvas.SetActive(false);
-        _playerSelectionMenuCanvas = GameObject.FindGameObjectWithTag("PlayerSelectionCanvas");
-        _playerSelectionMenuCanvas.SetActive(false);
+        //_playerSelectionMenuCanvas = GameObject.FindGameObjectWithTag("PlayerSelectionCanvas");
+        //_playerSelectionMenuCanvas.SetActive(false);
         _playerInputs = new PlayerInputs();
     }
 
