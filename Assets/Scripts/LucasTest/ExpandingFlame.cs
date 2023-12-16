@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class ExpandingFlame : MonoBehaviour
@@ -37,7 +38,23 @@ public class ExpandingFlame : MonoBehaviour
             StartCoroutine(LerpFlameScale(_growthSpeed, -5));
 
         _shrinkTimer += Time.deltaTime;
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime / _shrinkSpeed);
+
+        //transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime / _shrinkSpeed);
+    }
+
+    private void FixedUpdate()
+    {
+        Vector3 currentScale = transform.localScale;
+
+        currentScale.x -= _shrinkSpeed * Time.deltaTime / 20f;
+        currentScale.z -= _shrinkSpeed * Time.deltaTime / 20f;
+
+        transform.localScale = currentScale;
+
+        if (currentScale.x <= 5f && currentScale.z <= 5f)
+        {
+            GameManager.instance.Lose();
+        }
     }
 
     //used to make "Snow" tagged objects go under and above when needed. Values can be tweaked via editor
@@ -79,7 +96,7 @@ public class ExpandingFlame : MonoBehaviour
         float startSizeZ = transform.localScale.z;
         while (time < duration)
         {
-            transform.localScale = new Vector3(Mathf.Lerp(startSizeX, startSizeX + addSize, time / duration), Mathf.Lerp(startSizeX, startSizeY + addSize, time / duration), Mathf.Lerp(startSizeX, startSizeZ + addSize, time / duration));
+            transform.localScale = new Vector3(Mathf.Lerp(startSizeX, startSizeX + addSize, time / duration), transform.localScale.y, Mathf.Lerp(startSizeX, startSizeZ + addSize, time / duration));
             time += Time.deltaTime;
             yield return null;
         }

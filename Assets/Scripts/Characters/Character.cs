@@ -64,5 +64,6 @@ public class Character : MonoBehaviour
     public bool HasTool { get { return _hasTool; } set { _hasTool = value; } }
 
     public bool IsInSnow { get { return _isInSnow; } set { _isInSnow = value; } }
+
     public bool IsAlive { get { return _isAlive; } set { _isAlive = value; } }
 }
