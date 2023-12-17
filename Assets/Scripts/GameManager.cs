@@ -91,6 +91,11 @@ public class GameManager : MonoBehaviour
     {
         _gamePaused = !_gamePaused;
 
+        if (UIManager.instance._optionsMenuCanvas.activeSelf)
+        {
+            UIManager.instance._optionsMenuCanvas.SetActive(false);
+        }
+
         if (_gamePaused)
         {
             Time.timeScale = 0f;

@@ -326,13 +326,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 093fc706fe4864840b1e356d0001a14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerTransform: {fileID: 6381694146389937259}
+  _playerClass: {fileID: 0}
   _treesObjectsInRange: []
   _closestTreeInRange: {fileID: 0}
   _canUseAxe: 1
   _canChop: 1
-  _playerTransform: {fileID: 6381694146389937259}
+  _ironsObjectsInRange: []
+  _closestIronInRange: {fileID: 0}
+  _canUsePickaxe: 1
+  _canMine: 1
+  _charcoalsObjectsInRange: []
+  _closestCharcoalInRange: {fileID: 0}
+  _allObjectsInRange: []
+  _closestObjectInRange: {fileID: 0}
   _time: 0
-  _playerClass: {fileID: 0}
 --- !u!114 &8635185088252787416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1462,6 +1470,7 @@ MonoBehaviour:
   _nbWoods: 0
   _nbCharcoals: 0
   _nbIrons: 0
+  _nbMaximumItems: 5
   _isInsideWoodZone: 0
 --- !u!114 &4212080400463390126
 MonoBehaviour:
@@ -1509,7 +1518,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3205176952602127856}
         m_TargetAssemblyTypeName: ToolInteraction, Assembly-CSharp
-        m_MethodName: OnAxe
+        m_MethodName: OnToolInteraction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
