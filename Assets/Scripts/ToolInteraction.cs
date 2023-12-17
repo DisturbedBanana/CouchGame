@@ -181,8 +181,6 @@ public class ToolInteraction : MonoBehaviour
                 return;
             }
 
-            Debug.Log("entered chop");
-
             if (_treesObjectsInRange.Count != 0 && _canUseAxe && _canChop)
             {
                 Debug.Log("chopping");
@@ -199,6 +197,12 @@ public class ToolInteraction : MonoBehaviour
                 _playerAnim.SetTrigger("cutsTree");
                 StartCoroutine(CuttingAnim());
             }
+        }
+        //IRON
+        else if (context.performed && _closestObjectInRange.CompareTag("Iron"))
+        {
+            Debug.Log("Iron");
+
         }
     }
 
@@ -256,41 +260,11 @@ public class ToolInteraction : MonoBehaviour
         }
     }
 
-    private void FindNearestBreakableObject()
-    {
-        if (_allObjectsInRange.Count == 0)
-        {
-            _closestObjectInRange = null;
-        }
-        else
-        {
-            for (int i = 0; i < _allObjectsInRange.Count; i++)
-            {
-                if (_closestObjectInRange == null)
-                {
-                    _closestObjectInRange = _allObjectsInRange[i];
-                }
-
-                if (Vector3.Distance(transform.position, _closestObjectInRange.transform.position) > Vector3.Distance(transform.position, _allObjectsInRange[i].transform.position))
-                {
-                    _closestObjectInRange = _allObjectsInRange[i];
-                }
-                else
-                {
-                    return;
-                }
-            }
-        }
-    }
-
     IEnumerator CuttingAnim()
     {
         GameObject objToDestroy = _treesObjectsInRange[0];
 
-        if (_playerClass.PlayerId == 1)
-        {
-            _axe.SetActive(true);
-        }
+        _axe.SetActive(true);
 
         yield return new WaitForSecondsRealtime(2f);
 
@@ -305,10 +279,7 @@ public class ToolInteraction : MonoBehaviour
             yield return new WaitForSecondsRealtime(3.7f);
         }
 
-        if (_playerClass.PlayerId == 1)
-        {
-            _axe.SetActive(false);
-        }
+        _axe.SetActive(false);
 
         #region Adding wood to player inventory
         //GIVE ITEM TO PLAYER
