@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using TMPro;
+using UnityEngine.Rendering.UI;
 
 public class ToolInteraction : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class ToolInteraction : MonoBehaviour
     [Space]
     [Header("Tools")]
     [SerializeField] private GameObject _axe;
-    //[SerializeField] private GameObject _pickaxe;
+    [SerializeField] private GameObject _pickaxe;
     //[SerializeField] private GameObject _hammer;
 
     private void Awake()
@@ -67,13 +68,12 @@ public class ToolInteraction : MonoBehaviour
     private void Start()
     {
         _axe.SetActive(false);
-        //_pickaxe.SetActive(false);
+        _pickaxe.SetActive(false);
         //_hammer.SetActive(false);
     }
 
     private void Update()
     {
-        FindNearestTree();
         FindNearestObject();
 
         if (_closestTreeInRange == null)
@@ -181,16 +181,16 @@ public class ToolInteraction : MonoBehaviour
                 return;
             }
 
-            if (_treesObjectsInRange.Count != 0 && _canUseAxe && _canChop)
+            if (_allObjectsInRange.Count != 0 && _canUseAxe && _canChop)
             {
                 Debug.Log("chopping");
                 _playerMovement.CanMove = false;
                 _canUseAxe = false;
                 _canChop = false;
 
-                _treeAnim = _closestTreeInRange.GetComponent<Animator>();
+                _treeAnim = _closestObjectInRange.GetComponent<Animator>();
 
-                Transform treeTarget = _closestTreeInRange.transform;
+                Transform treeTarget = _closestObjectInRange.transform;
 
                 StartCoroutine(RotateToTarget(treeTarget, 2f));
 
@@ -202,7 +202,24 @@ public class ToolInteraction : MonoBehaviour
         else if (context.performed && _closestObjectInRange.CompareTag("Iron"))
         {
             Debug.Log("Iron");
+            if (_allObjectsInRange.Count != 0 && _canUsePickaxe && _canMine)
+            {
+                Debug.Log("Mining iron");
+                _playerMovement.CanMove = false;
+                _canUseAxe = false;
+                _canChop = false;
 
+                Transform objectTarget = _closestObjectInRange.transform;
+
+                StartCoroutine(RotateToTarget(objectTarget, 2f));
+
+                _playerAnim.SetTrigger("isMining");
+                StartCoroutine(MiningAnim());
+            }
+        }
+        else
+        {
+            return;
         }
     }
 
@@ -233,36 +250,91 @@ public class ToolInteraction : MonoBehaviour
         }
     }
 
-    private void FindNearestTree()
+    IEnumerator MiningAnim()
     {
-        if (_treesObjectsInRange.Count == 0)
-        {
-            _closestTreeInRange = null;
-        }
-        else
-        {
-            for (int i = 0; i < _treesObjectsInRange.Count; i++)
-            {
-                if (_closestTreeInRange == null)
-                {
-                    _closestTreeInRange = _treesObjectsInRange[i];
-                }
+        GameObject objToDestroy = _closestObjectInRange;
 
-                if (Vector3.Distance(transform.position, _closestTreeInRange.transform.position) > Vector3.Distance(transform.position, _treesObjectsInRange[i].transform.position))
-                {
-                    _closestTreeInRange = _treesObjectsInRange[i];
-                }
-                else
-                {
-                    return;
-                }
+        _pickaxe.SetActive(true);
+
+        if (_playerClass.PlayerId == 1 || _playerClass.PlayerId == 2)
+        {
+            yield return new WaitForSecondsRealtime(4.6f);
+        }
+        else if (_playerClass.PlayerId == 3 || _playerClass.PlayerId == 4)
+        {
+            yield return new WaitForSecondsRealtime(5.7f);
+        }
+
+        _pickaxe.SetActive(false);
+
+        #region Adding iron to player inventory
+        //GIVE ITEM TO PLAYER
+        string ironValue;
+
+        if (_playerClass.PlayerId == 1)
+        {
+            ironValue = UIManager.instance._lumberjackIronValue.text;
+            int intIronValue = int.Parse(ironValue);
+
+            if (intIronValue < _playerClass.NbMaximumItems)
+            {
+                intIronValue++;
+                UIManager.instance._lumberjackIronValue.text = intIronValue.ToString();
+                _playerClass.NbWoods++;
+                _playerClass.NbMaximumItems++;
             }
         }
+        else if (_playerClass.PlayerId == 2)
+        {
+            ironValue = UIManager.instance._scoutIronValue.text;
+            int intIronValue = int.Parse(ironValue);
+
+            if (intIronValue < _playerClass.NbMaximumItems)
+            {
+                intIronValue++;
+                UIManager.instance._scoutIronValue.text = intIronValue.ToString();
+                _playerClass.NbWoods++;
+                _playerClass.NbMaximumItems++;
+            }
+        }
+        else if (_playerClass.PlayerId == 3)
+        {
+            ironValue = UIManager.instance._shamanIronValue.text;
+            int intIronValue = int.Parse(ironValue);
+
+            if (intIronValue < _playerClass.NbMaximumItems)
+            {
+                intIronValue++;
+                UIManager.instance._shamanIronValue.text = intIronValue.ToString();
+                _playerClass.NbWoods++;
+                _playerClass.NbMaximumItems++;
+            }
+        }
+        else if (_playerClass.PlayerId == 4)
+        {
+            ironValue = UIManager.instance._engineerIronValue.text;
+            int intIronValue = int.Parse(ironValue);
+
+            if (intIronValue < _playerClass.NbMaximumItems)
+            {
+                intIronValue++;
+                UIManager.instance._engineerIronValue.text = intIronValue.ToString();
+                _playerClass.NbWoods++;
+                _playerClass.NbMaximumItems++;
+            }
+        }
+        #endregion
+
+        Destroy(objToDestroy);
+        _allObjectsInRange.Remove(_closestObjectInRange);
+        _playerMovement.CanMove = true;
+        _canUsePickaxe = true;
+        _canMine = true;
     }
 
     IEnumerator CuttingAnim()
     {
-        GameObject objToDestroy = _treesObjectsInRange[0];
+        GameObject objToDestroy = _closestObjectInRange;
 
         _axe.SetActive(true);
 
@@ -299,6 +371,7 @@ public class ToolInteraction : MonoBehaviour
                     intWoodValue++;
                     UIManager.instance._lumberjackWoodValue.text = intWoodValue.ToString();
                     _playerClass.NbWoods++;
+                    _playerClass.NbMaximumItems++;
                 }
             }
         }
@@ -316,6 +389,7 @@ public class ToolInteraction : MonoBehaviour
                     intWoodValue++;
                     UIManager.instance._scoutWoodValue.text = intWoodValue.ToString();
                     _playerClass.NbWoods++;
+                    _playerClass.NbMaximumItems++;
                 }
             }
         }
@@ -333,6 +407,7 @@ public class ToolInteraction : MonoBehaviour
                     intWoodValue++;
                     UIManager.instance._shamanWoodValue.text = intWoodValue.ToString();
                     _playerClass.NbWoods++;
+                    _playerClass.NbMaximumItems++;
                 }
             }
         }
@@ -350,6 +425,7 @@ public class ToolInteraction : MonoBehaviour
                     intWoodValue++;
                     UIManager.instance._engineerWoodValue.text = intWoodValue.ToString();
                     _playerClass.NbWoods++;
+                    _playerClass.NbMaximumItems++;
                 }
             }
         }
