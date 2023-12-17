@@ -310,6 +310,7 @@ public class ToolInteraction : MonoBehaviour
             _axe.SetActive(false);
         }
 
+        #region Adding wood to player inventory
         //GIVE ITEM TO PLAYER
         string woodValue;
 
@@ -330,6 +331,58 @@ public class ToolInteraction : MonoBehaviour
                 }
             }
         }
+        else if (_playerClass.PlayerId == 2)
+        {
+            woodValue = UIManager.instance._scoutWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            if (intWoodValue < _playerClass.NbMaximumItems)
+            {
+                int dropChance = UnityEngine.Random.Range(0, 100);
+                Debug.Log(dropChance);
+                if (dropChance <= _woodDropChance)
+                {
+                    intWoodValue++;
+                    UIManager.instance._scoutWoodValue.text = intWoodValue.ToString();
+                    _playerClass.NbWoods++;
+                }
+            }
+        }
+        else if (_playerClass.PlayerId == 3)
+        {
+            woodValue = UIManager.instance._shamanWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            if (intWoodValue < _playerClass.NbMaximumItems)
+            {
+                int dropChance = UnityEngine.Random.Range(0, 100);
+                Debug.Log(dropChance);
+                if (dropChance <= _woodDropChance)
+                {
+                    intWoodValue++;
+                    UIManager.instance._shamanWoodValue.text = intWoodValue.ToString();
+                    _playerClass.NbWoods++;
+                }
+            }
+        }
+        else if (_playerClass.PlayerId == 4)
+        {
+            woodValue = UIManager.instance._engineerWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            if (intWoodValue < _playerClass.NbMaximumItems)
+            {
+                int dropChance = UnityEngine.Random.Range(0, 100);
+                Debug.Log(dropChance);
+                if (dropChance <= _woodDropChance)
+                {
+                    intWoodValue++;
+                    UIManager.instance._engineerWoodValue.text = intWoodValue.ToString();
+                    _playerClass.NbWoods++;
+                }
+            }
+        }
+        #endregion
 
         _playerMovement.CanMove = true;
         _canUseAxe = true;

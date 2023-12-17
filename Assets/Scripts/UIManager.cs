@@ -45,6 +45,9 @@ public class UIManager : MonoBehaviour
     [Space]
     [Header("Wood values")]
     public TextMeshProUGUI _lumberjackWoodValue;
+    public TextMeshProUGUI _scoutWoodValue;
+    public TextMeshProUGUI _shamanWoodValue;
+    public TextMeshProUGUI _engineerWoodValue;
 
     private void Awake()
     {
