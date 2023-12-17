@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("References")]
     public static GameManager instance;
-    public static bool _gamePaused = false;
+    public static bool _gamePaused = true;
 
     [Space]
     [Header("Variables")]

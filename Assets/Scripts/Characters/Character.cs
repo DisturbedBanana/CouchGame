@@ -19,6 +19,7 @@ public class Character : MonoBehaviour
     [SerializeField] private int _nbWoods = 0;
     [SerializeField] private int _nbCharcoals = 0;
     [SerializeField] private int _nbIrons = 0;
+    [SerializeField] private int _nbMaximumItems;
 
     [SerializeField] private bool _isInsideWoodZone = false;
 
@@ -66,4 +67,6 @@ public class Character : MonoBehaviour
     public bool IsInSnow { get { return _isInSnow; } set { _isInSnow = value; } }
 
     public bool IsAlive { get { return _isAlive; } set { _isAlive = value; } }
+
+    public int NbMaximumItems { get { return _nbMaximumItems; } set { _nbMaximumItems = value; } }
 }
