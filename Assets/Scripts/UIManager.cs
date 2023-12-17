@@ -56,6 +56,13 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI _shamanIronValue;
     public TextMeshProUGUI _engineerIronValue;
 
+    [Space]
+    [Header("Coal values")]
+    public TextMeshProUGUI _lumberjackCoalValue;
+    public TextMeshProUGUI _scoutCoalValue;
+    public TextMeshProUGUI _shamanCoalValue;
+    public TextMeshProUGUI _engineerCoalValue;
+
     private void Awake()
     {
         if (instance == null)

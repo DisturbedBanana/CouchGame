@@ -207,6 +207,13 @@ public class ToolInteraction : MonoBehaviour
         else if (context.performed && _closestObjectInRange.CompareTag("Iron"))
         {
             Debug.Log("Iron");
+
+            if (_playerClass.IsInSnow && _playerClass.PlayerId != 4)
+            {
+                Debug.Log("Player isn't the engineer, so can't mine iron in snow");
+                return;
+            }
+
             if (_allObjectsInRange.Count != 0 && _canUsePickaxe && _canMine)
             {
                 Debug.Log("Mining iron");
@@ -217,6 +224,31 @@ public class ToolInteraction : MonoBehaviour
                 Transform objectTarget = _closestObjectInRange.transform;
 
                 StartCoroutine(RotateToTarget(objectTarget, 2f));
+
+                _playerAnim.SetTrigger("isMining");
+                StartCoroutine(MiningAnim());
+            }
+        }
+        //COAL
+        if (context.performed && _closestObjectInRange.CompareTag("Charcoal"))
+        {
+            Debug.Log("Coal");
+            if (_playerClass.IsInSnow && _playerClass.PlayerId != 4)
+            {
+                Debug.Log("Player isn't the engineer, so can't mine coal in snow");
+                return;
+            }
+
+            if (_allObjectsInRange.Count != 0 && _canUsePickaxe && _canMine)
+            {
+                Debug.Log("Mining Coal");
+                _playerMovement.CanMove = false;
+                _canUsePickaxe = false;
+                _canMine = false;
+
+                Transform treeTarget = _closestObjectInRange.transform;
+
+                StartCoroutine(RotateToTarget(treeTarget, 2f));
 
                 _playerAnim.SetTrigger("isMining");
                 StartCoroutine(MiningAnim());
@@ -274,58 +306,118 @@ public class ToolInteraction : MonoBehaviour
 
         #region Adding iron to player inventory
         //GIVE ITEM TO PLAYER
-        string ironValue;
-
-        if (_playerClass.PlayerId == 1)
+        if (objToDestroy.CompareTag("Iron"))
         {
-            ironValue = UIManager.instance._lumberjackIronValue.text;
-            int intIronValue = int.Parse(ironValue);
+            string ironValue;
 
-            if (intIronValue < _playerClass.NbMaximumItems)
+            if (_playerClass.PlayerId == 1)
             {
-                intIronValue++;
-                UIManager.instance._lumberjackIronValue.text = intIronValue.ToString();
-                _playerClass.NbWoods++;
-                _playerClass.NbMaximumItems++;
+                ironValue = UIManager.instance._lumberjackIronValue.text;
+                int intIronValue = int.Parse(ironValue);
+
+                if (intIronValue < _playerClass.NbMaximumItems)
+                {
+                    intIronValue++;
+                    UIManager.instance._lumberjackIronValue.text = intIronValue.ToString();
+                    _playerClass.NbWoods++;
+                    _playerClass.NbMaximumItems++;
+                }
+            }
+            else if (_playerClass.PlayerId == 2)
+            {
+                ironValue = UIManager.instance._scoutIronValue.text;
+                int intIronValue = int.Parse(ironValue);
+
+                if (intIronValue < _playerClass.NbMaximumItems)
+                {
+                    intIronValue++;
+                    UIManager.instance._scoutIronValue.text = intIronValue.ToString();
+                    _playerClass.NbWoods++;
+                    _playerClass.NbMaximumItems++;
+                }
+            }
+            else if (_playerClass.PlayerId == 3)
+            {
+                ironValue = UIManager.instance._shamanIronValue.text;
+                int intIronValue = int.Parse(ironValue);
+
+                if (intIronValue < _playerClass.NbMaximumItems)
+                {
+                    intIronValue++;
+                    UIManager.instance._shamanIronValue.text = intIronValue.ToString();
+                    _playerClass.NbWoods++;
+                    _playerClass.NbMaximumItems++;
+                }
+            }
+            else if (_playerClass.PlayerId == 4)
+            {
+                ironValue = UIManager.instance._engineerIronValue.text;
+                int intIronValue = int.Parse(ironValue);
+
+                if (intIronValue < _playerClass.NbMaximumItems)
+                {
+                    intIronValue++;
+                    UIManager.instance._engineerIronValue.text = intIronValue.ToString();
+                    _playerClass.NbWoods++;
+                    _playerClass.NbMaximumItems++;
+                }
             }
         }
-        else if (_playerClass.PlayerId == 2)
+        else if (objToDestroy.CompareTag("Charcoal"))
         {
-            ironValue = UIManager.instance._scoutIronValue.text;
-            int intIronValue = int.Parse(ironValue);
+            string coalValue;
 
-            if (intIronValue < _playerClass.NbMaximumItems)
+            if (_playerClass.PlayerId == 1)
             {
-                intIronValue++;
-                UIManager.instance._scoutIronValue.text = intIronValue.ToString();
-                _playerClass.NbWoods++;
-                _playerClass.NbMaximumItems++;
+                coalValue = UIManager.instance._lumberjackCoalValue.text;
+                int intCoalValue = int.Parse(coalValue);
+
+                if (intCoalValue < _playerClass.NbMaximumItems)
+                {
+                    intCoalValue++;
+                    UIManager.instance._lumberjackCoalValue.text = intCoalValue.ToString();
+                    _playerClass.NbCharcoals++;
+                    _playerClass.NbMaximumItems++;
+                }
             }
-        }
-        else if (_playerClass.PlayerId == 3)
-        {
-            ironValue = UIManager.instance._shamanIronValue.text;
-            int intIronValue = int.Parse(ironValue);
-
-            if (intIronValue < _playerClass.NbMaximumItems)
+            else if (_playerClass.PlayerId == 2)
             {
-                intIronValue++;
-                UIManager.instance._shamanIronValue.text = intIronValue.ToString();
-                _playerClass.NbWoods++;
-                _playerClass.NbMaximumItems++;
+                coalValue = UIManager.instance._scoutCoalValue.text;
+                int intCoalValue = int.Parse(coalValue);
+
+                if (intCoalValue < _playerClass.NbMaximumItems)
+                {
+                    intCoalValue++;
+                    UIManager.instance._scoutCoalValue.text = intCoalValue.ToString();
+                    _playerClass.NbCharcoals++;
+                    _playerClass.NbMaximumItems++;
+                }
             }
-        }
-        else if (_playerClass.PlayerId == 4)
-        {
-            ironValue = UIManager.instance._engineerIronValue.text;
-            int intIronValue = int.Parse(ironValue);
-
-            if (intIronValue < _playerClass.NbMaximumItems)
+            else if (_playerClass.PlayerId == 3)
             {
-                intIronValue++;
-                UIManager.instance._engineerIronValue.text = intIronValue.ToString();
-                _playerClass.NbWoods++;
-                _playerClass.NbMaximumItems++;
+                coalValue = UIManager.instance._shamanCoalValue.text;
+                int intCoalValue = int.Parse(coalValue);
+
+                if (intCoalValue < _playerClass.NbMaximumItems)
+                {
+                    intCoalValue++;
+                    UIManager.instance._shamanCoalValue.text = intCoalValue.ToString();
+                    _playerClass.NbCharcoals++;
+                    _playerClass.NbMaximumItems++;
+                }
+            }
+            else if (_playerClass.PlayerId == 4)
+            {
+                coalValue = UIManager.instance._engineerCoalValue.text;
+                int intCoalValue = int.Parse(coalValue);
+
+                if (intCoalValue < _playerClass.NbMaximumItems)
+                {
+                    intCoalValue++;
+                    UIManager.instance._engineerCoalValue.text = intCoalValue.ToString();
+                    _playerClass.NbWoods++;
+                    _playerClass.NbMaximumItems++;
+                }
             }
         }
         #endregion
