@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("References")]
     public static GameManager instance;
-    public static bool _gamePaused = false;
+    public static bool _gamePaused = true;
 
     [Space]
     [Header("Variables")]
@@ -90,6 +90,11 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         _gamePaused = !_gamePaused;
+
+        if (UIManager.instance._optionsMenuCanvas.activeSelf)
+        {
+            UIManager.instance._optionsMenuCanvas.SetActive(false);
+        }
 
         if (_gamePaused)
         {
