@@ -219,7 +219,6 @@ GameObject:
   - component: {fileID: 491216208963013558}
   - component: {fileID: 6384946707121646815}
   - component: {fileID: 3205176952602127856}
-  - component: {fileID: 8635185088252787416}
   m_Layer: 0
   m_Name: LumberjackRange
   m_TagString: PlayerRange
@@ -341,20 +340,7 @@ MonoBehaviour:
   _allObjectsInRange: []
   _closestObjectInRange: {fileID: 0}
   _time: 0
---- !u!114 &8635185088252787416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787277774425776726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea22b26da86bd14dbe540c2f1e53049, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemList: []
-  storageController: {fileID: 7091724996136454443}
+  _axe: {fileID: 0}
 --- !u!1 &1141094325679249510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,11 +1156,6 @@ PrefabInstance:
       propertyPath: _nbInvSlot
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
-        type: 3}
-      propertyPath: _playerInventory
-      value: 
-      objectReference: {fileID: 8635185088252787416}
     - target: {fileID: 6993224297040168963, guid: 08570469ae19a8d4c839678dcec6a994,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1291,18 +1272,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6180435900259490444}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7091724996136454443 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
-    type: 3}
-  m_PrefabInstance: {fileID: 6180435900259490444}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1985de823e521304b92b01a76371d459, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6853049812304948096
 PrefabInstance:
   m_ObjectHideFlags: 0

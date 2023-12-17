@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
+using TMPro;
 
 public class ToolInteraction : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class ToolInteraction : MonoBehaviour
     [SerializeField] private GameObject _closestTreeInRange;
     [SerializeField] private bool _canUseAxe = true;
     [SerializeField] private bool _canChop = true;
+    [SerializeField] private int _woodDropChance;
 
 
     [Space]
@@ -196,8 +198,6 @@ public class ToolInteraction : MonoBehaviour
 
                 _playerAnim.SetTrigger("cutsTree");
                 StartCoroutine(CuttingAnim());
-
-                _playerClass.NbWoods++;
             }
         }
     }
@@ -310,12 +310,34 @@ public class ToolInteraction : MonoBehaviour
             _axe.SetActive(false);
         }
 
+        //GIVE ITEM TO PLAYER
+        string woodValue;
+
+        if (_playerClass.PlayerId == 1)
+        {
+            woodValue = UIManager.instance._lumberjackWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            if (intWoodValue < _playerClass.NbMaximumItems)
+            {
+                int dropChance = UnityEngine.Random.Range(0, 100);
+                Debug.Log(dropChance);
+                if (dropChance <= _woodDropChance)
+                {
+                    intWoodValue++;
+                    UIManager.instance._lumberjackWoodValue.text = intWoodValue.ToString();
+                    _playerClass.NbWoods++;
+                }
+            }
+        }
+
         _playerMovement.CanMove = true;
         _canUseAxe = true;
 
         yield return new WaitForSecondsRealtime(1f);
 
         Destroy(objToDestroy);
+        _allObjectsInRange.Remove(_closestTreeInRange);
         _treesObjectsInRange.Remove(_closestTreeInRange);
         _canChop = true;
     }

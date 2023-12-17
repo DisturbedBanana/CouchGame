@@ -781,7 +781,6 @@ GameObject:
   - component: {fileID: 6827852972311073352}
   - component: {fileID: 54098140764835957}
   - component: {fileID: 4186153298719113511}
-  - component: {fileID: 8661864648988248266}
   - component: {fileID: 880238079684698566}
   m_Layer: 0
   m_Name: ScoutRange
@@ -877,20 +876,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &8661864648988248266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7471235022143546839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea22b26da86bd14dbe540c2f1e53049, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemList: []
-  storageController: {fileID: 7845355702595964727}
 --- !u!114 &880238079684698566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,6 +903,7 @@ MonoBehaviour:
   _allObjectsInRange: []
   _closestObjectInRange: {fileID: 0}
   _time: 0
+  _axe: {fileID: 0}
 --- !u!1 &8648294208822238481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,11 +1158,6 @@ PrefabInstance:
       propertyPath: _nbInvSlot
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
-        type: 3}
-      propertyPath: _playerInventory
-      value: 
-      objectReference: {fileID: 8661864648988248266}
     - target: {fileID: 6993224297040168963, guid: 08570469ae19a8d4c839678dcec6a994,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1293,18 +1274,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6579691479153794192}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7845355702595964727 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4012584104690258855, guid: 08570469ae19a8d4c839678dcec6a994,
-    type: 3}
-  m_PrefabInstance: {fileID: 6579691479153794192}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1985de823e521304b92b01a76371d459, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6823214962831947875
 PrefabInstance:
   m_ObjectHideFlags: 0

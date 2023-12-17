@@ -8,6 +8,7 @@ using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Rendering;
 using UnityEditor;
 using UnityEngine.Rendering.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -40,6 +41,10 @@ public class UIManager : MonoBehaviour
     [Space]
     [Header("Booleans")]
     [SerializeField] private bool _canCloseMenu = true;
+
+    [Space]
+    [Header("Wood values")]
+    public TextMeshProUGUI _lumberjackWoodValue;
 
     private void Awake()
     {
