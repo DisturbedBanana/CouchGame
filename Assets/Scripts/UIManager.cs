@@ -88,7 +88,11 @@ public class UIManager : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("retour");
+            if (_menuState != "WinCanvas" || _menuState != "LoseCanvas")
+            {
+                return;
+            }
+
             if (_menuState != "PauseMenu" && _canCloseMenu)
             {
                 _canCloseMenu = false;

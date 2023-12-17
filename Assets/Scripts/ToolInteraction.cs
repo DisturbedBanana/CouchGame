@@ -171,6 +171,11 @@ public class ToolInteraction : MonoBehaviour
     {
         Debug.Log("Tool Intreaction");
 
+        if (_closestObjectInRange == null)
+        {
+            return;
+        }
+
         //TREE
         if (context.performed && _closestObjectInRange.CompareTag("Tree"))
         {
