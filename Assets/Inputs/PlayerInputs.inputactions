@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RepairBridge",
+                    "type": "Button",
+                    "id": "942305ee-435b-419d-b0e9-064510ad8852",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -299,6 +308,17 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "DropIron",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb1a4d87-78df-4157-a754-a1fe4843b7ee",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RepairBridge",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
