@@ -34,6 +34,7 @@ TagManager:
   - WinArea
   - Charcoal
   - Iron
+  - BridgeZone
   layers:
   - Default
   - TransparentFX
