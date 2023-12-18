@@ -73,9 +73,27 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Drop"",
+                    ""name"": ""DropWood"",
                     ""type"": ""Button"",
                     ""id"": ""367ae521-211a-4bc8-9cae-f31215f2d7d8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropCharcoal"",
+                    ""type"": ""Button"",
+                    ""id"": ""1f5c0769-aa97-45fe-b12a-6ecd63c251ad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropIron"",
+                    ""type"": ""Button"",
+                    ""id"": ""a26d1aba-7391-4a1a-b995-9a718acb2249"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -231,12 +249,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1da5d53f-67f8-416d-8987-d6b61b7de97c"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""id"": ""b6e3a5b1-1d1b-41d7-83e4-abf6beb27b21"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
-                    ""action"": ""Drop"",
+                    ""action"": ""DropWood"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -281,6 +299,28 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Rope"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e52d1ce5-fb77-4bd1-bcee-2b791e12bb6d"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""DropCharcoal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf6fbcd8-6319-45f8-a3b0-67eb07234975"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""DropIron"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -459,7 +499,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Controller_Jump = m_Controller.FindAction("Jump", throwIfNotFound: true);
         m_Controller_Pause = m_Controller.FindAction("Pause", throwIfNotFound: true);
         m_Controller_PickUp = m_Controller.FindAction("PickUp", throwIfNotFound: true);
-        m_Controller_Drop = m_Controller.FindAction("Drop", throwIfNotFound: true);
+        m_Controller_DropWood = m_Controller.FindAction("DropWood", throwIfNotFound: true);
+        m_Controller_DropCharcoal = m_Controller.FindAction("DropCharcoal", throwIfNotFound: true);
+        m_Controller_DropIron = m_Controller.FindAction("DropIron", throwIfNotFound: true);
         m_Controller_Revive = m_Controller.FindAction("Revive", throwIfNotFound: true);
         m_Controller_TotemTeleport = m_Controller.FindAction("TotemTeleport", throwIfNotFound: true);
         m_Controller_TotemActivate = m_Controller.FindAction("TotemActivate", throwIfNotFound: true);
@@ -538,7 +580,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Controller_Jump;
     private readonly InputAction m_Controller_Pause;
     private readonly InputAction m_Controller_PickUp;
-    private readonly InputAction m_Controller_Drop;
+    private readonly InputAction m_Controller_DropWood;
+    private readonly InputAction m_Controller_DropCharcoal;
+    private readonly InputAction m_Controller_DropIron;
     private readonly InputAction m_Controller_Revive;
     private readonly InputAction m_Controller_TotemTeleport;
     private readonly InputAction m_Controller_TotemActivate;
@@ -552,7 +596,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Controller_Jump;
         public InputAction @Pause => m_Wrapper.m_Controller_Pause;
         public InputAction @PickUp => m_Wrapper.m_Controller_PickUp;
-        public InputAction @Drop => m_Wrapper.m_Controller_Drop;
+        public InputAction @DropWood => m_Wrapper.m_Controller_DropWood;
+        public InputAction @DropCharcoal => m_Wrapper.m_Controller_DropCharcoal;
+        public InputAction @DropIron => m_Wrapper.m_Controller_DropIron;
         public InputAction @Revive => m_Wrapper.m_Controller_Revive;
         public InputAction @TotemTeleport => m_Wrapper.m_Controller_TotemTeleport;
         public InputAction @TotemActivate => m_Wrapper.m_Controller_TotemActivate;
@@ -581,9 +627,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @PickUp.started += instance.OnPickUp;
             @PickUp.performed += instance.OnPickUp;
             @PickUp.canceled += instance.OnPickUp;
-            @Drop.started += instance.OnDrop;
-            @Drop.performed += instance.OnDrop;
-            @Drop.canceled += instance.OnDrop;
+            @DropWood.started += instance.OnDropWood;
+            @DropWood.performed += instance.OnDropWood;
+            @DropWood.canceled += instance.OnDropWood;
+            @DropCharcoal.started += instance.OnDropCharcoal;
+            @DropCharcoal.performed += instance.OnDropCharcoal;
+            @DropCharcoal.canceled += instance.OnDropCharcoal;
+            @DropIron.started += instance.OnDropIron;
+            @DropIron.performed += instance.OnDropIron;
+            @DropIron.canceled += instance.OnDropIron;
             @Revive.started += instance.OnRevive;
             @Revive.performed += instance.OnRevive;
             @Revive.canceled += instance.OnRevive;
@@ -615,9 +667,15 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @PickUp.started -= instance.OnPickUp;
             @PickUp.performed -= instance.OnPickUp;
             @PickUp.canceled -= instance.OnPickUp;
-            @Drop.started -= instance.OnDrop;
-            @Drop.performed -= instance.OnDrop;
-            @Drop.canceled -= instance.OnDrop;
+            @DropWood.started -= instance.OnDropWood;
+            @DropWood.performed -= instance.OnDropWood;
+            @DropWood.canceled -= instance.OnDropWood;
+            @DropCharcoal.started -= instance.OnDropCharcoal;
+            @DropCharcoal.performed -= instance.OnDropCharcoal;
+            @DropCharcoal.canceled -= instance.OnDropCharcoal;
+            @DropIron.started -= instance.OnDropIron;
+            @DropIron.performed -= instance.OnDropIron;
+            @DropIron.canceled -= instance.OnDropIron;
             @Revive.started -= instance.OnRevive;
             @Revive.performed -= instance.OnRevive;
             @Revive.canceled -= instance.OnRevive;
@@ -771,7 +829,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
-        void OnDrop(InputAction.CallbackContext context);
+        void OnDropWood(InputAction.CallbackContext context);
+        void OnDropCharcoal(InputAction.CallbackContext context);
+        void OnDropIron(InputAction.CallbackContext context);
         void OnRevive(InputAction.CallbackContext context);
         void OnTotemTeleport(InputAction.CallbackContext context);
         void OnTotemActivate(InputAction.CallbackContext context);

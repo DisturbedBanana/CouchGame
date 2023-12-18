@@ -101,20 +101,35 @@ MonoBehaviour:
   _scoutHeatSlider: {fileID: 0}
   _shamanjackHeatSlider: {fileID: 0}
   _engineerjackHeatSlider: {fileID: 0}
-  _heatMultiplier: 0
   _tombstones:
   - {fileID: 2737176825112390239, guid: 009b583935a2b7e4fa21bee88e61543b, type: 3}
   - {fileID: 645841490173836830, guid: b760e4a6892a01942bfbd783dc952abe, type: 3}
   - {fileID: 4939013798731404417, guid: 2b1b2b7b8450ec843bd45c2fc7f0ed37, type: 3}
   - {fileID: 5479555233517896909, guid: d77aef86c03e1c740a998b6dfa1b267b, type: 3}
-  _lumberjackMat: {fileID: 0}
-  _scoutMat: {fileID: 2100000, guid: 0558214a306f5ac428a81fe74db38ac1, type: 2}
-  _shamanMat: {fileID: 0}
-  _engineerMat: {fileID: 0}
-  _deadMat: {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
-  _lumberjackDeadMats:
+  _lumberjackDecreaser: 0.07
+  _scoutDecreaser: 0.07
+  _shamanDecreaser: 0.07
+  _engineerDecreaser: 0.07
+  _lumberjackIncreaser: 0.5
+  _scoutIncreaser: 0.5
+  _shamanIncreaser: 0.5
+  _engineerIncreaser: 0.5
+  _lumberjackMats:
+  - {fileID: 2100000, guid: 037df111619a27345872c4f4604d77b9, type: 2}
+  - {fileID: 2100000, guid: 4eb68323c3314394ebe5416fb194549b, type: 2}
+  _scoutMat: {fileID: 2100000, guid: 6e89990c0261c5c4db5712c047d94eaa, type: 2}
+  _shamanMats:
+  - {fileID: 2100000, guid: 212504efdb6503941b84c5456f006737, type: 2}
+  - {fileID: 2100000, guid: 60916d48ec6131f4eaac519b7f376eb3, type: 2}
+  _engineerMat: {fileID: 2100000, guid: fdbf31acc301bfe4f9dcb274934184da, type: 2}
+  _oneTextureDeadMats:
+  - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
+  _twoTexturesDeadMats:
   - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
   - {fileID: 2100000, guid: 1929c835509cce244b74834127344e09, type: 2}
+  _deathSpeed: 3.5
+  _deadPlayers: 0
+  _shamanIsDead: 0
 --- !u!135 &2353555491149913391
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -147,7 +162,6 @@ GameObject:
   - component: {fileID: 6730192577757691230}
   - component: {fileID: 2706211697235971765}
   - component: {fileID: 4240890886624455810}
-  - component: {fileID: 1909649124247907905}
   - component: {fileID: 3424364634333115699}
   m_Layer: 0
   m_Name: ExpandingFlame
@@ -179,7 +193,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8476758140379177382}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &4240890886624455810
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -222,27 +236,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1909649124247907905
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8476758140379177382}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3424364634333115699
 MonoBehaviour:
   m_ObjectHideFlags: 0

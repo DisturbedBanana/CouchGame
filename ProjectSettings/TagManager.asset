@@ -30,14 +30,18 @@ TagManager:
   - LoseCanvas
   - PauseCanvas
   - OptionsCanvas
+  - ShamanTombstone
+  - WinArea
+  - Charcoal
+  - Iron
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - GroundItem
+  - 
   - 
   - 
   - 

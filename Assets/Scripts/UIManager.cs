@@ -8,6 +8,7 @@ using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.Rendering;
 using UnityEditor;
 using UnityEngine.Rendering.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class UIManager : MonoBehaviour
     public GameObject _returnToMainMenuCanvas;
     public GameObject _winCanvas;
     public GameObject _loseCanvas;
-    
+    public GameObject _backgroundCanvas;
+
 
     [Space]
     [Header("Selected Items References")]
@@ -39,6 +41,27 @@ public class UIManager : MonoBehaviour
     [Space]
     [Header("Booleans")]
     [SerializeField] private bool _canCloseMenu = true;
+
+    [Space]
+    [Header("Wood values")]
+    public TextMeshProUGUI _lumberjackWoodValue;
+    public TextMeshProUGUI _scoutWoodValue;
+    public TextMeshProUGUI _shamanWoodValue;
+    public TextMeshProUGUI _engineerWoodValue;
+
+    [Space]
+    [Header("Iron values")]
+    public TextMeshProUGUI _lumberjackIronValue;
+    public TextMeshProUGUI _scoutIronValue;
+    public TextMeshProUGUI _shamanIronValue;
+    public TextMeshProUGUI _engineerIronValue;
+
+    [Space]
+    [Header("Coal values")]
+    public TextMeshProUGUI _lumberjackCoalValue;
+    public TextMeshProUGUI _scoutCoalValue;
+    public TextMeshProUGUI _shamanCoalValue;
+    public TextMeshProUGUI _engineerCoalValue;
 
     private void Awake()
     {
@@ -65,13 +88,18 @@ public class UIManager : MonoBehaviour
         //_returnToMainMenuCanvas.SetActive(false);
         _winCanvas.SetActive(false);
         _loseCanvas.SetActive(false);
+        _backgroundCanvas.SetActive(false);
     }
 
     public void OnUIBack(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Debug.Log("retour");
+            if (_menuState != "WinCanvas" || _menuState != "LoseCanvas")
+            {
+                return;
+            }
+
             if (_menuState != "PauseMenu" && _canCloseMenu)
             {
                 _canCloseMenu = false;
@@ -80,6 +108,7 @@ public class UIManager : MonoBehaviour
             else if (_menuState == "PauseMenu")
             {
                 _currentlyDisplayedMenu.SetActive(false);
+                _backgroundCanvas.SetActive(false);
                 GameManager.instance.PauseGame();
             }
         }
