@@ -25,12 +25,55 @@ public class DropInteraction : MonoBehaviour
 
     private void _DropWoodInsideFlame()
     {
-        if (character.NbWoods > 0)
+        if (character.NbWoods == 0)
         {
-            ExpandingFlame.Instance.StartLerpFlameScale(_woodExpansionFactor);
+            return;
+            Debug.Log("Not enough wood");
+        }
+
+        ExpandingFlame.Instance.StartLerpFlameScale(_woodExpansionFactor);
+
+        string woodValue;
+
+        if (character.PlayerId == 1)
+        {
+            woodValue = UIManager.instance._lumberjackWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            intWoodValue--;
+            UIManager.instance._lumberjackWoodValue.text = intWoodValue.ToString();
+            character.NbWoods--;
+        }
+        else if (character.PlayerId == 2)
+        {
+            woodValue = UIManager.instance._scoutWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            intWoodValue--;
+            UIManager.instance._scoutWoodValue.text = intWoodValue.ToString();
+            character.NbWoods--;
+        }
+        else if (character.PlayerId == 3)
+        {
+            woodValue = UIManager.instance._shamanWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            intWoodValue--;
+            UIManager.instance._shamanWoodValue.text = intWoodValue.ToString();
+            character.NbWoods--;
+        }
+        else if (character.PlayerId == 4)
+        {
+            woodValue = UIManager.instance._engineerWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            intWoodValue--;
+            UIManager.instance._engineerWoodValue.text = intWoodValue.ToString();
             character.NbWoods--;
         }
     }
+
+
 
     private void _DropWoodOnGround()
     {

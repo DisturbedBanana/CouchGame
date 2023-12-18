@@ -14,6 +14,7 @@ public class ExpandingFlame : MonoBehaviour
     [SerializeField] float _shrinkSpeed;
     [SerializeField] float _growthSpeed;
     [SerializeField] float _flameGrowthFromWood = 2f;
+    [SerializeField] private FlameCylinderMeshGenerator _flameCylinder;
 
     [Header("Snow Movement")]
     [SerializeField] float _snowMovementDuration = 1f;
@@ -29,6 +30,12 @@ public class ExpandingFlame : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        SetCylinderRange(transform.localScale.x);
+        Shader.SetGlobalFloat("_FlameRange", transform.localScale.x);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -39,7 +46,8 @@ public class ExpandingFlame : MonoBehaviour
 
         _shrinkTimer += Time.deltaTime;
 
-        //transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime / _shrinkSpeed);
+        SetCylinderRange(transform.localScale.x);
+        Shader.SetGlobalFloat("_FlameRange", transform.localScale.x);
     }
 
     private void FixedUpdate()
@@ -87,6 +95,11 @@ public class ExpandingFlame : MonoBehaviour
         objectToMove.transform.position = targetPosition;
     }
 
+    private void SetCylinderRange(float scaleFactor)
+    {
+        _flameCylinder.Radius = scaleFactor / 2;
+    }
+
     //used for debugging purposes
     IEnumerator LerpFlameScale(float duration, float addSize, bool isScalingDown = false)
     {
@@ -97,6 +110,8 @@ public class ExpandingFlame : MonoBehaviour
         while (time < duration)
         {
             transform.localScale = new Vector3(Mathf.Lerp(startSizeX, startSizeX + addSize, time / duration), transform.localScale.y, Mathf.Lerp(startSizeX, startSizeZ + addSize, time / duration));
+            SetCylinderRange(transform.localScale.x);
+            Shader.SetGlobalFloat("_FlameRange", transform.localScale.x);
             time += Time.deltaTime;
             yield return null;
         }

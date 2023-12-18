@@ -56,6 +56,13 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI _shamanIronValue;
     public TextMeshProUGUI _engineerIronValue;
 
+    [Space]
+    [Header("Coal values")]
+    public TextMeshProUGUI _lumberjackCoalValue;
+    public TextMeshProUGUI _scoutCoalValue;
+    public TextMeshProUGUI _shamanCoalValue;
+    public TextMeshProUGUI _engineerCoalValue;
+
     private void Awake()
     {
         if (instance == null)
@@ -88,7 +95,11 @@ public class UIManager : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("retour");
+            if (_menuState != "WinCanvas" || _menuState != "LoseCanvas")
+            {
+                return;
+            }
+
             if (_menuState != "PauseMenu" && _canCloseMenu)
             {
                 _canCloseMenu = false;

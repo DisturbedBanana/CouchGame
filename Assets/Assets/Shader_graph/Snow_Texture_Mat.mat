@@ -70,12 +70,12 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Smoothness: 0
-    - _SnowAmount: 0.128
+    - _SnowAmount: 1
     - _SnowArea: 0.5
-    - _SnowBlendDistance: 0.011
+    - _SnowBlendDistance: 0.246
     - _SnowDensity: 2.09
     - _SnowDirection: 0.5
-    - _SnowHeight: 1
+    - _SnowHeight: 0.5
     - _SnowScale: 136.6
     m_Colors:
     - _SnowDirection: {r: 0, g: 1, b: 0, a: 0}
