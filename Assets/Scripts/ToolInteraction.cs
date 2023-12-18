@@ -74,22 +74,9 @@ public class ToolInteraction : MonoBehaviour
 
     private void Update()
     {
-        FindNearestObject();
-
         if (_closestTreeInRange == null)
         {
             _treesObjectsInRange.Remove(_closestTreeInRange);
-        }
-
-        foreach (GameObject player in GameManager.instance._playerGameObjectList)
-        {
-            for (int i = 0; i < _treesObjectsInRange.Count; i++)
-            {
-                if (_treesObjectsInRange[i] == null)
-                {
-                    _treesObjectsInRange.Remove(_treesObjectsInRange[i]);
-                }
-            }
         }
 
         if (_closestObjectInRange == null)
@@ -107,6 +94,8 @@ public class ToolInteraction : MonoBehaviour
                 }
             }
         }
+
+        FindNearestObject();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -320,7 +309,6 @@ public class ToolInteraction : MonoBehaviour
                     intIronValue++;
                     UIManager.instance._lumberjackIronValue.text = intIronValue.ToString();
                     _playerClass.NbWoods++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
             else if (_playerClass.PlayerId == 2)
@@ -333,7 +321,6 @@ public class ToolInteraction : MonoBehaviour
                     intIronValue++;
                     UIManager.instance._scoutIronValue.text = intIronValue.ToString();
                     _playerClass.NbWoods++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
             else if (_playerClass.PlayerId == 3)
@@ -346,7 +333,6 @@ public class ToolInteraction : MonoBehaviour
                     intIronValue++;
                     UIManager.instance._shamanIronValue.text = intIronValue.ToString();
                     _playerClass.NbWoods++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
             else if (_playerClass.PlayerId == 4)
@@ -359,7 +345,6 @@ public class ToolInteraction : MonoBehaviour
                     intIronValue++;
                     UIManager.instance._engineerIronValue.text = intIronValue.ToString();
                     _playerClass.NbWoods++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
         }
@@ -377,7 +362,6 @@ public class ToolInteraction : MonoBehaviour
                     intCoalValue++;
                     UIManager.instance._lumberjackCoalValue.text = intCoalValue.ToString();
                     _playerClass.NbCharcoals++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
             else if (_playerClass.PlayerId == 2)
@@ -390,7 +374,6 @@ public class ToolInteraction : MonoBehaviour
                     intCoalValue++;
                     UIManager.instance._scoutCoalValue.text = intCoalValue.ToString();
                     _playerClass.NbCharcoals++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
             else if (_playerClass.PlayerId == 3)
@@ -403,7 +386,6 @@ public class ToolInteraction : MonoBehaviour
                     intCoalValue++;
                     UIManager.instance._shamanCoalValue.text = intCoalValue.ToString();
                     _playerClass.NbCharcoals++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
             else if (_playerClass.PlayerId == 4)
@@ -416,7 +398,6 @@ public class ToolInteraction : MonoBehaviour
                     intCoalValue++;
                     UIManager.instance._engineerCoalValue.text = intCoalValue.ToString();
                     _playerClass.NbWoods++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
         }
@@ -468,7 +449,6 @@ public class ToolInteraction : MonoBehaviour
                     intWoodValue++;
                     UIManager.instance._lumberjackWoodValue.text = intWoodValue.ToString();
                     _playerClass.NbWoods++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
         }
@@ -486,7 +466,6 @@ public class ToolInteraction : MonoBehaviour
                     intWoodValue++;
                     UIManager.instance._scoutWoodValue.text = intWoodValue.ToString();
                     _playerClass.NbWoods++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
         }
@@ -504,7 +483,6 @@ public class ToolInteraction : MonoBehaviour
                     intWoodValue++;
                     UIManager.instance._shamanWoodValue.text = intWoodValue.ToString();
                     _playerClass.NbWoods++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
         }
@@ -522,7 +500,6 @@ public class ToolInteraction : MonoBehaviour
                     intWoodValue++;
                     UIManager.instance._engineerWoodValue.text = intWoodValue.ToString();
                     _playerClass.NbWoods++;
-                    _playerClass.NbMaximumItems++;
                 }
             }
         }

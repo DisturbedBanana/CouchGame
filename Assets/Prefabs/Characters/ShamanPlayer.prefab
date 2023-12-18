@@ -410,6 +410,7 @@ MonoBehaviour:
   _closestTreeInRange: {fileID: 0}
   _canUseAxe: 1
   _canChop: 1
+  _woodDropChance: 0
   _ironsObjectsInRange: []
   _closestIronInRange: {fileID: 0}
   _canUsePickaxe: 1
@@ -420,6 +421,7 @@ MonoBehaviour:
   _closestObjectInRange: {fileID: 0}
   _time: 0
   _axe: {fileID: 0}
+  _pickaxe: {fileID: 0}
 --- !u!1 &3411997903136725869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1276,6 +1278,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6505397293308731842}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 50a53efd0dd1e2a4d93d3899081d3044,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4397680373941140652}
   m_SourcePrefab: {fileID: 100100000, guid: 50a53efd0dd1e2a4d93d3899081d3044, type: 3}
 --- !u!4 &21636029848275648 stripped
 Transform:
@@ -1424,7 +1430,19 @@ MonoBehaviour:
     m_ActionId: a857cf32-2ade-447c-9708-89bd1a886311
     m_ActionName: Controller/PickUp[/XInputControllerWindows/buttonNorth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4397680373941140652}
+        m_TargetAssemblyTypeName: DropInteraction, Assembly-CSharp
+        m_MethodName: OnDropWood
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 367ae521-211a-4bc8-9cae-f31215f2d7d8
     m_ActionName: Controller/Drop[/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
@@ -1706,6 +1724,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4397680373941140652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794618661251092602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb7bbd924e031294ea8115231941a917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _woodExpansionFactor: 5
+  _charcoalExpansionFactor: 10
 --- !u!1001 &6582421573507204496
 PrefabInstance:
   m_ObjectHideFlags: 0

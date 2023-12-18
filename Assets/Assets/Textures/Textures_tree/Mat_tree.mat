@@ -70,7 +70,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTexture:
-        m_Texture: {fileID: 2800000, guid: ab9e9cacbaa817f41ba9e393209a2077, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3fa46ca78895f7846b640bfd66f17eca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -86,7 +86,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureIn:
-        m_Texture: {fileID: 2800000, guid: 49c4baf2e3692464e96a3d625f077b17, type: 3}
+        m_Texture: {fileID: 2800000, guid: 23027134878b51e4abd7e62e8b5aa6df, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TextureOut:
