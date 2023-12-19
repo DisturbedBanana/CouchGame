@@ -88,8 +88,10 @@ public class PickUp : MonoBehaviour
     private IEnumerator PickUpItem(GameObject item)
     {
         //ADD ITEM TO INVENTORY VIA REFERENCE TO PLAYER HERE
-        _playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().Data.ID);
+        //_playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().Data.ID);
         _playerMovement.CanMove = false;
+
+        Debug.Log("Grab");
 
         itemTarget = item.transform;
         StartCoroutine(RotateToTarget(itemTarget, _rotateToTargetSpeed));
@@ -188,11 +190,12 @@ public class PickUp : MonoBehaviour
 
     public void OnPickUp(InputAction.CallbackContext context)
     {
-        if (context.performed && !GameManager._gamePaused)
+        if (context.performed)
         {
             _isPickingUp = true;
             if (_closestItemInRange != null)
             {
+                Debug.Log("anim");
                 _anim.SetTrigger("isPickingUp");
                 _objectsInRange.Remove(_closestItemInRange);
                 StartCoroutine(PickUpItem(_closestItemInRange));

@@ -32,14 +32,17 @@ TagManager:
   - OptionsCanvas
   - ShamanTombstone
   - WinArea
+  - Charcoal
+  - Iron
+  - BridgeZone
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - GroundItem
+  - 
   - 
   - 
   - 

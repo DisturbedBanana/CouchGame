@@ -13,8 +13,6 @@ public class OptionsMenu : Menu
 
     private void OnEnable()
     {
-        Debug.Log("options menu activated");
-
         UIManager.instance.SetSelectedButton(UIManager.instance._optionsMenuCanvas, UIManager.instance._optionsMenuFirstSelectedButton);
     }
 }

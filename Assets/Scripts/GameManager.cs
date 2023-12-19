@@ -9,11 +9,10 @@ public class GameManager : MonoBehaviour
 {
     [Header("References")]
     public static GameManager instance;
-    public static bool _gamePaused = false;
+    public static bool _gamePaused = true;
 
     [Space]
     [Header("Variables")]
-
     [SerializeField] private GameObject _lumberjack;
     [SerializeField] private GameObject _shaman;
     [SerializeField] private GameObject _engineer;
@@ -26,15 +25,25 @@ public class GameManager : MonoBehaviour
     public bool _canPauseGame = true;
 
     [Button("Win")]
-    private void WinDebug()
+    public void Win()
     {
+        for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+        {
+            GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("UI");
+        }
         UIManager.instance._winCanvas.SetActive(true);
+        UIManager.instance._backgroundCanvas.SetActive(true);
     }
 
     [Button("Lose")]
-    private void LoseDebug()
+    public void Lose()
     {
+        for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+        {
+            GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("UI");
+        }
         UIManager.instance._loseCanvas.SetActive(true);
+        UIManager.instance._backgroundCanvas.SetActive(true);
     }
 
     private void Awake()
@@ -70,9 +79,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SetUIModeOff()
+    {
+        for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+        {
+            GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("Controller");
+        }
+    }
+
     public void PauseGame()
     {
         _gamePaused = !_gamePaused;
+
+        if (UIManager.instance._optionsMenuCanvas.activeSelf)
+        {
+            UIManager.instance._optionsMenuCanvas.SetActive(false);
+        }
 
         if (_gamePaused)
         {
@@ -98,15 +120,5 @@ public class GameManager : MonoBehaviour
                 GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("Controller");
             }
         }
-    }
-
-    public void OnWin()
-    {
-
-    }
-
-    public void OnLose()
-    {
-
     }
 }
