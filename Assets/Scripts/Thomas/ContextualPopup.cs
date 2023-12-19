@@ -9,7 +9,6 @@ public class ContextualPopup : MonoBehaviour
 
     private void Start()
     {
-        animator.enabled = false;
         transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
