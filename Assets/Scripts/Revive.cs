@@ -221,7 +221,7 @@ public class Revive : MonoBehaviour
 
     public void OnRevive(InputAction.CallbackContext context)
     {
-        if (context.performed && !GameManager._gamePaused)
+        if (context.performed)
         {
             if (_closestTombstoneInRange != null)
             {

@@ -749,7 +749,7 @@ MonoBehaviour:
   _closestTreeInRange: {fileID: 0}
   _canUseAxe: 1
   _canChop: 1
-  _woodDropChance: 0
+  _woodDropChance: 100
   _ironsObjectsInRange: []
   _closestIronInRange: {fileID: 0}
   _canUsePickaxe: 1
@@ -2642,7 +2642,19 @@ MonoBehaviour:
     m_ActionId: 193ad603-6482-4245-b3e5-477471f557cb
     m_ActionName: MainMenuUI/GoBack[/DualSenseGamepadHID/buttonEast]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2b1c8ea3-a2e5-42e0-acb5-726a91574dc7
     m_ActionName: Dead/Pause[/DualSenseGamepadHID/start]
   - m_PersistentCalls:
@@ -2666,7 +2678,7 @@ MonoBehaviour:
       - m_Target: {fileID: 6532942616282522794}
         m_TargetAssemblyTypeName: DropInteraction, Assembly-CSharp
         m_MethodName: OnDropWood
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2721,6 +2733,42 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3d577a15-2127-470c-aacf-f61eb517455c
     m_ActionName: UI/Pause[/DualSenseGamepadHID/start,/DualSenseGamepadHID1/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6532942616282522794}
+        m_TargetAssemblyTypeName: DropInteraction, Assembly-CSharp
+        m_MethodName: OnDropCoal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1f5c0769-aa97-45fe-b12a-6ecd63c251ad
+    m_ActionName: Controller/DropCharcoal[/DualSenseGamepadHID/dpad/left,/DualSenseGamepadHID1/dpad/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6532942616282522794}
+        m_TargetAssemblyTypeName: DropInteraction, Assembly-CSharp
+        m_MethodName: OnDropIron
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a26d1aba-7391-4a1a-b995-9a718acb2249
+    m_ActionName: Controller/DropIron[/DualSenseGamepadHID/dpad/right,/DualSenseGamepadHID1/dpad/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 942305ee-435b-419d-b0e9-064510ad8852
+    m_ActionName: Controller/RepairBridge[/XInputControllerWindows/leftShoulder,/DualSenseGamepadHID/leftShoulder,/DualSenseGamepadHID1/leftShoulder]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controller
