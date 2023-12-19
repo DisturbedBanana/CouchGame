@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using TMPro;
 using UnityEngine.Rendering.UI;
+using Unity.VisualScripting;
 
 public class ToolInteraction : MonoBehaviour
 {
@@ -198,7 +199,7 @@ public class ToolInteraction : MonoBehaviour
     {
         Debug.Log("Tool Intreaction");
 
-        if (_closestObjectInRange == null)
+        if (_closestObjectInRange == null || _playerClass.NbWoods + _playerClass.NbIrons + _playerClass.NbCharcoals == _playerClass.NbMaximumItems)
         {
             return;
         }

@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class DropInteraction : MonoBehaviour
 {
+    public static DropInteraction instance;
+
     [SerializeField] private int _woodExpansionFactor = 5;
     [SerializeField] private int _charcoalExpansionFactor = 10;
     private bool _coalWasDropped;
@@ -13,6 +15,7 @@ public class DropInteraction : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<Character>();
+        instance = this;
     }
 
     public void OnDropWood(InputAction.CallbackContext context)
