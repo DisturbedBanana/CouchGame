@@ -137,14 +137,14 @@ public class EventManager : MonoBehaviour
             _isEventActive = true;
             if (_idEvent == 0)
             {
-                _timerFill.color = new Color32(20, 113, 185, 190);
+                _timerFill.color = new Color32(99, 127, 140, 190);
                 _BlizzardAnimator.SetBool("IsBlizzardStarting", false);
                 _BlizzardAnimator.SetBool("IsBlizzardActive", true);
                 Shader.SetGlobalFloat("isBlizzardActive", 1);
             }
             else if (_idEvent == 1)
             {
-                _timerFill.color = new Color32(255, 179, 0, 190);
+                _timerFill.color = new Color32(236, 190, 55, 190);
                 _ClearSkyAnimator.SetBool("IsClearSkyStarting", false);
                 _ClearSkyAnimator.SetBool("IsClearSkyActive", true);
             }
