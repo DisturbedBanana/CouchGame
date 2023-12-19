@@ -17,6 +17,7 @@ public class PickUp : MonoBehaviour
     [SerializeField] private Animator _anim;
     [SerializeField] private PlayerInventory _playerInventory;
     private PlayerMovTest _playerMovement;
+    private Character _player;
 
     [Space]
     [Header("Variables")]
@@ -32,6 +33,13 @@ public class PickUp : MonoBehaviour
     [Space]
     [Header("Booleans")]
     [SerializeField] private bool _isPickingUp = false;
+    [SerializeField] private bool _itemWasPickedUp = false;
+
+    [Space]
+    [Header("Items References")]
+    [SerializeField] private GameObject _woodItem;
+    [SerializeField] private GameObject _ironItem;
+    [SerializeField] private GameObject _coalItem;
 
     private void Start()
     {
@@ -39,6 +47,7 @@ public class PickUp : MonoBehaviour
         _anim = this.GetComponentInParent<Animator>();
         _playerTransform = GetComponent<Transform>();
         _playerMovement = this.GetComponentInParent<PlayerMovTest>();
+        _player = this.GetComponent<Character>();
     }
 
     private void Update()
@@ -105,8 +114,29 @@ public class PickUp : MonoBehaviour
             }
         }
 
+        _itemWasPickedUp = false;
+
+        if (item.CompareTag("WoodItem"))
+        {
+            AddOneWoodToInventory(_player);
+        }
+        else if (item.CompareTag("CoalItem"))
+        {
+            AddOneCharcoalToInventory(_player);
+        }
+        if (item.CompareTag("IronItem"))
+        {
+            AddOneIronToInventory(_player);
+        }
+
         yield return new WaitForSecondsRealtime(0.6f);
-        Destroy(item);
+        
+        if (_itemWasPickedUp)
+        {
+            Destroy(item);
+        }
+
+        _itemWasPickedUp = false;
         _playerMovement.CanMove = true;
     }
 
@@ -151,19 +181,19 @@ public class PickUp : MonoBehaviour
             if (item != _closestItemInRange)
             {
                 item.gameObject.GetComponent<Outline>().enabled = false;
-                item.gameObject.GetComponentInChildren<Animator>().SetBool("isClosest", false);
+                //item.gameObject.GetComponentInChildren<Animator>().SetBool("isClosest", false);
             }
             else
             {
                 item.gameObject.GetComponent<Outline>().enabled = true;
-                item.gameObject.GetComponentInChildren<Animator>().SetBool("isClosest", true);
+                //item.gameObject.GetComponentInChildren<Animator>().SetBool("isClosest", true);
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Item"))
+        if (other.CompareTag("WoodItem") || other.CompareTag("CoalItem") || other.CompareTag("IronItem"))
         {
             _objectsInRange.Add(other.gameObject);
         }
@@ -171,7 +201,7 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Item"))
+        if (other.CompareTag("WoodItem") || other.CompareTag("CoalItem") || other.CompareTag("IronItem"))
 
         {
             if (_objectsInRange.Contains(other.gameObject))
@@ -181,7 +211,7 @@ public class PickUp : MonoBehaviour
                     item.gameObject.GetComponent<Outline>().enabled = false;
                 }
 
-                other.GetComponentInChildren<Animator>().SetBool("isClosest", false);
+                //other.GetComponentInChildren<Animator>().SetBool("isClosest", false);
                 _objectsInRange.Remove(other.gameObject);
                 _closestItemInRange = null;
             }
@@ -195,7 +225,6 @@ public class PickUp : MonoBehaviour
             _isPickingUp = true;
             if (_closestItemInRange != null)
             {
-                Debug.Log("anim");
                 _anim.SetTrigger("isPickingUp");
                 _objectsInRange.Remove(_closestItemInRange);
                 StartCoroutine(PickUpItem(_closestItemInRange));
@@ -204,6 +233,153 @@ public class PickUp : MonoBehaviour
         else
         {
             _isPickingUp = false;
+        }
+    }
+
+    public void AddOneWoodToInventory(Character player)
+    {
+        if (player.NbWoods + player.NbCharcoals + player.NbIrons == player.NbMaximumItems)
+        {
+            return;
+            Debug.Log("Too much items in inventory!");
+        }
+
+        _itemWasPickedUp = true;
+        string woodValue;
+
+        if (player.PlayerId == 1)
+        {
+            woodValue = UIManager.instance._lumberjackWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            intWoodValue++;
+            UIManager.instance._lumberjackWoodValue.text = intWoodValue.ToString();
+            player.NbWoods++;
+        }
+        else if (player.PlayerId == 2)
+        {
+            woodValue = UIManager.instance._scoutWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            intWoodValue++;
+            UIManager.instance._scoutWoodValue.text = intWoodValue.ToString();
+            player.NbWoods++;
+        }
+        else if (player.PlayerId == 3)
+        {
+            woodValue = UIManager.instance._shamanWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            intWoodValue++;
+            UIManager.instance._shamanWoodValue.text = intWoodValue.ToString();
+            player.NbWoods++;
+        }
+        else if (player.PlayerId == 4)
+        {
+            woodValue = UIManager.instance._engineerWoodValue.text;
+            int intWoodValue = int.Parse(woodValue);
+
+            intWoodValue++;
+            UIManager.instance._engineerWoodValue.text = intWoodValue.ToString();
+            player.NbWoods++;
+        }
+    }
+
+    public void AddOneCharcoalToInventory(Character player)
+    {
+        if (player.NbWoods + player.NbCharcoals + player.NbIrons == player.NbMaximumItems)
+        {
+            return;
+            Debug.Log("Too much items in inventory!");
+        }
+
+        _itemWasPickedUp = true;
+        string coalValue;
+
+        if (player.PlayerId == 1)
+        {
+            coalValue = UIManager.instance._lumberjackCoalValue.text;
+            int intCoalValue = int.Parse(coalValue);
+
+            intCoalValue++;
+            UIManager.instance._lumberjackCoalValue.text = intCoalValue.ToString();
+            player.NbCharcoals++;
+        }
+        else if (player.PlayerId == 2)
+        {
+            coalValue = UIManager.instance._scoutCoalValue.text;
+            int intCoalValue = int.Parse(coalValue);
+
+            intCoalValue++;
+            UIManager.instance._scoutCoalValue.text = intCoalValue.ToString();
+            player.NbCharcoals++;
+        }
+        else if (player.PlayerId == 3)
+        {
+            coalValue = UIManager.instance._shamanCoalValue.text;
+            int intCoalValue = int.Parse(coalValue);
+
+            intCoalValue++;
+            UIManager.instance._shamanCoalValue.text = intCoalValue.ToString();
+            player.NbCharcoals++;
+        }
+        else if (player.PlayerId == 4)
+        {
+            coalValue = UIManager.instance._engineerCoalValue.text;
+            int intCoalValue = int.Parse(coalValue);
+
+            intCoalValue++;
+            UIManager.instance._engineerCoalValue.text = intCoalValue.ToString();
+            player.NbCharcoals++;
+        }
+    }
+
+    public void AddOneIronToInventory(Character player)
+    {
+        if (player.NbWoods + player.NbCharcoals + player.NbIrons == player.NbMaximumItems)
+        {
+            return;
+            Debug.Log("Too much items in inventory!");
+        }
+
+        _itemWasPickedUp = true;
+        string ironValue;
+
+        if (player.PlayerId == 1)
+        {
+            ironValue = UIManager.instance._lumberjackIronValue.text;
+            int intIronValue = int.Parse(ironValue);
+
+            intIronValue++;
+            UIManager.instance._lumberjackIronValue.text = intIronValue.ToString();
+            player.NbIrons++;
+        }
+        else if (player.PlayerId == 2)
+        {
+            ironValue = UIManager.instance._scoutIronValue.text;
+            int intIronValue = int.Parse(ironValue);
+
+            intIronValue++;
+            UIManager.instance._scoutIronValue.text = intIronValue.ToString();
+            player.NbIrons++;
+        }
+        else if (player.PlayerId == 3)
+        {
+            ironValue = UIManager.instance._shamanIronValue.text;
+            int intIronValue = int.Parse(ironValue);
+
+            intIronValue++;
+            UIManager.instance._shamanIronValue.text = intIronValue.ToString();
+            player.NbIrons++;
+        }
+        else if (player.PlayerId == 4)
+        {
+            ironValue = UIManager.instance._engineerIronValue.text;
+            int intIronValue = int.Parse(ironValue);
+
+            intIronValue++;
+            UIManager.instance._engineerIronValue.text = intIronValue.ToString();
+            player.NbIrons++;
         }
     }
 }

@@ -1804,6 +1804,9 @@ MonoBehaviour:
   _playerTransform: {fileID: 0}
   _objectsInRange: []
   _isPickingUp: 0
+  _woodItem: {fileID: 0}
+  _ironItem: {fileID: 0}
+  _coalItem: {fileID: 0}
 --- !u!114 &5871584798443926181
 MonoBehaviour:
   m_ObjectHideFlags: 0
