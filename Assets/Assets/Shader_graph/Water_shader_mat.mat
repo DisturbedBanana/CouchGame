@@ -54,7 +54,7 @@ Material:
     - _QueueOffset: 0
     - _Smoothness: 1
     - _WaveAmount: 200
-    - _WaveHeight: 0.9
+    - _WaveHeight: 0.45
     - _WaveTime: 0
     - _tiling: 209.5
     m_Colors:
