@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Attack",
+                    "name": "Tool",
                     "type": "Button",
                     "id": "e1326a6c-9bad-4a78-810f-b29952059ce6",
                     "expectedControlType": "Button",
@@ -60,7 +60,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DropCharcoal",
+                    "name": "DropCoal",
                     "type": "Button",
                     "id": "1f5c0769-aa97-45fe-b12a-6ecd63c251ad",
                     "expectedControlType": "Button",
@@ -193,18 +193,18 @@
                 {
                     "name": "",
                     "id": "19ee6733-dfde-42bd-aa8c-6e76959baced",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Attack",
+                    "action": "Tool",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "c55b15d9-fb21-4dda-8a5f-1494e239134c",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -248,7 +248,7 @@
                 {
                     "name": "",
                     "id": "f2811b7f-62c8-46ca-92dd-95b98033a9c5",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -259,7 +259,7 @@
                 {
                     "name": "",
                     "id": "7b247d40-feb0-40ef-b4b7-78636c2da970",
-                    "path": "<Gamepad>/dpad/up",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -270,7 +270,7 @@
                 {
                     "name": "",
                     "id": "7f4599ab-598a-4391-93c3-16ffe1f20974",
-                    "path": "<Gamepad>/dpad/down",
+                    "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -281,7 +281,7 @@
                 {
                     "name": "",
                     "id": "308aab06-5a00-4f1a-a6eb-81efe36404a6",
-                    "path": "<Gamepad>/dpad/left",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -296,7 +296,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "DropCharcoal",
+                    "action": "DropCoal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

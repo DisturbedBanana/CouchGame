@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using TMPro;
 using UnityEngine.Rendering.UI;
+using Unity.VisualScripting;
 
 public class ToolInteraction : MonoBehaviour
 {
@@ -74,16 +75,54 @@ public class ToolInteraction : MonoBehaviour
 
     private void Update()
     {
+        //NULL CHECK
         if (_closestTreeInRange == null)
         {
             _treesObjectsInRange.Remove(_closestTreeInRange);
         }
-
+        if (_closestCharcoalInRange == null)
+        {
+            _charcoalsObjectsInRange.Remove(_closestCharcoalInRange);
+        }
+        if (_closestIronInRange == null)
+        {
+            _ironsObjectsInRange.Remove(_closestIronInRange);
+        }
         if (_closestObjectInRange == null)
         {
             _allObjectsInRange.Remove(_closestObjectInRange);
         }
 
+        foreach (GameObject player in GameManager.instance._playerGameObjectList)
+        {
+            for (int i = 0; i < _treesObjectsInRange.Count; i++)
+            {
+                if (_treesObjectsInRange[i] == null)
+                {
+                    _treesObjectsInRange.Remove(_treesObjectsInRange[i]);
+                }
+            }
+        }
+        foreach (GameObject player in GameManager.instance._playerGameObjectList)
+        {
+            for (int i = 0; i < _charcoalsObjectsInRange.Count; i++)
+            {
+                if (_charcoalsObjectsInRange[i] == null)
+                {
+                    _charcoalsObjectsInRange.Remove(_charcoalsObjectsInRange[i]);
+                }
+            }
+        }
+        foreach (GameObject player in GameManager.instance._playerGameObjectList)
+        {
+            for (int i = 0; i < _ironsObjectsInRange.Count; i++)
+            {
+                if (_ironsObjectsInRange[i] == null)
+                {
+                    _ironsObjectsInRange.Remove(_ironsObjectsInRange[i]);
+                }
+            }
+        }
         foreach (GameObject player in GameManager.instance._playerGameObjectList)
         {
             for (int i = 0; i < _allObjectsInRange.Count; i++)
@@ -160,7 +199,7 @@ public class ToolInteraction : MonoBehaviour
     {
         Debug.Log("Tool Intreaction");
 
-        if (_closestObjectInRange == null)
+        if (_closestObjectInRange == null || _playerClass.NbWoods + _playerClass.NbIrons + _playerClass.NbCharcoals == _playerClass.NbMaximumItems)
         {
             return;
         }
@@ -175,6 +214,7 @@ public class ToolInteraction : MonoBehaviour
                 return;
             }
 
+            Debug.Log("Tree tree");
             if (_allObjectsInRange.Count != 0 && _canUseAxe && _canChop)
             {
                 Debug.Log("chopping");
@@ -207,8 +247,8 @@ public class ToolInteraction : MonoBehaviour
             {
                 Debug.Log("Mining iron");
                 _playerMovement.CanMove = false;
-                _canUseAxe = false;
-                _canChop = false;
+                _canUsePickaxe = false;
+                _canMine = false;
 
                 Transform objectTarget = _closestObjectInRange.transform;
 
@@ -308,7 +348,7 @@ public class ToolInteraction : MonoBehaviour
                 {
                     intIronValue++;
                     UIManager.instance._lumberjackIronValue.text = intIronValue.ToString();
-                    _playerClass.NbWoods++;
+                    _playerClass.NbIrons++;
                 }
             }
             else if (_playerClass.PlayerId == 2)
@@ -320,7 +360,7 @@ public class ToolInteraction : MonoBehaviour
                 {
                     intIronValue++;
                     UIManager.instance._scoutIronValue.text = intIronValue.ToString();
-                    _playerClass.NbWoods++;
+                    _playerClass.NbIrons++;
                 }
             }
             else if (_playerClass.PlayerId == 3)
@@ -332,7 +372,7 @@ public class ToolInteraction : MonoBehaviour
                 {
                     intIronValue++;
                     UIManager.instance._shamanIronValue.text = intIronValue.ToString();
-                    _playerClass.NbWoods++;
+                    _playerClass.NbIrons++;
                 }
             }
             else if (_playerClass.PlayerId == 4)
@@ -344,7 +384,7 @@ public class ToolInteraction : MonoBehaviour
                 {
                     intIronValue++;
                     UIManager.instance._engineerIronValue.text = intIronValue.ToString();
-                    _playerClass.NbWoods++;
+                    _playerClass.NbIrons++;
                 }
             }
         }
@@ -397,7 +437,7 @@ public class ToolInteraction : MonoBehaviour
                 {
                     intCoalValue++;
                     UIManager.instance._engineerCoalValue.text = intCoalValue.ToString();
-                    _playerClass.NbWoods++;
+                    _playerClass.NbCharcoals++;
                 }
             }
         }

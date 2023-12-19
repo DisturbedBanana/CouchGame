@@ -13,7 +13,6 @@ public class ExpandingFlame : MonoBehaviour
     [Header("Flame")]
     [SerializeField] float _shrinkSpeed;
     [SerializeField] float _growthSpeed;
-    [SerializeField] float _flameGrowthFromWood = 2f;
     [SerializeField] private FlameCylinderMeshGenerator _flameCylinder;
 
     [Header("Snow Movement")]

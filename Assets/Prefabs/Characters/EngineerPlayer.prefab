@@ -894,7 +894,7 @@ MonoBehaviour:
   _closestTreeInRange: {fileID: 0}
   _canUseAxe: 1
   _canChop: 1
-  _woodDropChance: 0
+  _woodDropChance: 100
   _ironsObjectsInRange: []
   _closestIronInRange: {fileID: 0}
   _canUsePickaxe: 1
@@ -1565,7 +1565,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1993983769173563591}
         m_TargetAssemblyTypeName: DropInteraction, Assembly-CSharp
         m_MethodName: OnDropWood
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1658,9 +1658,9 @@ MonoBehaviour:
     m_ActionName: UI/Pause[/DualSenseGamepadHID/start,/DualSenseGamepadHID1/start]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnPauseGame
+      - m_Target: {fileID: 1993983769173563591}
+        m_TargetAssemblyTypeName: DropInteraction, Assembly-CSharp
+        m_MethodName: OnDropCoal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1674,9 +1674,9 @@ MonoBehaviour:
     m_ActionName: Controller/DropCharcoal[/DualSenseGamepadHID/dpad/left,/DualSenseGamepadHID1/dpad/left]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnPauseGame
+      - m_Target: {fileID: 1993983769173563591}
+        m_TargetAssemblyTypeName: DropInteraction, Assembly-CSharp
+        m_MethodName: OnDropIron
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1804,6 +1804,13 @@ MonoBehaviour:
   _playerTransform: {fileID: 0}
   _objectsInRange: []
   _isPickingUp: 0
+  _itemWasPickedUp: 0
+  _woodItem: {fileID: 8712351378580018257, guid: 5057d5bdfdeb8bc418977d6da52d6d0b,
+    type: 3}
+  _ironItem: {fileID: 9156328140735114741, guid: 9b4967fd4b007024a890a25b0e542c0d,
+    type: 3}
+  _coalItem: {fileID: 4819812467223683088, guid: 9635df64d8ec26747940e56686f4b906,
+    type: 3}
 --- !u!114 &5871584798443926181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1863,6 +1870,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c31a4d4ab9ca24489a54a14e3cdbbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isInBridgeZone: 0
+  _brokenBridge: {fileID: 0}
+  _repairedridge: {fileID: 0}
+  _groundHitbox: {fileID: 0}
 --- !u!4 &6429544493909221256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 88ceb093aa59ee440b0a69617f8195ce,

@@ -37,7 +37,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""Tool"",
                     ""type"": ""Button"",
                     ""id"": ""e1326a6c-9bad-4a78-810f-b29952059ce6"",
                     ""expectedControlType"": ""Button"",
@@ -82,7 +82,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DropCharcoal"",
+                    ""name"": ""DropCoal"",
                     ""type"": ""Button"",
                     ""id"": ""1f5c0769-aa97-45fe-b12a-6ecd63c251ad"",
                     ""expectedControlType"": ""Button"",
@@ -215,18 +215,18 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""19ee6733-dfde-42bd-aa8c-6e76959baced"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
-                    ""action"": ""Attack"",
+                    ""action"": ""Tool"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""c55b15d9-fb21-4dda-8a5f-1494e239134c"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -270,7 +270,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f2811b7f-62c8-46ca-92dd-95b98033a9c5"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -281,7 +281,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7b247d40-feb0-40ef-b4b7-78636c2da970"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -292,7 +292,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7f4599ab-598a-4391-93c3-16ffe1f20974"",
-                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -303,7 +303,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""308aab06-5a00-4f1a-a6eb-81efe36404a6"",
-                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -318,7 +318,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
-                    ""action"": ""DropCharcoal"",
+                    ""action"": ""DropCoal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -515,12 +515,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         // Controller
         m_Controller = asset.FindActionMap("Controller", throwIfNotFound: true);
         m_Controller_Movement = m_Controller.FindAction("Movement", throwIfNotFound: true);
-        m_Controller_Attack = m_Controller.FindAction("Attack", throwIfNotFound: true);
+        m_Controller_Tool = m_Controller.FindAction("Tool", throwIfNotFound: true);
         m_Controller_Jump = m_Controller.FindAction("Jump", throwIfNotFound: true);
         m_Controller_Pause = m_Controller.FindAction("Pause", throwIfNotFound: true);
         m_Controller_PickUp = m_Controller.FindAction("PickUp", throwIfNotFound: true);
         m_Controller_DropWood = m_Controller.FindAction("DropWood", throwIfNotFound: true);
-        m_Controller_DropCharcoal = m_Controller.FindAction("DropCharcoal", throwIfNotFound: true);
+        m_Controller_DropCoal = m_Controller.FindAction("DropCoal", throwIfNotFound: true);
         m_Controller_DropIron = m_Controller.FindAction("DropIron", throwIfNotFound: true);
         m_Controller_Revive = m_Controller.FindAction("Revive", throwIfNotFound: true);
         m_Controller_TotemTeleport = m_Controller.FindAction("TotemTeleport", throwIfNotFound: true);
@@ -597,12 +597,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Controller;
     private List<IControllerActions> m_ControllerActionsCallbackInterfaces = new List<IControllerActions>();
     private readonly InputAction m_Controller_Movement;
-    private readonly InputAction m_Controller_Attack;
+    private readonly InputAction m_Controller_Tool;
     private readonly InputAction m_Controller_Jump;
     private readonly InputAction m_Controller_Pause;
     private readonly InputAction m_Controller_PickUp;
     private readonly InputAction m_Controller_DropWood;
-    private readonly InputAction m_Controller_DropCharcoal;
+    private readonly InputAction m_Controller_DropCoal;
     private readonly InputAction m_Controller_DropIron;
     private readonly InputAction m_Controller_Revive;
     private readonly InputAction m_Controller_TotemTeleport;
@@ -614,12 +614,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         private @PlayerInputs m_Wrapper;
         public ControllerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Controller_Movement;
-        public InputAction @Attack => m_Wrapper.m_Controller_Attack;
+        public InputAction @Tool => m_Wrapper.m_Controller_Tool;
         public InputAction @Jump => m_Wrapper.m_Controller_Jump;
         public InputAction @Pause => m_Wrapper.m_Controller_Pause;
         public InputAction @PickUp => m_Wrapper.m_Controller_PickUp;
         public InputAction @DropWood => m_Wrapper.m_Controller_DropWood;
-        public InputAction @DropCharcoal => m_Wrapper.m_Controller_DropCharcoal;
+        public InputAction @DropCoal => m_Wrapper.m_Controller_DropCoal;
         public InputAction @DropIron => m_Wrapper.m_Controller_DropIron;
         public InputAction @Revive => m_Wrapper.m_Controller_Revive;
         public InputAction @TotemTeleport => m_Wrapper.m_Controller_TotemTeleport;
@@ -638,9 +638,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
+            @Tool.started += instance.OnTool;
+            @Tool.performed += instance.OnTool;
+            @Tool.canceled += instance.OnTool;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -653,9 +653,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @DropWood.started += instance.OnDropWood;
             @DropWood.performed += instance.OnDropWood;
             @DropWood.canceled += instance.OnDropWood;
-            @DropCharcoal.started += instance.OnDropCharcoal;
-            @DropCharcoal.performed += instance.OnDropCharcoal;
-            @DropCharcoal.canceled += instance.OnDropCharcoal;
+            @DropCoal.started += instance.OnDropCoal;
+            @DropCoal.performed += instance.OnDropCoal;
+            @DropCoal.canceled += instance.OnDropCoal;
             @DropIron.started += instance.OnDropIron;
             @DropIron.performed += instance.OnDropIron;
             @DropIron.canceled += instance.OnDropIron;
@@ -681,9 +681,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
+            @Tool.started -= instance.OnTool;
+            @Tool.performed -= instance.OnTool;
+            @Tool.canceled -= instance.OnTool;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -696,9 +696,9 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @DropWood.started -= instance.OnDropWood;
             @DropWood.performed -= instance.OnDropWood;
             @DropWood.canceled -= instance.OnDropWood;
-            @DropCharcoal.started -= instance.OnDropCharcoal;
-            @DropCharcoal.performed -= instance.OnDropCharcoal;
-            @DropCharcoal.canceled -= instance.OnDropCharcoal;
+            @DropCoal.started -= instance.OnDropCoal;
+            @DropCoal.performed -= instance.OnDropCoal;
+            @DropCoal.canceled -= instance.OnDropCoal;
             @DropIron.started -= instance.OnDropIron;
             @DropIron.performed -= instance.OnDropIron;
             @DropIron.canceled -= instance.OnDropIron;
@@ -854,12 +854,12 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     public interface IControllerActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
+        void OnTool(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnPickUp(InputAction.CallbackContext context);
         void OnDropWood(InputAction.CallbackContext context);
-        void OnDropCharcoal(InputAction.CallbackContext context);
+        void OnDropCoal(InputAction.CallbackContext context);
         void OnDropIron(InputAction.CallbackContext context);
         void OnRevive(InputAction.CallbackContext context);
         void OnTotemTeleport(InputAction.CallbackContext context);

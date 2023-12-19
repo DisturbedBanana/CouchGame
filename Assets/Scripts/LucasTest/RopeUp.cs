@@ -10,16 +10,26 @@ using UnityEngine.Serialization;
 
 public class RopeUp : Rope
 {
-    [SerializeField] private string _itemNeededID;
-    [Range(0, 5)] public int _itemNeededAmount; 
-    
+    [Range(0, 5)] public int _neededIron;
+    [Range(0, 5)] public int _neededWood;
+
     public override void ActivateRope()
     {
         if (!IsRopeActivated)
         {
-            if (CurrentPlayer.GetComponentInChildren<PlayerInventory>().DoesPlayerHaveEnoughItems(_itemNeededID,_itemNeededAmount) && CurrentPlayer.GetComponent<Character>().PlayerId == 4)
+            if (CurrentPlayer.GetComponent<Character>().NbIrons >= _neededIron && CurrentPlayer.GetComponent<Character>().NbWoods >= _neededWood && CurrentPlayer.GetComponent<Character>().PlayerId == 4)
             {
                 IsRopeActivated = true;
+
+                for (int i = 0; i < _neededWood; i++)
+                {
+                    DropInteraction.instance.RemoveOneWoodFromInventory(CurrentPlayer.GetComponent<Character>());
+                }
+                for (int i = 0; i < _neededIron; i++)
+                {
+                    DropInteraction.instance.RemoveOneIronFromInventory(CurrentPlayer.GetComponent<Character>());
+                }
+
                 return;
             }
             if (CurrentPlayer.GetComponent<Character>().PlayerId == 2)
