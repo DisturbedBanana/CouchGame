@@ -28,6 +28,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: ef3e699389df6a2408e7d6c8899facb1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _GatherTexture2D_766e1cd1e96d40d2a920fe2f00ae9cd9_Texture_1_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_24ceaaed19f9414ba92ee6230980355e_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 1a642e13e57812c4dbafdc8f6b4e7805, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -58,7 +62,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BuildupNoiseSize: 58.31
+    - _BuildupNoiseSize: 144.5
+    - _CylinderSize: 8.3
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
@@ -66,21 +71,29 @@ Material:
     - _Float: 0
     - _GrassAmount: 0.632
     - _GrassDentity: 500
+    - _GrassTilingV2: 2
+    - _Intensity: 1
     - _NoiseVariation: 67.5
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _R: 0
     - _Smoothness: 0
-    - _SnowAmount: 1
+    - _SnowAmount: 0.53
     - _SnowArea: 0.5
-    - _SnowBlendDistance: 0.246
+    - _SnowBlendDistance: 0.12
     - _SnowDensity: 2.09
     - _SnowDirection: 0.5
-    - _SnowHeight: 0.5
+    - _SnowHeight: 0
     - _SnowScale: 136.6
+    - _SphereHardness: 4.1
+    - _SphereRadius: 15.1
     m_Colors:
+    - _GrassTiling: {r: 2, g: 2, b: 0, a: 0}
     - _SnowDirection: {r: 0, g: 1, b: 0, a: 0}
     - _SnowDirectionVector: {r: 0, g: 1, b: 0, a: 0}
     - _Snow_Direction_Vector: {r: 0, g: 0, b: 0, a: 0}
+    - _SphereCenter: {r: 0, g: 0, b: 0, a: 0}
+    - _SphereDiameterPoint: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &6583615341030518791
 MonoBehaviour:
