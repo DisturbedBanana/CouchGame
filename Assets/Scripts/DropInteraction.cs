@@ -27,6 +27,11 @@ public class DropInteraction : MonoBehaviour
             }
 
             //CODE POUR DROP PAR TERRE
+            if (character.NbWoods >= 1)
+            {
+                RemoveOneWoodFromInventory(character);
+                Instantiate(PickUp.instance._woodItem, new Vector3(character.transform.position.x + Random.Range(0f, 5f), character.transform.position.y, character.transform.position.z + Random.Range(0f, 5f)), Quaternion.identity);
+            }
         }
     }
 
@@ -43,6 +48,11 @@ public class DropInteraction : MonoBehaviour
             }
 
             //CODE POUR DROP PAR TERRE
+            if (character.NbCharcoals >= 1)
+            {
+                RemoveOneCharcoalFromInventory(character);
+                Instantiate(PickUp.instance._coalItem, new Vector3(character.transform.position.x + Random.Range(0f, 5f), character.transform.position.y, character.transform.position.z + Random.Range(0f, 5f)), Quaternion.identity);
+            }
         }
     }
 
@@ -50,7 +60,12 @@ public class DropInteraction : MonoBehaviour
     {
         if (context.performed)
         {
-
+            //CODE POUR DROP PAR TERRE
+            if (character.NbIrons >= 1)
+            {
+                RemoveOneIronFromInventory(character);
+                Instantiate(PickUp.instance._ironItem, new Vector3(character.transform.position.x + Random.Range(0f, 5f), character.transform.position.y, character.transform.position.z + Random.Range(0f, 5f)), Quaternion.identity);
+            }
         }
     }
 

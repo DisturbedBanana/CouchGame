@@ -2869,6 +2869,13 @@ MonoBehaviour:
   _playerTransform: {fileID: 0}
   _objectsInRange: []
   _isPickingUp: 0
+  _itemWasPickedUp: 0
+  _woodItem: {fileID: 8712351378580018257, guid: 5057d5bdfdeb8bc418977d6da52d6d0b,
+    type: 3}
+  _ironItem: {fileID: 9156328140735114741, guid: 9b4967fd4b007024a890a25b0e542c0d,
+    type: 3}
+  _coalItem: {fileID: 4819812467223683088, guid: 9635df64d8ec26747940e56686f4b906,
+    type: 3}
 --- !u!95 &2642197650692188847
 Animator:
   serializedVersion: 5

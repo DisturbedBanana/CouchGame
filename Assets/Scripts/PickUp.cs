@@ -18,6 +18,7 @@ public class PickUp : MonoBehaviour
     [SerializeField] private PlayerInventory _playerInventory;
     private PlayerMovTest _playerMovement;
     private Character _player;
+    public static PickUp instance;
 
     [Space]
     [Header("Variables")]
@@ -37,9 +38,14 @@ public class PickUp : MonoBehaviour
 
     [Space]
     [Header("Items References")]
-    [SerializeField] private GameObject _woodItem;
-    [SerializeField] private GameObject _ironItem;
-    [SerializeField] private GameObject _coalItem;
+    public GameObject _woodItem;
+    public GameObject _ironItem;
+    public GameObject _coalItem;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
