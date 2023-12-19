@@ -1414,11 +1414,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 88ceb093aa59ee440b0a69617f8195ce,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5690850457909795499}
+      addedObject: {fileID: 1993983769173563591}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 88ceb093aa59ee440b0a69617f8195ce,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1993983769173563591}
+      addedObject: {fileID: 7360211744673665181}
   m_SourcePrefab: {fileID: 100100000, guid: 88ceb093aa59ee440b0a69617f8195ce, type: 3}
 --- !u!1 &5940674563870770482 stripped
 GameObject:
@@ -1656,6 +1656,54 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3d577a15-2127-470c-aacf-f61eb517455c
     m_ActionName: UI/Pause[/DualSenseGamepadHID/start,/DualSenseGamepadHID1/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1f5c0769-aa97-45fe-b12a-6ecd63c251ad
+    m_ActionName: Controller/DropCharcoal[/DualSenseGamepadHID/dpad/left,/DualSenseGamepadHID1/dpad/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnPauseGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a26d1aba-7391-4a1a-b995-9a718acb2249
+    m_ActionName: Controller/DropIron[/DualSenseGamepadHID/dpad/right,/DualSenseGamepadHID1/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7360211744673665181}
+        m_TargetAssemblyTypeName: BridgeRepair, Assembly-CSharp
+        m_MethodName: OnBridgeRepair
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 942305ee-435b-419d-b0e9-064510ad8852
+    m_ActionName: Controller/RepairBridge[/DualSenseGamepadHID/leftShoulder,/DualSenseGamepadHID1/leftShoulder]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controller
@@ -1789,19 +1837,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5690850457909795499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5940674563870770482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee65d440c3da27145a51917184edc5cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentBridge: {fileID: 0}
 --- !u!114 &1993983769173563591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1816,6 +1851,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _woodExpansionFactor: 5
   _charcoalExpansionFactor: 10
+--- !u!114 &7360211744673665181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940674563870770482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c31a4d4ab9ca24489a54a14e3cdbbd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6429544493909221256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 88ceb093aa59ee440b0a69617f8195ce,
