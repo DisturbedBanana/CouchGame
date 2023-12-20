@@ -25,7 +25,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject _optionsMenuFirstSelectedButton;
     [SerializeField] private GameObject _playerSelectionMenuFirstSelectedButton;
 
-
+    [Space]
+    [Header("Component References")]
     [SerializeField] private EventSystem _eventSys;
     [SerializeField] private PlayerInputs _playerInputs;
     [SerializeField] private string _menuState;
@@ -38,8 +39,8 @@ public class MainMenu : MonoBehaviour
         _mainMenuCanvas = GameObject.FindGameObjectWithTag("MainMenuCanvas");
         _optionsMenuCanvas = GameObject.FindGameObjectWithTag("OptionsMenuCanvas");
         _optionsMenuCanvas.SetActive(false);
-        _playerSelectionMenuCanvas = GameObject.FindGameObjectWithTag("PlayerSelectionCanvas");
-        _playerSelectionMenuCanvas.SetActive(false);
+        //_playerSelectionMenuCanvas = GameObject.FindGameObjectWithTag("PlayerSelectionCanvas");
+        //_playerSelectionMenuCanvas.SetActive(false);
         _playerInputs = new PlayerInputs();
     }
 
@@ -52,15 +53,15 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerInputs.MainMenuUI.Enable();
+        _playerInputs.UI.Enable();
     }
 
     private void OnDisable()
     {
-        _playerInputs.MainMenuUI.Disable();
+        _playerInputs.UI.Disable();
     }
 
-    public void OnGoBack(InputAction.CallbackContext context)
+    public void OnUIBack(InputAction.CallbackContext context)
     {
         if (context.performed && _menuState != "MainMenu")
         {

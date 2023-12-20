@@ -22,11 +22,29 @@ TagManager:
   - PlayerHitbox
   - PlayerRange
   - Tree
+  - Tombstone
+  - Wood
+  - RedCube
+  - EventSystem
+  - WinCanvas
+  - LoseCanvas
+  - PauseCanvas
+  - OptionsCanvas
+  - ShamanTombstone
+  - WinArea
+  - Charcoal
+  - Iron
+  - BridgeZone
+  - WoodItem
+  - CoalItem
+  - IronItem
+  - BridgeZone1
+  - BridgeZone2
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

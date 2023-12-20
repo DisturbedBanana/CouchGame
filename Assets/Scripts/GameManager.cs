@@ -9,17 +9,42 @@ public class GameManager : MonoBehaviour
 {
     [Header("References")]
     public static GameManager instance;
+    public static bool _gamePaused = true;
 
     [Space]
     [Header("Variables")]
-    [SerializeField] private bool _isGamePaused = false;
-
     [SerializeField] private GameObject _lumberjack;
     [SerializeField] private GameObject _shaman;
     [SerializeField] private GameObject _engineer;
     [SerializeField] private GameObject _scout;
     [SerializeField] private List<GameObject> _spawnPoints = new List<GameObject>();
     public List<GameObject> _playerGameObjectList = new List<GameObject>();
+
+    [Space]
+    [Header("Booleans")]
+    public bool _canPauseGame = true;
+
+    [Button("Win")]
+    public void Win()
+    {
+        for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+        {
+            GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("UI");
+        }
+        UIManager.instance._winCanvas.SetActive(true);
+        UIManager.instance._backgroundCanvas.SetActive(true);
+    }
+
+    [Button("Lose")]
+    public void Lose()
+    {
+        for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+        {
+            GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("UI");
+        }
+        UIManager.instance._loseCanvas.SetActive(true);
+        UIManager.instance._backgroundCanvas.SetActive(true);
+    }
 
     private void Awake()
     {
@@ -33,9 +58,9 @@ public class GameManager : MonoBehaviour
         }
 
         _playerGameObjectList.Add(_lumberjack);
+        _playerGameObjectList.Add(_scout);
         _playerGameObjectList.Add(_shaman);
         _playerGameObjectList.Add(_engineer);
-        _playerGameObjectList.Add(_scout);
     }
 
     private void Start()
@@ -46,31 +71,54 @@ public class GameManager : MonoBehaviour
         //Instantiate(_shaman, _spawnPoints[3].transform.position, Quaternion.identity);
     }
 
-
-    public void SpawnPlayer()
+    public void OnPauseGame(InputAction.CallbackContext context)
     {
-
+        if (context.performed && UIManager.instance._menuState == ("PauseMenu") && _canPauseGame)
+        {
+            PauseGame();
+        }
     }
 
-    public void OnPlayerJoined(PlayerInput playerInput)
+    public void SetUIModeOff()
     {
-        //_playersList.Add(playerInput);
-
+        for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+        {
+            GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("Controller");
+        }
     }
 
     public void PauseGame()
     {
-        _isGamePaused = !_isGamePaused;
+        _gamePaused = !_gamePaused;
 
-        if (_isGamePaused)
+        if (UIManager.instance._optionsMenuCanvas.activeSelf)
+        {
+            UIManager.instance._optionsMenuCanvas.SetActive(false);
+        }
+
+        if (_gamePaused)
         {
             Time.timeScale = 0f;
+            UIManager.instance._pauseMenuCanvas.SetActive(true);
+            UIManager.instance._backgroundCanvas.SetActive(true);
             Debug.Log("Game paused");
+
+            for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+            {
+                GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("UI");
+            }
         }
-        else if (!_isGamePaused)
+        else if (!_gamePaused)
         {
             Time.timeScale = 1f;
+            UIManager.instance._pauseMenuCanvas.SetActive(false);
+            UIManager.instance._backgroundCanvas.SetActive(false);
             Debug.Log("Game unpaused");
+
+            for (int i = 0; i < GameManager.instance._playerGameObjectList.Count; i++)
+            {
+                GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("Controller");
+            }
         }
     }
 }

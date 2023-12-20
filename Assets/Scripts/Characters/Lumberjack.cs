@@ -17,5 +17,7 @@ public class Lumberjack : Character
         HasBackpack = false;
         HasTool = true;
         IsInSnow = false;
+        IsAlive = true;
+        NbMaximumItems = 5;
     }
 }

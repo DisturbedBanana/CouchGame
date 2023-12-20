@@ -82,6 +82,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6993224297040168963}
   - component: {fileID: 4012584104690258855}
+  - component: {fileID: 379359993171784340}
   m_Layer: 5
   m_Name: PlayerStorage
   m_TagString: Untagged
@@ -130,50 +131,26 @@ MonoBehaviour:
     color: {r: 1, g: 1, b: 1, a: 1}
     value: 1
     quantityMax: 99
-  item2:
-    label: New label
-    <ID>k__BackingField: 
-    sprite: {fileID: 21300000, guid: bbbcdf9f2a3c4024fa62a605ab7b925a, type: 3}
-    mesh: {fileID: 0}
-    category: 0
-    color: {r: 1, g: 1, b: 1, a: 1}
-    value: 1
-    quantityMax: 99
-  item3:
-    label: New label
-    <ID>k__BackingField: 
-    sprite: {fileID: 21300000, guid: 722b370b22dffca4390d4cd09602687f, type: 3}
-    mesh: {fileID: 0}
-    category: 0
-    color: {r: 1, g: 1, b: 1, a: 1}
-    value: 1
-    quantityMax: 99
-  item4:
-    label: New label
-    <ID>k__BackingField: 
-    sprite: {fileID: 21300000, guid: f864ab3b08506e74ab3ccd9e4d36ef98, type: 3}
-    mesh: {fileID: 0}
-    category: 0
-    color: {r: 1, g: 1, b: 1, a: 1}
-    value: 1
-    quantityMax: 99
-  item5:
-    label: New label
-    <ID>k__BackingField: 
-    sprite: {fileID: 21300000, guid: b818139a7c8af5546a02588f4b6c3b5a, type: 3}
-    mesh: {fileID: 0}
-    category: 0
-    color: {r: 1, g: 1, b: 1, a: 1}
-    value: 1
-    quantityMax: 99
-  parentSlot: {fileID: 7803741457441512742}
-  prefabSlot: {fileID: 4808184337620840083, guid: a64baaede3adbde439ad3c0547ebbf47,
+  _parentSlot: {fileID: 7251666929604498453}
+  _prefabSlot: {fileID: 4808184337620840083, guid: a64baaede3adbde439ad3c0547ebbf47,
     type: 3}
-  nbSlot: 5
-  followPlayer: 1
-  cam: {fileID: 0}
-  player: {fileID: 0}
-  offset: 1.8
+  _cam: {fileID: 0}
+  _player: {fileID: 0}
+  _followPlayer: 1
+  _nbInvSlot: 0
+  _invOffset: 1.8
+--- !u!225 &379359993171784340
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7251666929604498453}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7803741457441512742
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,5 +218,5 @@ MonoBehaviour:
   m_StartAxis: 1
   m_CellSize: {x: 85, y: 85}
   m_Spacing: {x: 10, y: 10}
-  m_Constraint: 0
+  m_Constraint: 1
   m_ConstraintCount: 1
