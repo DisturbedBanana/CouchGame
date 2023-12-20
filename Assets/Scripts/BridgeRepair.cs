@@ -21,6 +21,8 @@ public class BridgeRepair : MonoBehaviour
         _player = GetComponent<Character>();
         _repairedBridge1.SetActive(false);
         _repairedBridge2.SetActive(false);
+        _groundHitbox1.SetActive(false);
+        _groundHitbox2.SetActive(false);
     }
 
 
