@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class RopeDown : Rope
 {
+    [SerializeField] private ContextualTrigger _scoutClimbPopupTrigger, _ropeClimbPopupTrigger;
+
+    private void Awake()
+    {
+        _ropeClimbPopupTrigger.enabled = false;
+    }
+
     public override void ActivateRope()
     {
         if (TargetRope.IsRopeActivated == true)
@@ -25,7 +32,11 @@ public class RopeDown : Rope
         if (other.gameObject.CompareTag("Player"))
         {
             CurrentPlayer = other.gameObject.GetComponent<RopeTeleportable>();
-
+            if (IsRopeActivated)
+            {
+                _scoutClimbPopupTrigger.enabled = false;
+                _ropeClimbPopupTrigger.enabled = true;
+            }
             if (CurrentPlayer != null)
             {
                 CurrentPlayer.CanActivateRope = true;

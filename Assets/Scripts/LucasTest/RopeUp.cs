@@ -13,10 +13,12 @@ public class RopeUp : Rope
     [Range(0, 5)] public int _neededIron;
     [Range(0, 5)] public int _neededWood;
     [SerializeField] private GameObject _ropeModel;
+    [SerializeField] private ContextualTrigger _engiRopePopupTrigger, _scoutClimbPopupTrigger, _ropeClimbPopupTrigger;
 
     private void Awake()
     {
         _ropeModel.SetActive(false);
+        _ropeClimbPopupTrigger.enabled = false;
     }
 
     public override void ActivateRope()
@@ -36,6 +38,10 @@ public class RopeUp : Rope
                 {
                     DropInteraction.instance.RemoveOneIronFromInventory(CurrentPlayer.GetComponent<Character>());
                 }
+
+                _scoutClimbPopupTrigger.enabled = false;
+                _engiRopePopupTrigger.enabled = false;
+                _ropeClimbPopupTrigger.enabled = true;
 
                 return;
             }
