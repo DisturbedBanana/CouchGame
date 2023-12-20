@@ -12,6 +12,12 @@ public class RopeUp : Rope
 {
     [Range(0, 5)] public int _neededIron;
     [Range(0, 5)] public int _neededWood;
+    [SerializeField] private GameObject _ropeModel;
+
+    private void Awake()
+    {
+        _ropeModel.SetActive(false);
+    }
 
     public override void ActivateRope()
     {
@@ -20,6 +26,7 @@ public class RopeUp : Rope
             if (CurrentPlayer.GetComponent<Character>().NbIrons >= _neededIron && CurrentPlayer.GetComponent<Character>().NbWoods >= _neededWood && CurrentPlayer.GetComponent<Character>().PlayerId == 4)
             {
                 IsRopeActivated = true;
+                _ropeModel.SetActive(true);
 
                 for (int i = 0; i < _neededWood; i++)
                 {

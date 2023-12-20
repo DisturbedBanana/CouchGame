@@ -141,7 +141,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 4.39, y: 3.36, z: 5.28}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6274740413209060686
 MonoBehaviour:
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 697560498677287475}
   requiredClassId: 2
+  heatDependent: 0
 --- !u!114 &6511833310293635999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 625453820974890306}
   requiredClassId: 0
+  heatDependent: 0
 --- !u!1 &8631137116153252906
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,8 +296,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.882224, y: 1.8172867, z: 2.4859276}
-  m_Center: {x: -0.05920267, y: 0.40864336, z: -0.015418053}
+  m_Size: {x: 9.07, y: 2.78, z: 7.97}
+  m_Center: {x: -0.16, y: 0.40864336, z: -0.015418053}
 --- !u!114 &6205787563286244069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 4861247777973239261}
   requiredClassId: 4
+  heatDependent: 0
 --- !u!114 &4088583440441223208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,6 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 393751953417707544}
   requiredClassId: 2
+  heatDependent: 0
 --- !u!114 &8335569910764174773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,6 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popup: {fileID: 3936535607079999272}
   requiredClassId: 0
+  heatDependent: 0
 --- !u!1001 &5744904699207173834
 PrefabInstance:
   m_ObjectHideFlags: 0
