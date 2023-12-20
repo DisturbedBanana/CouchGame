@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 529027095709980555}
   - component: {fileID: 5825492215972603150}
   - component: {fileID: 317858464969497564}
+  - component: {fileID: 6076423389326325571}
   m_Layer: 0
   m_Name: Tree_animation_test_Mel
   m_TagString: Tree
@@ -206,6 +207,7 @@ Transform:
   m_Children:
   - {fileID: 6001021098220973996}
   - {fileID: 3413299809821496783}
+  - {fileID: 6586835655610820682}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &-3215974505969457707
@@ -275,8 +277,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.4917908, y: 6.5732865, z: 1.3934298}
-  m_Center: {x: 0.049179077, y: 2.7866433, z: -0.4688573}
+  m_Size: {x: 3.5, y: 7, z: 3.5}
+  m_Center: {x: 0, y: 2.8, z: -0.5}
 --- !u!65 &317858464969497564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -298,3 +300,87 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.0411987, y: 7.266809, z: 2.196556}
   m_Center: {x: 0.07090759, y: 3.133405, z: -0.46630287}
+--- !u!114 &6076423389326325571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8568985754262541125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2f23ed20ea0aaf42a3a772df51d8923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popup: {fileID: 8661859251768658250}
+--- !u!1001 &1171321697946548265
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 9052507415484025343}
+    m_Modifications:
+    - target: {fileID: 3716848235153724399, guid: cdd74779ce572df4a9ccd36723e7d663,
+        type: 3}
+      propertyPath: m_Name
+      value: Contextual Popup - Wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 3716848235153724399, guid: cdd74779ce572df4a9ccd36723e7d663,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415713523630133347, guid: cdd74779ce572df4a9ccd36723e7d663,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415713523630133347, guid: cdd74779ce572df4a9ccd36723e7d663,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415713523630133347, guid: cdd74779ce572df4a9ccd36723e7d663,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415713523630133347, guid: cdd74779ce572df4a9ccd36723e7d663,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415713523630133347, guid: cdd74779ce572df4a9ccd36723e7d663,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5480456895227215735, guid: cdd74779ce572df4a9ccd36723e7d663,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: cdd74779ce572df4a9ccd36723e7d663, type: 3}
+--- !u!224 &6586835655610820682 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5415713523630133347, guid: cdd74779ce572df4a9ccd36723e7d663,
+    type: 3}
+  m_PrefabInstance: {fileID: 1171321697946548265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8661859251768658250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7526717808962810211, guid: cdd74779ce572df4a9ccd36723e7d663,
+    type: 3}
+  m_PrefabInstance: {fileID: 1171321697946548265}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1755d5f33f59e744a800fff9e266362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
