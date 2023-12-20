@@ -5,6 +5,8 @@ using UnityEngine;
 public class ContextualTrigger : MonoBehaviour
 {
     [SerializeField] private ContextualPopup popup;
+    // 0 pour n'importe quelle classe
+    [SerializeField] private int requiredClassId;
     private readonly float fadeOutDelay = 2f;
 
     private void OnTriggerEnter(Collider other)
@@ -12,7 +14,8 @@ public class ContextualTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             popup.gameObject.SetActive(true);
-            popup.FadeIn();
+            if (requiredClassId == 0 || other.GetComponent<Character>().PlayerId == requiredClassId) popup.FadeIn();
+            else popup.FadeInWrongClass();
         }
     }
 

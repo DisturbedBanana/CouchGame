@@ -43,6 +43,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: Contextual Popup - Mining - Coal
       objectReference: {fileID: 0}
+    - target: {fileID: 8339931985018209360, guid: bb19b07bdbcfbd748a8798b12b002023,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339931985018209360, guid: bb19b07bdbcfbd748a8798b12b002023,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339931985018209360, guid: bb19b07bdbcfbd748a8798b12b002023,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4381867587888709065}
+    - target: {fileID: 8339931985018209360, guid: bb19b07bdbcfbd748a8798b12b002023,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339931985018209360, guid: bb19b07bdbcfbd748a8798b12b002023,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Press
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339931985018209360, guid: bb19b07bdbcfbd748a8798b12b002023,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ContextualPopup, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339931985018209360, guid: bb19b07bdbcfbd748a8798b12b002023,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8875202167353080919, guid: bb19b07bdbcfbd748a8798b12b002023,
         type: 3}
       propertyPath: m_Sprite
@@ -54,3 +89,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb19b07bdbcfbd748a8798b12b002023, type: 3}
+--- !u!114 &4381867587888709065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1148103788400592008, guid: bb19b07bdbcfbd748a8798b12b002023,
+    type: 3}
+  m_PrefabInstance: {fileID: 3684339266772711745}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1755d5f33f59e744a800fff9e266362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
