@@ -38,6 +38,8 @@ TagManager:
   - WoodItem
   - CoalItem
   - IronItem
+  - BridgeZone1
+  - BridgeZone2
   layers:
   - Default
   - TransparentFX

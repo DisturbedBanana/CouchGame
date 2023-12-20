@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 public class RopeAction : MonoBehaviour
 {
 
-    public void OnRopActivation(InputAction.CallbackContext context)
+    public void OnRopeActivation(InputAction.CallbackContext context)
     {
-
+        //if ()
     }
 }
