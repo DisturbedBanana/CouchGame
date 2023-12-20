@@ -7682,7 +7682,7 @@ MonoBehaviour:
   musicSourceObj: {fileID: 0}
   sfxSourceObj: {fileID: 0}
   debugMusic: {fileID: 8300000, guid: 28ea75fe4636185428fe5471e58034b1, type: 3}
-  debugMusic2: {fileID: 8300000, guid: 47fe708f9b3fbbd408031fb74fe3928d, type: 3}
+  debugMusic2: {fileID: 8300000, guid: a3542428de29c084d8075fcd7656a54d, type: 3}
   debugSfx: {fileID: 8300000, guid: 51709e6d1cc925a40a7682489c25ae8c, type: 3}
 --- !u!1001 &1180529870
 PrefabInstance:
