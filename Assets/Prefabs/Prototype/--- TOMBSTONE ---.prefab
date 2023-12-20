@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popup: {fileID: 5490084304362703456}
+  requiredClassId: 3
 --- !u!1001 &6519572786602466977
 PrefabInstance:
   m_ObjectHideFlags: 0
