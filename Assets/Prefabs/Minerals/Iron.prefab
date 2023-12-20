@@ -286,7 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popup: {fileID: 5232212702212752705}
-  requiredClassId: 0
+  requiredClassId: 4
+  heatDependent: 1
 --- !u!4 &6466926111094759736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3ade7485b8927014d95548ebaf89d76c,

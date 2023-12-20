@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class ContextualPopup : MonoBehaviour
     [SerializeField] private Image buttonIcon;
     [SerializeField] private Image characterIcon;
     [SerializeField] private Image crossIcon;
+    [SerializeField] private Image frostIcon;
 
 
     private bool playerInZone;
@@ -24,19 +26,23 @@ public class ContextualPopup : MonoBehaviour
         transform.rotation = Quaternion.Euler(camRotation);
     }
 
-    public void FadeIn()
+    public void FadeIn() { FadeIn(false, false, false); }
+    public void FadeIn(bool classDep, bool wrongClass, bool frost)
     {
-        actionIcon.color = new Color(255, 255, 255, actionIcon.color.a);
-        crossIcon.gameObject.SetActive(false);
+        frostIcon.gameObject.SetActive(frost);
+        characterIcon.gameObject.SetActive(classDep);
+        if (wrongClass)
+        {
+            actionIcon.color = new Color(wrongClassTint.r, wrongClassTint.g, wrongClassTint.b, actionIcon.color.a);
+            crossIcon.gameObject.SetActive(true);
+        }
+        else
+        {
+            actionIcon.color = new Color(255, 255, 255, actionIcon.color.a);
+            crossIcon.gameObject.SetActive(false);
+        }
         animator.SetTrigger("FadeIn");
         playerInZone = true;
-    }
-
-    public void FadeInWrongClass()
-    {
-        actionIcon.color = new Color(wrongClassTint.r, wrongClassTint.g, wrongClassTint.b, actionIcon.color.a);
-        crossIcon.gameObject.SetActive(true);
-        FadeIn();
     }
 
     public void FadeOut()

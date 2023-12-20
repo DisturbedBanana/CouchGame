@@ -7,6 +7,7 @@ public class ContextualTrigger : MonoBehaviour
     [SerializeField] private ContextualPopup popup;
     // 0 pour n'importe quelle classe
     [SerializeField] private int requiredClassId;
+    [SerializeField] private bool heatDependent;
     private readonly float fadeOutDelay = 2f;
 
     private void OnTriggerEnter(Collider other)
@@ -14,8 +15,11 @@ public class ContextualTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             popup.gameObject.SetActive(true);
-            if (requiredClassId == 0 || other.GetComponent<Character>().PlayerId == requiredClassId) popup.FadeIn();
-            else popup.FadeInWrongClass();
+            Character player = other.GetComponent<Character>();
+            bool classDep = requiredClassId != 0 && !(heatDependent && !player.IsInSnow);
+            bool wrongClass = !(requiredClassId == 0 || player.PlayerId == requiredClassId || (heatDependent && !player.IsInSnow));
+            bool frost = heatDependent && player.IsInSnow;
+            popup.FadeIn(classDep, wrongClass, frost);
         }
     }
 

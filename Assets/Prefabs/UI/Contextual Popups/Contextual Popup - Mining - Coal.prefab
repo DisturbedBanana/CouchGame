@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 3140373616372992668, guid: bb19b07bdbcfbd748a8798b12b002023,
         type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3220880128887268744, guid: bb19b07bdbcfbd748a8798b12b002023,
         type: 3}
@@ -43,6 +43,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Contextual Popup - Mining - Coal
       objectReference: {fileID: 0}
+    - target: {fileID: 7068497872427855319, guid: bb19b07bdbcfbd748a8798b12b002023,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068497872427855319, guid: bb19b07bdbcfbd748a8798b12b002023,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7703122498352158332, guid: bb19b07bdbcfbd748a8798b12b002023,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 36a39a6c7cf86ca44ade5a5ca4b48d3e,
+        type: 3}
     - target: {fileID: 8339931985018209360, guid: bb19b07bdbcfbd748a8798b12b002023,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
