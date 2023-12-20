@@ -229,6 +229,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Charcoal
       objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: cafd65e3fbd3ea242a37cbdb4a2b29f0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: cafd65e3fbd3ea242a37cbdb4a2b29f0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: cafd65e3fbd3ea242a37cbdb4a2b29f0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -271,8 +286,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.5, z: 0.5}
-  m_Center: {x: -1, y: 0, z: 0.02}
+  m_Size: {x: 5.5, y: 2, z: 5.5}
+  m_Center: {x: -4.25, y: 0, z: 0.02}
 --- !u!114 &7441165761027346989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   popup: {fileID: 8229820450558141686}
+  requiredClassId: 0
 --- !u!4 &8652489864359010307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cafd65e3fbd3ea242a37cbdb4a2b29f0,
