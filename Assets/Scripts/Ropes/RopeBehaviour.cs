@@ -32,9 +32,4 @@ public class RopeBehaviour : MonoBehaviour
             }
         }
     }
-
-    public void OnRopActivation(InputAction.CallbackContext context)
-    {
-
-    }
 }
