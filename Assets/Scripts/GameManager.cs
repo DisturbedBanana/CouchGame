@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
         _playerGameObjectList.Add(_scout);
         _playerGameObjectList.Add(_shaman);
         _playerGameObjectList.Add(_engineer);
+
+        _gamePaused = false;
     }
 
     private void Start()

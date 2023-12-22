@@ -79,12 +79,13 @@ public class UIManager : MonoBehaviour
         //_returnToMainMenuCanvas = GameObject.FindGameObjectWithTag("ReturnCanvas");
         _winCanvas = GameObject.FindGameObjectWithTag("WinCanvas");
         _loseCanvas = GameObject.FindGameObjectWithTag("LoseCanvas");
+
+        _optionsMenuCanvas.SetActive(false);
     }
 
     private void Start()
     {
         _pauseMenuCanvas.SetActive(false);
-        _optionsMenuCanvas.SetActive(false);
         //_returnToMainMenuCanvas.SetActive(false);
         _winCanvas.SetActive(false);
         _loseCanvas.SetActive(false);
@@ -95,18 +96,21 @@ public class UIManager : MonoBehaviour
     {
         if (context.performed)
         {
-            if (_menuState != "WinCanvas" || _menuState != "LoseCanvas")
-            {
-                return;
-            }
+            //if (_menuState == "OptionsMenu")
+            //{
+            //    Debug.Log("a");
+            //    return;
+            //}
 
-            if (_menuState != "PauseMenu" && _canCloseMenu)
+            if (_menuState == "OptionsMenu")
             {
+                Debug.Log("aa");
                 _canCloseMenu = false;
                 StartCoroutine(GoBackMenu());
             }
             else if (_menuState == "PauseMenu")
             {
+                Debug.Log("ZADBUH");
                 _currentlyDisplayedMenu.SetActive(false);
                 _backgroundCanvas.SetActive(false);
                 GameManager.instance.PauseGame();

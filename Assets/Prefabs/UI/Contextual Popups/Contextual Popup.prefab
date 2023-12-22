@@ -152,7 +152,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6056851593155864068}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -176,7 +176,19 @@ MonoBehaviour:
     m_ActionId: 93505179-ea6e-48dd-a8f6-5855f21a2afc
     m_ActionName: Controller/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1148103788400592008}
+        m_TargetAssemblyTypeName: ContextualPopup, Assembly-CSharp
+        m_MethodName: Press
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e1326a6c-9bad-4a78-810f-b29952059ce6
     m_ActionName: Controller/Attack
   - m_PersistentCalls:
@@ -239,6 +251,26 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 32007b05-63b9-4ed5-ac64-3c9a77cb47d9
     m_ActionName: Dead/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b31f68bf-7363-421e-b1d4-1142028007d6
+    m_ActionName: UI/Confirm[/DualSenseGamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c80d7028-c69c-465b-8510-32821aa90caa
+    m_ActionName: UI/Up[/DualSenseGamepadHID/dpad/up,/DualSenseGamepadHID/leftStick/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f897d359-0089-4c18-b331-9ce44e7a16f4
+    m_ActionName: UI/Down[/DualSenseGamepadHID/dpad/down,/DualSenseGamepadHID/leftStick/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ba2c746e-b821-473c-b0b4-6cafe518071e
+    m_ActionName: UI/Left[/DualSenseGamepadHID/dpad/left,/DualSenseGamepadHID/leftStick/left]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 988459ec-8cb9-4458-a083-8c85cbef8474
+    m_ActionName: UI/Right[/DualSenseGamepadHID/dpad/right,/DualSenseGamepadHID/leftStick/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Controller
