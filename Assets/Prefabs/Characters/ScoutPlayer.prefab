@@ -2506,7 +2506,7 @@ MonoBehaviour:
   _playerId: 2
   _name: Explorer
   _heat: 100
-  _moveSpeed: 5
+  _moveSpeed: 8
   _invSlots: 2
   _hasBoots: 0
   _hasCoat: 0

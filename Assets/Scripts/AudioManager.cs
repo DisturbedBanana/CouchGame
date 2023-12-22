@@ -1,7 +1,9 @@
 using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AudioManager : MonoBehaviour
 {
@@ -39,6 +41,13 @@ public class AudioManager : MonoBehaviour
     [Header("Music Audio Clips")]
     [SerializeField] private AudioClip debugMusic;
     [SerializeField] private AudioClip debugMusic2;
+    public AudioClip _winSound;
+    public AudioClip _loseSound;
+
+    [Space]
+    [Header("UI Audio Clips")]
+    public List<AudioClip> _uiNavSounds = new List<AudioClip>();
+    public List<AudioClip> _uiConfirmBackSounds = new List<AudioClip>();
 
     #region Debug Music Property
     public AudioClip DebugMusic
@@ -88,5 +97,44 @@ public class AudioManager : MonoBehaviour
         musicAudioSource.Play();
     }
 
+    public void PlayRandomUiSfx()
+    {
+        AudioClip _clipToPlay = _uiNavSounds[Random.Range(0, _uiNavSounds.Count)];
+
+        sfxAudioSource.PlayOneShot(_clipToPlay);
+    }
+
+    public void PlayRandomUiCBSfx()
+    {
+        AudioClip _clipToPlay = _uiConfirmBackSounds[Random.Range(0, _uiConfirmBackSounds.Count)];
+
+        sfxAudioSource.PlayOneShot(_clipToPlay);
+    }
+
+    public void PlaySoundOneShot(AudioClip soundToPlay)
+    {
+        sfxAudioSource.PlayOneShot(soundToPlay);
+    }
+
+    public void StopMusic()
+    {
+        musicAudioSource.Stop();
+    }
+
+    public void OnNavigate(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            PlayRandomUiSfx();
+        }
+    }
+
+    public void OnConfirmBack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            PlayRandomUiCBSfx();
+        }
+    }
 
 }

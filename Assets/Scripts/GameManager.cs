@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
         }
         UIManager.instance._winCanvas.SetActive(true);
         UIManager.instance._backgroundCanvas.SetActive(true);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlaySoundOneShot(AudioManager.instance._winSound);
     }
 
     [Button("Lose")]
@@ -44,6 +47,9 @@ public class GameManager : MonoBehaviour
         }
         UIManager.instance._loseCanvas.SetActive(true);
         UIManager.instance._backgroundCanvas.SetActive(true);
+
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.PlaySoundOneShot(AudioManager.instance._loseSound);
     }
 
     private void Awake()

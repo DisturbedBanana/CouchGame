@@ -42,6 +42,8 @@ public class MainMenu : MonoBehaviour
         //_playerSelectionMenuCanvas = GameObject.FindGameObjectWithTag("PlayerSelectionCanvas");
         //_playerSelectionMenuCanvas.SetActive(false);
         _playerInputs = new PlayerInputs();
+
+        AudioManager.instance.StopMusic();
     }
 
     private void Start()

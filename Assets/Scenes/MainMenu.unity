@@ -3021,7 +3021,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3979,7 +3979,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.04
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -7142,6 +7142,30 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: a26d1aba-7391-4a1a-b995-9a718acb2249
     m_ActionName: Controller/DropIron[/DualSenseGamepadHID/dpad/right,/DualSenseGamepadHID1/dpad/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 942305ee-435b-419d-b0e9-064510ad8852
+    m_ActionName: Controller/RepairBridge[/XInputControllerWindows/leftShoulder,/DualSenseGamepadHID/leftShoulder]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c80d7028-c69c-465b-8510-32821aa90caa
+    m_ActionName: UI/Up[/XInputControllerWindows/dpad/up,/DualSenseGamepadHID/dpad/up,/XInputControllerWindows/leftStick/up,/DualSenseGamepadHID/leftStick/up]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f897d359-0089-4c18-b331-9ce44e7a16f4
+    m_ActionName: UI/Down[/XInputControllerWindows/dpad/down,/DualSenseGamepadHID/dpad/down,/XInputControllerWindows/leftStick/down,/DualSenseGamepadHID/leftStick/down]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ba2c746e-b821-473c-b0b4-6cafe518071e
+    m_ActionName: UI/Left[/XInputControllerWindows/dpad/left,/DualSenseGamepadHID/dpad/left,/XInputControllerWindows/leftStick/left,/DualSenseGamepadHID/leftStick/left]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 988459ec-8cb9-4458-a083-8c85cbef8474
+    m_ActionName: UI/Right[/XInputControllerWindows/dpad/right,/DualSenseGamepadHID/dpad/right,/XInputControllerWindows/leftStick/right,/DualSenseGamepadHID/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b31f68bf-7363-421e-b1d4-1142028007d6
+    m_ActionName: UI/Confirm[/DualSenseGamepadHID/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -7683,6 +7707,16 @@ MonoBehaviour:
   sfxSourceObj: {fileID: 0}
   debugMusic: {fileID: 8300000, guid: 28ea75fe4636185428fe5471e58034b1, type: 3}
   debugMusic2: {fileID: 8300000, guid: a3542428de29c084d8075fcd7656a54d, type: 3}
+  _winSound: {fileID: 8300000, guid: 3df9d71631532834e9b936954a1dad3e, type: 3}
+  _loseSound: {fileID: 8300000, guid: a3748beff8d29994094ba2382025f9f5, type: 3}
+  _uiNavSounds:
+  - {fileID: 8300000, guid: bba6036301d35934790d45dfe21db3f9, type: 3}
+  - {fileID: 8300000, guid: 0032ee6d85b6d4b4fa321a43e5ad57f5, type: 3}
+  - {fileID: 8300000, guid: 6a32065b5e2c43e4a9e1b61c830e4da0, type: 3}
+  _uiConfirmBackSounds:
+  - {fileID: 8300000, guid: 8d8195fa782f8ad46b5d3c6afbf93ad8, type: 3}
+  - {fileID: 8300000, guid: f5fc139487da23546bf84f42ac488817, type: 3}
+  - {fileID: 8300000, guid: 51ccf8031c4283348a3c8d21fa4c0fda, type: 3}
   debugSfx: {fileID: 8300000, guid: 51709e6d1cc925a40a7682489c25ae8c, type: 3}
 --- !u!1001 &1180529870
 PrefabInstance:
