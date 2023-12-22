@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
@@ -126,5 +126,33 @@ public class GameManager : MonoBehaviour
                 GameManager.instance._playerGameObjectList[i].GetComponent<PlayerMovTest>().SwitchActionMap("Controller");
             }
         }
+
+        
+    }
+
+    private int _playerIndex = 0;
+
+    public void PlayerJoinEvent(PlayerInput input){
+        switch (_playerIndex)
+        {
+            case 0:
+                _lumberjack.GetComponent<PlayerInput>().SwitchCurrentControlScheme(input.devices);
+                break;
+                
+            case 1:
+                _scout.GetComponent<PlayerInput>().SwitchCurrentControlScheme( input.devices);
+                break;
+                
+            case 2:
+                _shaman.GetComponent<PlayerInput>().SwitchCurrentControlScheme(input.devices);
+                break;
+                
+            case 3:
+                _engineer.GetComponent<PlayerInput>().SwitchCurrentControlScheme(input.devices);
+                break;
+            default:
+        }
+
+        _playerIndex++;
     }
 }
