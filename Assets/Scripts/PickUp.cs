@@ -33,7 +33,7 @@ public class PickUp : MonoBehaviour
 
     [Space]
     [Header("Booleans")]
-    [SerializeField] private bool _isPickingUp = false;
+    public bool _isPickingUp = false;
     [SerializeField] private bool _itemWasPickedUp = false;
 
     [Space]
@@ -105,6 +105,7 @@ public class PickUp : MonoBehaviour
         //ADD ITEM TO INVENTORY VIA REFERENCE TO PLAYER HERE
         //_playerInventory.AddItemToInventory(item.GetComponent<WorldItem>().Data.ID);
         _playerMovement.CanMove = false;
+        _isPickingUp = true;
 
         Debug.Log("Grab");
 
@@ -144,6 +145,10 @@ public class PickUp : MonoBehaviour
 
         _itemWasPickedUp = false;
         _playerMovement.CanMove = true;
+
+        yield return new WaitForSecondsRealtime(2f);
+
+        _isPickingUp = false;
     }
 
     private void FindNearestItem()

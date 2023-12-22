@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fab2bb56cd7d8a4daec39eaa554c23c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shrinkSpeed: 25
+  _shrinkSpeed: 12
   _growthSpeed: 2
   _flameCylinder: {fileID: 0}
   _snowMovementDuration: 2.5

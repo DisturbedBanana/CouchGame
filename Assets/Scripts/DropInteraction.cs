@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +11,8 @@ public class DropInteraction : MonoBehaviour
     [SerializeField] private int _charcoalExpansionFactor = 10;
     private bool _coalWasDropped;
 
+    public bool _isDropping = false;
+
     private Character character = null;
 
     private void Awake()
@@ -20,9 +23,9 @@ public class DropInteraction : MonoBehaviour
 
     public void OnDropWood(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && PickUp.instance._isPickingUp == false)
         {
-            if (character.IsInsideWoodZone)
+            if (character.IsInsideWoodZone && PickUp.instance._isPickingUp == false)
             {
                 DropMaterialInsideFlame(_woodExpansionFactor);
                 RemoveOneWoodFromInventory(character);
@@ -30,12 +33,22 @@ public class DropInteraction : MonoBehaviour
             }
 
             //CODE POUR DROP PAR TERRE
-            if (character.NbWoods >= 1)
+            if (character.NbWoods >= 1 && PickUp.instance._isPickingUp == false)
             {
                 RemoveOneWoodFromInventory(character);
                 Instantiate(PickUp.instance._woodItem, new Vector3(character.transform.position.x + Random.Range(0f, 5f), character.transform.position.y, character.transform.position.z + Random.Range(0f, 5f)), Quaternion.identity);
+                StartCoroutine(WaitEndOfDrop());
             }
         }
+    }
+
+    private IEnumerator WaitEndOfDrop()
+    {
+        PickUp.instance._isPickingUp = true;
+
+        yield return new WaitForSecondsRealtime(1.5f);
+
+        PickUp.instance._isPickingUp = false;
     }
 
     public void OnDropCoal(InputAction.CallbackContext context)
@@ -55,6 +68,7 @@ public class DropInteraction : MonoBehaviour
             {
                 RemoveOneCharcoalFromInventory(character);
                 Instantiate(PickUp.instance._coalItem, new Vector3(character.transform.position.x + Random.Range(0f, 5f), character.transform.position.y, character.transform.position.z + Random.Range(0f, 5f)), Quaternion.identity);
+                StartCoroutine(WaitEndOfDrop());
             }
         }
     }
@@ -68,6 +82,7 @@ public class DropInteraction : MonoBehaviour
             {
                 RemoveOneIronFromInventory(character);
                 Instantiate(PickUp.instance._ironItem, new Vector3(character.transform.position.x + Random.Range(0f, 5f), character.transform.position.y, character.transform.position.z + Random.Range(0f, 5f)), Quaternion.identity);
+                StartCoroutine(WaitEndOfDrop());
             }
         }
     }

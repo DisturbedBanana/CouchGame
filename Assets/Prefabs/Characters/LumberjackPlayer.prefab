@@ -1502,19 +1502,7 @@ MonoBehaviour:
     m_ActionId: e1326a6c-9bad-4a78-810f-b29952059ce6
     m_ActionName: Controller/Attack[/DualSenseGamepadHID/rightTrigger,/DualShock4GamepadHID/rightTrigger]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5419762801721356624}
-        m_TargetAssemblyTypeName: PlayerMovTest, Assembly-CSharp
-        m_MethodName: OnJump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 0d0449e9-1198-444a-94e5-ef51f16c79b1
     m_ActionName: Controller/Jump[/DualSenseGamepadHID/buttonSouth,/DualShock4GamepadHID/buttonSouth]
   - m_PersistentCalls:
@@ -1841,8 +1829,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7bbd924e031294ea8115231941a917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _woodExpansionFactor: 5
-  _charcoalExpansionFactor: 10
+  _woodExpansionFactor: 10
+  _charcoalExpansionFactor: 50
 --- !u!4 &6381694146389937259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9a9f5efd3ea83874ba0cb100525873a3,

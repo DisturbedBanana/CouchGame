@@ -14,7 +14,7 @@ public class WinManager : MonoBehaviour
 
     private void CheckVictory()
     {
-        if (_players.Count == 2)
+        if (_players.Count == 4)
         {
             GameManager.instance.Win();
         }

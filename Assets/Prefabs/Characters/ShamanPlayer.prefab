@@ -1310,7 +1310,7 @@ MonoBehaviour:
   _playerId: 3
   _name: Shaman
   _heat: 100
-  _moveSpeed: 5
+  _moveSpeed: 8
   _invSlots: 2
   _hasBoots: 0
   _hasCoat: 0
