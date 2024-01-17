@@ -36,6 +36,7 @@ public class EventManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnEvent());
+        Shader.SetGlobalFloat("_isBlizzardActive", 0);
     }
 
     private void Update()
@@ -140,7 +141,7 @@ public class EventManager : MonoBehaviour
                 _timerFill.color = new Color32(99, 127, 140, 190);
                 _BlizzardAnimator.SetBool("IsBlizzardStarting", false);
                 _BlizzardAnimator.SetBool("IsBlizzardActive", true);
-                Shader.SetGlobalFloat("isBlizzardActive", 1);
+                Shader.SetGlobalFloat("_isBlizzardActive", 1);
             }
             else if (_idEvent == 1)
             {
@@ -156,7 +157,7 @@ public class EventManager : MonoBehaviour
         if (_idEvent == 0)
         {
             _BlizzardAnimator.SetBool("IsBlizzardActive", false);
-            Shader.SetGlobalFloat("isBlizzardActive", 0);
+            Shader.SetGlobalFloat("_isBlizzardActive", 0);
         }
         if (_idEvent == 1)
         {

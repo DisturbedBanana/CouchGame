@@ -143,7 +143,7 @@ Material:
     - _SPECULAR_IOR: 1.5
     - _SPECULAR_ROUGHNESS: 0
     - _SampleGI: 0
-    - _Sides: 15
+    - _Sides: 10
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
